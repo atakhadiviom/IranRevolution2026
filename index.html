@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Interactive memorial website honoring individuals in Iran who lost their lives during the revolution." />
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data: https://*.tile.openstreetmap.org https://*.basemaps.cartocdn.com https://upload.wikimedia.org https://pbs.twimg.com https://abs.twimg.com; media-src 'self'; style-src 'self' 'unsafe-inline' https://platform.twitter.com; script-src 'self' https://platform.twitter.com; frame-src https://platform.twitter.com https://syndication.twitter.com;" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <title>Iran Memorial</title>
+  </head>
+  <body>
+    <header role="banner" aria-label="Site header">
+      <nav aria-label="Primary navigation">
+        <div class="logo-area">
+          <div class="site-icon"></div>
+          <h1 id="site-title">Iran Memorial</h1>
+        </div>
+        <div class="controls">
+          <div class="control-group">
+            <select id="language-select" aria-label="Language selection">
+              <option value="fa">فارسی</option>
+              <option value="en" selected>English</option>
+            </select>
+          </div>
+          <div class="control-group">
+            <input id="search-input" type="search" placeholder="Search victims..." aria-label="Search" />
+          </div>
+          <div class="control-group">
+            <button id="contribute-btn" class="nav-button">Contribute</button>
+          </div>
+        </div>
+      </nav>
+    </header>
+    <main id="app" role="main" aria-label="Main content">
+      <section id="map-section" aria-label="Memorial map">
+        <div id="map-container" role="img" aria-label="Map of Iran with memorial markers"></div>
+      </section>
+      <aside id="details-panel" aria-label="Selected memorial details" tabindex="0">
+        <div id="details-content"></div>
+      </aside>
+      <div id="modal-overlay" class="modal-overlay hidden">
+        <div class="modal-content">
+          <button id="close-modal" class="close-button">&times;</button>
+          <div id="modal-body"></div>
+        </div>
+      </div>
+    </main>
+    <footer role="contentinfo" aria-label="Site footer">
+      <p id="footer-note">All content is open-source and community-moderated. No tracking.</p>
+      <a href="/privacy.html" id="privacy-link">Privacy</a>
+      <a href="https://github.com/atakhadivi/IranRevolution2026" rel="noopener" target="_blank" id="github-link">GitHub</a>
+    </footer>
+    <script type="module" src="/src/main.ts"></script>
+    <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+  </body>
+</html>

@@ -1,0 +1,102 @@
+[
+  {
+    "id": "mahsa-amini",
+    "name": "Mahsa (Jina) Amini",
+    "city": "Saqqez",
+    "location": "Tehran / Saqqez",
+    "date": "2022-09-16",
+    "coords": { "lat": 36.233, "lon": 46.267 },
+    "bio": "A 22-year-old Iranian woman whose death in police custody sparked nationwide protests.",
+    "testimonials": ["Woman, Life, Freedom"],
+    "media": { "photo": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1d/Mahsa_Amini_in_2022.jpg/440px-Mahsa_Amini_in_2022.jpg" },
+    "references": [
+      { "label": "Wikipedia", "url": "https://en.wikipedia.org/wiki/Death_of_Mahsa_Amini" },
+      { "label": "Amnesty International", "url": "https://www.amnesty.org/en/latest/news/2022/09/iran-investigate-death-in-custody-of-mahsa-amini/" }
+    ]
+  },
+  {
+    "id": "nika-shakarami",
+    "name": "Nika Shakarami",
+    "city": "Tehran",
+    "location": "Tehran",
+    "date": "2022-09-20",
+    "coords": { "lat": 35.6892, "lon": 51.389 },
+    "bio": "A 16-year-old protester who disappeared and was later found dead.",
+    "testimonials": ["Hero of our time"],
+    "media": { "photo": "https://upload.wikimedia.org/wikipedia/en/thumb/9/9e/Nika_Shakarami.jpg/440px-Nika_Shakarami.jpg" },
+    "references": [
+      { "label": "Wikipedia", "url": "https://en.wikipedia.org/wiki/Death_of_Nika_Shakarami" },
+      { "label": "BBC News", "url": "https://www.bbc.com/news/world-middle-east-63400588" }
+    ]
+  },
+  {
+    "id": "sarina-esmailzadeh",
+    "name": "Sarina Esmailzadeh",
+    "city": "Karaj",
+    "location": "Karaj",
+    "date": "2022-09-22",
+    "coords": { "lat": 35.84, "lon": 50.9391 },
+    "bio": "A 16-year-old YouTuber who died during the protests in Karaj.",
+    "testimonials": ["Bright soul"],
+    "media": { "photo": "https://upload.wikimedia.org/wikipedia/en/thumb/d/d7/Sarina_Esmailzadeh.png/440px-Sarina_Esmailzadeh.png" },
+    "references": [
+      { "label": "Wikipedia", "url": "https://en.wikipedia.org/wiki/Death_of_Sarina_Esmailzadeh" },
+      { "label": "The Guardian", "url": "https://www.theguardian.com/world/2022/oct/07/sarina-esmailzadeh-family-iranian-protester-death" }
+    ]
+  },
+  {
+    "id": "khian-pirfalak",
+    "name": "Kian Pirfalak",
+    "city": "Izeh",
+    "location": "Izeh",
+    "date": "2022-11-16",
+    "coords": { "lat": 31.833, "lon": 49.867 },
+    "bio": "A 9-year-old boy killed during the protests in Izeh.",
+    "testimonials": ["To the God of Rainbows"],
+    "media": { "photo": "https://upload.wikimedia.org/wikipedia/en/thumb/8/8e/Kian_Pirfalak.jpg/440px-Kian_Pirfalak.jpg" },
+    "references": [
+      { "label": "Wikipedia", "url": "https://en.wikipedia.org/wiki/Kian_Pirfalak" },
+      { "label": "Human Rights Watch", "url": "https://www.hrw.org/news/2022/11/17/iran-security-forces-kill-child-izeh" }
+    ]
+  },
+  {
+    "id": "yasin-mirzaei",
+    "name": "Yasin Mirzaei Qaleh Zanjiri",
+    "city": "Kermanshah",
+    "location": "Dareh Derij",
+    "date": "2026-01-08",
+    "coords": { "lat": 34.3142, "lon": 47.0650 },
+    "bio": "A Yarsani citizen and student residing in Italy, killed by gunfire in Kermanshah shortly after returning to Iran to visit his family during the January 2026 protests.",
+    "media": {
+      "photo": "https://iranhrdc.org/wp-content/uploads/2026/01/Yasin-Mirzaei.jpg",
+      "xPost": "https://x.com/IHRDC/status/1746198273641111552"
+    },
+    "references": [
+      { "label": "IHRDC", "url": "https://iranhrdc.org/irans-protest-massacre-daily-update-january-13-2026/" }
+    ]
+  },
+  {
+    "id": "miragha-rezaei",
+    "name": "Miragha Rezaei",
+    "city": "Tehran",
+    "location": "Fallah neighborhood",
+    "date": "2026-01-09",
+    "coords": { "lat": 35.66, "lon": 51.35 },
+    "bio": "A 54-year-old father of two shot and killed during a peaceful protest in Tehran's Fallah neighborhood.",
+    "references": [
+      { "label": "IHRDC", "url": "https://iranhrdc.org/irans-protest-massacre-daily-update-january-13-2026/" }
+    ]
+  },
+  {
+    "id": "alireza-rahimi",
+    "name": "Alireza Rahimi",
+    "city": "Tehran",
+    "location": "Tehranpars",
+    "date": "2026-01-09",
+    "coords": { "lat": 35.75, "lon": 51.55 },
+    "bio": "26-year-old killed by a direct gunshot to the head in Tehranpars during the January 2026 crackdown.",
+    "references": [
+      { "label": "IHRDC", "url": "https://iranhrdc.org/irans-protest-massacre-daily-update-january-13-2026/" }
+    ]
+  }
+]
