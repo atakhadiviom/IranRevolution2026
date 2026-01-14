@@ -18,3 +18,18 @@ export type MemorialEntry = {
   }[]
 }
 
+export interface TwitterWidgets {
+  load: (element?: HTMLElement) => void;
+}
+
+export interface Twitter {
+  ready: (callback: (twttr: { widgets: TwitterWidgets }) => void) => void;
+  widgets: TwitterWidgets;
+}
+
+declare global {
+  interface Window {
+    twttr: Twitter;
+  }
+}
+

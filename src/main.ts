@@ -172,10 +172,9 @@ function renderDetails(entry: MemorialEntry) {
 
   // Trigger Twitter widget rendering if present
   if (entry.media?.xPost) {
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    const twttr = (window as any).twttr
+    const twttr = window.twttr
     if (twttr && twttr.ready) {
-      twttr.ready((t: any) => {
+      twttr.ready((t) => {
         t.widgets.load(panel)
       })
     }
