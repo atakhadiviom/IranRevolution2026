@@ -7,7 +7,7 @@ import type { MemorialEntry } from './types'
 import { currentLanguage } from './i18n'
 
 let map: L.Map
-let markersLayer: any // MarkerClusterGroup
+let markersLayer: L.MarkerClusterGroup
 let selectedCb: (entry: MemorialEntry) => void = () => {}
 
 export function initMap() {
@@ -31,13 +31,13 @@ export function initMap() {
     maxZoom: 20
   }).addTo(map)
   
-  // @ts-ignore
+  // @ts-expect-error - leaflet.markercluster extends L but types might not be perfectly matched
   markersLayer = L.markerClusterGroup({
     showCoverageOnHover: false,
     maxClusterRadius: 40,
     spiderfyOnMaxZoom: true,
     disableClusteringAtZoom: 14,
-    iconCreateFunction: (cluster: any) => {
+    iconCreateFunction: (cluster: L.MarkerCluster) => {
       const count = cluster.getChildCount();
       return L.divIcon({
         html: `<div class="custom-cluster"><span>${count}</span></div>`,
