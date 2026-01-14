@@ -309,6 +309,8 @@ main {
 
 .profile-x-post .twitter-tweet {
   margin: 0 auto !important;
+  max-width: 100% !important;
+  min-height: 200px;
 }
 
 .profile-references h3 {

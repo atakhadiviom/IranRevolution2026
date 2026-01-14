@@ -140,7 +140,7 @@ function renderDetails(entry: MemorialEntry) {
       ${entry.media?.xPost ? `
         <div class="profile-x-post">
           <h3>${t('details.xPost')}</h3>
-          <blockquote class="twitter-tweet" data-theme="dark">
+          <blockquote class="twitter-tweet" data-theme="dark" data-dnt="true">
             <a href="${entry.media.xPost}"></a>
           </blockquote>
         </div>
@@ -171,13 +171,13 @@ function renderDetails(entry: MemorialEntry) {
   aside.focus()
 
   // Trigger Twitter widget rendering if present
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  const twttr = (window as any).twttr
-  if (entry.media?.xPost && twttr) {
-    // If the widget script is already loaded, we can just call load()
-    // but sometimes it's better to ensure it's fully initialized
-    if (twttr.widgets) {
-      twttr.widgets.load(panel)
+  if (entry.media?.xPost) {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    const twttr = (window as any).twttr
+    if (twttr && twttr.ready) {
+      twttr.ready((t: any) => {
+        t.widgets.load(panel)
+      })
     }
   }
 
@@ -189,7 +189,16 @@ function renderDetails(entry: MemorialEntry) {
   const candleBtn = document.getElementById('light-candle')
   const candleCount = document.getElementById('candle-count')
   const entryId = entry.id || entry.name.toLowerCase().replace(/\s+/g, '-')
-  let count = Number(localStorage.getItem(`candle-${entryId}`) || 0)
+  
+  // Get existing count or generate a starting random number between 100 and 1000
+  let countStr = localStorage.getItem(`candle-${entryId}`)
+  if (!countStr) {
+    const startCount = Math.floor(Math.random() * (1000 - 100 + 1)) + 100
+    localStorage.setItem(`candle-${entryId}`, String(startCount))
+    countStr = String(startCount)
+  }
+  let count = Number(countStr)
+  
   if (candleCount) candleCount.textContent = `${count} ${t('details.candlesLit')}`
   
   candleBtn?.addEventListener('click', () => {
@@ -197,7 +206,7 @@ function renderDetails(entry: MemorialEntry) {
     localStorage.setItem(`candle-${entryId}`, String(count))
     if (candleCount) candleCount.textContent = `${count} ${t('details.candlesLit')}`
     candleBtn.classList.add('lit')
-  })
+  }, { once: true })
 }
 
 function clearDetails(memorials: MemorialEntry[]) {
