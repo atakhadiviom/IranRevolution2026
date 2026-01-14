@@ -738,5 +738,30 @@
         "url": "https://x.com/visegrad24/status/2011420708073504785?s=20"
       }
     ]
+  },
+  {
+    "id": "mobin-fili",
+    "name": "Mobin Fili",
+    "name_fa": "مبین فیلی",
+    "city": "Eyvan",
+    "city_fa": "ایوان غرب",
+    "date": "2026-01-13",
+    "location": "Eyvan",
+    "location_fa": "ایوان غرب",
+    "coords": {
+      "lat": 33.8271,
+      "lon": 46.3129
+    },
+    "bio": "Mobin Fili, 24 years old, was killed by gunfire during the protests on January 13, 2026.",
+    "bio_fa": "مبین فیلی، ۲۴ ساله، در اعتراضات ۱۹ دی ۱۴۰۴ با گلوله جنگی کشته شد.",
+    "media": {
+      "xPost": "https://x.com/Soranmansournia/status/2011185321929539724?s=20"
+    },
+    "references": [
+      {
+        "label": "X Post",
+        "url": "https://x.com/Soranmansournia/status/2011185321929539724?s=20"
+      }
+    ]
   }
 ]
