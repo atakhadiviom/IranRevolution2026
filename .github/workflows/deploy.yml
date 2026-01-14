@@ -30,6 +30,8 @@ jobs:
         run: npm run build
         env:
           VITE_OPENROUTER_API_KEY: ${{ secrets.VITE_OPENROUTER_API_KEY }}
+      - name: List dist directory
+        run: ls -R dist
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
