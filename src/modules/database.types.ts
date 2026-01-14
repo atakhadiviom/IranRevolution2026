@@ -23,8 +23,8 @@ export interface Database {
           coords: Json // { lat: number, lon: number }
           bio: string
           bio_fa: string | null
-            testimonials: Json | null
-            media: Json | null // { photo?: string, xPost?: string }
+          testimonials: Json | null
+          media: Json | null // { photo?: string, xPost?: string }
           source_links: Json[] | null // { label: string, url: string }[]
           verified: boolean
           submitted_by: string | null

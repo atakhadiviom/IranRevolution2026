@@ -2,6 +2,9 @@ import { supabase } from './supabase'
 import type { MemorialEntry } from './types'
 import type { Database } from './database.types'
 
+type MemorialUpdate = Database['public']['Tables']['memorials']['Update']
+type MemorialInsert = Database['public']['Tables']['memorials']['Insert']
+
 type MemorialRow = Database['public']['Tables']['memorials']['Row']
 
 export async function fetchMemorials(includeUnverified = false): Promise<MemorialEntry[]> {
@@ -18,38 +21,27 @@ export async function fetchMemorials(includeUnverified = false): Promise<Memoria
     const { data, error } = await query
 
     if (error) {
-      if (import.meta.env.DEV) {
-        console.info('Supabase fetch failed, falling back to local JSON')
-      }
       return fetchStaticMemorials()
     }
 
     // Only fallback if data is null/undefined (unexpected error)
     if (data === null) {
-      if (import.meta.env.DEV) {
-        console.info('No data returned from Supabase, falling back to local JSON')
-      }
       return fetchStaticMemorials()
     }
 
     // If we are in Supabase mode and have data (even empty array), return it
-    if (import.meta.env.DEV) {
-      console.info(`Fetched ${data.length} entries from Supabase`)
-    }
     return data.map(mapRowToEntry)
   } catch (e) {
-    if (import.meta.env.DEV) {
-      console.info('Supabase connection error, falling back to local JSON')
-    }
     return fetchStaticMemorials()
   }
 }
 
 export async function verifyMemorial(id: string): Promise<{ success: boolean; error?: string }> {
   try {
-    const { error } = await (supabase as any)
+    const { error } = await supabase
+      .schema('public')
       .from('memorials')
-      .update({ verified: true })
+      .update({ verified: true } as MemorialUpdate)
       .eq('id', id)
 
     if (error) return { success: false, error: error.message }
@@ -61,7 +53,8 @@ export async function verifyMemorial(id: string): Promise<{ success: boolean; er
 
 export async function deleteMemorial(id: string): Promise<{ success: boolean; error?: string }> {
   try {
-    const { error } = await (supabase as any)
+    const { error } = await supabase
+      .schema('public')
       .from('memorials')
       .delete()
       .eq('id', id)
@@ -79,7 +72,8 @@ export async function submitMemorial(entry: Partial<MemorialEntry>): Promise<{ s
     
     // Check for duplicates if this is a new entry
     if (!isEditing) {
-      const { data: existing } = await (supabase as any)
+      const { data: existing } = await supabase
+        .schema('public')
         .from('memorials')
         .select('id, name, media, source_links')
         .or(`name.eq."${entry.name}", media->>xPost.eq."${entry.media?.xPost}"`)
@@ -102,26 +96,25 @@ export async function submitMemorial(entry: Partial<MemorialEntry>): Promise<{ s
       date: entry.date || new Date().toISOString().split('T')[0],
       bio: entry.bio || '',
       bio_fa: entry.bio_fa || null,
-      coords: (entry.coords || { lat: 35.6892, lon: 51.3890 }) as any,
-      media: (entry.media || {}) as any,
-      source_links: (entry.references || []) as any,
-      testimonials: (entry.testimonials || []) as any,
+      coords: (entry.coords || { lat: 35.6892, lon: 51.3890 }) as Database['public']['Tables']['memorials']['Insert']['coords'],
+      media: (entry.media || {}) as Database['public']['Tables']['memorials']['Insert']['media'],
+      source_links: (entry.references || []) as Database['public']['Tables']['memorials']['Insert']['source_links'],
+      testimonials: (entry.testimonials || []) as Database['public']['Tables']['memorials']['Insert']['testimonials'],
       // If editing, preserve verified status if not explicitly provided
       verified: entry.verified ?? false
     }
 
-    const { error } = await (supabase as any)
+    const { error } = await supabase
+      .schema('public')
       .from('memorials')
-      .upsert(dataToSave)
+      .upsert(dataToSave as MemorialInsert)
 
     if (error) {
-      console.error('Supabase save error:', error)
       return { success: false, error: error.message }
     }
 
     return { success: true }
   } catch (e) {
-    console.error('Save failed:', e)
     return { success: false, error: e instanceof Error ? e.message : 'Unknown error' }
   }
 }

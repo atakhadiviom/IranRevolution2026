@@ -101,8 +101,8 @@ async function loadSubmissions() {
   const unverified = allMemorials.filter(s => !s.verified)
   const verified = allMemorials.filter(s => s.verified)
 
-  countUnverified.textContent = String(unverified.length)
-  countVerified.textContent = String(verified.length)
+  countUnverified.textContent = unverified.length.toString()
+  countVerified.textContent = verified.length.toString()
   
   renderList(unverified, submissionsList)
   renderList(verified, verifiedList)
@@ -145,36 +145,31 @@ function renderList(submissions: MemorialEntry[], container: HTMLDivElement) {
   })
 }
 
-function renderSubmissions() {
-  // This function is no longer needed as we use renderList, but kept for compatibility if called elsewhere
-  loadSubmissions()
-}
-
 function editEntry(id: string) {
   const entry = currentSubmissions.find(s => s.id === id)
   if (!entry) return
 
-  editIdInput.value = entry.id || ''
-  ;(document.getElementById('name') as HTMLInputElement).value = entry.name
-  ;(document.getElementById('name_fa') as HTMLInputElement).value = entry.name_fa || ''
-  ;(document.getElementById('city') as HTMLInputElement).value = entry.city
-  ;(document.getElementById('city_fa') as HTMLInputElement).value = entry.city_fa || ''
-  ;(document.getElementById('location') as HTMLInputElement).value = entry.location || ''
-  ;(document.getElementById('location_fa') as HTMLInputElement).value = entry.location_fa || ''
-  ;(document.getElementById('date') as HTMLInputElement).value = entry.date
-  ;(document.getElementById('lat') as HTMLInputElement).value = String(entry.coords?.lat || 35.6892)
-  ;(document.getElementById('lon') as HTMLInputElement).value = String(entry.coords?.lon || 51.3890)
-  ;(document.getElementById('bio') as HTMLTextAreaElement).value = entry.bio || ''
-  ;(document.getElementById('bio_fa') as HTMLTextAreaElement).value = entry.bio_fa || ''
-  ;(document.getElementById('testimonials') as HTMLTextAreaElement).value = entry.testimonials?.join('\n') || ''
-  ;(document.getElementById('photo') as HTMLInputElement).value = entry.media?.photo || ''
-  ;(document.getElementById('xPost') as HTMLInputElement).value = entry.media?.xPost || ''
-  ;(document.getElementById('references') as HTMLTextAreaElement).value = 
-    entry.references?.map(r => `${r.label} | ${r.url}`).join('\n') || ''
-  ;(document.getElementById('verified') as HTMLInputElement).checked = entry.verified || false
+  editIdInput.value = entry.id || '';
+  (document.getElementById('name') as HTMLInputElement).value = entry.name;
+  (document.getElementById('name_fa') as HTMLInputElement).value = entry.name_fa || '';
+  (document.getElementById('city') as HTMLInputElement).value = entry.city;
+  (document.getElementById('city_fa') as HTMLInputElement).value = entry.city_fa || '';
+  (document.getElementById('location') as HTMLInputElement).value = entry.location || '';
+  (document.getElementById('location_fa') as HTMLInputElement).value = entry.location_fa || '';
+  (document.getElementById('date') as HTMLInputElement).value = entry.date;
+  (document.getElementById('lat') as HTMLInputElement).value = (entry.coords?.lat || 35.6892).toString();
+  (document.getElementById('lon') as HTMLInputElement).value = (entry.coords?.lon || 51.3890).toString();
+  (document.getElementById('bio') as HTMLTextAreaElement).value = entry.bio || '';
+  (document.getElementById('bio_fa') as HTMLTextAreaElement).value = entry.bio_fa || '';
+  (document.getElementById('testimonials') as HTMLTextAreaElement).value = entry.testimonials?.join('\n') || '';
+  (document.getElementById('photo') as HTMLInputElement).value = entry.media?.photo || '';
+  (document.getElementById('xPost') as HTMLInputElement).value = entry.media?.xPost || '';
+  (document.getElementById('references') as HTMLTextAreaElement).value = 
+    entry.references?.map(r => `${r.label} | ${r.url}`).join('\n') || '';
+  (document.getElementById('verified') as HTMLInputElement).checked = entry.verified || false;
   
-  output.textContent = JSON.stringify(entry, null, 2)
-  entryForm.scrollIntoView({ behavior: 'smooth' })
+  output.textContent = JSON.stringify(entry, null, 2);
+  entryForm.scrollIntoView({ behavior: 'smooth' });
 }
 
 // --- Quick Import Logic ---
@@ -201,7 +196,7 @@ aiExtractBtn.addEventListener('click', async () => {
     
     // Set X Post if it looks like one
     if (url.includes('x.com') || url.includes('twitter.com')) {
-      ;(document.getElementById('xPost') as HTMLInputElement).value = url
+      (document.getElementById('xPost') as HTMLInputElement).value = url
     }
 
     aiStatus.textContent = '✨ Extraction successful!'
@@ -251,57 +246,59 @@ jsonImportBtn.addEventListener('click', async () => {
   }
 })
 
-function populateForm(data: any) {
+function populateForm(data: Partial<MemorialEntry> & { referenceLabel?: string }) {
   if (data.name) {
-    ;(document.getElementById('name') as HTMLInputElement).value = data.name
+    (document.getElementById('name') as HTMLInputElement).value = data.name
   }
   if (data.name_fa) {
-    ;(document.getElementById('name_fa') as HTMLInputElement).value = data.name_fa
+    (document.getElementById('name_fa') as HTMLInputElement).value = data.name_fa
   }
   if (data.city) {
-    ;(document.getElementById('city') as HTMLInputElement).value = data.city
+    (document.getElementById('city') as HTMLInputElement).value = data.city
   }
   if (data.city_fa) {
-    ;(document.getElementById('city_fa') as HTMLInputElement).value = data.city_fa
+    (document.getElementById('city_fa') as HTMLInputElement).value = data.city_fa
   }
   if (data.location) {
-    ;(document.getElementById('location') as HTMLInputElement).value = data.location
+    (document.getElementById('location') as HTMLInputElement).value = data.location
   }
   if (data.location_fa) {
-    ;(document.getElementById('location_fa') as HTMLInputElement).value = data.location_fa
+    (document.getElementById('location_fa') as HTMLInputElement).value = data.location_fa
   }
   if (data.date) {
-    ;(document.getElementById('date') as HTMLInputElement).value = data.date
+    (document.getElementById('date') as HTMLInputElement).value = data.date
   }
   
   if (data.coords) {
-    ;(document.getElementById('lat') as HTMLInputElement).value = String(data.coords.lat || 35.6892)
-    ;(document.getElementById('lon') as HTMLInputElement).value = String(data.coords.lon || 51.3890)
+    const lat = data.coords.lat || 35.6892
+    const lon = data.coords.lon || 51.3890
+    ;(document.getElementById('lat') as HTMLInputElement).value = lat.toString()
+    ;(document.getElementById('lon') as HTMLInputElement).value = lon.toString()
   }
   
   if (data.bio) {
-    ;(document.getElementById('bio') as HTMLTextAreaElement).value = data.bio
+    (document.getElementById('bio') as HTMLTextAreaElement).value = data.bio
   }
   if (data.bio_fa) {
-    ;(document.getElementById('bio_fa') as HTMLTextAreaElement).value = data.bio_fa
+    (document.getElementById('bio_fa') as HTMLTextAreaElement).value = data.bio_fa
   }
   
   if (Array.isArray(data.testimonials)) {
-    ;(document.getElementById('testimonials') as HTMLTextAreaElement).value = data.testimonials.join('\n')
+    (document.getElementById('testimonials') as HTMLTextAreaElement).value = data.testimonials.join('\n')
   }
   
   if (data.media) {
     if (data.media.photo) {
-      ;(document.getElementById('photo') as HTMLInputElement).value = data.media.photo
+      (document.getElementById('photo') as HTMLInputElement).value = data.media.photo
     }
     if (data.media.xPost) {
-      ;(document.getElementById('xPost') as HTMLInputElement).value = data.media.xPost
+      (document.getElementById('xPost') as HTMLInputElement).value = data.media.xPost
     }
   }
   
   if (Array.isArray(data.references)) {
-    ;(document.getElementById('references') as HTMLTextAreaElement).value = 
-      data.references.map((r: any) => `${r.label} | ${r.url}`).join('\n')
+    (document.getElementById('references') as HTMLTextAreaElement).value = 
+      data.references.map((r) => `${r.label} | ${r.url}`).join('\n')
   }
 }
 

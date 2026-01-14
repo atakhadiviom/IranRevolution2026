@@ -1,9 +1,9 @@
 import fs from 'fs'
-import path from 'path'
+import type { MemorialEntry } from './src/modules/types'
 
 const memorials = JSON.parse(fs.readFileSync('./public/data/memorials.json', 'utf8'))
 
-const sql = memorials.map((m: any) => {
+const sql = memorials.map((m: MemorialEntry) => {
   return `INSERT INTO memorials (id, name, name_fa, city, city_fa, location, location_fa, date, coords, bio, bio_fa, testimonials, media, source_links, verified) 
 VALUES (
   '${m.id}', 
@@ -25,4 +25,5 @@ VALUES (
 }).join('\n')
 
 fs.writeFileSync('./migration.sql', sql)
+// eslint-disable-next-line no-console
 console.log('Migration SQL generated in migration.sql')
