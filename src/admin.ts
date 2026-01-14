@@ -226,6 +226,24 @@ aiExtractBtn.addEventListener('click', async () => {
       (document.getElementById('xPost') as HTMLInputElement).value = url
     }
 
+    // Proactively sync coordinates if they are missing or at default
+    const latInput = document.getElementById('lat') as HTMLInputElement
+    const lonInput = document.getElementById('lon') as HTMLInputElement
+    const currentLat = parseFloat(latInput.value)
+    const currentLon = parseFloat(lonInput.value)
+    
+    // If coords are default or missing from AI extraction, try to geocode based on extracted city/location
+    if ((currentLat === 35.6892 && currentLon === 51.3890) || isNaN(currentLat) || isNaN(currentLon)) {
+      if (data.city) {
+        aiStatus.textContent = '✨ Syncing coordinates...'
+        const coords = await geocodeLocation(data.city, data.location || '')
+        if (coords) {
+          latInput.value = coords.lat.toString()
+          lonInput.value = coords.lon.toString()
+        }
+      }
+    }
+
     aiStatus.textContent = '✨ Extraction successful!'
     aiStatus.style.color = 'var(--success)'
   } catch (error) {

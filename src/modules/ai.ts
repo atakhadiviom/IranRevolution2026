@@ -61,8 +61,10 @@ export async function extractMemorialData(url: string) {
             - bio_fa: Brief biography (max 200 characters, in Persian)
             - photo: The URL of the main image attached to the post (look for pbs.twimg.com/media/ URLs)
             - referenceLabel: Source name (e.g. BBC, X Post, IHRDC)
+            - coords: { "lat": number, "lon": number } (Most accurate coordinates for the location and city)
 
-            If a field is missing, use an empty string. Do not include any other text or markdown code blocks.`
+            If a field is missing, use an empty string. If coords are unknown, use default Tehran center { "lat": 35.6892, "lon": 51.3890 }.
+            Do not include any other text or markdown code blocks.`
           },
           {
             role: 'user',
