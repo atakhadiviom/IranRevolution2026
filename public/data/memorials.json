@@ -282,6 +282,22 @@
   ]
 },
 {
+  "name": "ستایش شفیعی",
+  "city": "تهران",
+  "date": "2026-01-14",
+  "location": "",
+  "bio": "20-year-old orphan killed by Islamic Republic forces in Tehran.",
+  "media": {
+    "xPost": "https://x.com/longlosthills/status/2011416186496667949?s=20"
+  },
+  "references": [
+    {
+      "label": "X Post",
+      "url": "https://x.com/longlosthills/status/2011416186496667949?s=20"
+    }
+  ]
+},
+{
   "name": "محمد امین حسینی",
   "city": "مشهد",
   "date": "2026-01-14",
