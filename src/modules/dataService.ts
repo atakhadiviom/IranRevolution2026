@@ -1,4 +1,5 @@
 import { supabase } from './supabase'
+import { extractXPostImage } from './imageExtractor'
 import type { MemorialEntry } from './types'
 import type { Database } from './database.types'
 
@@ -100,6 +101,19 @@ export async function submitMemorial(entry: Partial<MemorialEntry>): Promise<{ s
 
     const id = entry.id || entry.name?.toLowerCase().trim().replace(/\s+/g, '-') || `submission-${Date.now()}`
     
+    // Auto-extract image from X post if missing
+    if (entry.media?.xPost && !entry.media?.photo) {
+      try {
+        const photo = await extractXPostImage(entry.media.xPost);
+        if (photo) {
+          if (!entry.media) entry.media = {};
+          entry.media.photo = photo;
+        }
+      } catch (e) {
+        // Silently fail auto-extraction
+      }
+    }
+
     const dataToSave = {
       id,
       name: entry.name || 'Unknown',

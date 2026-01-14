@@ -237,9 +237,12 @@
               <label for="photo">Photo URL (optional)</label>
               <input id="photo" type="url" />
             </div>
-            <div>
+            <div style="display: flex; gap: 0.5rem; flex-direction: column;">
               <label for="xPost">X Post URL (Link) *</label>
-              <input id="xPost" type="url" placeholder="https://x.com/..." />
+              <div style="display: flex; gap: 0.5rem;">
+                <input id="xPost" type="url" placeholder="https://x.com/..." style="flex: 1;" />
+                <button type="button" id="extract-img-btn" class="secondary" style="white-space: nowrap;">Extract Image</button>
+              </div>
             </div>
             <div style="grid-column: 1 / -1;">
               <label>References (Label | URL) - One per line (Link) *</label>

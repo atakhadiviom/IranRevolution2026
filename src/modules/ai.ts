@@ -50,6 +50,7 @@ export async function extractMemorialData(url: string) {
             - date: YYYY-MM-DD format
             - location: Specific location or neighborhood
             - bio: Brief biography (max 200 characters)
+            - photo: The URL of the main image attached to the post (look for pbs.twimg.com/media/ URLs)
             - referenceLabel: Source name (e.g. BBC, X Post, IHRDC)
 
             If a field is missing, use an empty string. Do not include any other text or markdown code blocks.`

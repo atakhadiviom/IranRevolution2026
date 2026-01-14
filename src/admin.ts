@@ -1,6 +1,7 @@
 import { supabase } from './modules/supabase'
 import { fetchMemorials, verifyMemorial, deleteMemorial, submitMemorial } from './modules/dataService'
 import { extractMemorialData } from './modules/ai'
+import { extractXPostImage } from './modules/imageExtractor'
 import type { MemorialEntry } from './modules/types'
 
 // DOM Elements
@@ -26,6 +27,7 @@ const output = document.getElementById('output') as HTMLPreElement
 // Quick Import Elements
 const aiUrlInput = document.getElementById('ai-url') as HTMLInputElement
 const aiExtractBtn = document.getElementById('ai-extract-btn') as HTMLButtonElement
+const extractImgBtn = document.getElementById('extract-img-btn') as HTMLButtonElement
 const aiStatus = document.getElementById('ai-status') as HTMLParagraphElement
 const jsonImportArea = document.getElementById('json-import') as HTMLTextAreaElement
 const jsonImportBtn = document.getElementById('json-import-btn') as HTMLButtonElement
@@ -223,6 +225,32 @@ aiExtractBtn.addEventListener('click', async () => {
   }
 })
 
+extractImgBtn.addEventListener('click', async () => {
+  const url = (document.getElementById('xPost') as HTMLInputElement).value.trim()
+  if (!url) {
+    alert('Please enter an X Post URL first.')
+    return
+  }
+
+  extractImgBtn.disabled = true
+  extractImgBtn.textContent = 'Extracting...'
+  
+  try {
+    const imageUrl = await extractXPostImage(url)
+    if (imageUrl) {
+      (document.getElementById('photo') as HTMLInputElement).value = imageUrl
+      alert('Image extracted successfully!')
+    } else {
+      alert('Could not find an image in this post.')
+    }
+  } catch (error) {
+    alert('Failed to extract image.')
+  } finally {
+    extractImgBtn.disabled = false
+    extractImgBtn.textContent = 'Extract Image'
+  }
+})
+
 jsonImportBtn.addEventListener('click', async () => {
   const raw = jsonImportArea.value.trim()
   if (!raw) return
@@ -306,6 +334,11 @@ function populateForm(data: Partial<MemorialEntry> & { referenceLabel?: string }
     }
     if (data.media.xPost) {
       (document.getElementById('xPost') as HTMLInputElement).value = data.media.xPost
+    }
+  } else {
+    const photo = (data as { photo?: string }).photo
+    if (photo) {
+      (document.getElementById('photo') as HTMLInputElement).value = photo
     }
   }
   
