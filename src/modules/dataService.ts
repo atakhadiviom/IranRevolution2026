@@ -74,9 +74,15 @@ export async function submitMemorial(entry: Partial<MemorialEntry>): Promise<{ s
     return { success: false, error: 'Supabase not configured. Please use the "Generate Submission" button.' }
   }
   try {
-    if (!entry.name || !entry.city || !entry.date) {
-      return { success: false, error: 'Name, City, and Date are required.' }
+    if (!entry.name) {
+      return { success: false, error: 'Name is required.' }
     }
+
+    const hasLink = entry.media?.xPost || (entry.references && entry.references.length > 0)
+    if (!hasLink) {
+      return { success: false, error: 'At least one link (X Post URL or a Reference) is required.' }
+    }
+
     const isEditing = !!entry.id
     
     // Check for duplicates if this is a new entry
