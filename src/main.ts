@@ -89,33 +89,41 @@ function initLanguageSwitcher(memorials: MemorialEntry[]) {
 
 function renderDetails(entry: MemorialEntry) {
   const panel = document.getElementById('details-content')!
-  const date = new Date(entry.date).toLocaleDateString(currentLanguage() === 'fa' ? 'fa-IR' : 'en-US', { 
+  const isFa = currentLanguage() === 'fa'
+  
+  const date = new Date(entry.date).toLocaleDateString(isFa ? 'fa-IR' : 'en-US', { 
     year: 'numeric', 
     month: 'long', 
     day: 'numeric' 
   })
+
+  const displayName = (isFa && entry.name_fa) ? entry.name_fa : entry.name
+  const displayCity = (isFa && entry.city_fa) ? entry.city_fa : entry.city
+  const displayLocation = (isFa && entry.location_fa) ? entry.location_fa : entry.location
+  const displayBio = (isFa && entry.bio_fa) ? entry.bio_fa : entry.bio
+  const displayTestimonials = (isFa && entry.testimonials_fa) ? entry.testimonials_fa : entry.testimonials
   
   panel.innerHTML = `
     <button id="close-details" class="close-button" aria-label="${t('details.close')}">&times;</button>
     <article class="memorial-profile">
       <header class="profile-header">
-        <h2>${entry.name}</h2>
+        <h2>${displayName}</h2>
         <p class="profile-meta">
-          <strong>${t('details.city')}:</strong> ${entry.city}<br>
+          <strong>${t('details.city')}:</strong> ${displayCity}<br>
           <strong>${t('details.date')}:</strong> ${date}<br>
-          <strong>${t('details.location')}:</strong> ${entry.location}
+          <strong>${t('details.location')}:</strong> ${displayLocation}
         </p>
       </header>
 
       ${entry.media?.photo ? `
         <figure class="profile-photo">
-          <img src="${entry.media.photo}" alt="${t('details.photoAlt', { name: entry.name })}" loading="lazy" />
+          <img src="${entry.media.photo}" alt="${t('details.photoAlt', { name: displayName })}" loading="lazy" />
           <figcaption class="photo-attribution">${t('details.photoAttribution')}</figcaption>
         </figure>
       ` : ''}
 
       <div class="profile-bio">
-        ${entry.bio ? `<p>${entry.bio}</p>` : ''}
+        ${displayBio ? `<p>${displayBio}</p>` : ''}
       </div>
 
       <div class="candle-section">
@@ -157,10 +165,10 @@ function renderDetails(entry: MemorialEntry) {
         </section>
       ` : ''}
 
-      ${entry.testimonials?.length ? `
+      ${displayTestimonials?.length ? `
         <section class="profile-testimonials">
           <h3>${t('details.testimonials')}</h3>
-          ${entry.testimonials.map((s) => `<blockquote>${s}</blockquote>`).join('')}
+          ${displayTestimonials.map((s) => `<blockquote>${s}</blockquote>`).join('')}
         </section>
       ` : ''}
     </article>

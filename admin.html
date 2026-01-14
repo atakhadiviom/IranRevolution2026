@@ -20,16 +20,28 @@
     <p>This tool validates a submission and generates JSON to add via Pull Request.</p>
     <form id="entry-form">
       <div>
-        <label for="name">Name</label>
+        <label for="name">Name (English)</label>
         <input id="name" required />
       </div>
       <div>
-        <label for="city">City</label>
+        <label for="name_fa">Name (Persian)</label>
+        <input id="name_fa" />
+      </div>
+      <div>
+        <label for="city">City (English)</label>
         <input id="city" required />
       </div>
       <div>
-        <label for="location">Location</label>
+        <label for="city_fa">City (Persian)</label>
+        <input id="city_fa" />
+      </div>
+      <div>
+        <label for="location">Location (English)</label>
         <input id="location" required />
+      </div>
+      <div>
+        <label for="location_fa">Location (Persian)</label>
+        <input id="location_fa" />
       </div>
       <div>
         <label for="date">Date (YYYY-MM-DD)</label>
@@ -43,8 +55,10 @@
         <label for="lon">Longitude</label>
         <input id="lon" type="number" step="0.0001" required />
       </div>
-      <textarea id="bio" placeholder="Biography (optional)"></textarea>
-      <textarea id="testimonials" placeholder="Testimonials (one per line, optional)"></textarea>
+      <textarea id="bio" placeholder="Biography (English, optional)"></textarea>
+      <textarea id="bio_fa" placeholder="Biography (Persian, optional)"></textarea>
+      <textarea id="testimonials" placeholder="Testimonials (English, one per line, optional)"></textarea>
+      <textarea id="testimonials_fa" placeholder="Testimonials (Persian, one per line, optional)"></textarea>
       <div>
         <label for="photo">Photo URL (optional)</label>
         <input id="photo" type="url" />

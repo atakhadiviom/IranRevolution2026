@@ -1,6 +1,7 @@
 import L from 'leaflet'
 import 'leaflet/dist/leaflet.css'
 import type { MemorialEntry } from './types'
+import { currentLanguage } from './i18n'
 
 let map: L.Map
 let markersLayer: L.LayerGroup
@@ -58,7 +59,12 @@ export function plotMarkers(entries: MemorialEntry[]) {
       fillOpacity: 0.8
     })
 
-    marker.bindTooltip(`${entry.name} • ${entry.city}`, {
+    // Use bilingual fields for tooltip
+    const isFa = currentLanguage() === 'fa'
+    const displayName = (isFa && entry.name_fa) ? entry.name_fa : entry.name
+    const displayCity = (isFa && entry.city_fa) ? entry.city_fa : entry.city
+
+    marker.bindTooltip(`${displayName} • ${displayCity}`, {
       direction: 'top',
       offset: [0, -5]
     })

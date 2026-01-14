@@ -12,9 +12,13 @@ export function setupSearch(all: MemorialEntry[], onResults: OnResults) {
       const matchesQ =
         !q ||
         e.name.toLowerCase().includes(q) ||
+        (e.name_fa ?? '').toLowerCase().includes(q) ||
         e.city.toLowerCase().includes(q) ||
+        (e.city_fa ?? '').toLowerCase().includes(q) ||
         e.location.toLowerCase().includes(q) ||
-        (e.bio ?? '').toLowerCase().includes(q)
+        (e.location_fa ?? '').toLowerCase().includes(q) ||
+        (e.bio ?? '').toLowerCase().includes(q) ||
+        (e.bio_fa ?? '').toLowerCase().includes(q)
       return matchesQ
     })
     onResults(res)

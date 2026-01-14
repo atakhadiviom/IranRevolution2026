@@ -2,11 +2,14 @@
   {
     "id": "mahsa-amini",
     "name": "Mahsa (Jina) Amini",
+    "name_fa": "مهسا (ژینا) امینی",
     "city": "Saqqez",
+    "city_fa": "سقز",
     "location": "Tehran / Saqqez",
     "date": "2022-09-16",
     "coords": { "lat": 36.233, "lon": 46.267 },
     "bio": "A 22-year-old Iranian woman whose death in police custody sparked nationwide protests.",
+    "bio_fa": "دختر ۲۲ ساله‌ای که مرگ او در بازداشت گشت ارشاد باعث اعتراضات سراسری در ایران شد.",
     "testimonials": ["Woman, Life, Freedom"],
     "media": { "photo": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1d/Mahsa_Amini_in_2022.jpg/440px-Mahsa_Amini_in_2022.jpg" },
     "references": [
@@ -17,11 +20,14 @@
   {
     "id": "nika-shakarami",
     "name": "Nika Shakarami",
+    "name_fa": "نیکا شاکرمی",
     "city": "Tehran",
+    "city_fa": "تهران",
     "location": "Tehran",
     "date": "2022-09-20",
     "coords": { "lat": 35.6892, "lon": 51.389 },
     "bio": "A 16-year-old protester who disappeared and was later found dead.",
+    "bio_fa": "نوجوان ۱۶ ساله‌ای که در جریان اعتراضات ناپدید و سپس جسد او پیدا شد.",
     "testimonials": ["Hero of our time"],
     "media": { "photo": "https://upload.wikimedia.org/wikipedia/en/thumb/9/9e/Nika_Shakarami.jpg/440px-Nika_Shakarami.jpg" },
     "references": [
@@ -32,11 +38,14 @@
   {
     "id": "sarina-esmailzadeh",
     "name": "Sarina Esmailzadeh",
+    "name_fa": "سارینا اسماعیل‌زاده",
     "city": "Karaj",
+    "city_fa": "کرج",
     "location": "Karaj",
     "date": "2022-09-22",
     "coords": { "lat": 35.84, "lon": 50.9391 },
     "bio": "A 16-year-old YouTuber who died during the protests in Karaj.",
+    "bio_fa": "نوجوان ۱۶ ساله‌ای که در جریان اعتراضات در کرج جان باخت.",
     "testimonials": ["Bright soul"],
     "media": { "photo": "https://upload.wikimedia.org/wikipedia/en/thumb/d/d7/Sarina_Esmailzadeh.png/440px-Sarina_Esmailzadeh.png" },
     "references": [
@@ -47,11 +56,14 @@
   {
     "id": "khian-pirfalak",
     "name": "Kian Pirfalak",
+    "name_fa": "کیان پیرفلک",
     "city": "Izeh",
+    "city_fa": "ایذه",
     "location": "Izeh",
     "date": "2022-11-16",
     "coords": { "lat": 31.833, "lon": 49.867 },
     "bio": "A 9-year-old boy killed during the protests in Izeh.",
+    "bio_fa": "کودک ۹ ساله‌ای که در جریان اعتراضات در ایذه کشته شد.",
     "testimonials": ["To the God of Rainbows"],
     "media": { "photo": "https://upload.wikimedia.org/wikipedia/en/thumb/8/8e/Kian_Pirfalak.jpg/440px-Kian_Pirfalak.jpg" },
     "references": [
@@ -62,11 +74,14 @@
   {
     "id": "yasin-mirzaei",
     "name": "Yasin Mirzaei Qaleh Zanjiri",
+    "name_fa": "یاسین میرزایی قلعه‌زنجیری",
     "city": "Kermanshah",
+    "city_fa": "کرمانشاه",
     "location": "Dareh Derij",
     "date": "2026-01-08",
     "coords": { "lat": 34.3142, "lon": 47.0650 },
     "bio": "A Yarsani citizen and student residing in Italy, killed by gunfire in Kermanshah shortly after returning to Iran to visit his family during the January 2026 protests.",
+    "bio_fa": "شهروند یارسان و دانشجوی ساکن ایتالیا که در جریان اعتراضات ژانویه ۲۰۲۶ در کرمانشاه کشته شد.",
     "media": {
       "photo": "https://iranhrdc.org/wp-content/uploads/2026/01/Yasin-Mirzaei.jpg",
       "xPost": "https://x.com/IHRDC/status/1746198273641111552"
@@ -78,11 +93,14 @@
   {
     "id": "miragha-rezaei",
     "name": "Miragha Rezaei",
+    "name_fa": "میراآقا رضایی",
     "city": "Tehran",
+    "city_fa": "تهران",
     "location": "Fallah neighborhood",
     "date": "2026-01-09",
     "coords": { "lat": 35.66, "lon": 51.35 },
     "bio": "A 54-year-old father of two shot and killed during a peaceful protest in Tehran's Fallah neighborhood.",
+    "bio_fa": "پدر ۵۴ ساله‌ای که در جریان اعتراضات مسالمت‌آمیز در محله فلاح تهران کشته شد.",
     "references": [
       { "label": "IHRDC", "url": "https://iranhrdc.org/irans-protest-massacre-daily-update-january-13-2026/" }
     ]
@@ -90,11 +108,14 @@
   {
     "id": "alireza-rahimi",
     "name": "Alireza Rahimi",
+    "name_fa": "علیرضا رحیمی",
     "city": "Tehran",
+    "city_fa": "تهران",
     "location": "Tehranpars",
     "date": "2026-01-09",
     "coords": { "lat": 35.75, "lon": 51.55 },
     "bio": "26-year-old killed by a direct gunshot to the head in Tehranpars during the January 2026 crackdown.",
+    "bio_fa": "جوان ۲۶ ساله‌ای که با شلیک مستقیم به سر در تهرانپارس کشته شد.",
     "references": [
       { "label": "IHRDC", "url": "https://iranhrdc.org/irans-protest-massacre-daily-update-january-13-2026/" }
     ]
@@ -102,11 +123,14 @@
   {
     "id": "mojtaba-torshiz",
     "name": "Mojtaba Torshiz",
+    "name_fa": "مجتبی ترشیز",
     "city": "Tabriz",
+    "city_fa": "تبریز",
     "location": "Tabriz",
     "date": "2026-01-13",
     "coords": { "lat": 38.0962, "lon": 46.2731 },
     "bio": "Former midfielder for Tractor Sazi Tabriz. Killed alongside his wife while protesting for a free Iran.",
+    "bio_fa": "بازیکن سابق تیم تراکتورسازی تبریز که در جریان اعتراضات به همراه همسرش کشته شد.",
     "media": {
       "xPost": "https://x.com/visegrad24/status/2011270365180502209"
     },
@@ -120,11 +144,14 @@
   {
     "id": "mahsa-dezfulian-kermanshahi",
     "name": "Dr. Mahsa Dezfulian Kermanshahi",
+    "name_fa": "دکتر مهسا دزفولیان کرمانشاهی",
     "city": "Tehran",
+    "city_fa": "تهران",
     "location": "Tehran",
     "date": "2026-01-13",
     "coords": { "lat": 35.6892, "lon": 51.389 },
     "bio": "Dr. Mahsa Dezfulian Kermanshahi was killed by direct fire in Tehran.",
+    "bio_fa": "دکتر مهسا دزفولیان کرمانشاهی که با شلیک مستقیم در تهران کشته شد.",
     "media": {
       "xPost": "https://x.com/DamDami/status/2011088032607449335?s=20"
     },
@@ -136,12 +163,16 @@
     ]
   },
   {
+    "id": "mehdi-salahshour",
     "name": "Mehdi Salahshour",
+    "name_fa": "مهدی سلحشور",
     "city": "Tehran",
+    "city_fa": "تهران",
     "date": "2026-01-13",
     "location": "Tehran",
     "coords": { "lat": 35.6892, "lon": 51.389 },
     "bio": "Victim of the Iranian regime, as reported by Israel War Room.",
+    "bio_fa": "قربانی رژیم ایران، طبق گزارش اتاق جنگ اسرائیل.",
     "references": [
       {
         "label": "Israel War Room on X",
@@ -150,12 +181,16 @@
     ]
   },
   {
+    "id": "sina-ashkabousi",
     "name": "Sina Ashkabousi",
+    "name_fa": "سینا اشکبوسی",
     "city": "Tehran",
+    "city_fa": "تهران",
     "date": "2026-01-14",
     "location": "Tehranpars Park",
     "coords": { "lat": 35.75, "lon": 51.55 },
     "bio": "15-year-old killed by regime forces after chanting slogans for freedom in Tehranpars Park.",
+    "bio_fa": "نوجوان ۱۵ ساله‌ای که پس از شعار دادن برای آزادی در پارک تهرانپارس کشته شد.",
     "references": [
       {
         "label": "X Post",
@@ -164,12 +199,16 @@
     ]
   },
   {
+    "id": "amir-ali-heydari",
     "name": "Amir Ali Heydari",
+    "name_fa": "امیرعلی حیدری",
     "city": "Kermanshah",
+    "city_fa": "کرمانشاه",
     "date": "2026-01-12",
     "location": "Kermanshah",
     "coords": { "lat": 34.3142, "lon": 47.0650 },
     "bio": "17-year-old teenager shot and killed in Kermanshah.",
+    "bio_fa": "نوجوان ۱۷ ساله‌ای که در کرمانشاه با شلیک گلوله کشته شد.",
     "references": [
       {
         "label": "X Post",
@@ -178,12 +217,16 @@
     ]
   },
   {
+    "id": "mohammad-noori",
     "name": "Mohammad Noori",
+    "name_fa": "محمد نوری",
     "city": "Qom",
+    "city_fa": "قم",
     "date": "2026-01-02",
     "location": "Qom",
     "coords": { "lat": 34.6416, "lon": 50.8746 },
     "bio": "Mohammad Noori, a 17-year-old youth, was killed on January 2nd, 2026, in Qom, Iran.",
+    "bio_fa": "محمد نوری، جوان ۱۷ ساله‌ای که در ۲ ژانویه ۲۰۲۶ در قم کشته شد.",
     "references": [
       {
         "label": "Reza Pahlavi Official Telegram Channel",
@@ -192,12 +235,16 @@
     ]
   },
   {
+    "id": "salam-mirani",
     "name": "Salam Mirani",
+    "name_fa": "سلام میرانی",
     "city": "Kermanshah",
+    "city_fa": "کرمانشاه",
     "date": "2026-01-13",
     "location": "Kermanshah",
     "coords": { "lat": 34.3142, "lon": 47.0650 },
     "bio": "Victim of the Iranian regime, as stated by Israel War Room.",
+    "bio_fa": "قربانی رژیم ایران، طبق گزارش اتاق جنگ اسرائیل.",
     "references": [
       {
         "label": "Israel War Room on X",
@@ -206,12 +253,16 @@
     ]
   },
   {
+    "id": "mansoureh-heydari",
     "name": "Mansoureh Heydari",
+    "name_fa": "منصوره حیدری",
     "city": "Tehran",
+    "city_fa": "تهران",
     "date": "2026-01-13",
     "location": "Tehran",
     "coords": { "lat": 35.6892, "lon": 51.3890 },
     "bio": "Nurse and mother of two who joined protests against injustice.",
+    "bio_fa": "پرستار و مادر دو فرزندی که به اعتراضات علیه بی‌عدالتی پیوسته بود.",
     "references": [
       {
         "label": "X Post",
@@ -220,12 +271,16 @@
     ]
   },
   {
+    "id": "mustafa-fallaf",
     "name": "Mustafa Fallaf",
+    "name_fa": "مصطفی فلاف",
     "city": "Tehran",
+    "city_fa": "تهران",
     "date": "2026-01-13",
     "location": "Tehran",
     "coords": { "lat": 35.6892, "lon": 51.3890 },
     "bio": "Child killed by the Ayatollah regime for protesting.",
+    "bio_fa": "کودکی که توسط رژیم برای اعتراض کشته شد.",
     "references": [
       {
         "label": "X Post",
@@ -234,12 +289,17 @@
     ]
   },
   {
-    "name": "آریانا ارجمندی",
-    "city": "بروجرد",
-    "location": "کوچه‌ای در جریان اعتراضات",
+    "id": "ariana-arjamandi",
+    "name": "Ariana Arjamandi",
+    "name_fa": "آریانا ارجمندی",
+    "city": "Borujerd",
+    "city_fa": "بروجرد",
+    "location": "A street during protests",
+    "location_fa": "کوچه‌ای در جریان اعتراضات",
     "date": "2024-01-09",
     "coords": { "lat": 33.8973, "lon": 48.7513 },
-    "bio": "آریانا ارجمندی، شهروند ۲۳ ساله اهل بروجرد، روز پنجشنبه ۱۸ دی‌ماه در جریان اعتراضات با شلیک مستقیم نیروهای سرکوبگر جان خود را از دست داد.",
+    "bio": "Ariana Arjamandi, a 23-year-old citizen of Borujerd, lost her life during the protests after being directly shot by security forces.",
+    "bio_fa": "آریانا ارجمندی، شهروند ۲۳ ساله اهل بروجرد، در جریان اعتراضات با شلیک مستقیم نیروهای سرکوبگر جان خود را از دست داد.",
     "references": [
       {
         "label": "Tavaana on X",
@@ -248,12 +308,17 @@
     ]
   },
   {
-    "name": "عرفان فرجی",
-    "city": "تهران",
-    "location": "میدان بهشت نازی آباد",
+    "id": "erfan-faraji",
+    "name": "Erfan Faraji",
+    "name_fa": "عرفان فرجی",
+    "city": "Tehran",
+    "city_fa": "تهران",
+    "location": "Behesht Nazi Abad Square",
+    "location_fa": "میدان بهشت نازی آباد",
     "date": "2024-01-06",
     "coords": { "lat": 35.63, "lon": 51.41 },
-    "bio": "در حال فیلمبرداری در اعتراضات بود که با شلیک گلوله به پشت کمر کشته شد.",
+    "bio": "He was filming the protests when he was shot in the back and killed.",
+    "bio_fa": "در حال فیلمبرداری در اعتراضات بود که با شلیک گلوله به پشت کمر کشته شد.",
     "references": [
       {
         "label": "X Post",
@@ -262,12 +327,16 @@
     ]
   },
   {
-    "name": "محمد امین حسینی",
-    "city": "مشهد",
+    "id": "mohammad-amin-hosseini",
+    "name": "Mohammad Amin Hosseini",
+    "name_fa": "محمد امین حسینی",
+    "city": "Mashhad",
+    "city_fa": "مشهد",
     "date": "2026-01-14",
-    "location": "مشهد",
+    "location": "Mashhad",
     "coords": { "lat": 36.2972, "lon": 59.6067 },
-    "bio": "متولد ۱۷/۷/۶۶. جان‌فدای وطن در جریان به رگبار بستن معترضان. عاشق زندگی، کوه و طبیعت.",
+    "bio": "Born on Oct 9, 1987. Sacrificed his life for the homeland during the shooting of protesters. Lover of life, mountains, and nature.",
+    "bio_fa": "متولد ۱۷/۷/۶۶. جان‌فدای وطن در جریان به رگبار بستن معترضان. عاشق زندگی، کوه و طبیعت.",
     "references": [
       {
         "label": "X Post",
@@ -276,12 +345,16 @@
     ]
   },
   {
+    "id": "nazli-janparvar",
     "name": "Nazli Janparvar",
+    "name_fa": "نازلی جان‌پرور",
     "city": "Bojnourd",
+    "city_fa": "بجنورد",
     "date": "2026-01-14",
     "location": "Bojnourd",
     "coords": { "lat": 37.4761, "lon": 57.3317 },
     "bio": "Fashion and clothing designer shot dead by regime's security forces.",
+    "bio_fa": "طراح مد و لباس که با شلیک نیروهای امنیتی رژیم کشته شد.",
     "references": [
       {
         "label": "Babak Taghvaee - The Crisis Watch on X",
@@ -290,12 +363,16 @@
     ]
   },
   {
+    "id": "negin-ghadimi",
     "name": "Negin Ghadimi",
+    "name_fa": "نگین قدیمی",
     "city": "Shahsavar",
+    "city_fa": "شهسوار",
     "date": "2026-01-14",
     "location": "Shahsavar",
     "coords": { "lat": 36.8150, "lon": 50.8738 },
     "bio": "28-year-old Negin Ghadimi was murdered by the Islamic regime while protesting for a free Iran.",
+    "bio_fa": "نگین قدیمی ۲۸ ساله که در جریان اعتراضات توسط رژیم کشته شد.",
     "references": [
       {
         "label": "Visegrád 24 on X",
@@ -304,12 +381,16 @@
     ]
   },
   {
+    "id": "mehdi-lavasani",
     "name": "Mehdi Lavasani",
+    "name_fa": "مهدی لواسانی",
     "city": "Tehran",
+    "city_fa": "تهران",
     "date": "2026-01-13",
     "location": "Narmak",
     "coords": { "lat": 35.73, "lon": 51.52 },
     "bio": "Football youth team coach in Tehran. Fatally shot in the back; bullet exited chest. Left behind a two-year-old child.",
+    "bio_fa": "مربی تیم فوتبال جوانان در تهران که با شلیک گلوله به کمرش کشته شد.",
     "references": [
       {
         "label": "X Post",
@@ -318,12 +399,16 @@
     ]
   },
   {
+    "id": "parsa-saffar",
     "name": "Parsa Saffar",
+    "name_fa": "پارسا صفار",
     "city": "Mashhad",
+    "city_fa": "مشهد",
     "date": "2023-01-10",
     "location": "Mashhad",
     "coords": { "lat": 36.2972, "lon": 59.6067 },
     "bio": "Medical student at Mashhad University of Medical Sciences, graduate of NODET.",
+    "bio_fa": "دانشجوی پزشکی دانشگاه علوم پزشکی مشهد و فارغ‌التحصیل سمپاد.",
     "media": {
       "xPost": "https://x.com/longlosthills/status/2011412971725987840?s=20"
     },
@@ -335,12 +420,16 @@
     ]
   },
   {
-    "name": "ستایش شفیعی",
+    "id": "setayesh-shafiee",
+    "name": "Setayesh Shafiee",
+    "name_fa": "ستایش شفیعی",
     "city": "Tehran",
+    "city_fa": "تهران",
     "date": "2026-01-14",
     "location": "Tehran",
     "coords": { "lat": 35.6892, "lon": 51.3890 },
     "bio": "20-year-old orphan killed by Islamic Republic forces in Tehran.",
+    "bio_fa": "جوان ۲۰ ساله‌ای که توسط نیروهای جمهوری اسلامی در تهران کشته شد.",
     "media": {
       "xPost": "https://x.com/longlosthills/status/2011416186496667949?s=20"
     },
@@ -352,12 +441,16 @@
     ]
   },
   {
+    "id": "shayan-asadollahi",
     "name": "Shayan (Aboozar) Asadollahi",
+    "name_fa": "شایان (ابوذر) اسداللهی",
     "city": "Azna",
+    "city_fa": "ازنا",
     "date": "2026-01-01",
     "location": "Azna, Lorestan",
     "coords": { "lat": 33.4538, "lon": 49.4550 },
     "bio": "A 24-year-old youngester barber was killed by gunfire from security agents during the protests in Azna, Lorestan province, on the evening of Thursday, January 1st, 2026.",
+    "bio_fa": "آرایشگر ۲۴ ساله‌ای که در جریان اعتراضات در ازنا کشته شد.",
     "media": {
       "xPost": "https://x.com/IranIntl/status/2007585861223792642?s=20"
     },
@@ -369,12 +462,16 @@
     ]
   },
   {
+    "id": "ali-abbasi",
     "name": "Ali Abbasi",
+    "name_fa": "علی عباسی",
     "city": "Tehran",
+    "city_fa": "تهران",
     "date": "2026-01-14",
     "location": "Tehran",
     "coords": { "lat": 35.6892, "lon": 51.3890 },
     "bio": "18-year-old Kurdish worker from Gilan-e Gharb, Kermanshah, murdered for demanding freedom.",
+    "bio_fa": "کارگر ۱۸ ساله کرد اهل گیلانغرب که در تهران کشته شد.",
     "media": {
       "xPost": "https://x.com/NoaMagid/status/2011324023930843530?s=20"
     },
@@ -386,12 +483,16 @@
     ]
   },
   {
+    "id": "ribin-moradi",
     "name": "Ribin Moradi",
+    "name_fa": "ریبین مرادی",
     "city": "Tehran",
+    "city_fa": "تهران",
     "date": "2026-01-13",
     "location": "Tehran",
     "coords": { "lat": 35.6892, "lon": 51.3890 },
     "bio": "Rebin Moradi, a 17-year-old child from Salas Babajani, was killed by direct gunfire from government forces.",
+    "bio_fa": "نوجوان ۱۷ ساله اهل ثلاث باباجانی که در تهران با شلیک مستقیم کشته شد.",
     "media": {
       "xPost": "https://x.com/indypersian/status/2011320861119173063?s=20"
     },
@@ -403,12 +504,16 @@
     ]
   },
   {
-    "name": "علی عنبرستانی",
-    "city": "سبزوار",
+    "id": "ali-anbarstani",
+    "name": "Ali Anbarstani",
+    "name_fa": "علی عنبرستانی",
+    "city": "Sabzevar",
+    "city_fa": "سبزوار",
     "date": "2026-01-13",
-    "location": "نارمک",
+    "location": "Narmak, Tehran",
     "coords": { "lat": 36.2126, "lon": 57.6819 },
-    "bio": "متولد ۱۳۶۷. ساکن تهران. با اصابت گلوله به سر در راه آزادی وطن جان باخت.",
+    "bio": "Born in 1988. Resident of Tehran. Died for the freedom of his homeland after being shot in the head.",
+    "bio_fa": "متولد ۱۳۶۷. ساکن تهران. با اصابت گلوله به سر در راه آزادی وطن جان باخت.",
     "references": [
       {
         "label": "X Post",
@@ -419,11 +524,14 @@
   {
     "id": "mohammad-amin",
     "name": "Mohammad Amin",
+    "name_fa": "محمد امین",
     "city": "Mashhad",
+    "city_fa": "مشهد",
     "location": "Behesht-e Reza",
     "date": "2026-01-13",
     "coords": { "lat": 36.2972, "lon": 59.6067 },
     "bio": "Mohammad Amin was a victim of the Iran Massacre, killed in Mashhad and buried in Behesht-e Reza.",
+    "bio_fa": "محمد امین که در جریان کشتار مشهد کشته و در بهشت رضا دفن شد.",
     "media": {
       "xPost": "https://x.com/animmigrantofqc/status/2011219034985894150?s=20"
     },
@@ -437,11 +545,14 @@
   {
     "id": "nima-parsa",
     "name": "Nima Parsa",
+    "name_fa": "نیما پارسا",
     "city": "Tehran",
+    "city_fa": "تهران",
     "location": "Tehran",
     "date": "2026-01-14",
     "coords": { "lat": 35.6892, "lon": 51.3890 },
     "bio": "Nima Parsa was an Italian and English teacher who shared free course videos on YouTube. He was killed during the protests on January 14, 2026.",
+    "bio_fa": "نیما پارسا معلم زبان که در جریان اعتراضات ژانویه ۲۰۲۶ کشته شد.",
     "media": {
       "xPost": "https://x.com/morgomirrr/status/2011347482924761522?s=20"
     },
@@ -449,6 +560,28 @@
       {
         "label": "X Post",
         "url": "https://x.com/morgomirrr/status/2011347482924761522?s=20"
+      }
+    ]
+  },
+  {
+    "id": "bayat-sobhani",
+    "name": "Bayat Sobhani",
+    "name_fa": "بیات سبحانی",
+    "city": "Kermanshah",
+    "city_fa": "کرمانشاه",
+    "location": "Shamshir",
+    "location_fa": "شمشیر",
+    "date": "2026-01-08",
+    "coords": { "lat": 34.3142, "lon": 47.0650 },
+    "bio": "Kurdish Horami from Shamshir village, shot dead by IRGC during protests.",
+    "bio_fa": "کُرد هورامی اهل روستای شمشیر که در جریان اعتراضات توسط سپاه پاسداران کشته شد.",
+    "media": {
+      "xPost": "https://x.com/longlosthills/status/2010915502999077031?s=20"
+    },
+    "references": [
+      {
+        "label": "X Post",
+        "url": "https://x.com/longlosthills/status/2010915502999077031?s=20"
       }
     ]
   }
