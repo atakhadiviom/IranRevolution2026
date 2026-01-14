@@ -9,7 +9,7 @@ let currentMemorials: MemorialEntry[] = []
 
 async function boot() {
   await loadTranslations(currentLanguage())
-  const memorials: MemorialEntry[] = await fetch('/data/memorials.json').then((r) => r.json())
+  const memorials: MemorialEntry[] = await fetch(`${import.meta.env.BASE_URL}data/memorials.json`).then((r) => r.json())
   currentMemorials = memorials
 
   initUiText()

@@ -4,7 +4,7 @@ let lang: 'en' | 'fa' = 'en'
 
 export async function loadTranslations(l: 'en' | 'fa') {
   lang = l
-  const res = await fetch(`/i18n/${l}.json`)
+  const res = await fetch(`${import.meta.env.BASE_URL}i18n/${l}.json`)
   dict = await res.json()
   document.documentElement.lang = l
   document.documentElement.dir = l === 'fa' ? 'rtl' : 'ltr'

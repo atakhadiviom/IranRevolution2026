@@ -28,6 +28,8 @@ jobs:
           npm run typecheck
       - name: Build
         run: npm run build
+        env:
+          VITE_OPENROUTER_API_KEY: ${{ secrets.VITE_OPENROUTER_API_KEY }}
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
