@@ -136,283 +136,286 @@
     ]
   },
   {
-  "name": "Mehdi Salahshour",
-  "city": "",
-  "date": "2026-01-13",
-  "location": "",
-  "bio": "Victim of the Iranian regime, as reported by Israel War Room.",
-  "references": [
-    {
-      "label": "Israel War Room on X",
-      "url": ""
-    }
-  ]
-},
-{
-  "name": "Sina Ashkabousi",
-  "city": "Tehran",
-  "date": "2026-01-14",
-  "location": "Tehranpars Park",
-  "bio": "15-year-old killed by regime forces after chanting slogans for freedom in Tehranpars Park.",
-  "references": [
-    {
-      "label": "X Post",
-      "url": "https://x.com/SinaMihandoost/status/2011392935435309233?s=20"
-    }
-  ]
-},
-{
-  "name": "Amir Ali Heydari",
-  "city": "Kermanshah",
-  "date": "2026-01-12",
-  "location": "",
-  "bio": "17-year-old teenager shot and killed in Kermanshah.",
-  "references": [
-    {
-      "label": "X Post",
-      "url": "https://x.com/Sssccpp/status/2010769248944103625?s=20"
-    }
-  ]
-},
-{
-  "name": "Mohammad Noori",
-  "city": "Qom",
-  "date": "2026-01-02",
-  "location": "",
-  "bio": "Mohammad Noori, a 17-year-old youth, was killed on January 2nd, 2026, in Qom, Iran.",
-  "references": [
-    {
-      "label": "Reza Pahlavi Official Telegram Channel",
-      "url": "https://t.me/OfficialRezaPahlavi/1706"
-    }
-  ]
-},
-{
-  "name": "Mehdi Salahshour",
-  "city": "",
-  "date": "2026-01-13",
-  "location": "",
-  "bio": "Victim of the Iranian regime, as reported by Israel War Room.",
-  "references": [
-    {
-      "label": "X Post",
-      "url": "https://x.com/IsraelWarRoom/status/2011137499440234923?s=20"
-    }
-  ]
-},
-{
-  "name": "Salam Mirani",
-  "city": "",
-  "date": "2026-01-13",
-  "location": "",
-  "bio": "Victim of the Iranian regime, as stated by Israel War Room.",
-  "references": [
-    {
-      "label": "Israel War Room on X",
-      "url": "https://x.com/IsraelWarRoom/status/2011165596642394511?s=20"
-    }
-  ]
-},
-{
-  "name": "Mansoureh Heydari",
-  "city": "",
-  "date": "",
-  "location": "",
-  "bio": "Nurse and mother of two who joined protests against injustice.",
-  "references": [
-    {
-      "label": "X Post",
-      "url": "https://x.com/longlosthills/status/2011156382524068242?s=20"
-    }
-  ]
-},
-{
-  "name": "Mustafa Fallaf",
-  "city": "",
-  "date": "2026-01-13",
-  "location": "",
-  "bio": "Child killed by the Ayatollah regime for protesting.",
-  "references": [
-    {
-      "label": "X Post",
-      "url": "https://x.com/uricohenisrael/status/2011103784198684829?s=20"
-    }
-  ]
-},
-{
-  "name": "آریانا ارجمندی",
-  "city": "بروجرد",
-  "date": "2024-01-09",
-  "location": "کوچه‌ای در جریان اعتراضات",
-  "bio": "آریانا ارجمندی، شهروند ۲۳ ساله اهل بروجرد، روز پنجشنبه ۱۸ دی‌ماه در جریان اعتراضات با شلیک مستقیم نیروهای سرکوبگر جان خود را از دست داد.",
-  "references": [
-    {
-      "label": "Tavaana on X",
-      "url": "https://x.com/Tavaana/status/2011291100695118298?s=20"
-    }
-  ]
-},
-{
-  "name": "عرفان فرجی",
-  "city": "تهران",
-  "date": "2024-01-06",
-  "location": "میدان بهشت نازی آباد",
-  "bio": "در حال فیلمبرداری در اعتراضات بود که با شلیک گلوله به پشت کمر کشته شد.",
-  "references": [
-    {
-      "label": "X Post",
-      "url": "https://x.com/roozbehmon/status/2011218899166249246?s=20"
-    }
-  ]
-},
-{
-  "name": "Parsa Saffar",
-  "city": "Mashhad",
-  "date": "2023-01-10",
-  "location": "",
-  "bio": "Medical student at Mashhad University of Medical Sciences, graduate of NODET.",
-  "media": {
-    "xPost": "https://x.com/longlosthills/status/2011412971725987840?s=20"
+    "name": "Mehdi Salahshour",
+    "city": "Tehran",
+    "date": "2026-01-13",
+    "location": "Tehran",
+    "coords": { "lat": 35.6892, "lon": 51.389 },
+    "bio": "Victim of the Iranian regime, as reported by Israel War Room.",
+    "references": [
+      {
+        "label": "Israel War Room on X",
+        "url": "https://x.com/IsraelWarRoom/status/2011137499440234923?s=20"
+      }
+    ]
   },
-  "references": [
-    {
-      "label": "X Post",
-      "url": "https://x.com/longlosthills/status/2011412971725987840?s=20"
-    }
-  ]
-},
-{
-  "name": "ستایش شفیعی",
-  "city": "تهران",
-  "date": "2026-01-14",
-  "location": "",
-  "bio": "20-year-old orphan killed by Islamic Republic forces in Tehran.",
-  "media": {
-    "xPost": "https://x.com/longlosthills/status/2011416186496667949?s=20"
+  {
+    "name": "Sina Ashkabousi",
+    "city": "Tehran",
+    "date": "2026-01-14",
+    "location": "Tehranpars Park",
+    "coords": { "lat": 35.75, "lon": 51.55 },
+    "bio": "15-year-old killed by regime forces after chanting slogans for freedom in Tehranpars Park.",
+    "references": [
+      {
+        "label": "X Post",
+        "url": "https://x.com/SinaMihandoost/status/2011392935435309233?s=20"
+      }
+    ]
   },
-  "references": [
-    {
-      "label": "X Post",
-      "url": "https://x.com/longlosthills/status/2011416186496667949?s=20"
-    }
-  ]
-},
-{
-  "name": "Shayan (Aboozar) Asadollahi",
-  "city": "Azna, Lorestan",
-  "date": "2026-01-01",
-  "location": "Azna, Lorestan",
-  "bio": "A 24-year-old youngester barber was killed by gunfire from security agents during the protests in Azna, Lorestan province, on the evening of Thursday, January 1st, 2026.",
-  "media": {
-    "xPost": "https://x.com/IranIntl/status/2007585861223792642?s=20"
+  {
+    "name": "Amir Ali Heydari",
+    "city": "Kermanshah",
+    "date": "2026-01-12",
+    "location": "Kermanshah",
+    "coords": { "lat": 34.3142, "lon": 47.0650 },
+    "bio": "17-year-old teenager shot and killed in Kermanshah.",
+    "references": [
+      {
+        "label": "X Post",
+        "url": "https://x.com/Sssccpp/status/2010769248944103625?s=20"
+      }
+    ]
   },
-  "references": [
-    {
-      "label": "Iran International",
-      "url": "https://x.com/IranIntl/status/2007585861223792642?s=20"
-    }
-  ]
-},
-{
-  "name": "محمد امین حسینی",
-  "city": "مشهد",
-  "date": "2026-01-14",
-  "location": "",
-  "bio": "متولد ۱۷/۷/۶۶. جان‌فدای وطن در جریان به رگبار بستن معترضان. عاشق زندگی، کوه و طبیعت.",
-  "references": [
-    {
-      "label": "X Post",
-      "url": "https://x.com/ShahramSadidi/status/2011278344478998971?s=20"
-    }
-  ]
-},
-{
-  "name": "Nazli Janparvar",
-  "city": "Bojnourd",
-  "date": "2026-01-14",
-  "location": "",
-  "bio": "Fashion and clothing designer shot dead by regime's security forces.",
-  "references": [
-    {
-      "label": "Babak Taghvaee - The Crisis Watch on X",
-      "url": "https://x.com/BabakTaghvaee1/status/2011357608741830754?s=20"
-    }
-  ]
-},
-{
-  "name": "Negin Ghadimi",
-  "city": "Shahsavar",
-  "date": "2026-01-14",
-  "location": "",
-  "bio": "28-year-old Negin Ghadimi was murdered by the Islamic regime while protesting for a free Iran.",
-  "references": [
-    {
-      "label": "Visegrád 24 on X",
-      "url": "https://x.com/visegrad24/status/2011335737300422707?s=20"
-    }
-  ]
-},
-{
-  "name": "Mehdi Lavasani",
-  "city": "Tehran",
-  "date": "2026-01-13",
-  "location": "Narmak",
-  "bio": "Football youth team coach in Tehran. Fatally shot in the back; bullet exited chest. Left behind a two-year-old child.",
-  "references": [
-    {
-      "label": "X Post",
-      "url": "https://x.com/mojtabapourbakh/status/2011197422396215611?s=20"
-    }
-  ]
-},
-{
-  "name": "Ali Abbasi",
-  "city": "Tehran",
-  "date": "2026-01-14",
-  "location": "Tehran",
-  "bio": "18-year-old Kurdish worker from Gilan-e Gharb, Kermanshah, murdered for demanding freedom.",
-  "media": {
-    "xPost": "https://x.com/NoaMagid/status/2011324023930843530?s=20"
+  {
+    "name": "Mohammad Noori",
+    "city": "Qom",
+    "date": "2026-01-02",
+    "location": "Qom",
+    "coords": { "lat": 34.6416, "lon": 50.8746 },
+    "bio": "Mohammad Noori, a 17-year-old youth, was killed on January 2nd, 2026, in Qom, Iran.",
+    "references": [
+      {
+        "label": "Reza Pahlavi Official Telegram Channel",
+        "url": "https://t.me/OfficialRezaPahlavi/1706"
+      }
+    ]
   },
-  "references": [
-    {
-      "label": "X Post",
-      "url": "https://x.com/NoaMagid/status/2011324023930843530?s=20"
-    }
-  ]
-},
-
-
-{
-  "name": "Ribin Moradi",
-  "city": "Tehran, Tehran",
-  "date": "2026-01-13",
-  "location": "Tehran",
-  "bio": "Rebin Moradi, a 17-year-old child from Salas Babajani, was killed by direct gunfire from government forces.\n",
-  "media": {
-    "xPost": "https://x.com/indypersian/status/2011320861119173063?s=20"
+  {
+    "name": "Salam Mirani",
+    "city": "Kermanshah",
+    "date": "2026-01-13",
+    "location": "Kermanshah",
+    "coords": { "lat": 34.3142, "lon": 47.0650 },
+    "bio": "Victim of the Iranian regime, as stated by Israel War Room.",
+    "references": [
+      {
+        "label": "Israel War Room on X",
+        "url": "https://x.com/IsraelWarRoom/status/2011165596642394511?s=20"
+      }
+    ]
   },
-  "references": [
-    {
-      "label": "Reference",
-      "url": "https://x.com/indypersian/status/2011320861119173063?s=20"
-    }
-  ]
-},
-{
-  "name": "علی عنبرستانی",
-  "city": "سبزوار",
-  "date": "",
-  "location": "نارمک",
-  "bio": "متولد ۱۳۶۷. ساکن تهران. با اصابت گلوله به سر در راه آزادی وطن جان باخت.",
-  "references": [
-    {
-      "label": "X Post",
-      "url": "https://x.com/ShahramSadidi/status/2011069611811254480?s=20"
-    }
-  ]
-},
-
+  {
+    "name": "Mansoureh Heydari",
+    "city": "Tehran",
+    "date": "2026-01-13",
+    "location": "Tehran",
+    "coords": { "lat": 35.6892, "lon": 51.3890 },
+    "bio": "Nurse and mother of two who joined protests against injustice.",
+    "references": [
+      {
+        "label": "X Post",
+        "url": "https://x.com/longlosthills/status/2011156382524068242?s=20"
+      }
+    ]
+  },
+  {
+    "name": "Mustafa Fallaf",
+    "city": "Tehran",
+    "date": "2026-01-13",
+    "location": "Tehran",
+    "coords": { "lat": 35.6892, "lon": 51.3890 },
+    "bio": "Child killed by the Ayatollah regime for protesting.",
+    "references": [
+      {
+        "label": "X Post",
+        "url": "https://x.com/uricohenisrael/status/2011103784198684829?s=20"
+      }
+    ]
+  },
+  {
+    "name": "آریانا ارجمندی",
+    "city": "بروجرد",
+    "location": "کوچه‌ای در جریان اعتراضات",
+    "date": "2024-01-09",
+    "coords": { "lat": 33.8973, "lon": 48.7513 },
+    "bio": "آریانا ارجمندی، شهروند ۲۳ ساله اهل بروجرد، روز پنجشنبه ۱۸ دی‌ماه در جریان اعتراضات با شلیک مستقیم نیروهای سرکوبگر جان خود را از دست داد.",
+    "references": [
+      {
+        "label": "Tavaana on X",
+        "url": "https://x.com/Tavaana/status/2011291100695118298?s=20"
+      }
+    ]
+  },
+  {
+    "name": "عرفان فرجی",
+    "city": "تهران",
+    "location": "میدان بهشت نازی آباد",
+    "date": "2024-01-06",
+    "coords": { "lat": 35.63, "lon": 51.41 },
+    "bio": "در حال فیلمبرداری در اعتراضات بود که با شلیک گلوله به پشت کمر کشته شد.",
+    "references": [
+      {
+        "label": "X Post",
+        "url": "https://x.com/roozbehmon/status/2011218899166249246?s=20"
+      }
+    ]
+  },
+  {
+    "name": "محمد امین حسینی",
+    "city": "مشهد",
+    "date": "2026-01-14",
+    "location": "مشهد",
+    "coords": { "lat": 36.2972, "lon": 59.6067 },
+    "bio": "متولد ۱۷/۷/۶۶. جان‌فدای وطن در جریان به رگبار بستن معترضان. عاشق زندگی، کوه و طبیعت.",
+    "references": [
+      {
+        "label": "X Post",
+        "url": "https://x.com/ShahramSadidi/status/2011278344478998971?s=20"
+      }
+    ]
+  },
+  {
+    "name": "Nazli Janparvar",
+    "city": "Bojnourd",
+    "date": "2026-01-14",
+    "location": "Bojnourd",
+    "coords": { "lat": 37.4761, "lon": 57.3317 },
+    "bio": "Fashion and clothing designer shot dead by regime's security forces.",
+    "references": [
+      {
+        "label": "Babak Taghvaee - The Crisis Watch on X",
+        "url": "https://x.com/BabakTaghvaee1/status/2011357608741830754?s=20"
+      }
+    ]
+  },
+  {
+    "name": "Negin Ghadimi",
+    "city": "Shahsavar",
+    "date": "2026-01-14",
+    "location": "Shahsavar",
+    "coords": { "lat": 36.8150, "lon": 50.8738 },
+    "bio": "28-year-old Negin Ghadimi was murdered by the Islamic regime while protesting for a free Iran.",
+    "references": [
+      {
+        "label": "Visegrád 24 on X",
+        "url": "https://x.com/visegrad24/status/2011335737300422707?s=20"
+      }
+    ]
+  },
+  {
+    "name": "Mehdi Lavasani",
+    "city": "Tehran",
+    "date": "2026-01-13",
+    "location": "Narmak",
+    "coords": { "lat": 35.73, "lon": 51.52 },
+    "bio": "Football youth team coach in Tehran. Fatally shot in the back; bullet exited chest. Left behind a two-year-old child.",
+    "references": [
+      {
+        "label": "X Post",
+        "url": "https://x.com/mojtabapourbakh/status/2011197422396215611?s=20"
+      }
+    ]
+  },
+  {
+    "name": "Parsa Saffar",
+    "city": "Mashhad",
+    "date": "2023-01-10",
+    "location": "Mashhad",
+    "coords": { "lat": 36.2972, "lon": 59.6067 },
+    "bio": "Medical student at Mashhad University of Medical Sciences, graduate of NODET.",
+    "media": {
+      "xPost": "https://x.com/longlosthills/status/2011412971725987840?s=20"
+    },
+    "references": [
+      {
+        "label": "X Post",
+        "url": "https://x.com/longlosthills/status/2011412971725987840?s=20"
+      }
+    ]
+  },
+  {
+    "name": "ستایش شفیعی",
+    "city": "Tehran",
+    "date": "2026-01-14",
+    "location": "Tehran",
+    "coords": { "lat": 35.6892, "lon": 51.3890 },
+    "bio": "20-year-old orphan killed by Islamic Republic forces in Tehran.",
+    "media": {
+      "xPost": "https://x.com/longlosthills/status/2011416186496667949?s=20"
+    },
+    "references": [
+      {
+        "label": "X Post",
+        "url": "https://x.com/longlosthills/status/2011416186496667949?s=20"
+      }
+    ]
+  },
+  {
+    "name": "Shayan (Aboozar) Asadollahi",
+    "city": "Azna",
+    "date": "2026-01-01",
+    "location": "Azna, Lorestan",
+    "coords": { "lat": 33.4538, "lon": 49.4550 },
+    "bio": "A 24-year-old youngester barber was killed by gunfire from security agents during the protests in Azna, Lorestan province, on the evening of Thursday, January 1st, 2026.",
+    "media": {
+      "xPost": "https://x.com/IranIntl/status/2007585861223792642?s=20"
+    },
+    "references": [
+      {
+        "label": "Iran International",
+        "url": "https://x.com/IranIntl/status/2007585861223792642?s=20"
+      }
+    ]
+  },
+  {
+    "name": "Ali Abbasi",
+    "city": "Tehran",
+    "date": "2026-01-14",
+    "location": "Tehran",
+    "coords": { "lat": 35.6892, "lon": 51.3890 },
+    "bio": "18-year-old Kurdish worker from Gilan-e Gharb, Kermanshah, murdered for demanding freedom.",
+    "media": {
+      "xPost": "https://x.com/NoaMagid/status/2011324023930843530?s=20"
+    },
+    "references": [
+      {
+        "label": "X Post",
+        "url": "https://x.com/NoaMagid/status/2011324023930843530?s=20"
+      }
+    ]
+  },
+  {
+    "name": "Ribin Moradi",
+    "city": "Tehran",
+    "date": "2026-01-13",
+    "location": "Tehran",
+    "coords": { "lat": 35.6892, "lon": 51.3890 },
+    "bio": "Rebin Moradi, a 17-year-old child from Salas Babajani, was killed by direct gunfire from government forces.",
+    "media": {
+      "xPost": "https://x.com/indypersian/status/2011320861119173063?s=20"
+    },
+    "references": [
+      {
+        "label": "Reference",
+        "url": "https://x.com/indypersian/status/2011320861119173063?s=20"
+      }
+    ]
+  },
+  {
+    "name": "علی عنبرستانی",
+    "city": "سبزوار",
+    "date": "2026-01-13",
+    "location": "نارمک",
+    "coords": { "lat": 36.2126, "lon": 57.6819 },
+    "bio": "متولد ۱۳۶۷. ساکن تهران. با اصابت گلوله به سر در راه آزادی وطن جان باخت.",
+    "references": [
+      {
+        "label": "X Post",
+        "url": "https://x.com/ShahramSadidi/status/2011069611811254480?s=20"
+      }
+    ]
+  },
   {
     "id": "mohammad-amin",
     "name": "Mohammad Amin",

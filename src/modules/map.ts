@@ -34,9 +34,19 @@ export function plotMarkers(entries: MemorialEntry[]) {
   if (!markersLayer) return
   markersLayer.clearLayers()
 
+  const seenCoords = new Set<string>()
+
   entries.forEach((entry) => {
     if (!entry.coords) return
-    const { lat, lon } = entry.coords
+    let { lat, lon } = entry.coords
+
+    // Add a tiny jitter if coordinates are identical to avoid stacking
+    const coordKey = `${lat.toFixed(4)},${lon.toFixed(4)}`
+    if (seenCoords.has(coordKey)) {
+      lat += (Math.random() - 0.5) * 0.01
+      lon += (Math.random() - 0.5) * 0.01
+    }
+    seenCoords.add(coordKey)
     
     // Create a custom red dot marker
     const marker = L.circleMarker([lat, lon], {
