@@ -134,5 +134,23 @@
         "url": "https://x.com/DamDami/status/2011088032607449335?s=20"
       }
     ]
+  },
+  {
+    "id": "mohammad-amin",
+    "name": "Mohammad Amin",
+    "city": "Mashhad",
+    "location": "Behesht-e Reza",
+    "date": "2026-01-13",
+    "coords": { "lat": 36.2972, "lon": 59.6067 },
+    "bio": "Mohammad Amin was a victim of the Iran Massacre, killed in Mashhad and buried in Behesht-e Reza.",
+    "media": {
+      "xPost": "https://x.com/animmigrantofqc/status/2011219034985894150?s=20"
+    },
+    "references": [
+      {
+        "label": "X Post",
+        "url": "https://x.com/animmigrantofqc/status/2011219034985894150?s=20"
+      }
+    ]
   }
 ]
