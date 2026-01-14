@@ -6,7 +6,7 @@ const memorials = JSON.parse(fs.readFileSync('./public/data/memorials.json', 'ut
 const sql = memorials.map((m: MemorialEntry) => {
   return `INSERT INTO memorials (id, name, name_fa, city, city_fa, location, location_fa, date, coords, bio, bio_fa, testimonials, media, source_links, verified) 
 VALUES (
-  '${m.id}', 
+  '${m.id || ''}', 
   '${m.name.replace(/'/g, "''")}', 
   ${m.name_fa ? `'${m.name_fa.replace(/'/g, "''")}'` : 'NULL'}, 
   '${m.city.replace(/'/g, "''")}', 
@@ -14,8 +14,8 @@ VALUES (
   ${m.location ? `'${m.location.replace(/'/g, "''")}'` : 'NULL'}, 
   ${m.location_fa ? `'${m.location_fa.replace(/'/g, "''")}'` : 'NULL'}, 
   '${m.date}', 
-  '${JSON.stringify(m.coords)}', 
-  '${m.bio.replace(/'/g, "''")}', 
+  '${JSON.stringify(m.coords || { lat: 35.6892, lon: 51.3890 })}', 
+  '${(m.bio || '').replace(/'/g, "''")}', 
   ${m.bio_fa ? `'${m.bio_fa.replace(/'/g, "''")}'` : 'NULL'}, 
   ${m.testimonials ? `'${JSON.stringify(m.testimonials).replace(/'/g, "''")}'` : 'NULL'}, 
   ${m.media ? `'${JSON.stringify(m.media).replace(/'/g, "''")}'` : 'NULL'}, 
