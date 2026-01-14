@@ -14,12 +14,7 @@ async function boot() {
   initTwitter()
   await loadTranslations(currentLanguage())
   
-  console.log('Fetching memorials...')
   const memorials = await fetchMemorials()
-  console.log(`Fetched ${memorials.length} memorials`)
-  if (memorials.length > 0) {
-    console.log('Sample memorial:', memorials[0])
-  }
   
   currentMemorials = memorials
 

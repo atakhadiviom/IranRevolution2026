@@ -22,16 +22,13 @@ export async function fetchMemorials(includeUnverified = false): Promise<Memoria
     const { data, error } = await query
 
     if (error) {
-      console.error('Supabase fetch error:', error)
       return fetchStaticMemorials()
     }
 
     if (data === null) {
-      console.warn('Supabase returned null data')
       return fetchStaticMemorials()
     }
 
-    console.log(`Supabase returned ${data.length} memorials`)
     return data.map(mapRowToEntry)
   } catch (e) {
     return fetchStaticMemorials()
