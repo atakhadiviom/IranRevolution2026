@@ -11,6 +11,27 @@ Interactive, open-source memorial website dedicated to commemorating individuals
 - Multilingual support (Persian and English)
 - Admin submission tool generating validated JSON for moderated entries
 
+## Environment Setup
+
+### Local Development
+1. Create a `.env` file in the root directory:
+   ```bash
+   cp .env.example .env
+   ```
+2. Add your OpenRouter API key to the `.env` file:
+   ```env
+   VITE_OPENROUTER_API_KEY=sk-or-v1-...
+   ```
+
+### GitHub Deployment (Secure)
+To use the AI features on your deployed site, you must add your API key to GitHub Secrets:
+1. Go to your repository on GitHub.
+2. Click **Settings** > **Secrets and variables** > **Actions**.
+3. Click **New repository secret**.
+4. Name: `VITE_OPENROUTER_API_KEY`.
+5. Value: Your OpenRouter API key.
+6. Your CI/CD workflow will now securely inject this key during the build process.
+
 ## Tech Stack
 - HTML5, CSS3, TypeScript, Vite
 - Leaflet.js for interactive mapping

@@ -98,5 +98,23 @@
     "references": [
       { "label": "IHRDC", "url": "https://iranhrdc.org/irans-protest-massacre-daily-update-january-13-2026/" }
     ]
+  },
+  {
+    "id": "mojtaba-torshiz",
+    "name": "Mojtaba Torshiz",
+    "city": "Tabriz",
+    "location": "Tabriz",
+    "date": "2026-01-13",
+    "coords": { "lat": 38.0962, "lon": 46.2731 },
+    "bio": "Former midfielder for Tractor Sazi Tabriz. Killed alongside his wife while protesting for a free Iran.",
+    "media": {
+      "xPost": "https://x.com/visegrad24/status/2011270365180502209"
+    },
+    "references": [
+      {
+        "label": "Visegrád 24 on X",
+        "url": "https://x.com/visegrad24/status/2011270365180502209"
+      }
+    ]
   }
 ]

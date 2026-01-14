@@ -87,7 +87,7 @@ function renderDetails(entry: MemorialEntry) {
       </div>
 
       <div class="report-section">
-        <a href="https://github.com/atakhadivi/IranRevolution2026/issues/new?title=Report+Issue:+${encodeURIComponent(entry.name)}&body=${encodeURIComponent(`I am reporting an issue with the entry for ${entry.name} (ID: ${entry.id}).\n\nReason:\n[Please describe the problem here, e.g., wrongly added, incorrect date, etc.]`)}" 
+        <a href="https://github.com/atakhadiviom/IranRevolution2026/issues/new?title=Report+Issue:+${encodeURIComponent(entry.name)}&body=${encodeURIComponent(`I am reporting an issue with the entry for ${entry.name} (ID: ${entry.id}).\n\nReason:\n[Please describe the problem here, e.g., wrongly added, incorrect date, etc.]`)}" 
            target="_blank" class="report-link">
            🚩 ${t('details.reportIssue')}
         </a>
@@ -230,14 +230,14 @@ function initContributionForm() {
             </div>
             <div class="form-group">
               <label>${t('contribute.city')}</label>
-              <input type="text" name="city" required placeholder="City">
+              <input type="text" name="city" placeholder="City (optional)">
             </div>
           </div>
 
           <div class="form-row">
             <div class="form-group">
               <label>${t('contribute.date')}</label>
-              <input type="date" name="date" required>
+              <input type="date" name="date">
             </div>
             <div class="form-group">
               <label>${t('contribute.location')}</label>
@@ -298,8 +298,8 @@ function initContributionForm() {
 
         aiStatus.textContent = t('ai.success')
         aiStatus.className = 'ai-status success'
-      } catch (error) {
-        aiStatus.textContent = t('ai.error')
+      } catch (error: any) {
+        aiStatus.textContent = error.message || t('ai.error')
         aiStatus.className = 'ai-status error'
       } finally {
         aiBtn.disabled = false
@@ -328,7 +328,7 @@ function initContributionForm() {
           <p>${t('contribute.successDesc')}</p>
           <code>${JSON.stringify(data, null, 2)}</code>
           <p>${t('contribute.nextSteps')}</p>
-          <a href="https://github.com/atakhadivi/IranRevolution2026/issues/new?title=New+Memorial+Submission&body=${encodeURIComponent('Please add this person to the memorial:\n\n```json\n' + JSON.stringify(data, null, 2) + '\n```')}" 
+          <a href="https://github.com/atakhadiviom/IranRevolution2026/issues/new?title=New+Memorial+Submission&body=${encodeURIComponent('Please add this person to the memorial:\n\n```json\n' + JSON.stringify(data, null, 2) + '\n```')}" 
              target="_blank" class="nav-button" style="display:inline-block; margin-top:1rem;">
              Open GitHub Issue
           </a>
