@@ -42,5 +42,6 @@
   "ai.success": "اطلاعات با موفقیت استخراج شد!",
   "ai.error": "خطا در استخراج اطلاعات. لطفاً دستی وارد کنید.",
   "contribute.duplicateWarning": "هشدار: شخصی با این نام قبلاً در لیست یادبود ثبت شده است.",
-  "contribute.duplicateAction": "مشاهده پروفایل موجود"
+  "contribute.duplicateAction": "مشاهده پروفایل موجود",
+  "contribute.copy": "کپی JSON"
 }

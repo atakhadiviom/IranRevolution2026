@@ -606,5 +606,137 @@
         "url": "https://x.com/longlosthills/status/2011174614458675541?s=20"
       }
     ]
+  },
+  {
+    "id": "mohammad-rasoul-mardoukhi",
+    "name": "Mohammad Rasoul Mardoukhi",
+    "name_fa": "محمد رسول مردوخی",
+    "city": "Marivan",
+    "city_fa": "مریوان",
+    "location": "roadside",
+    "location_fa": "کنار جاده",
+    "date": "2026-01-11",
+    "coords": { "lat": 35.5269, "lon": 46.1760 },
+    "bio": "Wrote a critical open letter to Khamenei. His tortured body was found dumped on a roadside in Marivan.",
+    "bio_fa": "نامه‌ای انتقادی به خامنه‌ای نوشت. پیکر شکنجه‌شده‌اش در کنار جاده‌ای در مریوان رها شده بود.",
+    "media": {
+      "xPost": "https://x.com/longlosthills/status/2011203872954392627?s=20"
+    },
+    "references": [
+      {
+        "label": "X Post",
+        "url": "https://x.com/longlosthills/status/2011203872954392627?s=20"
+      }
+    ]
+  },
+  {
+    "id": "holako-aivani",
+    "name": "Holako Aivani",
+    "name_fa": "هولاکو ایوانی",
+    "city": "Kermanshah",
+    "city_fa": "کرمانشاه",
+    "location": "Shabad",
+    "location_fa": "شاباد (اسلام‌آباد غرب)",
+    "date": "2026-01-08",
+    "coords": { "lat": 34.3142, "lon": 47.0650 },
+    "bio": "Kurdish athlete shot and killed by IRGC forces during protests.",
+    "bio_fa": "ورزشکار کرد که در جریان اعتراضات توسط نیروهای سپاه پاسداران هدف گلوله قرار گرفت و کشته شد.",
+    "media": {
+      "xPost": "https://x.com/longlosthills/status/2010914100121841714?s=20"
+    },
+    "references": [
+      {
+        "label": "X Post",
+        "url": "https://x.com/longlosthills/status/2010914100121841714?s=20"
+      }
+    ]
+  },
+  {
+    "id": "aida-rostami",
+    "name": "Aida Rostami",
+    "name_fa": "آیدا رستمی",
+    "city": "Tehran",
+    "city_fa": "تهران",
+    "location": "Ekbatan",
+    "location_fa": "شهرک اکباتان",
+    "date": "2022-12-12",
+    "coords": { "lat": 35.6892, "lon": 51.3890 },
+    "bio": "A brave doctor in Iran who cared for protesters and was tortured and murdered by the regime.",
+    "bio_fa": "پزشک شجاعی که به مداوای معترضان می‌پرداخت و توسط رژیم شکنجه شد و به قتل رسید.",
+    "media": {
+      "xPost": "https://x.com/ImtiazMadmood/status/2011142451277471978?s=20"
+    },
+    "references": [
+      {
+        "label": "X Post by Imtiaz Mahmood",
+        "url": "https://x.com/ImtiazMadmood/status/2011142451277471978?s=20"
+      }
+    ]
+  },
+  {
+    "id": "navid-salehi",
+    "name": "Navid Salehi",
+    "name_fa": "نوید صالحی",
+    "city": "Kermanshah",
+    "city_fa": "کرمانشاه",
+    "location": "Paveh",
+    "location_fa": "پاوه",
+    "date": "2026-01-18",
+    "coords": { "lat": 34.3142, "lon": 47.0650 },
+    "bio": "23-year-old Kurdish nurse from Paveh, shot dead by regime forces at his workplace in Kermanshah.",
+    "bio_fa": "پرستار ۲۳ ساله کرد اهل پاوه که در محل کارش در کرمانشاه توسط نیروهای رژیم هدف گلوله قرار گرفت و کشته شد.",
+    "media": {
+      "xPost": "https://x.com/longlosthills/status/2010743607863505223?s=20"
+    },
+    "references": [
+      {
+        "label": "X Post by پری‌سا (@longlosthills)",
+        "url": "https://x.com/longlosthills/status/2010743607863505223?s=20"
+      }
+    ]
+  },
+  {
+    "id": "ahmad-khosravani",
+    "name": "Ahmad Khosravani",
+    "name_fa": "احمد خسروانی",
+    "city": "Tehran",
+    "city_fa": "تهران",
+    "location": "Tehran",
+    "location_fa": "تهران",
+    "date": "2026-01-08",
+    "coords": { "lat": 35.6892, "lon": 51.3890 },
+    "bio": "21-year-old Sharif University student and talented 3x3 basketball player.",
+    "bio_fa": "دانشجوی ۲۱ ساله دانشگاه صنعتی شریف و بازیکن بااستعداد بسکتبال ۳ در ۳.",
+    "media": {
+      "xPost": "https://x.com/longlosthills/status/2011113430766268614?s=20"
+    },
+    "references": [
+      {
+        "label": "X Post",
+        "url": "https://x.com/longlosthills/status/2011113430766268614?s=20"
+      }
+    ]
+  },
+  {
+    "id": "sina-ashkboosi",
+    "name": "Sina Ashkboosi",
+    "name_fa": "سینا اشکبوسی",
+    "city": "Tehran",
+    "city_fa": "تهران",
+    "location": "Tehranpars Park",
+    "location_fa": "پارک تهرانپارس",
+    "date": "2026-01-07",
+    "coords": { "lat": 35.7500, "lon": 51.5300 },
+    "bio": "On January 7, the Islamic regime’s security forces opened fire on 25 children while they were chanting anti-regime slogans. Sina was one of them and died on the way to the hospital.\n\nHe was buried on January 12. His family was forced to promise that the funeral would be held in complete silence.",
+    "bio_fa": "در ۷ ژانویه، نیروهای امنیتی رژیم اسلامی به سوی ۲۵ کودک که شعارهای ضد رژیم می‌دادند تیراندازی کردند. سینا یکی از آن‌ها بود و در راه بیمارستان جان باخت.\n\nاو در ۱۲ ژانویه به خاک سپرده شد. خانواده او مجبور شدند تعهد بدهند که مراسم تشییع جنازه در سکوت کامل برگزار شود.",
+    "media": {
+      "xPost": "https://x.com/visegrad24/status/2011420708073504785?s=20"
+    },
+    "references": [
+      {
+        "label": "Visegrád 24",
+        "url": "https://x.com/visegrad24/status/2011420708073504785?s=20"
+      }
+    ]
   }
 ]

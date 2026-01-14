@@ -65,6 +65,30 @@ document.getElementById('entry-form')!.addEventListener('submit', (ev) => {
   out.textContent = JSON.stringify(entry, null, 2)
 })
 
+document.getElementById('copy-btn')!.addEventListener('click', async () => {
+  const out = document.getElementById('output')!.textContent
+  if (!out) {
+    alert('Generate JSON first.')
+    return
+  }
+  try {
+    await navigator.clipboard.writeText(out)
+    const btn = document.getElementById('copy-btn') as HTMLButtonElement
+    const originalText = btn.textContent
+    btn.textContent = 'Copied!'
+    btn.style.backgroundColor = '#4CAF50'
+    btn.style.color = 'white'
+    setTimeout(() => {
+      btn.textContent = originalText
+      btn.style.backgroundColor = ''
+      btn.style.color = ''
+    }, 2000)
+  } catch (err) {
+    console.error('Failed to copy: ', err)
+    alert('Failed to copy to clipboard.')
+  }
+})
+
 document.getElementById('download')!.addEventListener('click', () => {
   const out = document.getElementById('output')!.textContent
   if (!out) {

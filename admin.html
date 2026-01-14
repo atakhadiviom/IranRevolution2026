@@ -12,6 +12,18 @@
       input, textarea { width: 100%; padding: 0.5rem 0.75rem; border: 1px solid #ddd; border-radius: 8px; }
       textarea { min-height: 120px; grid-column: 1 / -1; }
       .actions { display: flex; gap: 0.5rem; margin-top: 1rem; }
+      button { 
+        padding: 0.6rem 1.2rem; 
+        border-radius: 8px; 
+        border: 1px solid #ddd; 
+        background: #fff; 
+        cursor: pointer; 
+        font-weight: 500;
+        transition: all 0.2s;
+      }
+      button:hover { background: #f0f0f0; border-color: #bbb; }
+      button[type="submit"] { background: #007bff; color: white; border-color: #0056b3; }
+      button[type="submit"]:hover { background: #0056b3; }
       pre { background: #f6f6f6; padding: 1rem; border-radius: 8px; overflow: auto; }
     </style>
   </head>
@@ -77,10 +89,13 @@
       </div>
       <div class="actions">
         <button type="submit">Generate JSON</button>
-        <button type="button" id="download">Download JSON</button>
       </div>
     </form>
     <h2>Output</h2>
+    <div class="actions" style="margin-bottom: 0.5rem;">
+      <button type="button" id="copy-btn">Copy JSON</button>
+      <button type="button" id="download">Download JSON</button>
+    </div>
     <pre id="output"></pre>
     <script type="module" src="./src/admin.ts"></script>
   </body>

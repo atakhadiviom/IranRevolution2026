@@ -433,14 +433,35 @@ function initContributionForm() {
         <div class="submission-result">
           <h3>${t('contribute.successTitle')}</h3>
           <p>${t('contribute.successDesc')}</p>
-          <code>${JSON.stringify(data, null, 2)}</code>
+          <code id="json-output">${JSON.stringify(data, null, 2)}</code>
           <p>${t('contribute.nextSteps')}</p>
-          <a href="https://github.com/atakhadiviom/IranRevolution2026/issues/new?title=New+Memorial+Submission&body=${encodeURIComponent('Please add this person to the memorial:\n\n```json\n' + JSON.stringify(data, null, 2) + '\n```')}" 
-             target="_blank" class="nav-button" style="display:inline-block; margin-top:1rem;">
-             Open GitHub Issue
-          </a>
+          <div class="actions" style="margin-top: 1rem; display: flex; gap: 0.5rem; justify-content: center; flex-wrap: wrap;">
+            <button id="copy-json-btn" class="nav-button">${t('contribute.copy')}</button>
+            <a href="https://github.com/atakhadiviom/IranRevolution2026/issues/new?title=New+Memorial+Submission&body=${encodeURIComponent('Please add this person to the memorial:\n\n```json\n' + JSON.stringify(data, null, 2) + '\n```')}" 
+               target="_blank" class="nav-button" style="display:inline-block;">
+               Open GitHub Issue
+            </a>
+          </div>
         </div>
       `
+
+      const copyBtn = document.getElementById('copy-json-btn')
+      if (copyBtn) {
+        copyBtn.addEventListener('click', async () => {
+          try {
+            await navigator.clipboard.writeText(JSON.stringify(data, null, 2))
+            const originalText = copyBtn.textContent
+            copyBtn.textContent = 'Copied!'
+            copyBtn.classList.add('success')
+            setTimeout(() => {
+              copyBtn.textContent = originalText
+              copyBtn.classList.remove('success')
+            }, 2000)
+          } catch (err) {
+            console.error('Failed to copy:', err)
+          }
+        })
+      }
     })
   }
 }
