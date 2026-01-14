@@ -229,6 +229,7 @@ function initContributionForm() {
             <div class="form-group">
               <label>${t('contribute.name')}</label>
               <input type="text" name="name" required placeholder="Full Name">
+              <div id="duplicate-warning" class="duplicate-warning hidden"></div>
             </div>
             <div class="form-group">
               <label>${t('contribute.city')}</label>
@@ -268,6 +269,44 @@ function initContributionForm() {
     const aiUrl = document.getElementById('ai-url') as HTMLInputElement
     const aiStatus = document.getElementById('ai-status') as HTMLDivElement
 
+    const nameInput = form.querySelector('[name="name"]') as HTMLInputElement
+    const duplicateWarning = document.getElementById('duplicate-warning') as HTMLDivElement
+
+    const checkDuplicate = (name: string) => {
+      if (!name || name.length < 3) {
+        duplicateWarning.classList.add('hidden')
+        return
+      }
+
+      const normalizedSearch = name.toLowerCase().trim()
+      const match = currentMemorials.find(m => 
+        m.name.toLowerCase().trim() === normalizedSearch ||
+        m.name.toLowerCase().trim().includes(normalizedSearch)
+      )
+
+      if (match) {
+        duplicateWarning.innerHTML = `
+          <p>⚠️ ${t('contribute.duplicateWarning')}</p>
+          <button type="button" class="view-duplicate-btn" data-id="${match.id}">
+            ${t('contribute.duplicateAction')}: <strong>${match.name}</strong>
+          </button>
+        `
+        duplicateWarning.classList.remove('hidden')
+        
+        duplicateWarning.querySelector('.view-duplicate-btn')?.addEventListener('click', () => {
+          const overlay = document.getElementById('modal-overlay')
+          overlay?.classList.add('hidden')
+          renderDetails(match)
+        })
+      } else {
+        duplicateWarning.classList.add('hidden')
+      }
+    }
+
+    nameInput?.addEventListener('input', (e) => {
+      checkDuplicate((e.target as HTMLInputElement).value)
+    })
+
     aiBtn?.addEventListener('click', async () => {
       const url = aiUrl.value.trim()
       if (!url) return
@@ -297,6 +336,8 @@ function initContributionForm() {
         if (data.bio) bioInput.value = data.bio
         refUrlInput.value = url
         if (data.referenceLabel) refLabelInput.value = data.referenceLabel
+
+        if (data.name) checkDuplicate(data.name)
 
         aiStatus.textContent = t('ai.success')
         aiStatus.className = 'ai-status success'

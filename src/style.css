@@ -486,6 +486,36 @@ main {
   color: #f87171;
 }
 
+.duplicate-warning {
+  margin-top: 0.5rem;
+  padding: 0.75rem;
+  background: rgba(234, 179, 8, 0.1);
+  border: 1px solid rgba(234, 179, 8, 0.3);
+  border-radius: 8px;
+  font-size: 0.85rem;
+  color: #fbbf24;
+}
+
+.duplicate-warning p {
+  margin: 0 0 0.5rem 0;
+}
+
+.view-duplicate-btn {
+  background: rgba(251, 191, 36, 0.2);
+  color: #fbbf24;
+  border: 1px solid #fbbf24;
+  padding: 0.25rem 0.5rem;
+  border-radius: 4px;
+  font-size: 0.8rem;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.view-duplicate-btn:hover {
+  background: #fbbf24;
+  color: #000;
+}
+
 .form-divider {
   border: 0;
   border-top: 1px solid var(--border);

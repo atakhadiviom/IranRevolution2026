@@ -40,5 +40,7 @@
   "ai.processing": "Processing...",
   "ai.fetching": "Fetching source content...",
   "ai.success": "Data extracted successfully!",
-  "ai.error": "Failed to extract data. Please fill manually."
+  "ai.error": "Failed to extract data. Please fill manually.",
+  "contribute.duplicateWarning": "Warning: A person with this name already exists in the memorial.",
+  "contribute.duplicateAction": "View existing profile"
 }
