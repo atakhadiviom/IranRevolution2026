@@ -1,7 +1,24 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
-  <!-- Tulip petals -->
-  <path d="M16 4C16 4 6 10 6 18C6 24 10 28 16 30C22 28 26 24 26 18C26 10 16 4 16 4Z" fill="#ff3b30"/>
-  <path d="M16 6C16 6 9 12 9 18C9 23 12 26 16 28C20 26 23 23 23 18C23 12 16 6 16 6Z" fill="#ff453a"/>
-  <!-- Center detail -->
-  <path d="M16 8C16 8 13 14 13 18C13 21 16 24 16 24C16 24 19 21 19 18C19 14 16 8 16 8Z" fill="#ffcc00" opacity="0.8"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48">
+  <!-- Background Flag Stripes -->
+  <rect width="48" height="16" fill="#239f40"/> <!-- Green -->
+  <rect y="16" width="48" height="16" fill="#ffffff"/> <!-- White -->
+  <rect y="32" width="48" height="16" fill="#da291c"/> <!-- Red -->
+  
+  <!-- Lion and Sun (Centered on White) -->
+  <g transform="translate(24, 24) scale(0.65)">
+    <!-- Sun -->
+    <circle cx="0" cy="-2" r="6" fill="#ffcc00"/>
+    <path d="M-8,-2 Q0,-12 8,-2" fill="none" stroke="#ffcc00" stroke-width="1.5"/>
+    
+    <!-- Lion -->
+    <path d="M-10,8 
+             C-10,4 -8,2 -4,2 
+             L4,2 
+             C8,2 10,4 10,8 
+             L10,10 L-10,10 Z" fill="#b38600"/> <!-- Lion Body -->
+    <circle cx="-7" cy="2" r="3.5" fill="#b38600"/> <!-- Lion Head -->
+    
+    <!-- Sword -->
+    <path d="M-2,2 L12,-6" stroke="#555" stroke-width="1.5" stroke-linecap="round"/>
+  </g>
 </svg>
