@@ -67,25 +67,11 @@ nav {
 }
 
 .site-icon {
-  width: 32px;
-  height: 24px;
-  background: linear-gradient(to bottom, #239f40 33.3%, #ffffff 33.3%, #ffffff 66.6%, #da291c 66.6%);
+  width: 42px;
+  height: auto;
   border-radius: 2px;
-  position: relative;
   box-shadow: 0 0 10px rgba(0,0,0,0.3);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  overflow: hidden;
-}
-
-.site-icon::after {
-  content: "🦁";
-  font-size: 10px;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  display: block;
 }
 
 .controls {
