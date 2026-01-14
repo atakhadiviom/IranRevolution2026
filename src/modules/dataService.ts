@@ -68,6 +68,9 @@ export async function deleteMemorial(id: string): Promise<{ success: boolean; er
 
 export async function submitMemorial(entry: Partial<MemorialEntry>): Promise<{ success: boolean; error?: string }> {
   try {
+    if (!entry.name || !entry.city || !entry.date) {
+      return { success: false, error: 'Name, City, and Date are required.' }
+    }
     const isEditing = !!entry.id
     
     // Check for duplicates if this is a new entry
@@ -93,7 +96,7 @@ export async function submitMemorial(entry: Partial<MemorialEntry>): Promise<{ s
       city_fa: entry.city_fa || null,
       location: entry.location || '',
       location_fa: entry.location_fa || null,
-      date: entry.date || new Date().toISOString().split('T')[0],
+      date: entry.date,
       bio: entry.bio || '',
       bio_fa: entry.bio_fa || null,
       coords: (entry.coords || { lat: 35.6892, lon: 51.3890 }) as Database['public']['Tables']['memorials']['Insert']['coords'],

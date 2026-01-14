@@ -217,8 +217,8 @@ jsonImportBtn.addEventListener('click', async () => {
   try {
     const data = JSON.parse(raw) as Partial<MemorialEntry>
     
-    if (!data.name) {
-      alert('Error: JSON must at least contain a name.')
+    if (!data.name || !data.city || !data.date) {
+      alert('Error: JSON must contain name, city, and date.')
       return
     }
 
