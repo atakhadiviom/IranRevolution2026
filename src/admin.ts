@@ -467,8 +467,8 @@ jsonImportBtn.addEventListener('click', async () => {
   } catch (e) { alert('Invalid JSON format.') } finally { jsonImportBtn.disabled = false }
 })
 
-function populateForm(data: Partial<MemorialEntry> & { referenceLabel?: string }) {
-  const fields: Record<string, any> = {
+function populateForm(data: Partial<MemorialEntry> & { referenceLabel?: string; photo?: string }) {
+  const fields: Record<string, string | number | undefined> = {
     name: data.name,
     name_fa: data.name_fa,
     city: data.city,
@@ -480,7 +480,7 @@ function populateForm(data: Partial<MemorialEntry> & { referenceLabel?: string }
     lon: data.coords?.lon,
     bio: data.bio,
     bio_fa: data.bio_fa,
-    photo: data.media?.photo || (data as any).photo,
+    photo: data.media?.photo || data.photo,
     xPost: data.media?.xPost
   }
 
