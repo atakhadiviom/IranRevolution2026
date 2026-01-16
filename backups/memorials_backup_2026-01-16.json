@@ -1,0 +1,5086 @@
+[
+  {
+    "id": "mehdi-salahshour",
+    "created_at": "2026-01-14T15:08:13.047867+00:00",
+    "name": "Mehdi Salahshour",
+    "name_fa": "مهدی سلحشور",
+    "city": "Tehran",
+    "city_fa": "تهران",
+    "location": "Tehran",
+    "location_fa": null,
+    "date": "2026-01-13",
+    "coords": {
+      "lat": 35.6892,
+      "lon": 51.389
+    },
+    "bio": "Victim of the Iranian regime, as reported by Israel War Room.",
+    "bio_fa": "قربانی رژیم ایران، طبق گزارش اتاق جنگ اسرائیل.",
+    "testimonials": null,
+    "media": null,
+    "source_links": [
+      {
+        "url": "https://x.com/IsraelWarRoom/status/2011137499440234923?s=20",
+        "label": "Israel War Room on X"
+      }
+    ],
+    "verified": true,
+    "submitted_by": null
+  },
+  {
+    "id": "sarina-esmailzadeh",
+    "created_at": "2026-01-14T15:08:13.047867+00:00",
+    "name": "Sarina Esmailzadeh",
+    "name_fa": "سارینا اسماعیل‌زاده",
+    "city": "Karaj",
+    "city_fa": "کرج",
+    "location": "Karaj",
+    "location_fa": null,
+    "date": "2022-09-22",
+    "coords": {
+      "lat": 35.8327,
+      "lon": 50.9916
+    },
+    "bio": "A 16-year-old YouTuber who died during the protests in Karaj.",
+    "bio_fa": "نوجوان ۱۶ ساله‌ای که در جریان اعتراضات در کرج جان باخت.",
+    "testimonials": [
+      "Bright soul"
+    ],
+    "media": {
+      "photo": "https://upload.wikimedia.org/wikipedia/en/thumb/d/d7/Sarina_Esmailzadeh.png/440px-Sarina_Esmailzadeh.png"
+    },
+    "source_links": [
+      {
+        "url": "https://en.wikipedia.org/wiki/Death_of_Sarina_Esmailzadeh",
+        "label": "Wikipedia"
+      },
+      {
+        "url": "https://www.theguardian.com/world/2022/oct/07/sarina-esmailzadeh-family-iranian-protester-death",
+        "label": "The Guardian"
+      }
+    ],
+    "verified": true,
+    "submitted_by": null
+  },
+  {
+    "id": "khian-pirfalak",
+    "created_at": "2026-01-14T15:08:13.047867+00:00",
+    "name": "Kian Pirfalak",
+    "name_fa": "کیان پیرفلک",
+    "city": "Izeh",
+    "city_fa": "ایذه",
+    "location": "Izeh",
+    "location_fa": null,
+    "date": "2022-11-16",
+    "coords": {
+      "lat": 31.8358,
+      "lon": 49.8714
+    },
+    "bio": "A 9-year-old boy killed during the protests in Izeh.",
+    "bio_fa": "کودک ۹ ساله‌ای که در جریان اعتراضات در ایذه کشته شد.",
+    "testimonials": [
+      "To the God of Rainbows"
+    ],
+    "media": {
+      "photo": "https://upload.wikimedia.org/wikipedia/en/thumb/8/8e/Kian_Pirfalak.jpg/440px-Kian_Pirfalak.jpg"
+    },
+    "source_links": [
+      {
+        "url": "https://en.wikipedia.org/wiki/Kian_Pirfalak",
+        "label": "Wikipedia"
+      },
+      {
+        "url": "https://www.hrw.org/news/2022/11/17/iran-security-forces-kill-child-izeh",
+        "label": "Human Rights Watch"
+      }
+    ],
+    "verified": true,
+    "submitted_by": null
+  },
+  {
+    "id": "yasin-mirzaei",
+    "created_at": "2026-01-14T15:08:13.047867+00:00",
+    "name": "Yasin Mirzaei Qaleh Zanjiri",
+    "name_fa": "یاسین میرزایی قلعه‌زنجیری",
+    "city": "Kermanshah",
+    "city_fa": "کرمانشاه",
+    "location": "Dareh Derij",
+    "location_fa": null,
+    "date": "2026-01-08",
+    "coords": {
+      "lat": 34.3142,
+      "lon": 47.065
+    },
+    "bio": "A Yarsani citizen and student residing in Italy, killed by gunfire in Kermanshah shortly after returning to Iran to visit his family during the January 2026 protests.",
+    "bio_fa": "شهروند یارسان و دانشجوی ساکن ایتالیا که در جریان اعتراضات ژانویه ۲۰۲۶ در کرمانشاه کشته شد.",
+    "testimonials": null,
+    "media": {
+      "photo": "https://iranhrdc.org/wp-content/uploads/2026/01/Yasin-Mirzaei.jpg",
+      "xPost": "https://x.com/IHRDC/status/1746198273641111552"
+    },
+    "source_links": [
+      {
+        "url": "https://iranhrdc.org/irans-protest-massacre-daily-update-january-13-2026/",
+        "label": "IHRDC"
+      }
+    ],
+    "verified": true,
+    "submitted_by": null
+  },
+  {
+    "id": "miragha-rezaei",
+    "created_at": "2026-01-14T15:08:13.047867+00:00",
+    "name": "Miragha Rezaei",
+    "name_fa": "میراآقا رضایی",
+    "city": "Tehran",
+    "city_fa": "تهران",
+    "location": "Fallah neighborhood",
+    "location_fa": null,
+    "date": "2026-01-09",
+    "coords": {
+      "lat": 35.7042,
+      "lon": 51.3629
+    },
+    "bio": "A 54-year-old father of two shot and killed during a peaceful protest in Tehran's Fallah neighborhood.",
+    "bio_fa": "پدر ۵۴ ساله‌ای که در جریان اعتراضات مسالمت‌آمیز در محله فلاح تهران کشته شد.",
+    "testimonials": null,
+    "media": null,
+    "source_links": [
+      {
+        "url": "https://iranhrdc.org/irans-protest-massacre-daily-update-january-13-2026/",
+        "label": "IHRDC"
+      }
+    ],
+    "verified": true,
+    "submitted_by": null
+  },
+  {
+    "id": "sina-ashkabousi",
+    "created_at": "2026-01-14T15:08:13.047867+00:00",
+    "name": "Sina Ashkabousi",
+    "name_fa": "سینا اشکبوسی",
+    "city": "Tehran",
+    "city_fa": "تهران",
+    "location": "Tehranpars Park",
+    "location_fa": null,
+    "date": "2026-01-14",
+    "coords": {
+      "lat": 35.7444,
+      "lon": 51.5694
+    },
+    "bio": "15-year-old killed by regime forces after chanting slogans for freedom in Tehranpars Park.",
+    "bio_fa": "نوجوان ۱۵ ساله‌ای که پس از شعار دادن برای آزادی در پارک تهرانپارس کشته شد.",
+    "testimonials": null,
+    "media": null,
+    "source_links": [
+      {
+        "url": "https://x.com/SinaMihandoost/status/2011392935435309233?s=20",
+        "label": "X Post"
+      }
+    ],
+    "verified": true,
+    "submitted_by": null
+  },
+  {
+    "id": "amir-ali-heydari",
+    "created_at": "2026-01-14T15:08:13.047867+00:00",
+    "name": "Amir Ali Heydari",
+    "name_fa": "امیرعلی حیدری",
+    "city": "Kermanshah",
+    "city_fa": "کرمانشاه",
+    "location": "Kermanshah",
+    "location_fa": null,
+    "date": "2026-01-12",
+    "coords": {
+      "lat": 34.3142,
+      "lon": 47.065
+    },
+    "bio": "17-year-old teenager shot and killed in Kermanshah.",
+    "bio_fa": "نوجوان ۱۷ ساله‌ای که در کرمانشاه با شلیک گلوله کشته شد.",
+    "testimonials": null,
+    "media": null,
+    "source_links": [
+      {
+        "url": "https://x.com/Sssccpp/status/2010769248944103625?s=20",
+        "label": "X Post"
+      }
+    ],
+    "verified": true,
+    "submitted_by": null
+  },
+  {
+    "id": "mohammad-noori",
+    "created_at": "2026-01-14T15:08:13.047867+00:00",
+    "name": "Mohammad Noori",
+    "name_fa": "محمد نوری",
+    "city": "Qom",
+    "city_fa": "قم",
+    "location": "Qom",
+    "location_fa": null,
+    "date": "2026-01-02",
+    "coords": {
+      "lat": 34.64,
+      "lon": 50.8764
+    },
+    "bio": "Mohammad Noori, a 17-year-old youth, was killed on January 2nd, 2026, in Qom, Iran.",
+    "bio_fa": "محمد نوری، جوان ۱۷ ساله‌ای که در ۲ ژانویه ۲۰۲۶ در قم کشته شد.",
+    "testimonials": null,
+    "media": null,
+    "source_links": [
+      {
+        "url": "https://t.me/OfficialRezaPahlavi/1706",
+        "label": "Reza Pahlavi Official Telegram Channel"
+      }
+    ],
+    "verified": true,
+    "submitted_by": null
+  },
+  {
+    "id": "nika-shakarami",
+    "created_at": "2026-01-14T15:08:13.047867+00:00",
+    "name": "Nika Shakarami",
+    "name_fa": "نیکا شاکرمی",
+    "city": "Tehran",
+    "city_fa": "تهران",
+    "location": "Tehran",
+    "location_fa": null,
+    "date": "2022-09-20",
+    "coords": {
+      "lat": 35.6892,
+      "lon": 51.389
+    },
+    "bio": "A 16-year-old protester who disappeared and was later found dead.",
+    "bio_fa": "نوجوان ۱۶ ساله‌ای که در جریان اعتراضات ناپدید و سپس جسد او پیدا شد.",
+    "testimonials": [
+      "Hero of our time"
+    ],
+    "media": {
+      "photo": "https://upload.wikimedia.org/wikipedia/en/thumb/9/9e/Nika_Shakarami.jpg/440px-Nika_Shakarami.jpg"
+    },
+    "source_links": [
+      {
+        "url": "https://en.wikipedia.org/wiki/Death_of_Nika_Shakarami",
+        "label": "Wikipedia"
+      },
+      {
+        "url": "https://www.bbc.com/news/world-middle-east-63400588",
+        "label": "BBC News"
+      }
+    ],
+    "verified": true,
+    "submitted_by": null
+  },
+  {
+    "id": "mahsa-dezfulian-kermanshahi",
+    "created_at": "2026-01-14T15:08:13.047867+00:00",
+    "name": "Dr. Mahsa Dezfulian Kermanshahi",
+    "name_fa": "دکتر مهسا دزفولیان کرمانشاهی",
+    "city": "Tehran",
+    "city_fa": "تهران",
+    "location": "Tehran",
+    "location_fa": null,
+    "date": "2026-01-13",
+    "coords": {
+      "lat": 35.6892,
+      "lon": 51.389
+    },
+    "bio": "Dr. Mahsa Dezfulian Kermanshahi was killed by direct fire in Tehran.",
+    "bio_fa": "دکتر مهسا دزفولیان کرمانشاهی که با شلیک مستقیم در تهران کشته شد.",
+    "testimonials": null,
+    "media": {
+      "photo": "https://pbs.twimg.com/media/G-jR5RyXAAAtMbw?format=jpg&name=360x360",
+      "xPost": "https://x.com/DamDami/status/2011088032607449335?s=20"
+    },
+    "source_links": [
+      {
+        "url": "https://x.com/DamDami/status/2011088032607449335?s=20",
+        "label": "X Post by DamDam"
+      }
+    ],
+    "verified": true,
+    "submitted_by": null
+  },
+  {
+    "id": "alireza-rahimi",
+    "created_at": "2026-01-14T15:08:13.047867+00:00",
+    "name": "Alireza Rahimi",
+    "name_fa": "علیرضا رحیمی",
+    "city": "Tehran",
+    "city_fa": "تهران",
+    "location": "Tehranpars",
+    "location_fa": null,
+    "date": "2026-01-09",
+    "coords": {
+      "lat": 35.745,
+      "lon": 51.567
+    },
+    "bio": "26-year-old killed by a direct gunshot to the head in Tehranpars during the January 2026 crackdown.",
+    "bio_fa": "جوان ۲۶ ساله‌ای که با شلیک مستقیم به سر در تهرانپارس کشته شد.",
+    "testimonials": null,
+    "media": null,
+    "source_links": [
+      {
+        "url": "https://iranhrdc.org/irans-protest-massacre-daily-update-january-13-2026/",
+        "label": "IHRDC"
+      }
+    ],
+    "verified": true,
+    "submitted_by": null
+  },
+  {
+    "id": "ali-abbasi",
+    "created_at": "2026-01-14T15:08:13.047867+00:00",
+    "name": "Ali Abbasi",
+    "name_fa": "علی عباسی",
+    "city": "Tehran",
+    "city_fa": "تهران",
+    "location": "Tehran",
+    "location_fa": null,
+    "date": "2026-01-14",
+    "coords": {
+      "lat": 35.6892,
+      "lon": 51.389
+    },
+    "bio": "18-year-old Kurdish worker from Gilan-e Gharb, Kermanshah, murdered for demanding freedom.",
+    "bio_fa": "کارگر ۱۸ ساله کرد اهل گیلانغرب که در تهران کشته شد.",
+    "testimonials": null,
+    "media": {
+      "photo": "https://pbs.twimg.com/media/G-moimPaIAA-nfd?format=jpg&name=small",
+      "xPost": "https://x.com/NoaMagid/status/2011324023930843530?s=20"
+    },
+    "source_links": [
+      {
+        "url": "https://x.com/NoaMagid/status/2011324023930843530?s=20",
+        "label": "X Post"
+      }
+    ],
+    "verified": true,
+    "submitted_by": null
+  },
+  {
+    "id": "mansoureh-heydari",
+    "created_at": "2026-01-14T15:08:13.047867+00:00",
+    "name": "Mansoureh Heydari",
+    "name_fa": "منصوره حیدری",
+    "city": "Tehran",
+    "city_fa": "تهران",
+    "location": "Tehran",
+    "location_fa": null,
+    "date": "2026-01-13",
+    "coords": {
+      "lat": 35.6892,
+      "lon": 51.389
+    },
+    "bio": "Nurse and mother of two who joined protests against injustice.",
+    "bio_fa": "پرستار و مادر دو فرزندی که به اعتراضات علیه بی‌عدالتی پیوسته بود.",
+    "testimonials": null,
+    "media": null,
+    "source_links": [
+      {
+        "url": "https://x.com/longlosthills/status/2011156382524068242?s=20",
+        "label": "X Post"
+      }
+    ],
+    "verified": true,
+    "submitted_by": null
+  },
+  {
+    "id": "shayan-asadollahi",
+    "created_at": "2026-01-14T15:08:13.047867+00:00",
+    "name": "Shayan (Aboozar) Asadollahi",
+    "name_fa": "شایان (ابوذر) اسداللهی",
+    "city": "Azna",
+    "city_fa": "ازنا",
+    "location": "Azna, Lorestan",
+    "location_fa": null,
+    "date": "2026-01-01",
+    "coords": {
+      "lat": 33.45,
+      "lon": 49.45
+    },
+    "bio": "A 24-year-old youngester barber was killed by gunfire from security agents during the protests in Azna, Lorestan province, on the evening of Thursday, January 1st, 2026.",
+    "bio_fa": "آرایشگر ۲۴ ساله‌ای که در جریان اعتراضات در ازنا کشته شد.",
+    "testimonials": null,
+    "media": {
+      "photo": "https://pbs.twimg.com/media/G9xgsyGXgAA_A8K?format=jpg&name=900x900",
+      "xPost": "https://x.com/IranIntl/status/2007585861223792642?s=20"
+    },
+    "source_links": [
+      {
+        "url": "https://x.com/IranIntl/status/2007585861223792642?s=20",
+        "label": "Iran International"
+      }
+    ],
+    "verified": true,
+    "submitted_by": null
+  },
+  {
+    "id": "salam-mirani",
+    "created_at": "2026-01-14T15:08:13.047867+00:00",
+    "name": "Salam Mirani",
+    "name_fa": "سلام میرانی",
+    "city": "Kermanshah",
+    "city_fa": "کرمانشاه",
+    "location": "Kermanshah",
+    "location_fa": null,
+    "date": "2026-01-13",
+    "coords": {
+      "lat": 34.3142,
+      "lon": 47.065
+    },
+    "bio": "Victim of the Iranian regime, as stated by Israel War Room.",
+    "bio_fa": "قربانی رژیم ایران، طبق گزارش اتاق جنگ اسرائیل.",
+    "testimonials": null,
+    "media": null,
+    "source_links": [
+      {
+        "url": "https://x.com/IsraelWarRoom/status/2011165596642394511?s=20",
+        "label": "Israel War Room on X"
+      }
+    ],
+    "verified": true,
+    "submitted_by": null
+  },
+  {
+    "id": "mustafa-fallaf",
+    "created_at": "2026-01-14T15:08:13.047867+00:00",
+    "name": "Mustafa Fallaf",
+    "name_fa": "مصطفی فلاف",
+    "city": "Tehran",
+    "city_fa": "تهران",
+    "location": "Tehran",
+    "location_fa": null,
+    "date": "2026-01-13",
+    "coords": {
+      "lat": 35.6892,
+      "lon": 51.389
+    },
+    "bio": "Child killed by the Ayatollah regime for protesting.",
+    "bio_fa": "کودکی که توسط رژیم برای اعتراض کشته شد.",
+    "testimonials": null,
+    "media": null,
+    "source_links": [
+      {
+        "url": "https://x.com/uricohenisrael/status/2011103784198684829?s=20",
+        "label": "X Post"
+      }
+    ],
+    "verified": true,
+    "submitted_by": null
+  },
+  {
+    "id": "erfan-faraji",
+    "created_at": "2026-01-14T15:08:13.047867+00:00",
+    "name": "Erfan Faraji",
+    "name_fa": "عرفان فرجی",
+    "city": "Tehran",
+    "city_fa": "تهران",
+    "location": "Behesht Nazi Abad Square",
+    "location_fa": "میدان بهشت نازی آباد",
+    "date": "2024-01-06",
+    "coords": {
+      "lat": 35.715298,
+      "lon": 51.366034
+    },
+    "bio": "He was filming the protests when he was shot in the back and killed.",
+    "bio_fa": "در حال فیلمبرداری در اعتراضات بود که با شلیک گلوله به پشت کمر کشته شد.",
+    "testimonials": null,
+    "media": null,
+    "source_links": [
+      {
+        "url": "https://x.com/roozbehmon/status/2011218899166249246?s=20",
+        "label": "X Post"
+      }
+    ],
+    "verified": true,
+    "submitted_by": null
+  },
+  {
+    "id": "mohammad-amin-hosseini",
+    "created_at": "2026-01-14T15:08:13.047867+00:00",
+    "name": "Mohammad Amin Hosseini",
+    "name_fa": "محمد امین حسینی",
+    "city": "Mashhad",
+    "city_fa": "مشهد",
+    "location": "Mashhad",
+    "location_fa": null,
+    "date": "2026-01-14",
+    "coords": {
+      "lat": 36.2605,
+      "lon": 59.6168
+    },
+    "bio": "Born on Oct 9, 1987. Sacrificed his life for the homeland during the shooting of protesters. Lover of life, mountains, and nature.",
+    "bio_fa": "متولد ۱۷/۷/۶۶. جان‌فدای وطن در جریان به رگبار بستن معترضان. عاشق زندگی، کوه و طبیعت.",
+    "testimonials": null,
+    "media": null,
+    "source_links": [
+      {
+        "url": "https://x.com/ShahramSadidi/status/2011278344478998971?s=20",
+        "label": "X Post"
+      }
+    ],
+    "verified": true,
+    "submitted_by": null
+  },
+  {
+    "id": "nazli-janparvar",
+    "created_at": "2026-01-14T15:08:13.047867+00:00",
+    "name": "Nazli Janparvar",
+    "name_fa": "نازلی جان‌پرور",
+    "city": "Bojnourd",
+    "city_fa": "بجنورد",
+    "location": "Bojnourd",
+    "location_fa": null,
+    "date": "2026-01-14",
+    "coords": {
+      "lat": 37.4744,
+      "lon": 57.3333
+    },
+    "bio": "Fashion and clothing designer shot dead by regime's security forces.",
+    "bio_fa": "طراح مد و لباس که با شلیک نیروهای امنیتی رژیم کشته شد.",
+    "testimonials": null,
+    "media": null,
+    "source_links": [
+      {
+        "url": "https://x.com/BabakTaghvaee1/status/2011357608741830754?s=20",
+        "label": "Babak Taghvaee - The Crisis Watch on X"
+      }
+    ],
+    "verified": true,
+    "submitted_by": null
+  },
+  {
+    "id": "negin-ghadimi",
+    "created_at": "2026-01-14T15:08:13.047867+00:00",
+    "name": "Negin Ghadimi",
+    "name_fa": "نگین قدیمی",
+    "city": "Shahsavar",
+    "city_fa": "شهسوار",
+    "location": "Shahsavar",
+    "location_fa": null,
+    "date": "2026-01-14",
+    "coords": {
+      "lat": 36.6833,
+      "lon": 53.0167
+    },
+    "bio": "28-year-old Negin Ghadimi was murdered by the Islamic regime while protesting for a free Iran.",
+    "bio_fa": "نگین قدیمی ۲۸ ساله که در جریان اعتراضات توسط رژیم کشته شد.",
+    "testimonials": null,
+    "media": null,
+    "source_links": [
+      {
+        "url": "https://x.com/visegrad24/status/2011335737300422707?s=20",
+        "label": "Visegrád 24 on X"
+      }
+    ],
+    "verified": true,
+    "submitted_by": null
+  },
+  {
+    "id": "mehdi-lavasani",
+    "created_at": "2026-01-14T15:08:13.047867+00:00",
+    "name": "Mehdi Lavasani",
+    "name_fa": "مهدی لواسانی",
+    "city": "Tehran",
+    "city_fa": "تهران",
+    "location": "Narmak",
+    "location_fa": null,
+    "date": "2026-01-13",
+    "coords": {
+      "lat": 35.7544,
+      "lon": 51.4826
+    },
+    "bio": "Football youth team coach in Tehran. Fatally shot in the back; bullet exited chest. Left behind a two-year-old child.",
+    "bio_fa": "مربی تیم فوتبال جوانان در تهران که با شلیک گلوله به کمرش کشته شد.",
+    "testimonials": null,
+    "media": null,
+    "source_links": [
+      {
+        "url": "https://x.com/mojtabapourbakh/status/2011197422396215611?s=20",
+        "label": "X Post"
+      }
+    ],
+    "verified": true,
+    "submitted_by": null
+  },
+  {
+    "id": "sorena-golgoun",
+    "created_at": "2026-01-14T15:08:13.047867+00:00",
+    "name": "Sorena Golgoun",
+    "name_fa": "سورنا گلگون",
+    "city": "Ramsar",
+    "city_fa": "رامسر",
+    "location": "Shahrsavar",
+    "location_fa": "شهسوار",
+    "date": "2025-01-09",
+    "coords": {
+      "lat": 36.9004,
+      "lon": 50.65
+    },
+    "bio": "18-year-old student murdered by regime forces with a direct shot. From a family with two martyrs in the Iran-Iraq war.",
+    "bio_fa": "دانش‌آموز ۱۸ ساله‌ای که با شلیک مستقیم نیروهای رژیم کشته شد. او از خانواده‌ای بود که دو شهید در جنگ ایران و عراق داشتند.",
+    "testimonials": null,
+    "media": {
+      "photo": "https://pbs.twimg.com/media/G-kgpk0W0AAeE6m?format=jpg&name=900x900",
+      "xPost": "https://x.com/longlosthills/status/2011174614458675541?s=20"
+    },
+    "source_links": [
+      {
+        "url": "https://x.com/longlosthills/status/2011174614458675541?s=20",
+        "label": "X Post"
+      }
+    ],
+    "verified": true,
+    "submitted_by": null
+  },
+  {
+    "id": "mohammad-rasoul-mardoukhi",
+    "created_at": "2026-01-14T15:08:13.047867+00:00",
+    "name": "Mohammad Rasoul Mardoukhi",
+    "name_fa": "محمد رسول مردوخی",
+    "city": "Marivan",
+    "city_fa": "مریوان",
+    "location": "roadside",
+    "location_fa": "کنار جاده",
+    "date": "2026-01-11",
+    "coords": {
+      "lat": 35.5231,
+      "lon": 46.3586
+    },
+    "bio": "Wrote a critical open letter to Khamenei. His tortured body was found dumped on a roadside in Marivan.",
+    "bio_fa": "نامه‌ای انتقادی به خامنه‌ای نوشت. پیکر شکنجه‌شده‌اش در کنار جاده‌ای در مریوان رها شده بود.",
+    "testimonials": null,
+    "media": {
+      "photo": "https://pbs.twimg.com/media/G-k7Qy5XoAEIj3l?format=jpg&name=small",
+      "xPost": "https://x.com/longlosthills/status/2011203872954392627?s=20"
+    },
+    "source_links": [
+      {
+        "url": "https://x.com/longlosthills/status/2011203872954392627?s=20",
+        "label": "X Post"
+      }
+    ],
+    "verified": true,
+    "submitted_by": null
+  },
+  {
+    "id": "holako-aivani",
+    "created_at": "2026-01-14T15:08:13.047867+00:00",
+    "name": "Holako Aivani",
+    "name_fa": "هولاکو ایوانی",
+    "city": "Kermanshah",
+    "city_fa": "کرمانشاه",
+    "location": "Shabad",
+    "location_fa": "شاباد (اسلام‌آباد غرب)",
+    "date": "2026-01-08",
+    "coords": {
+      "lat": 34.3142,
+      "lon": 47.065
+    },
+    "bio": "Kurdish athlete shot and killed by IRGC forces during protests.",
+    "bio_fa": "ورزشکار کرد که در جریان اعتراضات توسط نیروهای سپاه پاسداران هدف گلوله قرار گرفت و کشته شد.",
+    "testimonials": null,
+    "media": {
+      "photo": "https://pbs.twimg.com/media/G-gztyoXMAEvXSz?format=jpg&name=360x360",
+      "xPost": "https://x.com/longlosthills/status/2010914100121841714?s=20"
+    },
+    "source_links": [
+      {
+        "url": "https://x.com/longlosthills/status/2010914100121841714?s=20",
+        "label": "X Post"
+      }
+    ],
+    "verified": true,
+    "submitted_by": null
+  },
+  {
+    "id": "aida-rostami",
+    "created_at": "2026-01-14T15:08:13.047867+00:00",
+    "name": "Aida Rostami",
+    "name_fa": "آیدا رستمی",
+    "city": "Tehran",
+    "city_fa": "تهران",
+    "location": "Ekbatan",
+    "location_fa": "شهرک اکباتان",
+    "date": "2022-12-12",
+    "coords": {
+      "lat": 35.7442,
+      "lon": 51.3065
+    },
+    "bio": "A brave doctor in Iran who cared for protesters and was tortured and murdered by the regime.",
+    "bio_fa": "پزشک شجاعی که به مداوای معترضان می‌پرداخت و توسط رژیم شکنجه شد و به قتل رسید.",
+    "testimonials": null,
+    "media": {
+      "photo": "https://pbs.twimg.com/media/G-kA68DWEAAaFVq?format=jpg&name=900x900",
+      "xPost": "https://x.com/ImtiazMadmood/status/2011142451277471978?s=20"
+    },
+    "source_links": [
+      {
+        "url": "https://x.com/ImtiazMadmood/status/2011142451277471978?s=20",
+        "label": "X Post by Imtiaz Mahmood"
+      }
+    ],
+    "verified": true,
+    "submitted_by": null
+  },
+  {
+    "id": "ahmad-khosravani",
+    "created_at": "2026-01-14T15:08:13.047867+00:00",
+    "name": "Ahmad Khosravani",
+    "name_fa": "احمد خسروانی",
+    "city": "Tehran",
+    "city_fa": "تهران",
+    "location": "Tehran",
+    "location_fa": "تهران",
+    "date": "2026-01-08",
+    "coords": {
+      "lat": 35.6892,
+      "lon": 51.389
+    },
+    "bio": "21-year-old Sharif University student and talented 3x3 basketball player.",
+    "bio_fa": "دانشجوی ۲۱ ساله دانشگاه صنعتی شریف و بازیکن بااستعداد بسکتبال ۳ در ۳.",
+    "testimonials": null,
+    "media": {
+      "photo": "https://pbs.twimg.com/media/G-jpAYkXMAI5mDs?format=jpg&name=small",
+      "xPost": "https://x.com/longlosthills/status/2011113430766268614?s=20"
+    },
+    "source_links": [
+      {
+        "url": "https://x.com/longlosthills/status/2011113430766268614?s=20",
+        "label": "X Post"
+      }
+    ],
+    "verified": true,
+    "submitted_by": null
+  },
+  {
+    "id": "ali-anbarstani",
+    "created_at": "2026-01-14T15:08:13.047867+00:00",
+    "name": "Ali Anbarstani",
+    "name_fa": "علی عنبرستانی",
+    "city": "Sabzevar",
+    "city_fa": "سبزوار",
+    "location": "Narmak, Tehran",
+    "location_fa": null,
+    "date": "2026-01-13",
+    "coords": {
+      "lat": 35.7563,
+      "lon": 51.5325
+    },
+    "bio": "Born in 1988. Resident of Tehran. Died for the freedom of his homeland after being shot in the head.",
+    "bio_fa": "متولد ۱۳۶۷. ساکن تهران. با اصابت گلوله به سر در راه آزادی وطن جان باخت.",
+    "testimonials": null,
+    "media": null,
+    "source_links": [
+      {
+        "url": "https://x.com/ShahramSadidi/status/2011069611811254480?s=20",
+        "label": "X Post"
+      }
+    ],
+    "verified": true,
+    "submitted_by": null
+  },
+  {
+    "id": "bayat-sobhani",
+    "created_at": "2026-01-14T15:08:13.047867+00:00",
+    "name": "Bayat Sobhani",
+    "name_fa": "بیات سبحانی",
+    "city": "Kermanshah",
+    "city_fa": "کرمانشاه",
+    "location": "Shamshir",
+    "location_fa": "شمشیر",
+    "date": "2026-01-08",
+    "coords": {
+      "lat": 34.3142,
+      "lon": 47.065
+    },
+    "bio": "Kurdish Horami from Shamshir village, shot dead by IRGC during protests.",
+    "bio_fa": "کُرد هورامی اهل روستای شمشیر که در جریان اعتراضات توسط سپاه پاسداران کشته شد.",
+    "testimonials": null,
+    "media": {
+      "photo": "https://pbs.twimg.com/media/G-g0_ejW4AAN2Tw?format=jpg&name=small",
+      "xPost": "https://x.com/longlosthills/status/2010915502999077031?s=20"
+    },
+    "source_links": [
+      {
+        "url": "https://x.com/longlosthills/status/2010915502999077031?s=20",
+        "label": "X Post"
+      }
+    ],
+    "verified": true,
+    "submitted_by": null
+  },
+  {
+    "id": "navid-salehi",
+    "created_at": "2026-01-14T15:08:13.047867+00:00",
+    "name": "Navid Salehi",
+    "name_fa": "نوید صالحی",
+    "city": "Kermanshah",
+    "city_fa": "کرمانشاه",
+    "location": "Paveh",
+    "location_fa": "پاوه",
+    "date": "2026-01-18",
+    "coords": {
+      "lat": 35.0456,
+      "lon": 46.3569
+    },
+    "bio": "23-year-old Kurdish nurse from Paveh, shot dead by regime forces at his workplace in Kermanshah.",
+    "bio_fa": "پرستار ۲۳ ساله کرد اهل پاوه که در محل کارش در کرمانشاه توسط نیروهای رژیم هدف گلوله قرار گرفت و کشته شد.",
+    "testimonials": [],
+    "media": {
+      "photo": "https://pbs.twimg.com/media/G-eYp0bXAAA8Vyi?format=jpg&name=360x360",
+      "xPost": "https://x.com/longlosthills/status/2010743607863505223?s=20"
+    },
+    "source_links": [
+      {
+        "url": "https://x.com/longlosthills/status/2010743607863505223?s=20",
+        "label": "X Post by پری‌سا (@longlosthills)"
+      }
+    ],
+    "verified": true,
+    "submitted_by": null
+  },
+  {
+    "id": "علیرضا-صادقی",
+    "created_at": "2026-01-14T18:02:57.561805+00:00",
+    "name": "Alireza Sadeghi",
+    "name_fa": "علیرضا صادقی",
+    "city": "Unknown",
+    "city_fa": "ناشناس",
+    "location": "Unknown",
+    "location_fa": "ناشناس",
+    "date": "2026-01-14",
+    "coords": {
+      "lat": 32.4279,
+      "lon": 53.688
+    },
+    "bio": "A 25-year-old victim of the Iranian revolution.",
+    "bio_fa": "قربانی 25 ساله انقلاب ایران.",
+    "testimonials": [],
+    "media": {
+      "photo": "https://pbs.twimg.com/media/G-otWZ4XQAEe3VY?format=jpg&name=small",
+      "xPost": "https://x.com/hehe_mikh/status/2011470053917507713?s=20"
+    },
+    "source_links": [
+      {
+        "url": "https://x.com/hehe_mikh/status/2011470053917507713?s=20",
+        "label": "X Post"
+      }
+    ],
+    "verified": true,
+    "submitted_by": null
+  },
+  {
+    "id": "mehdi-(masoud)-zatparvar",
+    "created_at": "2026-01-14T17:03:45.033863+00:00",
+    "name": "Mehdi (Masoud) Zatparvar",
+    "name_fa": "مهدی (مسعود) ذات‌پرور",
+    "city": "Rasht",
+    "city_fa": "رشت",
+    "location": "Rasht",
+    "location_fa": "رشت",
+    "date": "2026-01-09",
+    "coords": {
+      "lat": 37.2808,
+      "lon": 49.5831
+    },
+    "bio": "",
+    "bio_fa": "",
+    "testimonials": [],
+    "media": {
+      "xPost": "https://x.com/Tavaana/status/2009818230806982944?s=20"
+    },
+    "source_links": [
+      {
+        "url": "https://x.com/Tavaana/status/2009818230806982944?s=20",
+        "label": "توانا Tavaana on X"
+      }
+    ],
+    "verified": true,
+    "submitted_by": null
+  },
+  {
+    "id": "mojtaba-torshiz",
+    "created_at": "2026-01-14T15:08:13.047867+00:00",
+    "name": "Mojtaba Torshiz",
+    "name_fa": "مجتبی ترشیز",
+    "city": "Tabriz",
+    "city_fa": "تبریز",
+    "location": "Tabriz",
+    "location_fa": null,
+    "date": "2026-01-13",
+    "coords": {
+      "lat": 38.08,
+      "lon": 46.28
+    },
+    "bio": "Former midfielder for Tractor Sazi Tabriz. Killed alongside his wife while protesting for a free Iran.",
+    "bio_fa": "بازیکن سابق تیم تراکتورسازی تبریز که در جریان اعتراضات به همراه همسرش کشته شد.",
+    "testimonials": null,
+    "media": {
+      "photo": "https://pbs.twimg.com/media/G-l3u-hWwAA1QC5?format=jpg&name=360x360",
+      "xPost": "https://x.com/visegrad24/status/2011270365180502209"
+    },
+    "source_links": [
+      {
+        "url": "https://x.com/visegrad24/status/2011270365180502209",
+        "label": "Visegrád 24 on X"
+      }
+    ],
+    "verified": true,
+    "submitted_by": null
+  },
+  {
+    "id": "عرفان-علیزاده",
+    "created_at": "2026-01-14T17:56:59.121839+00:00",
+    "name": "Erfan Alizadeh",
+    "name_fa": "عرفان علیزاده",
+    "city": "Varamin",
+    "city_fa": "ورامین",
+    "location": "Lumar",
+    "location_fa": "لومار",
+    "date": "2026-01-14",
+    "coords": {
+      "lat": 35.3258,
+      "lon": 51.6447
+    },
+    "bio": "A 24-year-old Kurdish man from Ilam, killed during public protests.",
+    "bio_fa": "جوان ۲۴ ساله کرد اهل ایلام، کشته شده در اعتراضات مردمی.",
+    "testimonials": [],
+    "media": {
+      "photo": "https://pbs.twimg.com/media/G-m_kSXaAAAs-M8?format=jpg&name=900x900",
+      "xPost": "https://x.com/kurdpa_farsi/status/2011349908859888003?s=20"
+    },
+    "source_links": [
+      {
+        "url": "https://x.com/kurdpa_farsi/status/2011349908859888003?s=20",
+        "label": "KURDPA on X"
+      }
+    ],
+    "verified": true,
+    "submitted_by": null
+  },
+  {
+    "id": "mehdi-emamipour",
+    "created_at": "2026-01-14T17:08:56.618652+00:00",
+    "name": "Mehdi Emamipour",
+    "name_fa": "مهدی امام‌پور",
+    "city": "Malekshahi, Ilam",
+    "city_fa": "ملکشاهی، ایلام",
+    "location": "Malekshahi, Ilam",
+    "location_fa": "ملکشاهی، ایلام",
+    "date": "2026-01-03",
+    "coords": {
+      "lat": 33.15,
+      "lon": 46.15
+    },
+    "bio": "Was killed by a direct shot on Saturday, January 3rd, 2026, in Malekshahi, Ilam Province.",
+    "bio_fa": "در روز شنبه، ۳ ژانویه ۲۰۲۶، با شلیک مستقیم در ملکشاهی، استان ایلام کشته شد.",
+    "testimonials": [],
+    "media": {
+      "xPost": "https://x.com/HengawO/status/2007860894634844230?s=20"
+    },
+    "source_links": [
+      {
+        "url": "https://x.com/HengawO/status/2007860894634844230?s=20",
+        "label": "Hengaw Organization for Human Rights on X"
+      }
+    ],
+    "verified": true,
+    "submitted_by": null
+  },
+  {
+    "id": "اردشیر-زارعی",
+    "created_at": "2026-01-14T17:58:32.318173+00:00",
+    "name": "Ardeshir Zarei",
+    "name_fa": "اردشیر زارعی",
+    "city": "Saveh",
+    "city_fa": "ساوه",
+    "location": "Dorvij Village",
+    "location_fa": "روستای درویت",
+    "date": "2024-01-05",
+    "coords": {
+      "lat": 35.0204,
+      "lon": 50.3631
+    },
+    "bio": "He was a laborer and the father of three young children.",
+    "bio_fa": "کارگر و پدر سه کودک خردسال بود.",
+    "testimonials": [],
+    "media": {
+      "photo": "https://pbs.twimg.com/media/G-oyW9KXsAAzM31?format=jpg&name=900x900",
+      "xPost": "https://x.com/iranwire/status/2011475628160364717?s=20"
+    },
+    "source_links": [
+      {
+        "url": "https://x.com/iranwire/status/2011475628160364717?s=20",
+        "label": "ایران وایر"
+      }
+    ],
+    "verified": true,
+    "submitted_by": null
+  },
+  {
+    "id": "آیدا-حیدری",
+    "created_at": "2026-01-14T17:45:02.530545+00:00",
+    "name": "Aida Heidari",
+    "name_fa": "آیدا حیدری",
+    "city": "Tehran",
+    "city_fa": "تهران",
+    "location": "Sadeghieh Square",
+    "location_fa": "میدان صادقیه",
+    "date": "2026-01-08",
+    "coords": {
+      "lat": 35.7091,
+      "lon": 51.3686
+    },
+    "bio": "A 21-year-old student at Tehran University of Medical Sciences, killed during the protests.",
+    "bio_fa": "دانشجوی ۲۱ ساله دانشگاه علوم پزشکی تهران، کشته شده در اعتراضات.",
+    "testimonials": [],
+    "media": {
+      "photo": "https://pbs.twimg.com/media/G-ov6EwaYAAjhGU?format=jpg&name=900x900",
+      "xPost": "https://x.com/HengawO/status/2011472886045761952?s=20"
+    },
+    "source_links": [
+      {
+        "url": "https://x.com/HengawO/status/2011472886045761952?s=20",
+        "label": "X Post"
+      },
+      {
+        "url": "https://x.com/HengawO/status/2011472886045761952?s=20",
+        "label": "Hengaw Organization for Human Rights on X"
+      }
+    ],
+    "verified": true,
+    "submitted_by": null
+  },
+  {
+    "id": "latif-karimi",
+    "created_at": "2026-01-14T17:11:07.480889+00:00",
+    "name": "Latif Karimi",
+    "name_fa": "لاتیف کریمی",
+    "city": "Malekshahi, Ilam",
+    "city_fa": "ملکشاهی، ایلام",
+    "location": "Malekshahi, Ilam",
+    "location_fa": "ملکشاهی، ایلام",
+    "date": "2026-01-03",
+    "coords": {
+      "lat": 33.15,
+      "lon": 46.15
+    },
+    "bio": "",
+    "bio_fa": "",
+    "testimonials": [],
+    "media": {
+      "xPost": "https://x.com/PahlaviReza/status/2007896852491124804?s=20"
+    },
+    "source_links": [
+      {
+        "url": "https://x.com/PahlaviReza/status/2007896852491124804?s=20",
+        "label": "Reza Pahlavi Official Account on X"
+      }
+    ],
+    "verified": true,
+    "submitted_by": null
+  },
+  {
+    "id": "علی-صدیقی",
+    "created_at": "2026-01-14T17:56:04.559348+00:00",
+    "name": "Ali Sadeghi",
+    "name_fa": "علی صدیقی",
+    "city": "Lahijan",
+    "city_fa": "لاهیجان",
+    "location": "Lahijan",
+    "location_fa": "لاهیجان",
+    "date": "2026-01-14",
+    "coords": {
+      "lat": 37.2061,
+      "lon": 49.8756
+    },
+    "bio": "30-year-old electrician, killed during the Lahijan protests.",
+    "bio_fa": "برق‌کار ۳۰ ساله، کشته شده در اعتراضات لاهیجان.",
+    "testimonials": [],
+    "media": {
+      "photo": "https://pbs.twimg.com/media/G-opGbwWwAAFRsX?format=jpg&name=small",
+      "xPost": "https://x.com/Mohammadabedi_z/status/2011465376752648484?s=20"
+    },
+    "source_links": [
+      {
+        "url": "https://x.com/Mohammadabedi_z/status/2011465376752648484?s=20",
+        "label": "X Post"
+      }
+    ],
+    "verified": true,
+    "submitted_by": null
+  },
+  {
+    "id": "mohammad-qasem-rusta",
+    "created_at": "2026-01-14T15:41:27.157322+00:00",
+    "name": "Mohammad Qasem Rusta",
+    "name_fa": "محمد قاسم رستا",
+    "city": "Marvdasht, Fars",
+    "city_fa": "مرودشت، فارس",
+    "location": "Marvdasht, Fars",
+    "location_fa": "مرودشت، فارس",
+    "date": "2026-01-14",
+    "coords": {
+      "lat": 29.8744,
+      "lon": 52.8025
+    },
+    "bio": "Mohammad Qasem Rusta, an 18-year-old youth, was injured on Friday, January 2, due to gunfire from government forces and passed away in the hospital the next day.",
+    "bio_fa": "محمد قاسم رستا، جوان 18 ساله، در روز جمعه 2 ژانویه بر اثر شلیک نیروهای دولتی مجروح شد و روز بعد در بیمارستان درگذشت.",
+    "testimonials": [],
+    "media": {
+      "photo": "https://pbs.twimg.com/media/G9117bBXMAAjKy3?format=jpg&name=900x900",
+      "xPost": "https://x.com/indypersian/status/2007890985389380084?s=20"
+    },
+    "source_links": [
+      {
+        "url": "https://x.com/indypersian/status/2007890985389380084?s=20",
+        "label": "Square profile picture independentpersian"
+      }
+    ],
+    "verified": true,
+    "submitted_by": null
+  },
+  {
+    "id": "setayesh-shafiei",
+    "created_at": "2026-01-14T17:54:11.957412+00:00",
+    "name": "Setayesh Shafiei",
+    "name_fa": "ستایش شفیعی",
+    "city": "Tehran",
+    "city_fa": "تهران",
+    "location": "Tehran",
+    "location_fa": "تهران",
+    "date": "2026-01-14",
+    "coords": {
+      "lat": 35.6892,
+      "lon": 51.389
+    },
+    "bio": "20-year-old murdered by the Islamic regime for demanding freedom.",
+    "bio_fa": "دختر 20 ساله‌ای که توسط رژیم اسلامی به دلیل درخواست آزادی به قتل رسید.",
+    "testimonials": [],
+    "media": {
+      "photo": "https://pbs.twimg.com/media/G-o6mfHacAA2p6g?format=jpg&name=small",
+      "xPost": "https://x.com/NoaMagid/status/2011484619330232624?s=20"
+    },
+    "source_links": [
+      {
+        "url": "https://x.com/NoaMagid/status/2011484619330232624?s=20",
+        "label": "X Post"
+      }
+    ],
+    "verified": true,
+    "submitted_by": null
+  },
+  {
+    "id": "ribin-moradi",
+    "created_at": "2026-01-14T15:08:13.047867+00:00",
+    "name": "Ribin Moradi",
+    "name_fa": "ریبین مرادی",
+    "city": "Tehran",
+    "city_fa": "تهران",
+    "location": "Tehran",
+    "location_fa": null,
+    "date": "2026-01-13",
+    "coords": {
+      "lat": 35.6892,
+      "lon": 51.389
+    },
+    "bio": "Rebin Moradi, a 17-year-old child from Salas Babajani, was killed by direct gunfire from government forces.",
+    "bio_fa": "نوجوان ۱۷ ساله اهل ثلاث باباجانی که در تهران با شلیک مستقیم کشته شد.",
+    "testimonials": null,
+    "media": {
+      "photo": "https://pbs.twimg.com/amplify_video_thumb/2011320779992944640/img/g697sZ3ImvuqZGox.jpg",
+      "xPost": "https://x.com/indypersian/status/2011320861119173063?s=20"
+    },
+    "source_links": [
+      {
+        "url": "https://x.com/indypersian/status/2011320861119173063?s=20",
+        "label": "Reference"
+      }
+    ],
+    "verified": true,
+    "submitted_by": null
+  },
+  {
+    "id": "mohammad-amin",
+    "created_at": "2026-01-14T15:08:13.047867+00:00",
+    "name": "Mohammad Amin",
+    "name_fa": "محمد امین",
+    "city": "Mashhad",
+    "city_fa": "مشهد",
+    "location": "Behesht-e Reza",
+    "location_fa": null,
+    "date": "2026-01-13",
+    "coords": {
+      "lat": 36.2605,
+      "lon": 59.6168
+    },
+    "bio": "Mohammad Amin was a victim of the Iran Massacre, killed in Mashhad and buried in Behesht-e Reza.",
+    "bio_fa": "محمد امین که در جریان کشتار مشهد کشته و در بهشت رضا دفن شد.",
+    "testimonials": null,
+    "media": {
+      "photo": "https://pbs.twimg.com/media/G-lJDaVWkAAeVQ3?format=jpg&name=small",
+      "xPost": "https://x.com/animmigrantofqc/status/2011219034985894150?s=20"
+    },
+    "source_links": [
+      {
+        "url": "https://x.com/animmigrantofqc/status/2011219034985894150?s=20",
+        "label": "X Post"
+      }
+    ],
+    "verified": true,
+    "submitted_by": null
+  },
+  {
+    "id": "golaleh-mahmoudi-azar",
+    "created_at": "2026-01-14T18:20:02.31816+00:00",
+    "name": "Golaleh Mahmoudi Azar",
+    "name_fa": "گلاله محمودی آذر",
+    "city": "Tehran",
+    "city_fa": "تهران",
+    "location": "Tehran",
+    "location_fa": "تهران",
+    "date": "2026-01-08",
+    "coords": {
+      "lat": 35.6892,
+      "lon": 51.389
+    },
+    "bio": "Kurdish citizen from Mahabad, killed by government forces during protests in Tehran.",
+    "bio_fa": "شهروند کرد از مهاباد، توسط نیروهای دولتی در جریان اعتراضات در تهران کشته شد.",
+    "testimonials": [],
+    "media": {
+      "photo": "https://pbs.twimg.com/media/G-k2h9EWsAEd-c-?format=jpg&name=900x900",
+      "xPost": "https://x.com/HengawO/status/2011200122613617013?s=20"
+    },
+    "source_links": [
+      {
+        "url": "https://x.com/HengawO/status/2011200122613617013?s=20",
+        "label": "Hengaw Organization for Human Rights (X Post)"
+      }
+    ],
+    "verified": true,
+    "submitted_by": null
+  },
+  {
+    "id": "mobin-fili",
+    "created_at": "2026-01-14T15:08:13.047867+00:00",
+    "name": "Mobin Fili",
+    "name_fa": "مبین فیلی",
+    "city": "Eyvan",
+    "city_fa": "ایوان غرب",
+    "location": "Eyvan",
+    "location_fa": "ایوان غرب",
+    "date": "2026-01-13",
+    "coords": {
+      "lat": 32.7167,
+      "lon": 46.55
+    },
+    "bio": "Mobin Fili, 24 years old, was killed by gunfire during the protests on January 13, 2026.",
+    "bio_fa": "مبین فیلی، ۲۴ ساله، در اعتراضات ۱۹ دی ۱۴۰۴ با گلوله جنگی کشته شد.",
+    "testimonials": null,
+    "media": {
+      "photo": "https://pbs.twimg.com/media/G-kqZHWWoAA8XwQ?format=jpg&name=900x900",
+      "xPost": "https://x.com/Soranmansournia/status/2011185321929539724?s=20"
+    },
+    "source_links": [
+      {
+        "url": "https://x.com/Soranmansournia/status/2011185321929539724?s=20",
+        "label": "X Post"
+      }
+    ],
+    "verified": true,
+    "submitted_by": null
+  },
+  {
+    "id": "reza-haji-moradian",
+    "created_at": "2026-01-14T18:06:04.040175+00:00",
+    "name": "Reza Haji Moradian",
+    "name_fa": "رضا حاجی مرادیان",
+    "city": "Karaj",
+    "city_fa": "کرج",
+    "location": "Karaj",
+    "location_fa": "کرج",
+    "date": "2026-01-14",
+    "coords": {
+      "lat": 35.8327,
+      "lon": 50.9916
+    },
+    "bio": "A Kurdish man from Qasr-e Shirin, killed by direct gunfire from forces of the Islamic Republic of Iran.",
+    "bio_fa": "مردی کرد از قصر شیرین، که توسط آتش مستقیم نیروهای جمهوری اسلامی ایران کشته شد.",
+    "testimonials": [],
+    "media": {
+      "photo": "https://pbs.twimg.com/card_img/2011352342789308422/_IUndXrO?format=jpg&name=small",
+      "xPost": "https://x.com/Hengaw_English/status/2011391393072300058?s=20"
+    },
+    "source_links": [
+      {
+        "url": "https://x.com/Hengaw_English/status/2011391393072300058?s=20",
+        "label": "Hengaw Organization for Human Rights"
+      }
+    ],
+    "verified": true,
+    "submitted_by": null
+  },
+  {
+    "id": "mansour-mokhtari",
+    "created_at": "2026-01-14T16:42:22.528166+00:00",
+    "name": "Mansour Mokhtari",
+    "name_fa": "منصور مختاری",
+    "city": "Marvdasht, Fars",
+    "city_fa": "مرودشت، فارس",
+    "location": "Marvdasht, Fars",
+    "location_fa": "مرودشت، فارس",
+    "date": "2026-01-02",
+    "coords": {
+      "lat": 29.8736,
+      "lon": 52.8011
+    },
+    "bio": "Mansour Mokhtari, a graduate in electrical engineering, a tailor from Marvdasht in Fars Province, was shot by government forces on January 2 and killed.",
+    "bio_fa": "منصور مختاری، فارغ‌التحصیل مهندسی برق و خیاطی از مرودشت در استان فارس، در تاریخ ۲ ژانویه توسط نیروهای دولتی هدف گلوله قرار گرفت و کشته شد.",
+    "testimonials": [],
+    "media": {
+      "photo": "https://pbs.twimg.com/media/G96npnXW0AApi_M?format=jpg&name=900x900",
+      "xPost": "https://x.com/ManotoNews/status/2008237059379507633?s=20"
+    },
+    "source_links": [
+      {
+        "url": "https://x.com/ManotoNews/status/2008237059379507633?s=20",
+        "label": "Manoto News on X"
+      }
+    ],
+    "verified": true,
+    "submitted_by": null
+  },
+  {
+    "id": "siyavash-shirazad",
+    "created_at": "2026-01-14T18:42:13.258413+00:00",
+    "name": "Siyavash Shirazad",
+    "name_fa": "سیاوش شیرزاد",
+    "city": "Bukan",
+    "city_fa": "بوکان",
+    "location": "Tehran",
+    "location_fa": "تهران",
+    "date": "2026-01-08",
+    "coords": {
+      "lat": 36.5218,
+      "lon": 46.2089
+    },
+    "bio": "38-year-old Kurdish man killed during protests in Tehran by government forces.",
+    "bio_fa": "مرد ۳۸ ساله کورد که در جریان اعتراضات تهران توسط نیروهای حکومتی کشته شد.",
+    "testimonials": [],
+    "media": {
+      "photo": "https://pbs.twimg.com/media/G-oA5-GWAAAVGvl?format=jpg&name=900x900",
+      "xPost": "https://x.com/HengawO/status/2011421212141101090?s=20"
+    },
+    "source_links": [
+      {
+        "url": "https://x.com/HengawO/status/2011421212141101090?s=20",
+        "label": "X Post"
+      }
+    ],
+    "verified": true,
+    "submitted_by": null
+  },
+  {
+    "id": "nima-parsa",
+    "created_at": "2026-01-14T15:08:13.047867+00:00",
+    "name": "Nima Parsa",
+    "name_fa": "نیما پارسا",
+    "city": "Tehran",
+    "city_fa": "تهران",
+    "location": "Tehran",
+    "location_fa": null,
+    "date": "2026-01-14",
+    "coords": {
+      "lat": 35.6892,
+      "lon": 51.389
+    },
+    "bio": "Nima Parsa was an Italian and English teacher who shared free course videos on YouTube. He was killed during the protests on January 14, 2026.",
+    "bio_fa": "نیما پارسا معلم زبان که در جریان اعتراضات ژانویه ۲۰۲۶ کشته شد.",
+    "testimonials": null,
+    "media": {
+      "photo": "https://pbs.twimg.com/media/G-m93t2bQAEM4Zs?format=jpg&name=large",
+      "xPost": "https://x.com/morgomirrr/status/2011347482924761522?s=20"
+    },
+    "source_links": [
+      {
+        "url": "https://x.com/morgomirrr/status/2011347482924761522?s=20",
+        "label": "X Post"
+      }
+    ],
+    "verified": true,
+    "submitted_by": null
+  },
+  {
+    "id": "mahsa-amini",
+    "created_at": "2026-01-14T15:08:13.047867+00:00",
+    "name": "Mahsa (Jina) Amini",
+    "name_fa": "مهسا (ژینا) امینی",
+    "city": "Saqqez",
+    "city_fa": "سقز",
+    "location": "Tehran / Saqqez",
+    "location_fa": null,
+    "date": "2022-09-16",
+    "coords": {
+      "lat": 36.25,
+      "lon": 46.2667
+    },
+    "bio": "A 22-year-old Iranian woman whose death in police custody sparked nationwide protests.",
+    "bio_fa": "دختر ۲۲ ساله‌ای که مرگ او در بازداشت گشت ارشاد باعث اعتراضات سراسری در ایران شد.",
+    "testimonials": [
+      "Woman, Life, Freedom"
+    ],
+    "media": {
+      "photo": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1d/Mahsa_Amini_in_2022.jpg/440px-Mahsa_Amini_in_2022.jpg"
+    },
+    "source_links": [
+      {
+        "url": "https://en.wikipedia.org/wiki/Death_of_Mahsa_Amini",
+        "label": "Wikipedia"
+      },
+      {
+        "url": "https://www.amnesty.org/en/latest/news/2022/09/iran-investigate-death-in-custody-of-mahsa-amini/",
+        "label": "Amnesty International"
+      }
+    ],
+    "verified": true,
+    "submitted_by": null
+  },
+  {
+    "id": "parsa-saffar",
+    "created_at": "2026-01-14T15:08:13.047867+00:00",
+    "name": "Parsa Saffar",
+    "name_fa": "پارسا صفار",
+    "city": "Mashhad",
+    "city_fa": "مشهد",
+    "location": "Mashhad",
+    "location_fa": null,
+    "date": "2023-01-10",
+    "coords": {
+      "lat": 36.2605,
+      "lon": 59.6168
+    },
+    "bio": "Medical student at Mashhad University of Medical Sciences, graduate of NODET.",
+    "bio_fa": "دانشجوی پزشکی دانشگاه علوم پزشکی مشهد و فارغ‌التحصیل سمپاد.",
+    "testimonials": null,
+    "media": {
+      "photo": "https://pbs.twimg.com/media/G-n3QS3bIAArg1b?format=jpg&name=240x240",
+      "xPost": "https://x.com/longlosthills/status/2011412971725987840?s=20"
+    },
+    "source_links": [
+      {
+        "url": "https://x.com/longlosthills/status/2011412971725987840?s=20",
+        "label": "X Post"
+      }
+    ],
+    "verified": true,
+    "submitted_by": null
+  },
+  {
+    "id": "sina-ashkboosi",
+    "created_at": "2026-01-14T15:08:13.047867+00:00",
+    "name": "Sina Ashkboosi",
+    "name_fa": "سینا اشکبوسی",
+    "city": "Tehran",
+    "city_fa": "تهران",
+    "location": "Tehranpars Park",
+    "location_fa": "پارک تهرانپارس",
+    "date": "2026-01-07",
+    "coords": {
+      "lat": 35.7442,
+      "lon": 51.5611
+    },
+    "bio": "On January 7, the Islamic regime’s security forces opened fire on 25 children while they were chanting anti-regime slogans. Sina was one of them and died on the way to the hospital.\n\nHe was buried on January 12. His family was forced to promise that the funeral would be held in complete silence.",
+    "bio_fa": "در ۷ ژانویه، نیروهای امنیتی رژیم اسلامی به سوی ۲۵ کودک که شعارهای ضد رژیم می‌دادند تیراندازی کردند. سینا یکی از آن‌ها بود و در راه بیمارستان جان باخت.\n\nاو در ۱۲ ژانویه به خاک سپرده شد. خانواده او مجبور شدند تعهد بدهند که مراسم تشییع جنازه در سکوت کامل برگزار شود.",
+    "testimonials": null,
+    "media": {
+      "photo": "https://pbs.twimg.com/media/G-oAYSwWcAA7du6?format=jpg&name=small",
+      "xPost": "https://x.com/visegrad24/status/2011420708073504785?s=20"
+    },
+    "source_links": [
+      {
+        "url": "https://x.com/visegrad24/status/2011420708073504785?s=20",
+        "label": "Visegrád 24"
+      }
+    ],
+    "verified": true,
+    "submitted_by": null
+  },
+  {
+    "id": "abbas-khadem",
+    "created_at": "2026-01-14T18:44:42.788669+00:00",
+    "name": "Abbas Khadem",
+    "name_fa": "عباس خادم",
+    "city": "Rasht",
+    "city_fa": "رشت",
+    "location": "Rostamabad",
+    "location_fa": "رستم‌آباد",
+    "date": "2024-01-08",
+    "coords": {
+      "lat": 37.2761,
+      "lon": 49.5886
+    },
+    "bio": "Sports coach from Rostamabad, Gilan, killed by a military bullet during peaceful protests.",
+    "bio_fa": "مربی ورزش ساکن رستم‌آباد گیلان، در اعتراضات مسالمت‌آمیز بر اثر اصابت گلوله جنگی جان باخت.",
+    "testimonials": [],
+    "media": {
+      "photo": "https://pbs.twimg.com/media/G-oOSaxacAIk1Xc?format=jpg&name=900x900",
+      "xPost": "https://x.com/ManotoNews/status/2011436074456035649?s=20"
+    },
+    "source_links": [
+      {
+        "url": "https://x.com/kurdpa_farsi/status/2011430889746575510?s=20",
+        "label": "KURDPA on X"
+      },
+      {
+        "url": "https://x.com/ManotoNews/status/2011436074456035649?s=20",
+        "label": "X Post"
+      }
+    ],
+    "verified": true,
+    "submitted_by": null
+  },
+  {
+    "id": "kiwan-rezaei",
+    "created_at": "2026-01-14T18:47:06.15505+00:00",
+    "name": "Kiwan Rezaei",
+    "name_fa": "کیوان رضایی",
+    "city": "Kermanshah",
+    "city_fa": "کرمانشاه",
+    "location": "Dareh Drizh neighborhood",
+    "location_fa": "محله دره‌دریژ",
+    "date": "2026-01-08",
+    "coords": {
+      "lat": 34.3142,
+      "lon": 47.065
+    },
+    "bio": "Kiwan Rezaei, a Kurd of Yarsan faith, was killed by suppressive forces with a military bullet during an attack in Kermanshah.",
+    "bio_fa": "کیوان رضایی، کرد یارسان، توسط نیروهای سرکوبگر با گلوله جنگی در حمله به کرمانشاه کشته شد.",
+    "testimonials": [],
+    "media": {
+      "photo": "https://pbs.twimg.com/media/G-kkJCKWoAAN6Ev?format=jpg&name=small",
+      "xPost": "https://x.com/Soranmansournia/status/2011178449202012664?s=20"
+    },
+    "source_links": [
+      {
+        "url": "https://x.com/Soranmansournia/status/2011178449202012664?s=20",
+        "label": "X Post"
+      }
+    ],
+    "verified": true,
+    "submitted_by": null
+  },
+  {
+    "id": "siawash-shirazad",
+    "created_at": "2026-01-14T18:47:57.687617+00:00",
+    "name": "Siawash Shirazad",
+    "name_fa": "سیاوش شیرزاد",
+    "city": "Bukan",
+    "city_fa": "بوکان",
+    "location": "Tehran",
+    "location_fa": "تهران",
+    "date": "2026-01-14",
+    "coords": {
+      "lat": 36.5216,
+      "lon": 46.2106
+    },
+    "bio": "A young man from Bukan killed in Tehran.",
+    "bio_fa": "جوان بوکانی که در تهران کشته شد.",
+    "testimonials": [],
+    "media": {
+      "photo": "https://pbs.twimg.com/media/G-nfpxGX0AAWZ7J?format=jpg&name=medium",
+      "xPost": "https://x.com/SamRasoulpour/status/2011384624170094953?s=20"
+    },
+    "source_links": [
+      {
+        "url": "https://x.com/SamRasoulpour/status/2011384624170094953?s=20",
+        "label": "X Post"
+      }
+    ],
+    "verified": true,
+    "submitted_by": null
+  },
+  {
+    "id": "amir-shokouri",
+    "created_at": "2026-01-14T18:50:35.332683+00:00",
+    "name": "Amir Shokouri",
+    "name_fa": "امیر شکوری",
+    "city": "Lahijan",
+    "city_fa": "لاهیجان",
+    "location": "Lahijan",
+    "location_fa": "لاهیجان",
+    "date": "2026-01-14",
+    "coords": {
+      "lat": 37.2061,
+      "lon": 50.0039
+    },
+    "bio": "Amir Shokouri, a protester from Lahijan, was killed on January 14, 2026.",
+    "bio_fa": "امیر شکوری، یکی از معترضان لاهیجانی، در ۱۸ دی ۴۰۴ کشته شد.",
+    "testimonials": [],
+    "media": {
+      "photo": "https://pbs.twimg.com/media/G-obohlawAAinBd?format=jpg&name=900x900",
+      "xPost": "https://x.com/Mohammadabedi_z/status/2011450569567895975?s=20"
+    },
+    "source_links": [
+      {
+        "url": "https://x.com/kurdpa_farsi/status/2011442976497557742?s=20",
+        "label": "KURDPA"
+      },
+      {
+        "url": "https://x.com/Mohammadabedi_z/status/2011450569567895975?s=20",
+        "label": "X Post"
+      }
+    ],
+    "verified": true,
+    "submitted_by": null
+  },
+  {
+    "id": "shahram-maghsoudi",
+    "created_at": "2026-01-14T19:09:41.081129+00:00",
+    "name": "Shahram Maghsoudi",
+    "name_fa": "شهرام مقصودی",
+    "city": "Isfahan",
+    "city_fa": "اصفهان",
+    "location": "Baharestan",
+    "location_fa": "بهارستان",
+    "date": "2024-01-09",
+    "coords": {
+      "lat": 32.6539,
+      "lon": 51.666
+    },
+    "bio": "Shahram Maghsoudi, born in Izeh, was a powerlifting athlete killed during national protests in Baharestan, Isfahan. He was known for his integrity and participation in protests.",
+    "bio_fa": "شهرام مقصودی، متولد ایذه و ورزشکار رشته پاورلیفتینگ، در اعتراضات ملی در بهارستان اصفهان کشته شد. او به دلیل شرافت و حضور در اعتراضات شناخته می‌شد.",
+    "testimonials": [],
+    "media": {
+      "photo": "https://pbs.twimg.com/media/G-odEs9aQAIReqI?format=jpg&name=900x900",
+      "xPost": "https://x.com/indypersian/status/2011452156931371501?s=20"
+    },
+    "source_links": [
+      {
+        "url": "https://x.com/indypersian/status/2011452156931371501?s=20",
+        "label": "X Post"
+      }
+    ],
+    "verified": true,
+    "submitted_by": null
+  },
+  {
+    "id": "sorna-golgun",
+    "created_at": "2026-01-14T19:12:02.036775+00:00",
+    "name": "Sorna Golgun",
+    "name_fa": "سورنا گلگون",
+    "city": "Shahsvar",
+    "city_fa": "شهسوار",
+    "location": "Shahsvar (Tonekabon)",
+    "location_fa": "شهسوار (تنکابن)",
+    "date": "2026-01-10",
+    "coords": {
+      "lat": 36.8167,
+      "lon": 50.8764
+    },
+    "bio": "18-year-old first-term student, shot from behind and killed in Shahsvar. Two of his uncles were previously martyred in the Iran-Iraq war.",
+    "bio_fa": "دانشجوی ۱۸ ساله ترم اول، در شهسوار از پشت هدف گلوله قرار گرفت و کشته شد. دو تن از عموهای او پیش‌تر در جنگ ایران و عراق جان باخته بودند.",
+    "testimonials": [],
+    "media": {
+      "photo": "https://pbs.twimg.com/media/G-mDb1yXwAA5P9e?format=jpg&name=900x900",
+      "xPost": "https://x.com/IranIntl/status/2011283226669584554?s=20"
+    },
+    "source_links": [
+      {
+        "url": "https://x.com/IranIntl/status/2011283226669584554?s=20",
+        "label": "Iran International X Post"
+      }
+    ],
+    "verified": true,
+    "submitted_by": null
+  },
+  {
+    "id": "mohammadreza-madani",
+    "created_at": "2026-01-15T14:32:25.347756+00:00",
+    "name": "Mohammadreza Madani",
+    "name_fa": "محمد رضا مدنی",
+    "city": "Unknown",
+    "city_fa": null,
+    "location": "",
+    "location_fa": null,
+    "date": "2026-01-15",
+    "coords": {
+      "lat": 35.6892,
+      "lon": 51.389
+    },
+    "bio": "One of thousands of young Iranians killed for demanding freedom.",
+    "bio_fa": "یکی از هزاران جوان ایرانی که برای درخواست آزادی کشته شدند.",
+    "testimonials": [],
+    "media": {
+      "photo": "https://pbs.twimg.com/media/G-q244obwAE8vQ0?format=jpg&name=large",
+      "xPost": "https://x.com/i/status/2011621276956442676"
+    },
+    "source_links": [
+      {
+        "url": "https://x.com/i/status/2011621276956442676",
+        "label": "X Post"
+      }
+    ],
+    "verified": true,
+    "submitted_by": null
+  },
+  {
+    "id": "majid-vaez",
+    "created_at": "2026-01-14T19:14:00.646878+00:00",
+    "name": "Majid Vaez",
+    "name_fa": "مجید واعظی",
+    "city": "Tehran",
+    "city_fa": "تهران",
+    "location": "Street of residence",
+    "location_fa": "خیابان محل اقامت",
+    "date": "2026-01-13",
+    "coords": {
+      "lat": 35.6892,
+      "lon": 51.389
+    },
+    "bio": "Majid Vaez, a Tehran resident, was killed by security forces' gunfire while holding his daughter. He was originally from Langarud.",
+    "bio_fa": "مجید واعظی، شهروند ساکن تهران، با شلیک گلوله مستقیم ماموران امنیتی در خیابان محل اقامت خودش کشته شد، در حالی که دخترش در آغوشش بود. او اصالتا لنگرودی بود.",
+    "testimonials": [],
+    "media": {
+      "photo": "https://pbs.twimg.com/media/G-h9ZPvXkAAvIuo?format=jpg&name=900x900",
+      "xPost": "https://x.com/masoudkazemi81/status/2010995110939357678?s=20"
+    },
+    "source_links": [
+      {
+        "url": "https://x.com/masoudkazemi81/status/2010995110939357678?s=20",
+        "label": "X Post"
+      }
+    ],
+    "verified": true,
+    "submitted_by": null
+  },
+  {
+    "id": "amirparsa-ashkbus",
+    "created_at": "2026-01-14T19:15:07.102931+00:00",
+    "name": "Amirparsa Ashkbus",
+    "name_fa": "امیرپارسا اشکبوس",
+    "city": "Tehran",
+    "city_fa": "تهران",
+    "location": "",
+    "location_fa": null,
+    "date": "2024-01-08",
+    "coords": {
+      "lat": 35.6892,
+      "lon": 51.389
+    },
+    "bio": "Killed by government forces during peaceful protests in Tehran on 18 Dey.",
+    "bio_fa": "در اعتراضات مسالمت‌آمیز ۱۸ دی تهران با شلیک گلوله ماموران حکومتی کشته شد.",
+    "testimonials": [],
+    "media": {
+      "photo": "https://pbs.twimg.com/media/G-n2_sja8AAh2tY?format=jpg&name=900x900",
+      "xPost": "https://x.com/ManotoNews/status/2011410379033985486?s=20"
+    },
+    "source_links": [
+      {
+        "url": "https://x.com/ManotoNews/status/2011410379033985486?s=20",
+        "label": "X Post"
+      }
+    ],
+    "verified": true,
+    "submitted_by": null
+  },
+  {
+    "id": "ehsan-bozorgi",
+    "created_at": "2026-01-14T21:16:51.567254+00:00",
+    "name": "Ehsan Bozorgi",
+    "name_fa": null,
+    "city": "Marvdasht, Fars",
+    "city_fa": null,
+    "location": "Marvdasht, Fars",
+    "location_fa": null,
+    "date": "2026-01-04",
+    "coords": {
+      "lat": 35.6892,
+      "lon": 51.389
+    },
+    "bio": "Ehsan Bozorgi, a 22-year-old athlete from Marvdasht County in Fars Province, was shot in the head on January 1st, 2026.\n\nEhsan Bozorgi is described as a medalist in national powerlifting, provincial arm wrestling, and wrestling in Fars Province. It is said that he was injured on January 1, 2023, and, after being transferred for treatment, succumbed to the severity of his injuries three days later.",
+    "bio_fa": null,
+    "testimonials": [],
+    "media": {
+      "photo": "https://pbs.twimg.com/media/G-fHMioWAAENuEa?format=jpg&name=900x900",
+      "xPost": "https://x.com/ManotoNews/status/2010808272874307615?s=20"
+    },
+    "source_links": [
+      {
+        "url": "https://x.com/ManotoNews/status/2010808272874307615?s=20",
+        "label": "Manoto News on X"
+      }
+    ],
+    "verified": true,
+    "submitted_by": null
+  },
+  {
+    "id": "https://x.com/manotonews/status/2006856121458577529?s=20",
+    "created_at": "2026-01-14T21:17:51.548167+00:00",
+    "name": "https://x.com/ManotoNews/status/2006856121458577529?s=20",
+    "name_fa": null,
+    "city": "Marvdasht, Fars",
+    "city_fa": null,
+    "location": "Marvdasht, Fars",
+    "location_fa": null,
+    "date": "2026-01-01",
+    "coords": {
+      "lat": 35.6892,
+      "lon": 51.389
+    },
+    "bio": "A 33-year-old father of two children from Marvdasht in Fars was killed by direct gunfire from government forces during the protests on January 1, 2026. He was shot with a shotgun at close range and passed away after being transferred to a clinic. ",
+    "bio_fa": null,
+    "testimonials": [],
+    "media": {
+      "photo": "https://pbs.twimg.com/amplify_video_thumb/2006855979095232513/img/6IkqCuHGO92ACqZ7.jpg",
+      "xPost": "https://x.com/ManotoNews/status/2006856121458577529?s=20"
+    },
+    "source_links": [
+      {
+        "url": "https://x.com/ManotoNews/status/2006856121458577529?s=20",
+        "label": "Manoto News on X"
+      }
+    ],
+    "verified": true,
+    "submitted_by": null
+  },
+  {
+    "id": "ahmad-jaleel-sar-qaleh",
+    "created_at": "2026-01-14T21:27:08.318677+00:00",
+    "name": "Ahmad Jaleel Sar-Qaleh",
+    "name_fa": null,
+    "city": "Lordegan, Chaharmahal and Bakhtiari province",
+    "city_fa": null,
+    "location": "Lordegan, Chaharmahal and Bakhtiari province",
+    "location_fa": null,
+    "date": "2026-01-03",
+    "coords": {
+      "lat": 35.6892,
+      "lon": 51.389
+    },
+    "bio": "Ahmad Jaleel, a 21-year-old youth, lost his life on January 3rd, 2026, in Lordegan, Chaharmahal and Bakhtiari province due to direct gunfire from the suppressors.",
+    "bio_fa": null,
+    "testimonials": [],
+    "media": {
+      "xPost": "https://x.com/IranIntl/status/2007414048657133940?s=20"
+    },
+    "source_links": [
+      {
+        "url": "https://x.com/IranIntl/status/2007414048657133940?s=20",
+        "label": "Iran International"
+      }
+    ],
+    "verified": true,
+    "submitted_by": null
+  },
+  {
+    "id": "sajjad-valamanesh",
+    "created_at": "2026-01-14T21:30:09.325229+00:00",
+    "name": "Sajjad Valamanesh",
+    "name_fa": null,
+    "city": "Lordegan, Chaharmahal and Bakhtiari province",
+    "city_fa": null,
+    "location": "Lordegan, Chaharmahal and Bakhtiari province",
+    "location_fa": null,
+    "date": "2026-01-11",
+    "coords": {
+      "lat": 35.6892,
+      "lon": 51.389
+    },
+    "bio": "Sajjad Valamanesh was born on May 28, 2005, and was a construction worker. He was identified as being from the Zilaee tribe and among the Bakhtiari Lors. He was killed by gunfire from government agents during the protests on Thursday, January 11, 2026, in Lordegan, Chaharmahal and Bakhtiari Province. The funeral ceremony for Sajjad Valamanesh was held on Friday, January 12, 2026.",
+    "bio_fa": null,
+    "testimonials": [],
+    "media": {
+      "photo": "https://pbs.twimg.com/media/G9wEDtYXoAAmpf4?format=jpg&name=900x900",
+      "xPost": "https://x.com/IranIntl/status/2007485706726232241?s=20"
+    },
+    "source_links": [
+      {
+        "url": "https://x.com/IranIntl/status/2007485706726232241?s=20",
+        "label": "Iran International"
+      }
+    ],
+    "verified": true,
+    "submitted_by": null
+  },
+  {
+    "id": "hossein-rabei",
+    "created_at": "2026-01-14T21:33:23.586702+00:00",
+    "name": "Hossein Rabei",
+    "name_fa": null,
+    "city": "Qom",
+    "city_fa": null,
+    "location": "Qom",
+    "location_fa": null,
+    "date": "2026-01-02",
+    "coords": {
+      "lat": 35.6892,
+      "lon": 51.389
+    },
+    "bio": "",
+    "bio_fa": null,
+    "testimonials": [],
+    "media": {
+      "photo": "https://pbs.twimg.com/media/G9vHC5WWEAEOmFc?format=jpg&name=900x900",
+      "xPost": "https://x.com/ManotoNews/status/2007416924313940378?s=20"
+    },
+    "source_links": [
+      {
+        "url": "https://x.com/ManotoNews/status/2007416924313940378?s=20",
+        "label": "Manoto News on X"
+      }
+    ],
+    "verified": true,
+    "submitted_by": null
+  },
+  {
+    "id": "ebrahim-ahmadpourian",
+    "created_at": "2026-01-15T02:33:15.327503+00:00",
+    "name": "Ebrahim Ahmadpourian",
+    "name_fa": "ابراهیم احمدپوریان",
+    "city": "Tehran",
+    "city_fa": "تهران",
+    "location": "Naziyabad",
+    "location_fa": "نازی‌آباد",
+    "date": "2026-01-08",
+    "coords": {
+      "lat": 35.6892,
+      "lon": 51.389
+    },
+    "bio": "A Kurdish citizen, father of two children, from Saqqez, killed by special forces during protests.",
+    "bio_fa": "شهروند کُرد، پدر دو فرزند و اهل سقز، توسط گردان‌های موتورسوار یگان ویژه کشته شد.",
+    "testimonials": [],
+    "media": {
+      "photo": "https://pbs.twimg.com/media/G-dZCQUWcAAGBoX?format=jpg&name=small",
+      "xPost": "https://x.com/i/status/2010673655773057278"
+    },
+    "source_links": [
+      {
+        "url": "https://x.com/i/status/2010673655773057278",
+        "label": "X Post"
+      }
+    ],
+    "verified": true,
+    "submitted_by": null
+  },
+  {
+    "id": "amirhesam-khodayari-fard",
+    "created_at": "2026-01-14T21:39:40.097765+00:00",
+    "name": "Amirhesam Khodayari-Fard",
+    "name_fa": null,
+    "city": "Kuhdasht, Lorestan",
+    "city_fa": null,
+    "location": "Kuhdasht, Lorestan",
+    "location_fa": null,
+    "date": "2025-12-31",
+    "coords": {
+      "lat": 35.6892,
+      "lon": 51.389
+    },
+    "bio": "Amirhossein Khodayari-Fard, born on June 19, 2003 (29 Khordad 1382), was killed during the protests on the evening of Thursday, 31 December 2025, in Kohdasht County by direct gunfire from government security agents.",
+    "bio_fa": null,
+    "testimonials": [],
+    "media": {
+      "photo": "https://pbs.twimg.com/amplify_video_thumb/2007037834515906560/img/djiIimwqbhgZ99PT.jpg",
+      "xPost": "https://x.com/IranIntl/status/2007037913779863795?s=20"
+    },
+    "source_links": [
+      {
+        "url": "https://x.com/IranIntl/status/2007037913779863795?s=20",
+        "label": "Iran International"
+      }
+    ],
+    "verified": true,
+    "submitted_by": null
+  },
+  {
+    "id": "ahmad-abbasi",
+    "created_at": "2026-01-15T02:37:08.952371+00:00",
+    "name": "Ahmad Abbasi",
+    "name_fa": "احمد عباسی",
+    "city": "Karaj",
+    "city_fa": "کرج",
+    "location": "Vahdat Street, Tehran",
+    "location_fa": "خیابان پیروزی، تهران",
+    "date": "2026-01-08",
+    "coords": {
+      "lat": 35.8327,
+      "lon": 50.9916
+    },
+    "bio": "Ahmad Abbasi was a theater actor from Karaj, killed during protests in Tehran on January 8, 2026.",
+    "bio_fa": "احمد عباسی بازیگر تئاتر اهل کرج بود که در اعتراضات ۱۸ دی ۱۴۰۴ در تهران به قتل رسید.",
+    "testimonials": [],
+    "media": {
+      "photo": "https://pbs.twimg.com/media/G-qn96ZbQAkEWBY?format=jpg&name=small",
+      "xPost": "https://x.com/i/status/2011604868205830321"
+    },
+    "source_links": [
+      {
+        "url": "https://x.com/i/status/2011604868205830321",
+        "label": "X Post"
+      }
+    ],
+    "verified": true,
+    "submitted_by": null
+  },
+  {
+    "id": "mehdi-delkhosh",
+    "created_at": "2026-01-15T02:45:59.890321+00:00",
+    "name": "Mehdi Delkhosh",
+    "name_fa": "مهدی دلخوش",
+    "city": "Rasht",
+    "city_fa": "رشت",
+    "location": "Pasikhan, Rasht",
+    "location_fa": "پسیخان، رشت",
+    "date": "2026-01-09",
+    "coords": {
+      "lat": 37.2808,
+      "lon": 49.5924
+    },
+    "bio": "Mehdi Delkhosh, a 23-year-old citizen from Pasikhan, Rasht, was killed by direct fire from repressive forces on January 9, 2026.",
+    "bio_fa": "مهدی دلخوش، ۲۳ ساله، شهروند اهل پسیخان رشت، روز ۱۹ دی‌ماه ۱۴۰۴ با شلیک مستقیم نیروهای سرکوبگر جاویدنام شد.",
+    "testimonials": [],
+    "media": {
+      "photo": "https://pbs.twimg.com/media/G-py7Zaa4AAvvIs?format=jpg&name=small",
+      "xPost": "https://x.com/i/status/2011546551286710307"
+    },
+    "source_links": [
+      {
+        "url": "https://x.com/i/status/2011546551286710307",
+        "label": "X Post"
+      }
+    ],
+    "verified": true,
+    "submitted_by": null
+  },
+  {
+    "id": "babak-sadeghi-mohseni",
+    "created_at": "2026-01-15T02:46:49.855998+00:00",
+    "name": "Babak Sadeghi Mohseni",
+    "name_fa": "بابک صادقی محسنی",
+    "city": "Hamedan",
+    "city_fa": "همدان",
+    "location": "Tehran",
+    "location_fa": "تهران",
+    "date": "2024-01-09",
+    "coords": {
+      "lat": 34.7979,
+      "lon": 48.5051
+    },
+    "bio": "Babak Sadeghi Mohseni, a 30-year-old from Hamedan, was killed during the revolutionary uprising in Tehran by the Islamic Republic regime.",
+    "bio_fa": "بابک صادقی محسنی، جوان ۳۰ساله‌ی همدانی، در خیزش انقلابی تهران به دست رژیم جمهوری اسلامی کشته شد.",
+    "testimonials": [],
+    "media": {
+      "photo": "https://pbs.twimg.com/media/G-pWVDNWoAAEHcU?format=jpg&name=900x900",
+      "xPost": "https://x.com/i/status/2011515109747933355"
+    },
+    "source_links": [
+      {
+        "url": "https://x.com/i/status/2011515109747933355",
+        "label": "X Post"
+      }
+    ],
+    "verified": true,
+    "submitted_by": null
+  },
+  {
+    "id": "ebrahim-ghaumi",
+    "created_at": "2026-01-15T02:53:46.437324+00:00",
+    "name": "Ebrahim Ghaumi",
+    "name_fa": "ابراهیم قیومی",
+    "city": "Bandar Anzali",
+    "city_fa": "بندرانزلی",
+    "location": "",
+    "location_fa": null,
+    "date": "2026-01-08",
+    "coords": {
+      "lat": 37.4735,
+      "lon": 49.4536
+    },
+    "bio": "Ebrahim Ghaumi, a Gilak citizen from Bandar Anzali, lost his life due to a war bullet on January 8, 2026.",
+    "bio_fa": "ابراهیم قیومی، شهروند گیلک اهل بندرانزلی، در تاریخ ۱۸ دی‌ماه ۱۴۰۴ بر اثر اصابت گلوله جنگی جان خود را از دست داده است.",
+    "testimonials": [],
+    "media": {
+      "photo": "https://pbs.twimg.com/media/G-pdCH5WMAAy7Z5?format=jpg&name=medium",
+      "xPost": "https://x.com/i/status/2011522481404985636"
+    },
+    "source_links": [
+      {
+        "url": "https://x.com/i/status/2011522481404985636",
+        "label": "Hyrcani Human Rights Media on X"
+      }
+    ],
+    "verified": true,
+    "submitted_by": null
+  },
+  {
+    "id": "khodadad-shirovani-monfared",
+    "created_at": "2026-01-15T02:54:44.08638+00:00",
+    "name": "Khodadad Shirovani Monfared",
+    "name_fa": "خداداد شیروانی منفرد",
+    "city": "Marvdasht",
+    "city_fa": "مرودشت",
+    "location": "Marvdasht, Fars Province",
+    "location_fa": "مرودشت، استان فارس",
+    "date": "2026-01-01",
+    "coords": {
+      "lat": 29.8736,
+      "lon": 52.8019
+    },
+    "bio": "33-year-old father of two from the Baseri tribe, killed during protests while buying flowers for his brother's wedding.",
+    "bio_fa": "پدر ۳۳ ساله دو فرزند از عشایر باصری، در اعتراضات هنگام خرید گل عروسی برادرش کشته شد.",
+    "testimonials": [],
+    "media": {
+      "photo": "https://pbs.twimg.com/media/G-pyu-mXIAEoVyr?format=jpg&name=900x900",
+      "xPost": "https://x.com/i/status/2011546347552301059"
+    },
+    "source_links": [
+      {
+        "url": "https://x.com/i/status/2011546347552301059",
+        "label": "X Post"
+      }
+    ],
+    "verified": true,
+    "submitted_by": null
+  },
+  {
+    "id": "taban-rahrovan",
+    "created_at": "2026-01-15T02:55:31.592762+00:00",
+    "name": "Taban Rahrovan",
+    "name_fa": "تابان رهروان",
+    "city": "Lahijan",
+    "city_fa": "لاهیجان",
+    "location": "Bagh Melli Lahijan",
+    "location_fa": "باغ ملی لاهیجان",
+    "date": "2026-01-08",
+    "coords": {
+      "lat": 37.2065,
+      "lon": 49.8744
+    },
+    "bio": "A citizen of Lahijan killed during the protests on January 8, 2026.",
+    "bio_fa": "شهروند لاهیجانی که در تظاهرات ۱۸ دی ۴۰۴ کشته شد.",
+    "testimonials": [],
+    "media": {
+      "photo": "https://pbs.twimg.com/media/G-pQMHIbQAEN51L?format=jpg&name=small",
+      "xPost": "https://x.com/i/status/2011508373108162623"
+    },
+    "source_links": [
+      {
+        "url": "https://x.com/i/status/2011508373108162623",
+        "label": "X Post"
+      }
+    ],
+    "verified": true,
+    "submitted_by": null
+  },
+  {
+    "id": "amir-mohammad-karami",
+    "created_at": "2026-01-15T02:56:58.038875+00:00",
+    "name": "Amir Mohammad Karami",
+    "name_fa": "امیر محمد کرمی",
+    "city": "Marvdasht",
+    "city_fa": "مرودشت",
+    "location": "Marvdasht, Fars",
+    "location_fa": "مرودشت، فارس",
+    "date": "2024-01-09",
+    "coords": {
+      "lat": 29.8739,
+      "lon": 52.8012
+    },
+    "bio": "18-year-old member of the national youth taekwondo team, killed during peaceful protests.",
+    "bio_fa": "۱۸ ساله عضو تیم ملی نوجوانان تکواندو، در جریان اعتراضات مسالمت‌آمیز کشته شد.",
+    "testimonials": [],
+    "media": {
+      "photo": "https://pbs.twimg.com/media/G-oU6SfbwAADH42?format=jpg&name=900x900",
+      "xPost": "https://x.com/i/status/2011470865221984401"
+    },
+    "source_links": [
+      {
+        "url": "https://x.com/i/status/2011470865221984401",
+        "label": "X Post"
+      }
+    ],
+    "verified": true,
+    "submitted_by": null
+  },
+  {
+    "id": "seyyed-milad-rahimi",
+    "created_at": "2026-01-15T02:57:39.482753+00:00",
+    "name": "Seyyed Milad Rahimi",
+    "name_fa": "سید میلاد رحیمی",
+    "city": "Karaj",
+    "city_fa": "کرج",
+    "location": "Zardeh village, Kermanshah",
+    "location_fa": "روستای زرده، کرمانشاه",
+    "date": "2026-01-14",
+    "coords": {
+      "lat": 34.3416,
+      "lon": 47.5783
+    },
+    "bio": "A Kurdish Yarsan citizen from Zardeh village, killed during protests in Karaj by direct military fire.",
+    "bio_fa": "یک شهروند کرد یارسان اهل روستای زرده، در اعتراضات کرج با شلیک مستقیم نیروهای نظامی کشته شد.",
+    "testimonials": [],
+    "media": {
+      "photo": "https://pbs.twimg.com/media/G-oYuevasAAzRrb?format=jpg&name=900x900",
+      "xPost": "https://x.com/i/status/2011447376393695664"
+    },
+    "source_links": [
+      {
+        "url": "https://x.com/i/status/2011447376393695664",
+        "label": "KURDPA"
+      }
+    ],
+    "verified": true,
+    "submitted_by": null
+  },
+  {
+    "id": "mohammad-mardokhi",
+    "created_at": "2026-01-15T02:58:30.169515+00:00",
+    "name": "Mohammad Mardokhi",
+    "name_fa": "محمد مردوخی",
+    "city": "Mariwan",
+    "city_fa": "مریوان",
+    "location": "Beside a roadway in Mariwan",
+    "location_fa": "کنار یک جاده در مریوان",
+    "date": "2026-01-13",
+    "coords": {
+      "lat": 35.5215,
+      "lon": 46.1754
+    },
+    "bio": "Critic of Khamenei, found dead with signs of torture in Mariwan, Kurdistan.",
+    "bio_fa": "انتقادکننده از خامنه‌ای، با نشانه‌های شکنجه در مریوان، کردستان یافت شد.",
+    "testimonials": [],
+    "media": {
+      "photo": "https://pbs.twimg.com/media/G-qfS0bW8AA8gt9?format=jpg&name=small",
+      "xPost": "https://x.com/i/status/2011595331625210207"
+    },
+    "source_links": [
+      {
+        "url": "https://x.com/i/status/2011595331625210207",
+        "label": "X Post"
+      }
+    ],
+    "verified": true,
+    "submitted_by": null
+  },
+  {
+    "id": "rubina-aminian",
+    "created_at": "2026-01-15T03:00:42.377497+00:00",
+    "name": "Rubina Aminian",
+    "name_fa": "روبینا امینیان",
+    "city": "Unknown",
+    "city_fa": null,
+    "location": "",
+    "location_fa": null,
+    "date": "2026-01-14",
+    "coords": {
+      "lat": 35.6892,
+      "lon": 51.389
+    },
+    "bio": "23-year-old murdered by Iran’s regime for joining a protest.",
+    "bio_fa": "روبینا امینیان 23 ساله توسط رژیم ایران به دلیل شرکت در اعتراضات کشته شد.",
+    "testimonials": [],
+    "media": {
+      "photo": "https://pbs.twimg.com/media/G-oZJ3tXYAAMJ9z?format=jpg&name=900x900",
+      "xPost": "https://x.com/i/status/2011447843530097039"
+    },
+    "source_links": [
+      {
+        "url": "https://x.com/i/status/2011447843530097039",
+        "label": "X Post"
+      }
+    ],
+    "verified": true,
+    "submitted_by": null
+  },
+  {
+    "id": "zahra-moradi",
+    "created_at": "2026-01-15T03:05:36.516034+00:00",
+    "name": "Zahra Moradi",
+    "name_fa": "زهرا مرادی",
+    "city": "Tehran",
+    "city_fa": "تهران",
+    "location": "Tehranpars",
+    "location_fa": "تهرانسر",
+    "date": "2025-12-18",
+    "coords": {
+      "lat": 35.745,
+      "lon": 51.567
+    },
+    "bio": "A young Kurdish woman from Bukan, residing in Tehran, killed by gunfire to the head and chest during protests.",
+    "bio_fa": "زنی جوان کُرد اهل بوکان و ساکن تهران، در اعتراضات با شلیک گلوله به سر و سینه کشته شد.",
+    "testimonials": [],
+    "media": {
+      "photo": "https://pbs.twimg.com/media/G-oalambIAAaUUH?format=jpg&name=900x900",
+      "xPost": "https://x.com/i/status/2011449421280456845"
+    },
+    "source_links": [
+      {
+        "url": "https://x.com/i/status/2011449421280456845",
+        "label": "KURDPA"
+      }
+    ],
+    "verified": true,
+    "submitted_by": null
+  },
+  {
+    "id": "mehdi-ghadimi",
+    "created_at": "2026-01-15T03:06:13.79781+00:00",
+    "name": "Mehdi Ghadimi",
+    "name_fa": "مهدی قدیمی",
+    "city": "Babol",
+    "city_fa": "بابل",
+    "location": "Babol",
+    "location_fa": "بابل",
+    "date": "2026-01-09",
+    "coords": {
+      "lat": 36.5511,
+      "lon": 52.6792
+    },
+    "bio": "A Gilak citizen from Babol and a football player, killed by Islamic Republic forces.",
+    "bio_fa": "شهروند گیلک اهل بابل و بازیکن فوتبال، کشته شده توسط نیروهای جمهوری اسلامی.",
+    "testimonials": [],
+    "media": {
+      "photo": "https://pbs.twimg.com/media/G-prAuybQAMMbb_?format=jpg&name=medium",
+      "xPost": "https://x.com/i/status/2011537851477880855"
+    },
+    "source_links": [
+      {
+        "url": "https://x.com/i/status/2011537851477880855",
+        "label": "Hyrcani Human Rights Media on X"
+      }
+    ],
+    "verified": true,
+    "submitted_by": null
+  },
+  {
+    "id": "mohammad-reza-zamini",
+    "created_at": "2026-01-15T03:07:10.689632+00:00",
+    "name": "Mohammad Reza Zamini",
+    "name_fa": "محمدرضا زمینی",
+    "city": "Karaj",
+    "city_fa": "کرج",
+    "location": "Golshahr, Karaj",
+    "location_fa": "گلشهر کرج",
+    "date": "2026-01-09",
+    "coords": {
+      "lat": 35.8333,
+      "lon": 50.95
+    },
+    "bio": "Killed defending his daughter from gunfire in Golshahr, Karaj. Buried in Behesht-e Zahra.",
+    "bio_fa": "در دفاع از دخترش در گلشهر کرج مورد اصابت گلوله قرار گرفت و کشته شد. در بهشت زهرا دفن شد.",
+    "testimonials": [],
+    "media": {
+      "photo": "https://pbs.twimg.com/media/G-pPXXUbQAQdMpe?format=jpg&name=small",
+      "xPost": "https://x.com/i/status/2011507449669603647"
+    },
+    "source_links": [
+      {
+        "url": "https://x.com/i/status/2011507449669603647",
+        "label": "X Post"
+      }
+    ],
+    "verified": true,
+    "submitted_by": null
+  },
+  {
+    "id": "amirmohammad-kouhkan",
+    "created_at": "2026-01-15T03:08:29.658633+00:00",
+    "name": "Amirmohammad Kouhkan",
+    "name_fa": "امیرمحمد کوهکن",
+    "city": "Unknown",
+    "city_fa": null,
+    "location": "",
+    "location_fa": null,
+    "date": "2026-01-14",
+    "coords": {
+      "lat": 35.6892,
+      "lon": 51.389
+    },
+    "bio": "Murdered by the Iranian regime.",
+    "bio_fa": "توسط رژیم ایران کشته شد.",
+    "testimonials": [],
+    "media": {
+      "photo": "https://pbs.twimg.com/media/G-j-vprWsAAC7GV?format=jpg&name=900x900",
+      "xPost": "https://x.com/i/status/2011502613649334481"
+    },
+    "source_links": [
+      {
+        "url": "https://x.com/i/status/2011502613649334481",
+        "label": "X Post"
+      }
+    ],
+    "verified": true,
+    "submitted_by": null
+  },
+  {
+    "id": "aidin-dowlatkhah",
+    "created_at": "2026-01-15T03:09:41.011816+00:00",
+    "name": "Aidin Dowlatkhah",
+    "name_fa": "آیدین دولت‌خواه",
+    "city": "Rasht",
+    "city_fa": "رشت",
+    "location": "Sargol Square",
+    "location_fa": "میدان سرگل",
+    "date": "2026-01-08",
+    "coords": {
+      "lat": 37.2808,
+      "lon": 49.5831
+    },
+    "bio": "A Gilak citizen from Rasht, born on August 11, 2003, killed by direct gunfire from Iranian regime forces.",
+    "bio_fa": "شهروند گیلک اهل رشت، متولد ۲۰ مرداد ۱۳۸۲، با شلیک مستقیم نیروهای حکومت جمهوری اسلامی ایران جان باخته است.",
+    "testimonials": [],
+    "media": {
+      "photo": "https://pbs.twimg.com/media/G-nWPXrWQAAR-6O?format=jpg&name=medium",
+      "xPost": "https://x.com/i/status/2011374274271957138"
+    },
+    "source_links": [
+      {
+        "url": "https://x.com/i/status/2011374274271957138",
+        "label": "X Post"
+      }
+    ],
+    "verified": true,
+    "submitted_by": null
+  },
+  {
+    "id": "zahra-fazeli",
+    "created_at": "2026-01-15T03:13:05.225506+00:00",
+    "name": "Zahra Fazeli",
+    "name_fa": "زهرا فاضلی",
+    "city": "Bushehr",
+    "city_fa": "بوشهر",
+    "location": "Bushehr",
+    "location_fa": "بوشهر",
+    "date": "2026-01-14",
+    "coords": {
+      "lat": 28.9234,
+      "lon": 50.8203
+    },
+    "bio": "A protesting citizen from Bushehr, killed by direct fire from Islamic Republic repressive forces.",
+    "bio_fa": "شهروند معترض اهل بوشهر، بر اثر شلیک مستقیم نیروهای سرکوبگر جمهوری اسلامی کشته شد.",
+    "testimonials": [],
+    "media": {
+      "photo": "https://pbs.twimg.com/media/G-pQdvWbAAAB8bg?format=jpg&name=small",
+      "xPost": "https://x.com/i/status/2011508667716075870"
+    },
+    "source_links": [
+      {
+        "url": "https://x.com/i/status/2011508667716075870",
+        "label": "X Post"
+      }
+    ],
+    "verified": true,
+    "submitted_by": null
+  },
+  {
+    "id": "alireza-seidi",
+    "created_at": "2026-01-15T03:15:45.313075+00:00",
+    "name": "Alireza Seidi",
+    "name_fa": "علیرضا صیدی",
+    "city": "Abdanan",
+    "city_fa": "آبدانان",
+    "location": "Tehran",
+    "location_fa": "تهران",
+    "date": "2026-01-14",
+    "coords": {
+      "lat": 32.9919,
+      "lon": 47.4242
+    },
+    "bio": "A teenager from Abdanan killed by suppressive forces in Tehran.",
+    "bio_fa": "نوجوانی اهل آبدانان که در تهران توسط نیروهای سرکوبگر کشته شد.",
+    "testimonials": [],
+    "media": {
+      "photo": "https://pbs.twimg.com/ext_tw_video_thumb/2011499132020801544/pu/img/d0ovx4nrGHPzJ-oW.jpg",
+      "xPost": "https://x.com/i/status/2011499328460713996"
+    },
+    "source_links": [
+      {
+        "url": "https://x.com/i/status/2011499328460713996",
+        "label": "X Post"
+      }
+    ],
+    "verified": true,
+    "submitted_by": null
+  },
+  {
+    "id": "halako-ivani",
+    "created_at": "2026-01-15T03:22:59.649546+00:00",
+    "name": "Halako Ivani",
+    "name_fa": "هلاکو ایوانی",
+    "city": "Kermanshah",
+    "city_fa": "کرمانشاه",
+    "location": "Shabad (Islamabad-e Gharb)",
+    "location_fa": "شاباد (اسلام‌آباد غرب)",
+    "date": "2026-01-14",
+    "coords": {
+      "lat": 34.3142,
+      "lon": 47.065
+    },
+    "bio": "Halako Ivani, a well-known athlete from Shabad, was killed by suppressors' bullets during protests in Kermanshah.",
+    "bio_fa": "هلاکو ایوانی، ورزشکار شناخته‌شده اهل شاباد، در اعتراضات شهر کرماشان با گلوله سرکوبگران کشته شد.",
+    "testimonials": [],
+    "media": {
+      "photo": "https://pbs.twimg.com/amplify_video_thumb/2011457166029312000/img/uZPmA3N1P9yziROX.jpg",
+      "xPost": "https://x.com/i/status/2011457500080738662"
+    },
+    "source_links": [
+      {
+        "url": "https://x.com/i/status/2011457500080738662",
+        "label": "X Post"
+      }
+    ],
+    "verified": true,
+    "submitted_by": null
+  },
+  {
+    "id": "keyvan-rezaei",
+    "created_at": "2026-01-15T03:28:31.524387+00:00",
+    "name": "Keyvan Rezaei",
+    "name_fa": "کیوان رضایی",
+    "city": "Kermanshah",
+    "city_fa": "کرمانشاه",
+    "location": "Darreh-Derij neighborhood",
+    "location_fa": "محله دره دریج",
+    "date": "2026-01-08",
+    "coords": {
+      "lat": 34.3142,
+      "lon": 47.065
+    },
+    "bio": "A Kurdish individual and follower of the Yarsan faith, killed during protests by IRGC forces.",
+    "bio_fa": "یک فرد کرد و پیرو آیین یارسان، کشته شده در اعتراضات توسط نیروهای سپاه.",
+    "testimonials": [],
+    "media": {
+      "photo": "https://pbs.twimg.com/media/G-ngmTGawAAn1SY?format=jpg&name=900x900",
+      "xPost": "https://x.com/i/status/2011385665712230501"
+    },
+    "source_links": [
+      {
+        "url": "https://x.com/i/status/2011385665712230501",
+        "label": "Hengaw Organization for Human Rights on X"
+      }
+    ],
+    "verified": true,
+    "submitted_by": null
+  },
+  {
+    "id": "abolfazl-yaghmoori",
+    "created_at": "2026-01-15T02:48:28.075197+00:00",
+    "name": "Ejmin Masihi",
+    "name_fa": "اجمین مسیحی",
+    "city": "Tehran",
+    "city_fa": "تهران",
+    "location": "",
+    "location_fa": null,
+    "date": "2026-01-14",
+    "coords": {
+      "lat": 35.6892,
+      "lon": 51.389
+    },
+    "bio": "An Armenian resident of Tehran killed by state forces during protests.",
+    "bio_fa": "یک ساکن ارمنی تهران که توسط نیروهای دولتی در اعتراضات کشته شد.",
+    "testimonials": [],
+    "media": {
+      "photo": "https://pbs.twimg.com/media/G-m-kUmbgAAwKxG?format=jpg&name=small",
+      "xPost": "https://x.com/Hengaw_English/status/2011348249366638894?s=20"
+    },
+    "source_links": [
+      {
+        "url": "https://x.com/i/status/2011493378861797850",
+        "label": "IranWire X Post"
+      },
+      {
+        "url": "https://x.com/Hengaw_English/status/2011348249366638894?s=20",
+        "label": "Hengaw Organization for Human Rights"
+      }
+    ],
+    "verified": true,
+    "submitted_by": null
+  },
+  {
+    "id": "akram-pirgazi",
+    "created_at": "2026-01-15T05:00:20.791417+00:00",
+    "name": "Akram Pirgazi",
+    "name_fa": "اکرم پیرگزی",
+    "city": "Neyshabur",
+    "city_fa": "نیشابور",
+    "location": "",
+    "location_fa": null,
+    "date": "2026-01-07",
+    "coords": {
+      "lat": 36.214,
+      "lon": 58.795
+    },
+    "bio": "Akram Pirgozi, 40, from Neyshabur, killed by government forces during protests on January 7, 2026.",
+    "bio_fa": "اکرم پیرگزی، ۴۰ ساله، اهل نیشابور، در اعتراضات مردمی ۱۷ دی‌ماه ۱۴۰۴ با شلیک ماموران حکومت کشته شد.",
+    "testimonials": [],
+    "media": {
+      "photo": "https://pbs.twimg.com/media/G-oRgfyaUAIn6DM?format=jpg&name=900x900",
+      "xPost": "https://x.com/ManotoNews/status/2011454634116952575?s=20"
+    },
+    "source_links": [
+      {
+        "url": "https://x.com/ManotoNews/status/2011454634116952575?s=20",
+        "label": "X Post"
+      }
+    ],
+    "verified": true,
+    "submitted_by": null
+  },
+  {
+    "id": "houshyar-shabani",
+    "created_at": "2026-01-15T05:04:45.465054+00:00",
+    "name": "Houshyar Shabani",
+    "name_fa": "هوشيار شبانى",
+    "city": "Baneh",
+    "city_fa": "بانه",
+    "location": "Baneh",
+    "location_fa": "بانه",
+    "date": "2026-01-04",
+    "coords": {
+      "lat": 35.9972,
+      "lon": 45.8854
+    },
+    "bio": "Former Kurdish political prisoner and civil activist, arrested multiple times.",
+    "bio_fa": "فعال مدنی و زندانی سیاسی سابق کرد، چندین بار دستگیر شده است.",
+    "testimonials": [],
+    "media": {
+      "photo": "https://pbs.twimg.com/media/G-keA_bWgAAzgaC?format=jpg&name=900x900",
+      "xPost": "https://x.com/Hengaw_English/status/2011171718510100957?s=20"
+    },
+    "source_links": [
+      {
+        "url": "https://x.com/Hengaw_English/status/2011171718510100957?s=20",
+        "label": "X Post"
+      }
+    ],
+    "verified": true,
+    "submitted_by": null
+  },
+  {
+    "id": "parnia-shad-bajar-konari",
+    "created_at": "2026-01-15T09:50:32.057233+00:00",
+    "name": "Parnia Shad Bajar Konari",
+    "name_fa": "پرنیا شاد بجارکناری",
+    "city": "Rasht",
+    "city_fa": "رشت",
+    "location": "",
+    "location_fa": null,
+    "date": "2026-01-08",
+    "coords": {
+      "lat": 37.2808,
+      "lon": 49.5924
+    },
+    "bio": "23-year-old from Rasht, killed by Iranian regime forces on January 8, 2026.",
+    "bio_fa": "۲۳ ساله و اهل رشت، روز پنج‌شنبه ۱۸ دی‌ماه ۱۴۰۴ توسط نیروهای حکومت جمهوری اسلامی ایران جان خود را از دست داده است.",
+    "testimonials": [],
+    "media": {
+      "photo": "https://pbs.twimg.com/media/G-r-ymmbQAUhGne?format=jpg&name=medium",
+      "xPost": "https://x.com/HyrcaniHRM/status/2011700336239456343?s=20"
+    },
+    "source_links": [
+      {
+        "url": "https://x.com/HyrcaniHRM/status/2011700336239456343?s=20",
+        "label": "Hyrcani Human Rights Media on X"
+      }
+    ],
+    "verified": true,
+    "submitted_by": null
+  },
+  {
+    "id": "moein-gholami",
+    "created_at": "2026-01-15T09:51:29.102118+00:00",
+    "name": "Moein Gholami",
+    "name_fa": "معین غلامی",
+    "city": "Karaj",
+    "city_fa": "کرج",
+    "location": "Karaj",
+    "location_fa": "کرج",
+    "date": "2025-12-01",
+    "coords": {
+      "lat": 35.8327,
+      "lon": 50.9916
+    },
+    "bio": "Moein Gholami, born in 1993, was killed during the protests in Karaj in December 2025.",
+    "bio_fa": "معین غلامی، متولد ۱۳۷۲، در اعتراضات دی ۱۴۰۴ در کرج کشته شد.",
+    "testimonials": [],
+    "media": {
+      "photo": "https://pbs.twimg.com/media/G-roPHgWoAARz91?format=jpg&name=900x900",
+      "xPost": "https://x.com/iranwire/status/2011675537882624445?s=20"
+    },
+    "source_links": [
+      {
+        "url": "https://x.com/iranwire/status/2011675537882624445?s=20",
+        "label": "IranWire X Post"
+      }
+    ],
+    "verified": true,
+    "submitted_by": null
+  },
+  {
+    "id": "meisam-zarei-bajar-konari",
+    "created_at": "2026-01-15T09:52:03.768876+00:00",
+    "name": "Meisam Zarei Bajar Konari",
+    "name_fa": "میثم زارعی بجارکناری",
+    "city": "Rasht",
+    "city_fa": "رشت",
+    "location": "Rasht",
+    "location_fa": "رشت",
+    "date": "2026-01-09",
+    "coords": {
+      "lat": 37.2808,
+      "lon": 49.5831
+    },
+    "bio": "39-year-old from Rasht, killed by Islamic Republic forces on 19 Dey 1404.",
+    "bio_fa": "۳۹ ساله و اهل رشت، در تاریخ ۱۹ دی‌ماه ۱۴۰۴ توسط نیروهای جمهوری اسلامی ایران کشته شد.",
+    "testimonials": [],
+    "media": {
+      "photo": "https://pbs.twimg.com/media/G-sE4XBbQAIYnA0?format=jpg&name=medium",
+      "xPost": "https://x.com/HyrcaniHRM/status/2011707032307712026?s=20"
+    },
+    "source_links": [
+      {
+        "url": "https://x.com/HyrcaniHRM/status/2011707032307712026?s=20",
+        "label": "Hyrcani Human Rights Media on X"
+      }
+    ],
+    "verified": true,
+    "submitted_by": null
+  },
+  {
+    "id": "mehdi-sahli",
+    "created_at": "2026-01-15T10:06:35.848875+00:00",
+    "name": "Mehdi Sahli",
+    "name_fa": "مهدی ساحلی",
+    "city": "Ramsar",
+    "city_fa": "رامسر",
+    "location": "One of the city squares",
+    "location_fa": "یکی از میدان‌های شهری",
+    "date": "2026-01-15",
+    "coords": {
+      "lat": 36.9064,
+      "lon": 50.6584
+    },
+    "bio": "A 26-year-old Gilak citizen from Ramsar, killed during protests while attempting to lower the Islamic Republic flag and raise the Lion and Sun flag.",
+    "bio_fa": "شهروند ۲۶ ساله گیلک اهل رامسر، در جریان اعتراضات و هنگام پایین آوردن پرچم جمهوری اسلامی و برافراشتن پرچم شیر و خورشید کشته شد.",
+    "testimonials": [],
+    "media": {
+      "photo": "https://pbs.twimg.com/media/G-sM-v9WYAAJJd7?format=jpg&name=medium",
+      "xPost": "https://x.com/HyrcaniHRM/status/2011715938811265348?s=20"
+    },
+    "source_links": [
+      {
+        "url": "https://x.com/HyrcaniHRM/status/2011715938811265348?s=20",
+        "label": "Hyrcani Human Rights Media on X"
+      }
+    ],
+    "verified": true,
+    "submitted_by": null
+  },
+  {
+    "id": "amirali-heidari-jafarabadi",
+    "created_at": "2026-01-15T10:07:41.032905+00:00",
+    "name": "Amirali Heidari Jafarabadi",
+    "name_fa": "امیرعلی حیدری جعفرآبادی",
+    "city": "Kermanshah",
+    "city_fa": "کرمانشاه",
+    "location": "Kashan Street, Shahrak Elahieh",
+    "location_fa": "خیابان کاشان، شهرک الهیه",
+    "date": "2026-01-08",
+    "coords": {
+      "lat": 34.3142,
+      "lon": 47.065
+    },
+    "bio": "17-year-old teenager killed by direct gunfire from Islamic Republic forces in Kermanshah.",
+    "bio_fa": "نوجوان ۱۷ ساله اهل کرمانشاه، کشته شده توسط شلیک مستقیم گلوله جنگی نیروهای جمهوری اسلامی.",
+    "testimonials": [],
+    "media": {
+      "photo": "https://pbs.twimg.com/media/G-sWrTdXsAASzak?format=jpg&name=900x900",
+      "xPost": "https://x.com/MothrOfDrgns/status/2011726596974264712?s=20"
+    },
+    "source_links": [
+      {
+        "url": "https://x.com/MothrOfDrgns/status/2011726596974264712?s=20",
+        "label": "X Post"
+      }
+    ],
+    "verified": true,
+    "submitted_by": null
+  },
+  {
+    "id": "kia-moradi",
+    "created_at": "2026-01-15T10:31:54.908332+00:00",
+    "name": "Kia Moradi",
+    "name_fa": "کیا مرادی",
+    "city": "Sanandaj",
+    "city_fa": "سنندج",
+    "location": "Sanandaj",
+    "location_fa": "سنندج",
+    "date": "2026-01-11",
+    "coords": {
+      "lat": 35.3165,
+      "lon": 46.9958
+    },
+    "bio": "18-year-old Kurdish citizen and niece of Peyman Manbari, arrested by government forces.",
+    "bio_fa": "شهروند ۱۸ ساله کورد و خواهرزاده پیمان منبری، توسط نیروهای حکومتی بازداشت شد.",
+    "testimonials": [],
+    "media": {
+      "photo": "https://pbs.twimg.com/media/G-scJe6bUAEy10S?format=jpg&name=900x900",
+      "xPost": "https://x.com/HengawO/status/2011732625166307802?s=20"
+    },
+    "source_links": [
+      {
+        "url": "https://x.com/HengawO/status/2011732625166307802?s=20",
+        "label": "Hengaw Organization for Human Rights"
+      }
+    ],
+    "verified": true,
+    "submitted_by": null
+  },
+  {
+    "id": "alireza-salmani",
+    "created_at": "2026-01-15T10:32:43.393639+00:00",
+    "name": "Alireza Salmani",
+    "name_fa": "علیرضا سلمانی",
+    "city": "Tehran",
+    "city_fa": "تهران",
+    "location": "Andisheh Town, Phase 1",
+    "location_fa": "شهرک اندیشه فاز ۱",
+    "date": "2025-01-08",
+    "coords": {
+      "lat": 35.7442,
+      "lon": 51.3281
+    },
+    "bio": "Alireza Salmani, 27, was killed by direct gunfire from repressive forces on the evening of January 8, 2025.",
+    "bio_fa": "علیرضا سلمانی، ۲۷ ساله، شامگاه ۱۸ دی‌ماه با شلیک مستقیم نیروهای سرکوبگر کشته شد.",
+    "testimonials": [],
+    "media": {
+      "photo": "https://pbs.twimg.com/media/G-sb9_cbQAItZMZ?format=jpg&name=900x900",
+      "xPost": "https://x.com/Tavaana/status/2011732413244960780?s=20"
+    },
+    "source_links": [
+      {
+        "url": "https://x.com/Tavaana/status/2011732413244960780?s=20",
+        "label": "Tavaana X Post"
+      }
+    ],
+    "verified": true,
+    "submitted_by": null
+  },
+  {
+    "id": "ali-mollaaghai-roozbahani",
+    "created_at": "2026-01-15T10:35:16.829416+00:00",
+    "name": "Ali Mollaaghai Roozbahani",
+    "name_fa": "علی ملاآقایی روزبهانی",
+    "city": "Tehran",
+    "city_fa": "تهران",
+    "location": "",
+    "location_fa": null,
+    "date": "2026-01-18",
+    "coords": {
+      "lat": 35.6892,
+      "lon": 51.389
+    },
+    "bio": "A 36-year-old Lor citizen from Borujerd, residing in Tehran, killed during protests on January 18, 2026.",
+    "bio_fa": "شهروند ۳۶ ساله لُر اهل بروجرد و ساکن تهران، در جریان اعتراضات ۲۸ دی ۱۴۰۴ کشته شد.",
+    "testimonials": [],
+    "media": {
+      "photo": "https://pbs.twimg.com/media/G-skEuPWUAA83Lz?format=jpg&name=900x900",
+      "xPost": "https://x.com/HengawO/status/2011741784469082126?s=20"
+    },
+    "source_links": [
+      {
+        "url": "https://x.com/HengawO/status/2011741784469082126?s=20",
+        "label": "Hengaw Organization for Human Rights"
+      }
+    ],
+    "verified": true,
+    "submitted_by": null
+  },
+  {
+    "id": "mansoureh-heidari",
+    "created_at": "2026-01-15T10:38:20.353876+00:00",
+    "name": "Mansoureh Heidari",
+    "name_fa": "منصوره حیدری",
+    "city": "Bushehr",
+    "city_fa": "بوشهر",
+    "location": "In front of Quran Mosque",
+    "location_fa": "مقابل مسجد قرآن",
+    "date": "2026-01-08",
+    "coords": {
+      "lat": 28.9234,
+      "lon": 50.8789
+    },
+    "bio": "Killed during Bushehr protests, leaving behind two children aged 7 and 10.",
+    "bio_fa": "در اعتراضات بوشهر کشته شد و دو فرزند ۷ و ۱۰ ساله به جا گذاشت.",
+    "testimonials": [],
+    "media": {
+      "photo": "https://pbs.twimg.com/media/G-kyLb8W0AA1WmN?format=jpg&name=900x900",
+      "xPost": "https://x.com/VOAfarsi/status/2011193926934253695?s=20"
+    },
+    "source_links": [
+      {
+        "url": "https://x.com/VOAfarsi/status/2011193926934253695?s=20",
+        "label": "VOA Farsi"
+      }
+    ],
+    "verified": true,
+    "submitted_by": null
+  },
+  {
+    "id": "mehdi-yousef-nezhad",
+    "created_at": "2026-01-15T19:13:01.552637+00:00",
+    "name": "Mehdi Yousef Nezhad",
+    "name_fa": "مهدی یوسف نژاد",
+    "city": "Rasht",
+    "city_fa": "رشت",
+    "location": "",
+    "location_fa": null,
+    "date": "2026-01-15",
+    "coords": {
+      "lat": 37.2692,
+      "lon": 49.5861
+    },
+    "bio": "Mehdi Yousef Nezhad was killed by a military bullet in Rasht.",
+    "bio_fa": "مهدی یوسف نژاد با گلوله نظامی در رشت کشته شد.",
+    "testimonials": [],
+    "media": {
+      "photo": "https://pbs.twimg.com/media/G-uHWtfa4AAnzPS?format=jpg&name=small",
+      "xPost": "https://x.com/i/status/2011850487616680067"
+    },
+    "source_links": [
+      {
+        "url": "https://x.com/i/status/2011850487616680067",
+        "label": "X"
+      }
+    ],
+    "verified": true,
+    "submitted_by": null
+  },
+  {
+    "id": "behrouz-mansouri",
+    "created_at": "2026-01-15T10:41:42.172714+00:00",
+    "name": "Behrouz Mansouri",
+    "name_fa": "بهروز منصوری",
+    "city": "Bushehr",
+    "city_fa": "بوشهر",
+    "location": "In front of Quran Mosque",
+    "location_fa": "مقابل مسجد قرآن",
+    "date": "2026-01-08",
+    "coords": {
+      "lat": 28.9234,
+      "lon": 50.8789
+    },
+    "bio": "Killed during Bushehr protests, leaving behind two children aged 7 and 10.",
+    "bio_fa": "در اعتراضات بوشهر کشته شد و دو فرزند ۷ و ۱۰ ساله به جا گذاشت.",
+    "testimonials": [],
+    "media": {
+      "photo": "https://pbs.twimg.com/media/G-kyLb8W0AA1WmN?format=jpg&name=900x900",
+      "xPost": "https://x.com/nanana0000o/status/2010395329733280051?s=20"
+    },
+    "source_links": [
+      {
+        "url": "https://x.com/SorayaAbol/status/2011565755297644915?s=20",
+        "label": "VOA Farsi"
+      }
+    ],
+    "verified": true,
+    "submitted_by": null
+  },
+  {
+    "id": "pouya-rostami",
+    "created_at": "2026-01-15T10:46:45.72997+00:00",
+    "name": "Pouya Rostami",
+    "name_fa": "پویا رستمی",
+    "city": "Badra",
+    "city_fa": "بدره",
+    "location": "Kolm village, Badra",
+    "location_fa": "روستای کُلم، بدره",
+    "date": "2026-01-08",
+    "coords": {
+      "lat": 33.1234,
+      "lon": 46.5678
+    },
+    "bio": "Pouya Rostami, a 23-year-old Kurdish citizen from Kolm village, Badra, was killed by direct fire from government forces during protests.",
+    "bio_fa": "پویا رستمی، شهروند ۲۳ ساله کورد اهل روستای کُلم بدره، با شلیک مستقیم نیروهای حکومتی در اعتراضات کشته شد.",
+    "testimonials": [],
+    "media": {
+      "photo": "https://hengaw.net/content/upload/1/root/puia-rostami.jpg"
+    },
+    "source_links": [
+      {
+        "url": "https://hengaw.net/fa/news/2026/01/article-113-1",
+        "label": "Hengaw"
+      }
+    ],
+    "verified": true,
+    "submitted_by": null
+  },
+  {
+    "id": "behzhan-mostafavi",
+    "created_at": "2026-01-15T10:48:37.417164+00:00",
+    "name": "Behzhan Mostafavi",
+    "name_fa": "بیژن مصطفوی",
+    "city": "Karaj",
+    "city_fa": "کرج",
+    "location": "Inside personal vehicle",
+    "location_fa": "داخل خودرو شخصی",
+    "date": "2020-01-09",
+    "coords": {
+      "lat": 35.8327,
+      "lon": 50.9916
+    },
+    "bio": "Retired education employee, born in Sonqor, killed during protests in Karaj.",
+    "bio_fa": "بازنشسته آموزش و پرورش، متولد سنقر، در جریان اعتراضات در کرج کشته شد.",
+    "testimonials": [],
+    "media": {
+      "photo": "https://pbs.twimg.com/media/G-sgco6XMAAMINc?format=jpg&name=900x900",
+      "xPost": "https://x.com/IranIntl/status/2011737339719012787?s=20"
+    },
+    "source_links": [
+      {
+        "url": "https://x.com/IranIntl/status/2011737339719012787?s=20",
+        "label": "Iran International X Post"
+      }
+    ],
+    "verified": true,
+    "submitted_by": null
+  },
+  {
+    "id": "zahra-bani-amrian",
+    "created_at": "2026-01-15T10:49:52.625428+00:00",
+    "name": "Zahra Bani Amrian",
+    "name_fa": "زهرا بنی‌عامریان",
+    "city": "Karaj",
+    "city_fa": "کرج",
+    "location": "Karaj",
+    "location_fa": "کرج",
+    "date": "2026-01-10",
+    "coords": {
+      "lat": 35.8327,
+      "lon": 50.9916
+    },
+    "bio": "Behzhan Mostafavi, 55, was a retired education employee. He was killed alongside his wife and son during protests in Karaj.",
+    "bio_fa": "بیژن مصطفوی، ۵۵ ساله، بازنشسته آموزش و پرورش بود. او همراه با همسر و پسرش در جریان اعتراضات در کرج کشته شد.",
+    "testimonials": [],
+    "media": {
+      "photo": "https://i.iranintl.com/images/rdk9umy0/production/ffad4affef26c1ded99f59b6110d43353cca7a21-960x1280.jpg?rect=0,392,916,687&w=576&h=432&q=80&fit=max&auto=format"
+    },
+    "source_links": [
+      {
+        "url": "https://www.iranintl.com/202601150993",
+        "label": "Iran International"
+      }
+    ],
+    "verified": true,
+    "submitted_by": null
+  },
+  {
+    "id": "ehsan-abedini",
+    "created_at": "2026-01-15T10:51:15.91461+00:00",
+    "name": "Ehsan Abedini",
+    "name_fa": "احسان عابدینی",
+    "city": "Tehran",
+    "city_fa": "تهران",
+    "location": "Star Khan Street",
+    "location_fa": "خیابان ستارخان",
+    "date": "2023-01-09",
+    "coords": {
+      "lat": 35.7248,
+      "lon": 51.4215
+    },
+    "bio": "Ehsan Abedini, 35, was a protester killed by a direct gunshot to the head on Star Khan Street, Tehran. He owned a food shop and was actively supporting protests.",
+    "bio_fa": "احسان عابدینی، ۳۵ ساله، از معترضان بود که با شلیک مستقیم گلوله به سر در خیابان ستارخان تهران کشته شد. او صاحب یک مغازه تهیه غذا بود و از آغاز اعتراضات، همبستگی خود را نشان می‌داد.",
+    "testimonials": [],
+    "media": {
+      "photo": "https://pbs.twimg.com/media/G-sp2CmbQAIv0NU?format=jpg&name=900x900",
+      "xPost": "https://x.com/Tavaana/status/2011747669182488968?s=20"
+    },
+    "source_links": [
+      {
+        "url": "https://x.com/Tavaana/status/2011747669182488968?s=20",
+        "label": "Tavaana X Post"
+      }
+    ],
+    "verified": true,
+    "submitted_by": null
+  },
+  {
+    "id": "arshia-hozouri",
+    "created_at": "2026-01-15T10:52:55.327905+00:00",
+    "name": "Arshia Hozouri",
+    "name_fa": "عرشیا حضوری",
+    "city": "Tehran",
+    "city_fa": "تهران",
+    "location": "Ferdows Boulevard",
+    "location_fa": "بلوار فردوس",
+    "date": "2025-12-01",
+    "coords": {
+      "lat": 35.7447,
+      "lon": 51.4064
+    },
+    "bio": "A 25-year-old protester killed by government forces during December 2025 protests in Tehran.",
+    "bio_fa": "یک معترض ۲۵ ساله که در جریان اعتراضات دی‌ماه ۱۴۰۴ توسط نیروهای حکومتی در تهران کشته شد.",
+    "testimonials": [],
+    "media": {
+      "photo": "https://pbs.twimg.com/amplify_video_thumb/2011684476452290569/img/PYeom1XYeMftJZeQ.jpg",
+      "xPost": "https://x.com/ManotoNews/status/2011685074333216932?s=20"
+    },
+    "source_links": [
+      {
+        "url": "https://x.com/ManotoNews/status/2011685074333216932?s=20",
+        "label": "X Post"
+      }
+    ],
+    "verified": true,
+    "submitted_by": null
+  },
+  {
+    "id": "berna",
+    "created_at": "2026-01-15T10:59:57.072106+00:00",
+    "name": "Berna",
+    "name_fa": "برنا",
+    "city": "Unknown",
+    "city_fa": null,
+    "location": "",
+    "location_fa": null,
+    "date": "2026-01-14",
+    "coords": {
+      "lat": 35.6892,
+      "lon": 51.389
+    },
+    "bio": "A prominent young Iranian killed by executioners.",
+    "bio_fa": "جوان برومند ایران که به دست دژخیمان کشته شد.",
+    "testimonials": [],
+    "media": {
+      "photo": "https://pbs.twimg.com/media/G-luu0LW8AACYEU?format=jpg&name=900x900",
+      "xPost": "https://x.com/lionsun2541/status/2011260461384351917?s=20"
+    },
+    "source_links": [
+      {
+        "url": "https://x.com/lionsun2541/status/2011260461384351917?s=20",
+        "label": "X Post"
+      }
+    ],
+    "verified": true,
+    "submitted_by": null
+  },
+  {
+    "id": "said-ebrahimi",
+    "created_at": "2026-01-15T11:04:42.386385+00:00",
+    "name": "Said Ebrahimi",
+    "name_fa": "سعید ابراهیمی",
+    "city": "Bandar Anzali",
+    "city_fa": "بندرانزلی",
+    "location": "Bandar Anzali",
+    "location_fa": "بندرانزلی",
+    "date": "2026-01-09",
+    "coords": {
+      "lat": 37.475,
+      "lon": 49.4667
+    },
+    "bio": "Said Ebrahimi, a Gilak citizen from Bandar Anzali, was killed by Islamic Republic forces on January 9, 2026.",
+    "bio_fa": "سعید ابراهیمی، شهروند گیلک اهل بندرانزلی، در تاریخ ۱۹ دی ۱۴۰۴ در پی شلیک نیروهای حکومت جمهوری اسلامی ایران جان باخت.",
+    "testimonials": [],
+    "media": {
+      "photo": "https://pbs.twimg.com/media/G-nq6jxaIAAJVZ7?format=jpg&name=medium",
+      "xPost": "https://x.com/HyrcaniHRM/status/2011397007030779980?s=20"
+    },
+    "source_links": [
+      {
+        "url": "https://x.com/HyrcaniHRM/status/2011397007030779980?s=20",
+        "label": "Hyrcani Human Rights Media on X"
+      }
+    ],
+    "verified": true,
+    "submitted_by": null
+  },
+  {
+    "id": "dariush-ansari-bakhtiavand",
+    "created_at": "2026-01-15T11:11:10.630593+00:00",
+    "name": "Dariush Ansari Bakhtiavand",
+    "name_fa": "داریوش انصاری بختیاروند",
+    "city": "Fooladshahr, Esfahan",
+    "city_fa": "فولادشهر، اصفهان",
+    "location": "Fooladshahr",
+    "location_fa": "فولادشهر",
+    "date": "2025-12-31",
+    "coords": {
+      "lat": 32.4825,
+      "lon": 51.4044
+    },
+    "bio": "",
+    "bio_fa": null,
+    "testimonials": [],
+    "media": {
+      "photo": "https://pbs.twimg.com/media/G9lu8byXsAA6wuE?format=jpg&name=small",
+      "xPost": "https://x.com/IranIntl/status/2006759915709194716?s=20"
+    },
+    "source_links": [
+      {
+        "url": "https://x.com/IranIntl/status/2006759915709194716?s=20",
+        "label": "Iran International"
+      }
+    ],
+    "verified": true,
+    "submitted_by": null
+  },
+  {
+    "id": "ahad-ebrahimpour-abdoli",
+    "created_at": "2026-01-15T11:14:33.957857+00:00",
+    "name": "Ahad Ebrahimpour Abdoli",
+    "name_fa": "احد ابراهیم‌پور عبدلی",
+    "city": "Nurabad",
+    "city_fa": "نورآباد",
+    "location": "Azadi Boulevard",
+    "location_fa": "بلوار آزادی",
+    "date": "2026-01-01",
+    "coords": {
+      "lat": 33.8066,
+      "lon": 48.3358
+    },
+    "bio": "Ahad Ebrahimpour Abdoli, 30-35 years old, was killed by government forces during protests in Nurabad, Lorestan. Ahad's body was buried today, Sunday, January 4.",
+    "bio_fa": "احد ابراهیم‌پور عبدلی، ۳۰-۳۵ ساله، در اعتراضات نورآباد، لرستان به ضرب گلوله نیروهای حکومتی کشته شد. بر اساس گزارش‌های شاهدان عینی، احد در هنگام نجات زنی، به ضرب سه گلوله مورد اصابت قرار گرفت و یکی از این گلوله‌ها به ناحیه قلب او برخورد کرد و باعث جان‌باختنش شد. محل وقوع این حادثه در بلوار آزادی شهر نورآباد گزارش شده است.پیکر احد امروز یکشنبه ۱۴ دی ماه به خاک سپرده شد.",
+    "testimonials": [],
+    "media": {
+      "photo": "https://pbs.twimg.com/media/G90rEiSboAAlKdt?format=jpg&name=900x900",
+      "xPost": "https://x.com/Tavaana/status/2007808368606695530?s=20"
+    },
+    "source_links": [
+      {
+        "url": "https://x.com/Tavaana/status/2007808368606695530?s=20",
+        "label": "Tavaana X Post"
+      }
+    ],
+    "verified": true,
+    "submitted_by": null
+  },
+  {
+    "id": "amirhossein-bayati",
+    "created_at": "2026-01-15T11:18:00.343649+00:00",
+    "name": "Amirhossein Bayati",
+    "name_fa": "امیرحسین بیاتی",
+    "city": "Hamedan",
+    "city_fa": "همدان",
+    "location": "Buali Street",
+    "location_fa": "خیابان بوعلی",
+    "date": "2026-01-02",
+    "coords": {
+      "lat": 34.7992,
+      "lon": 48.5156
+    },
+    "bio": "Amirhossein Bayati, known as Amir Caffeine, was a young man from Hamedan who owned a coffee shop on Buali Street. He was killed during protests on January 2, 2026.",
+    "bio_fa": "امیرحسین بیاتی، معروف به امیر کافئین، جوانی اهل همدان بود که مغازه فروش قهوه در خیابان بوعلی داشت. او در اعتراضات ۱۲ دی ۱۴۰۴ کشته شد.",
+    "testimonials": [],
+    "media": {
+      "photo": "https://pbs.twimg.com/media/G-U_CL2XIAA4Kj3?format=jpg&name=900x900",
+      "xPost": "https://x.com/dadban4/status/2010082122023809257?s=20"
+    },
+    "source_links": [
+      {
+        "url": "https://x.com/dadban4/status/2010082122023809257?s=20",
+        "label": "Dadban X Post"
+      },
+      {
+        "url": "https://x.com/PahlaviReza/status/2007896852491124804?s=20",
+        "label": "Reza Pahlavi Official Account on X"
+      }
+    ],
+    "verified": true,
+    "submitted_by": null
+  },
+  {
+    "id": "soroush-soleimani",
+    "created_at": "2026-01-15T11:22:37.209417+00:00",
+    "name": "Soroush Soleimani",
+    "name_fa": "سروش سلیمانی",
+    "city": "Shahrekord",
+    "city_fa": "شهرکرد",
+    "location": "Hafshejan, Shahrekord",
+    "location_fa": "هفشجان، شهرکرد",
+    "date": "2026-01-03",
+    "coords": {
+      "lat": 32.3255,
+      "lon": 50.8531
+    },
+    "bio": "Young protester killed during nationwide protests on January 3rd, 2026.",
+    "bio_fa": "معترض جوان کشته شده در 13 دی‌ماه ۱۴۰۴.",
+    "testimonials": [],
+    "media": {
+      "photo": "https://pbs.twimg.com/amplify_video_thumb/2007818981701206016/img/lqHvxgWcyRGA2lA6.jpg",
+      "xPost": "https://x.com/RadioFarda_/status/2007819038370746719?s=20"
+    },
+    "source_links": [
+      {
+        "url": "https://x.com/RadioFarda_/status/2007819038370746719?s=20",
+        "label": "Radio Farda"
+      }
+    ],
+    "verified": true,
+    "submitted_by": null
+  },
+  {
+    "id": "amirmohammad-koohkan",
+    "created_at": "2026-01-15T11:31:52.22267+00:00",
+    "name": "Amirmohammad Koohkan",
+    "name_fa": "امیرمحمد کوهکن",
+    "city": "Neyriz",
+    "city_fa": "نی‌ریز",
+    "location": "Neyriz, Fars Province",
+    "location_fa": "نی‌ریز، استان فارس",
+    "date": "2024-01-03",
+    "coords": {
+      "lat": 29.2064,
+      "lon": 54.3289
+    },
+    "bio": "Amirmohammad Koohkan was a citizen killed during protests in Neyriz. He was a former futsal goalkeeper and coach in Fars Province.",
+    "bio_fa": "امیرمحمد کوهکن شهروندی بود که در جریان اعتراضات در نی‌ریز کشته شد. او دروازه‌بان و مربی سابق فوتسال در استان فارس بود.",
+    "testimonials": [],
+    "media": {
+      "photo": "https://pbs.twimg.com/media/G91Efx2XUAAoDCR?format=jpg&name=900x900",
+      "xPost": "https://x.com/ManotoNews/status/2007836329736847587?s=20"
+    },
+    "source_links": [
+      {
+        "url": "https://x.com/ManotoNews/status/2007836329736847587?s=20",
+        "label": "ManotoNews X Post"
+      }
+    ],
+    "verified": true,
+    "submitted_by": null
+  },
+  {
+    "id": "zahra-behloolipour",
+    "created_at": "2026-01-15T11:34:14.197912+00:00",
+    "name": "Zahra Behloolipour",
+    "name_fa": "زهرا بهلولی‌پور",
+    "city": "Tehran",
+    "city_fa": "تهران",
+    "location": "Fatemi Square",
+    "location_fa": "میدان فاطمی",
+    "date": "2026-01-08",
+    "coords": {
+      "lat": 35.7128,
+      "lon": 51.4006
+    },
+    "bio": "A 19-year-old Italian language student at the University of Tehran was killed by direct gunfire during protests.",
+    "bio_fa": "دانشجوی ۱۹ ساله زبان ایتالیایی دانشگاه تهران، در اعتراضات با شلیک مستقیم اسلحه کلاشینکوف به سرش جان باخت.",
+    "testimonials": [],
+    "media": {
+      "photo": "https://pbs.twimg.com/media/G-p_datWcAEXdTt?format=jpg&name=900x900",
+      "xPost": "https://x.com/HengawO/status/2011560342954897608?s=20"
+    },
+    "source_links": [
+      {
+        "url": "https://x.com/HengawO/status/2011560342954897608?s=20",
+        "label": "Hengaw Organization for Human Rights (X Post)"
+      }
+    ],
+    "verified": true,
+    "submitted_by": null
+  },
+  {
+    "id": "alireza-seydi",
+    "created_at": "2026-01-15T11:51:21.971536+00:00",
+    "name": "Alireza Seydi",
+    "name_fa": "علیرضا صیدی",
+    "city": "Tehran",
+    "city_fa": "تهران",
+    "location": "Tehran",
+    "location_fa": "تهران",
+    "date": "2026-01-08",
+    "coords": {
+      "lat": 35.6892,
+      "lon": 51.389
+    },
+    "bio": "Alireza Seydi, a 16-year-old teenager, lost his life on the evening of Thursday, January 8, 2026, during the Tehran Protests due to gunfire by repressive forces.",
+    "bio_fa": "علیرضا صیدی نوجوان ۱۶ ساله در جریان اعتراضات مردمی تهران، شامگاه پنجشنبه ۱۸ دی ۱۴۰۴ با شلیک گلوله نیروهای سرکوبگر جان خود را از دست داد.",
+    "testimonials": [],
+    "media": {
+      "photo": "https://pbs.twimg.com/media/G-rdVLCWQAEsFN0?format=jpg&name=small",
+      "xPost": "https://x.com/iranhrs99/status/2011704348066079038?s=20"
+    },
+    "source_links": [
+      {
+        "url": "https://x.com/iranhrs99/status/2011704348066079038?s=20",
+        "label": "Iran Human Rights Center"
+      }
+    ],
+    "verified": true,
+    "submitted_by": null
+  },
+  {
+    "id": "arnika-dabagh",
+    "created_at": "2026-01-15T12:06:40.825235+00:00",
+    "name": "Arnika Dabagh",
+    "name_fa": "آرنیکا دباغ",
+    "city": "Gorgan, Golestan Province",
+    "city_fa": "گرگان، گلستان",
+    "location": "",
+    "location_fa": null,
+    "date": "2026-01-09",
+    "coords": {
+      "lat": 35.6892,
+      "lon": 51.389
+    },
+    "bio": "Due to community reports, a 15-year-old girl in Gorgan (Golestan province) was shot dead on January 9th, 2026, during the protests. Due to the total blackout, her family couldn't call an ambulance in time, and she died.",
+    "bio_fa": "بر اساس گزارشات مردمی، آرنیکا دباغ، 15 ساله در اعتراضات مردمی در شهر گرگان، استان گلستان با شلیک گلوله توسط نیروهای سرکوبگر جان باخت. به دلیل قطع بودن خطوط تلفن، خانواده او نتوانستند با امبولانس تماس بگیرند.",
+    "testimonials": [],
+    "media": {
+      "photo": "https://pbs.twimg.com/media/G-oVtzdagAA8hED?format=jpg&name=large",
+      "xPost": "https://x.com/dadban4/status/2011434981071937808?s=20"
+    },
+    "source_links": [
+      {
+        "url": "https://x.com/dadban4/status/2011434981071937808?s=20",
+        "label": "Dadban on X"
+      }
+    ],
+    "verified": true,
+    "submitted_by": null
+  },
+  {
+    "id": "mostafa-azizi",
+    "created_at": "2026-01-15T12:16:40.394367+00:00",
+    "name": "Mostafa Azizi",
+    "name_fa": "مصطفی عزیزی",
+    "city": "Tehran",
+    "city_fa": "تهران",
+    "location": "",
+    "location_fa": null,
+    "date": "2026-01-15",
+    "coords": {
+      "lat": 35.6892,
+      "lon": 51.389
+    },
+    "bio": "Mostafa Azizi, 42, wrestler, killed by direct government forces' fire during protests in Tehran.",
+    "bio_fa": "مصطفی عزیزی، ۴۲ ساله، کشتی گیر، در اعتراضات مردمی با شلیک مستقیم نیروهای حکومتی در تهران کشته شد.",
+    "testimonials": [],
+    "media": {
+      "photo": "https://pbs.twimg.com/media/G-sxlDoW0AAiWu9?format=jpg&name=900x900",
+      "xPost": "https://x.com/ManotoNews/status/2011756192666955992?s=20"
+    },
+    "source_links": [
+      {
+        "url": "https://x.com/ManotoNews/status/2011756192666955992?s=20",
+        "label": "X Post"
+      }
+    ],
+    "verified": true,
+    "submitted_by": null
+  },
+  {
+    "id": "barna-dehghani",
+    "created_at": "2026-01-15T19:14:06.478762+00:00",
+    "name": "Barna Dehghani",
+    "name_fa": "برنا دهقانی",
+    "city": "Isfahan",
+    "city_fa": "اصفهان",
+    "location": "Isfahan",
+    "location_fa": "اصفهان",
+    "date": "2026-01-15",
+    "coords": {
+      "lat": 32.6525,
+      "lon": 51.6772
+    },
+    "bio": "Barna Dehghani was only 17 years old when Khomeini's soldiers killed her in Isfahan.",
+    "bio_fa": "برنا دهقانی فقط ۱۷ سال داشت، در اصفهان سربازان خمینی او را کشتند.",
+    "testimonials": [],
+    "media": {
+      "photo": "https://pbs.twimg.com/media/G-uHZB6bQAERxEJ?format=jpg&name=medium",
+      "xPost": "https://x.com/i/status/2011850529622893041"
+    },
+    "source_links": [
+      {
+        "url": "https://x.com/i/status/2011850529622893041",
+        "label": "X"
+      }
+    ],
+    "verified": true,
+    "submitted_by": null
+  },
+  {
+    "id": "danial-mostafavi",
+    "created_at": "2026-01-15T12:19:21.335385+00:00",
+    "name": "Danial Mostafavi",
+    "name_fa": "دانیال مصطفوی",
+    "city": "Karaj",
+    "city_fa": "کرج",
+    "location": "Personal Vehicle",
+    "location_fa": "خودروی شخصی خانوادگی",
+    "date": "2026-01-09",
+    "coords": {
+      "lat": 35.8439,
+      "lon": 50.9715
+    },
+    "bio": "Bijan Mostafavi, his wife Zahra Bani-Amirian, and Danial Mostafavi, their 19-year-old son and student, members of one family, were targeted by gunfire from government agents on Friday, January 19, in the city of Karaj and lost their lives.\nReports indicate that this family was inside their personal vehicle at the time of the incident, which, during the protests, was riddled with bullets by government agents. As a result of this shooting, Bijan Mostafavi, Zahra Bani-Amirian, and Daniel Mostafavi were killed.",
+    "bio_fa": "بیژن مصطفوی به همراه همسرش همسرش زهرا بنی‌عامریان و پسرشان دانیال مصطفوی، دانشجوی ۱۹ ساله، روز جمعه ۱۹ دی‌ماه در شهر کرج هدف تیراندازی ماموران حکومتی قرار گرفتند و جان خود را از دست دادند.\nگزارش‌ها حاکی است این خانواده در زمان وقوع حادثه داخل خودروی شخصی خود حضور داشته‌اند که در جریان اعتراضات، خودروی آن‌ها از سوی ماموران حکومتی به رگبار گلوله بسته شده است. در پی این تیراندازی، بیژن مصطفوی، زهرا بنی‌عامریان و دانیال مصطفوی جان باخته‌اند.",
+    "testimonials": [],
+    "media": {
+      "photo": "https://pbs.twimg.com/media/G-sfVlKWUAA70hz?format=jpg&name=small",
+      "xPost": "https://x.com/masoudkazemi81/status/2011736143847379427?s=20"
+    },
+    "source_links": [
+      {
+        "url": "https://x.com/masoudkazemi81/status/2011736143847379427?s=20",
+        "label": "X Post"
+      }
+    ],
+    "verified": true,
+    "submitted_by": null
+  },
+  {
+    "id": "amir-heydardost",
+    "created_at": "2026-01-15T12:27:58.831842+00:00",
+    "name": "Amir Heydardost",
+    "name_fa": "امیر حیدردوست",
+    "city": "Manjil",
+    "city_fa": "منجیل",
+    "location": "Manjil city",
+    "location_fa": "شهر منجیل",
+    "date": "2026-01-15",
+    "coords": {
+      "lat": 36.6583,
+      "lon": 49.7833
+    },
+    "bio": "Gilak citizen killed by direct shooting by government suppressive forces during popular protests in Manjil.",
+    "bio_fa": "شهروند گیلک که در جریان اعتراضات مردمی با شلیک مستقیم نیروهای سرکوبگر حکومتی کشته شد.",
+    "testimonials": [],
+    "media": {
+      "photo": "https://pbs.twimg.com/media/G-sxDjCWMAADC_F?format=jpg&name=900x900",
+      "xPost": "https://x.com/HengawO/status/2011755621172068400?s=20"
+    },
+    "source_links": [
+      {
+        "url": "https://x.com/HengawO/status/2011755621172068400?s=20",
+        "label": "Hengaw Organization for Human Rights on X"
+      }
+    ],
+    "verified": true,
+    "submitted_by": null
+  },
+  {
+    "id": "reza-moradi-abdolvand",
+    "created_at": "2026-01-15T12:29:21.871291+00:00",
+    "name": "Reza Moradi Abdolvand",
+    "name_fa": "رضا مرادی عبدالوند",
+    "city": "Azna, Lorestan",
+    "city_fa": "ازنا، لرستان",
+    "location": "",
+    "location_fa": null,
+    "date": "2025-12-31",
+    "coords": {
+      "lat": 33.3,
+      "lon": 49.3
+    },
+    "bio": "18-year-old from Azna, Lorestan, died after being shot in the head by security forces during peaceful protests.",
+    "bio_fa": "رضا مرادی عبدالوند ۱۸ساله اهل ازنا، لرستان پس از مجروح‌شدن از ناحیه سر با گلوله ماموران امنیتی در اعتراضات جان باخت.",
+    "testimonials": [],
+    "media": {
+      "photo": "https://pbs.twimg.com/media/G-sieYJW4AAgHyH?format=jpg&name=900x900",
+      "xPost": "https://x.com/ManotoNews/status/2011739571470680309?s=20"
+    },
+    "source_links": [
+      {
+        "url": "https://x.com/ManotoNews/status/2011739571470680309?s=20",
+        "label": "Manoto News"
+      }
+    ],
+    "verified": true,
+    "submitted_by": null
+  },
+  {
+    "id": "ariana-arjmandi",
+    "created_at": "2026-01-15T12:47:58.149277+00:00",
+    "name": "Ariana Arjmandi",
+    "name_fa": "آریانا ارجمندی",
+    "city": "Borujerd",
+    "city_fa": "بروجرد",
+    "location": "",
+    "location_fa": null,
+    "date": "2026-01-14",
+    "coords": {
+      "lat": 33.8667,
+      "lon": 48.8333
+    },
+    "bio": "A 23-year-old from Borujerd was killed by security forces during protests on January 14th, 2026. His family says she was shot while fleeing from a plainclothes attacker.",
+    "bio_fa": "جوان ۲۳ ساله‌ی اهل بروجرد، در جریان اعتراضات دی‌ماه 1404 با شلیک نیروهای امنیتی کشته شد. خانواده‌اش می‌گویند او هنگام فرار از تعقیب یک لباس‌شخصی هدف گلوله قرار گرفت و جان باخت.",
+    "testimonials": [],
+    "media": {
+      "photo": "https://pbs.twimg.com/media/G-qoIJqakAAlbhh?format=jpg&name=small",
+      "xPost": "https://x.com/KhoshroF/status/2011605054776545450?s=20"
+    },
+    "source_links": [
+      {
+        "url": "https://x.com/KhoshroF/status/2011605054776545450?s=20",
+        "label": "X"
+      }
+    ],
+    "verified": true,
+    "submitted_by": null
+  },
+  {
+    "id": "mohsen-asadi",
+    "created_at": "2026-01-15T12:50:32.737415+00:00",
+    "name": "Mohsen Asadi",
+    "name_fa": "محسن اسدی",
+    "city": "Isfahan",
+    "city_fa": "اصفهان",
+    "location": "Isfahan",
+    "location_fa": "اصفهان",
+    "date": "2026-01-09",
+    "coords": {
+      "lat": 32.6525,
+      "lon": 51.6772
+    },
+    "bio": "Mohsen Asadi, 63 years old, retired from the Isfahan Electricity Department, from the village of Durk Shahpuri in Chaharmahal and Bakhtiari Province, resident of Isfahan, was killed in the public protests on Dey 19 by direct gunfire from the regime's forces in Isfahan.",
+    "bio_fa": "محسن اسدی، ۶۳ ساله، بازنشسته اداره برق اصفهان اهل روستا دورک شاهپوری چهارمحال و بختیاری ساکن اصفهان در اعتراضات مردمی ۱۹ دی با شلیک مستقیم نیروهای حکومت در اصفهان کشته شد",
+    "testimonials": [],
+    "media": {
+      "photo": "https://pbs.twimg.com/media/G-oYg7sWEAAuib5?format=jpg&name=900x900",
+      "xPost": "https://x.com/ManotoNews/status/2011513650146918590?s=20"
+    },
+    "source_links": [
+      {
+        "url": "https://x.com/ManotoNews/status/2011513650146918590?s=20",
+        "label": "Manoto News"
+      }
+    ],
+    "verified": true,
+    "submitted_by": null
+  },
+  {
+    "id": "delaram-kazemi",
+    "created_at": "2026-01-16T04:14:40.262807+00:00",
+    "name": "Delaram Kazemi",
+    "name_fa": null,
+    "city": "Unknown",
+    "city_fa": null,
+    "location": "detention center of the Islamic Revolutionary Guard Corps Intelligence Organization",
+    "location_fa": null,
+    "date": "2026-01-16",
+    "coords": {
+      "lat": 35.6892,
+      "lon": 51.389
+    },
+    "bio": "Kurdish woman and mother of two children",
+    "bio_fa": null,
+    "testimonials": [],
+    "media": {
+      "photo": "https://pbs.twimg.com/media/G-tl2HIbQAcWG0j?format=jpg&name=small",
+      "xPost": "https://x.com/i/status/2011813645504663718"
+    },
+    "source_links": [
+      {
+        "url": "https://x.com/i/status/2011813645504663718",
+        "label": "AVATODAY آواتودی فارسی on X"
+      }
+    ],
+    "verified": true,
+    "submitted_by": null
+  },
+  {
+    "id": "amirhossein-mohammadzadeh",
+    "created_at": "2026-01-16T04:10:44.032909+00:00",
+    "name": "Amirhossein Mohammadzadeh",
+    "name_fa": null,
+    "city": "Tehran",
+    "city_fa": null,
+    "location": "Afsarieh district",
+    "location_fa": null,
+    "date": "2026-01-15",
+    "coords": {
+      "lat": 35.6892,
+      "lon": 51.389
+    },
+    "bio": "17-year-old football player for Delvar Afraz Tehran, killed by security forces during protests",
+    "bio_fa": null,
+    "testimonials": [],
+    "media": {
+      "photo": "https://pbs.twimg.com/media/G-vNBTHbQAQGH50?format=jpg&name=900x900",
+      "xPost": "https://x.com/i/status/2011927096507904455"
+    },
+    "source_links": [
+      {
+        "url": "https://x.com/i/status/2011927096507904455",
+        "label": "X Post"
+      }
+    ],
+    "verified": true,
+    "submitted_by": null
+  },
+  {
+    "id": "mohammadreza-golmakani",
+    "created_at": "2026-01-16T04:07:08.008446+00:00",
+    "name": "Mohammadreza Golmakani",
+    "name_fa": null,
+    "city": "Mashhad",
+    "city_fa": null,
+    "location": "during the protests",
+    "location_fa": null,
+    "date": "2026-01-09",
+    "coords": {
+      "lat": 35.6892,
+      "lon": 51.389
+    },
+    "bio": "Bodybuilder and gym coach with numerous provincial and national championship medals, married father of two daughters",
+    "bio_fa": null,
+    "testimonials": [],
+    "media": {
+      "photo": "https://pbs.twimg.com/media/G-u3m0yaAAEC2x6?format=jpg&name=360x360",
+      "xPost": "https://x.com/i/status/2011903540642349158"
+    },
+    "source_links": [
+      {
+        "url": "https://x.com/i/status/2011903540642349158",
+        "label": "X"
+      }
+    ],
+    "verified": true,
+    "submitted_by": null
+  },
+  {
+    "id": "nunes-momeni",
+    "created_at": "2026-01-16T04:19:22.888504+00:00",
+    "name": "Nunes Momeni",
+    "name_fa": null,
+    "city": "Mashhad",
+    "city_fa": null,
+    "location": "",
+    "location_fa": null,
+    "date": "2026-01-08",
+    "coords": {
+      "lat": 35.6892,
+      "lon": 51.389
+    },
+    "bio": "Martyr of the path to freedom during nationwide protests of 1404",
+    "bio_fa": null,
+    "testimonials": [],
+    "media": {
+      "photo": "https://pbs.twimg.com/media/G-uAOoQWkAMqv-g?format=jpg&name=small",
+      "xPost": "https://x.com/i/status/2011842750711238709"
+    },
+    "source_links": [
+      {
+        "url": "https://x.com/i/status/2011842750711238709",
+        "label": "Iran Human Rights Center"
+      }
+    ],
+    "verified": true,
+    "submitted_by": null
+  },
+  {
+    "id": "aydin-dolatkhah",
+    "created_at": "2026-01-15T12:56:22.054643+00:00",
+    "name": "Aydin Dolatkhah",
+    "name_fa": "آیدین دولت‌خواه",
+    "city": "Rasht",
+    "city_fa": "رشت",
+    "location": "Meydan Sar-e Gol, Rasht",
+    "location_fa": "میدان سرگل رشت",
+    "date": "2026-01-08",
+    "coords": {
+      "lat": 37.2605,
+      "lon": 49.5876
+    },
+    "bio": "Aydin Dolatvaz, born on August 11, 2003, lost his life on the evening of Thursday, January 8, 2026, in the area of Sorgol Square in Rasht, during the time frame of approximately 8:00 to 8:30 PM, due to direct gunfire by the forces of the Islamic Republic of Iran's government.\nBased on the published information, he has been buried at the Dokhaniat Mosque in Rasht.",
+    "bio_fa": "آیدین دولت‌خواه، متولد ۲۰ مرداد ۱۳۸۲، شامگاه پنج‌شنبه ۱۸ دی‌ماه ۱۴۰۴ در محدوده میدان سرگل رشت و در بازه زمانی حدود ساعت ۲۰:۰۰ تا ۲۰:۳۰، با شلیک مستقیم نیروهای حکومت جمهوری اسلامی ایران جان خود را از دست داده است.\nبر اساس اطلاعات منتشرشده، محل دفن این شهروند مسجد دخانیات رشت اعلام شده است.",
+    "testimonials": [],
+    "media": {
+      "photo": "https://pbs.twimg.com/media/G-nWPXrWQAAR-6O?format=jpg&name=medium",
+      "xPost": "https://x.com/HyrcaniHRM/status/2011374274271957138?s=20"
+    },
+    "source_links": [
+      {
+        "url": "https://x.com/HyrcaniHRM/status/2011374274271957138?s=20",
+        "label": "Hyrcani Human Rights Media (X Post)"
+      }
+    ],
+    "verified": true,
+    "submitted_by": null
+  },
+  {
+    "id": "taha-saffari",
+    "created_at": "2026-01-15T13:01:26.673758+00:00",
+    "name": "Taha Saffari",
+    "name_fa": "طاها صفاری",
+    "city": "Azna, Lorestan",
+    "city_fa": "ازنا، لرستان",
+    "location": "",
+    "location_fa": null,
+    "date": "2026-01-04",
+    "coords": {
+      "lat": 33.453,
+      "lon": 49.4583
+    },
+    "bio": "Taha Saffari, 16-year-old, from Azna, Lorestan.",
+    "bio_fa": "طاها صفاری، نوجوان ۱۶ ساله اهل ازنای لرستان.",
+    "testimonials": [],
+    "media": {
+      "photo": "https://pbs.twimg.com/media/G-jivWyWYAAj3jJ?format=jpg&name=900x900",
+      "xPost": "https://x.com/IsraelWarRoom/status/2011475212705923139?s=20"
+    },
+    "source_links": [
+      {
+        "url": "https://x.com/IsraelWarRoom/status/2011475212705923139?s=20",
+        "label": "Israel War Room"
+      }
+    ],
+    "verified": true,
+    "submitted_by": null
+  },
+  {
+    "id": "saeed-mirzaei",
+    "created_at": "2026-01-15T13:04:43.635919+00:00",
+    "name": "Saeed Mirzaei",
+    "name_fa": "سعید میرزایی",
+    "city": "Rasht",
+    "city_fa": "رشت",
+    "location": "Rasht",
+    "location_fa": "Rasht",
+    "date": "2026-01-08",
+    "coords": {
+      "lat": 37.2605,
+      "lon": 49.5942
+    },
+    "bio": "Saeed Mirzaei, a 31-year-old, lost his life on January 18, 1404, following gunfire by the forces of the Islamic Republic of Iran.",
+    "bio_fa": "سعید میرزایی، ۳۱ ساله در تاریخ ۱۸ دی‌ماه ۱۴۰۴ در پی شلیک نیروهای جمهوری اسلامی ایران جان خود را از دست داده است.",
+    "testimonials": [],
+    "media": {
+      "photo": "https://pbs.twimg.com/media/G-pktnjbQAYr7SJ?format=jpg&name=medium",
+      "xPost": "https://x.com/HyrcaniHRM/status/2011530926816444855?s=20"
+    },
+    "source_links": [
+      {
+        "url": "https://x.com/HyrcaniHRM/status/2011530926816444855?s=20",
+        "label": "Hyrcani Human Rights Media"
+      }
+    ],
+    "verified": true,
+    "submitted_by": null
+  },
+  {
+    "id": "parvaneh-rad",
+    "created_at": "2026-01-15T13:15:55.162158+00:00",
+    "name": "Parvaneh Rad",
+    "name_fa": "پروانه راد",
+    "city": "Tehran",
+    "city_fa": "Tehran",
+    "location": "Enghelab Street, Tehran",
+    "location_fa": "خیابان انقلاب تهران",
+    "date": "2026-01-08",
+    "coords": {
+      "lat": 35.7015,
+      "lon": 51.4052
+    },
+    "bio": "Parvaneh Rad, 43, was killed on Thursday, 18 December, in Enghelab Street in Tehran.",
+    "bio_fa": "پروانه راد ۴۳ ساله، پنجشنبه ۱۸ دی در خيابان انقلاب تهران جان باخت.",
+    "testimonials": [],
+    "media": {
+      "xPost": "https://x.com/esmaeils1169/status/2011742280604934377?s=20"
+    },
+    "source_links": [],
+    "verified": true,
+    "submitted_by": null
+  },
+  {
+    "id": "jabar-panahi",
+    "created_at": "2026-01-15T02:50:40.362571+00:00",
+    "name": "Jabar Panahi",
+    "name_fa": null,
+    "city": "Chenar Shahijan, Fars",
+    "city_fa": "چنار شاهیجان، فارس",
+    "location": "Chenar Shahijan",
+    "location_fa": "چنار شاهیجان",
+    "date": "2026-01-15",
+    "coords": {
+      "lat": 29.783,
+      "lon": 51.483
+    },
+    "bio": "Jabar Panahi was murdered by the Islamic regime for demanding freedom at the age of 16.",
+    "bio_fa": null,
+    "testimonials": [],
+    "media": {
+      "photo": "https://pbs.twimg.com/media/G-otQfKbgAAA7tY?format=jpg&name=small",
+      "xPost": "https://x.com/aban_khoonin/status/2011469952956473595?s=20"
+    },
+    "source_links": [
+      {
+        "url": "https://x.com/aban_khoonin/status/2011469952956473595?s=20",
+        "label": "X Post"
+      }
+    ],
+    "verified": true,
+    "submitted_by": null
+  },
+  {
+    "id": "mohammad-seydi",
+    "created_at": "2026-01-15T13:44:55.962938+00:00",
+    "name": "Mohammad Seydi",
+    "name_fa": "محمد صیدی",
+    "city": "Karaj",
+    "city_fa": "Karaj",
+    "location": "Karaj",
+    "location_fa": "کرج",
+    "date": "2026-01-08",
+    "coords": {
+      "lat": 35.8439,
+      "lon": 50.9715
+    },
+    "bio": "Mohammad Seydi, from Sar - Pol - e - Zahab, was killed in Karaj on January 8, 2026, by the Islamic regime forces.",
+    "bio_fa": "محمد صیدی از سرپل‌ ذهاب در استان کرمانشاه کشته شده در کرج در تاریخ ۱۸ دی ۱۴۰۴",
+    "testimonials": [],
+    "media": {
+      "photo": "https://pbs.twimg.com/media/G-sOED4XAAA5IUo?format=jpg&name=small",
+      "xPost": "https://x.com/NoaMagid/status/2011611504471392624?s=20"
+    },
+    "source_links": [
+      {
+        "url": "https://x.com/sayesohrabi/status/2011472053296042331?s=20",
+        "label": "X Post"
+      },
+      {
+        "url": "https://x.com/NoaMagid/status/2011611504471392624?s=20",
+        "label": "X Post"
+      }
+    ],
+    "verified": true,
+    "submitted_by": null
+  },
+  {
+    "id": "amid-moudi",
+    "created_at": "2026-01-15T13:48:59.9362+00:00",
+    "name": "Amid Moudi",
+    "name_fa": "امید مویدی",
+    "city": "Shiraz",
+    "city_fa": "شیراز",
+    "location": "Shiraz",
+    "location_fa": "شیراز",
+    "date": "2022-10-23",
+    "coords": {
+      "lat": 29.5918,
+      "lon": 52.583
+    },
+    "bio": "Amid Moudi was a final year physical education student in Shiraz who was killed by security forces while trying to help a protester.",
+    "bio_fa": "امید مویدی، دانشجوی سال آخر تربیت‌بدنی شیراز بود که در تلاش برای کمک به یک معترض توسط نیروهای امنیتی کشته شد.",
+    "testimonials": [],
+    "media": {
+      "photo": "https://pbs.twimg.com/media/G5u32m1X0AA33GO?format=jpg&name=medium",
+      "xPost": "https://x.com/dadban4/status/1724536631569342681?s=20"
+    },
+    "source_links": [
+      {
+        "url": "https://x.com/dadban4/status/1724536631569342681?s=20",
+        "label": "Dadban X Post"
+      }
+    ],
+    "verified": true,
+    "submitted_by": null
+  },
+  {
+    "id": "abolfazl-yaghmouri",
+    "created_at": "2026-01-15T13:54:50.1197+00:00",
+    "name": "Abolfazl Yaghmouri",
+    "name_fa": "ابوالفضل یغموری",
+    "city": "Fardis, Karaj",
+    "city_fa": "فردیس، کرج",
+    "location": "Fardis, Karaj, Alborz Province",
+    "location_fa": "فردیس، کرج، استان البرز",
+    "date": "2026-01-09",
+    "coords": {
+      "lat": 35.8358,
+      "lon": 50.9905
+    },
+    "bio": "A 17-year-old teenager was killed by a direct military bullet to the heart during protests.",
+    "bio_fa": "نوجوان ۱۷ ساله که با شلیک مستقیم گلوله جنگی به قلبش کشته شد.",
+    "testimonials": [],
+    "media": {
+      "photo": "https://pbs.twimg.com/media/G-qWL85bQAECZGC?format=jpg&name=900x900",
+      "xPost": "https://x.com/An_Eastern_Girl/status/2011585318475219287?s=20"
+    },
+    "source_links": [
+      {
+        "url": "https://x.com/An_Eastern_Girl/status/2011585318475219287?s=20",
+        "label": "X Post"
+      }
+    ],
+    "verified": true,
+    "submitted_by": null
+  },
+  {
+    "id": "payam-babou-kohistani",
+    "created_at": "2026-01-15T14:17:38.682248+00:00",
+    "name": "Payam Babou Kohistani",
+    "name_fa": "پیام بابو کوهستانی",
+    "city": "Chalus",
+    "city_fa": "چالوس",
+    "location": "Chalus",
+    "location_fa": "چالوس",
+    "date": "2026-01-08",
+    "coords": {
+      "lat": 36.6583,
+      "lon": 51.325
+    },
+    "bio": "Payam Babou Kohistani, 35-year-old Gilak citizen from Chalus, was killed during protests by direct shooting of Basij forces.",
+    "bio_fa": "پیام بابو کوهستانی، ۳۵ ساله، شهروند گیلک اهل چالوس، در جریان اعتراضات مردمی در چالوس با شلیک مستقیم نیروهای بسیج جمهوری اسلامی ایران جان خود را از دست داده است.",
+    "testimonials": [],
+    "media": {
+      "photo": "https://pbs.twimg.com/media/G-tCtLnbQAMhSN3?format=jpg&name=medium",
+      "xPost": "https://x.com/i/status/2011775009451360446"
+    },
+    "source_links": [
+      {
+        "url": "https://x.com/i/status/2011775009451360446",
+        "label": "Hyrcani Human Rights Media"
+      }
+    ],
+    "verified": true,
+    "submitted_by": null
+  },
+  {
+    "id": "sonia-zolfaghari",
+    "created_at": "2026-01-16T04:12:42.195888+00:00",
+    "name": "Sonia Zolfaghari",
+    "name_fa": null,
+    "city": "Bojnord",
+    "city_fa": null,
+    "location": "Bojnord",
+    "location_fa": null,
+    "date": "2026-01-03",
+    "coords": {
+      "lat": 35.6892,
+      "lon": 51.389
+    },
+    "bio": "A 19-year-old young woman taken by IRGC terrorists on January 3 in Bojnord",
+    "bio_fa": null,
+    "testimonials": [],
+    "media": {
+      "xPost": "https://x.com/i/status/2008664249883914711"
+    },
+    "source_links": [
+      {
+        "url": "https://x.com/i/status/2008664249883914711",
+        "label": "X Post"
+      }
+    ],
+    "verified": true,
+    "submitted_by": null
+  },
+  {
+    "id": "qasem-vakili",
+    "created_at": "2026-01-15T14:51:36.124968+00:00",
+    "name": "Qasem Vakili",
+    "name_fa": "قاسم وکیلی",
+    "city": "Qazvin",
+    "city_fa": "قزوین",
+    "location": "Qazvin Province",
+    "location_fa": "استان قزوین",
+    "date": "2026-01-15",
+    "coords": {
+      "lat": 36.2675,
+      "lon": 50.0083
+    },
+    "bio": "Qasem Vakili, an off-road champion from Qazvin province, was killed by a gunshot to the head by Islamic Republic forces during protests. He was approximately 40 years old with a young daughter.",
+    "bio_fa": "قاسم وکیلی، قهرمان آفرود از استان قزوین، بر اثر اصابت گلوله نیروهای جمهوری اسلامی به ناحیه سر جان خود را از دست داد. او حدوداً ۴۰ ساله بود و یک فرزند دختر خردسال داشت.",
+    "testimonials": [],
+    "media": {
+      "photo": "https://pbs.twimg.com/media/G-s89gUaoAA_0Iv?format=jpg&name=900x900",
+      "xPost": "https://x.com/i/status/2011768687867670889"
+    },
+    "source_links": [
+      {
+        "url": "https://x.com/i/status/2011768687867670889",
+        "label": "Tavaana on X"
+      }
+    ],
+    "verified": true,
+    "submitted_by": null
+  },
+  {
+    "id": "mahan-ghadami",
+    "created_at": "2026-01-15T15:11:43.489451+00:00",
+    "name": "Mahan Ghadami",
+    "name_fa": "ماهان قدمی",
+    "city": "Eslamshahr",
+    "city_fa": "اسلامشهر",
+    "location": "Eslamshahr",
+    "location_fa": "اسلامشهر",
+    "date": "2026-01-15",
+    "coords": {
+      "lat": 35.5964,
+      "lon": 51.3167
+    },
+    "bio": "Young hairdresser who was killed in Eslamshahr",
+    "bio_fa": "آرایشگر جوانی که در اسلامشهر کشته شد",
+    "testimonials": [],
+    "media": {
+      "xPost": "https://x.com/i/status/2011810753406226803"
+    },
+    "source_links": [
+      {
+        "url": "https://iranwire.com/fa/news-1/147681-%D9%85%D8%A7%D9%87%D8%A7%D9%86-%D9%82%D8%AF%D9%85%DB%8C-%D8%A2%D8%B1%D8%A7%DB%8C%D8%B4%DA%AF%D8%B1-%D8%AC%D9%88%D8%A7%D9%86%DB%8C-%DA%A9%D9%87-%D8%AF%D8%B1-%D8%A7%D8%B3%D9%84%D8%A7%D9%85%D8%B4%D9%87%D8%B1-%DA%A9%D8%B4%D8%AA%D9%87-%D8%B4%D8%AF/",
+        "label": "IranWire"
+      }
+    ],
+    "verified": true,
+    "submitted_by": null
+  },
+  {
+    "id": "ali-behrozi",
+    "created_at": "2026-01-15T15:20:17.292944+00:00",
+    "name": "Ali Behrozi",
+    "name_fa": "علی بهروزی",
+    "city": "Tehran",
+    "city_fa": "تهران",
+    "location": "Haft-e Hoz",
+    "location_fa": "هفت حوض",
+    "date": "2026-01-08",
+    "coords": {
+      "lat": 35.7897,
+      "lon": 51.4342
+    },
+    "bio": "25-year-old Ali Behrozi was shot by government agents in Haft-e Hoz, Tehran on January 8, 2026, and died in hospital the next day.",
+    "bio_fa": "علی بهروزی ۲۵ ساله در هفت حوض تهران بر اثر شلیک مستقیم گلوله جنگی ماموران حکومتی مصدوم و روز بعد در بیمارستان کشته شد.",
+    "testimonials": [],
+    "media": {
+      "photo": "https://pbs.twimg.com/media/G-tJYWvWIAAhKiO?format=jpg&name=900x900",
+      "xPost": "https://x.com/i/status/2011800543321342168"
+    },
+    "source_links": [
+      {
+        "url": "https://x.com/i/status/2011800543321342168",
+        "label": "Manoto News"
+      }
+    ],
+    "verified": true,
+    "submitted_by": null
+  },
+  {
+    "id": "hamed-basiri",
+    "created_at": "2026-01-15T15:28:42.722594+00:00",
+    "name": "Hamed Basiri",
+    "name_fa": "حامد بصیری",
+    "city": "Tehran",
+    "city_fa": "تهران",
+    "location": "Tehran",
+    "location_fa": "تهران",
+    "date": "2026-01-09",
+    "coords": {
+      "lat": 35.6892,
+      "lon": 51.389
+    },
+    "bio": "Hamed Basiri, 35, father of a daughter, was killed in Tehran on December 30, 2025, by direct shooting of military bullets by government agents.",
+    "bio_fa": "حامد بصیری، ۳۵ ساله، پدر یک دختر، در ۱۹ دی ۱۴۰۴ در تهران بر اثر شلیک مستقیم گلوله جنگی ماموران حکومتی کشته شد.",
+    "testimonials": [],
+    "media": {
+      "photo": "https://pbs.twimg.com/media/G-tpCk4WIAAC8h0?format=jpg&name=900x900",
+      "xPost": "https://x.com/i/status/2011817166539002227"
+    },
+    "source_links": [
+      {
+        "url": "https://x.com/i/status/2011817166539002227",
+        "label": "Manoto News"
+      }
+    ],
+    "verified": true,
+    "submitted_by": null
+  },
+  {
+    "id": "amir-ali-jelilian",
+    "created_at": "2026-01-15T15:39:35.142947+00:00",
+    "name": "Amir Ali Jelilian",
+    "name_fa": "امیرعلی جلیلیان",
+    "city": "Islamabad-e Gharb",
+    "city_fa": "اسلام‌آباد غرب",
+    "location": "protests in Islamabad-e Gharb",
+    "location_fa": "اعتراضات اسلام‌آباد غرب",
+    "date": "2026-01-15",
+    "coords": {
+      "lat": 34.35,
+      "lon": 47.25
+    },
+    "bio": "died from injuries during the protests in Islamabad-e Gharb",
+    "bio_fa": "از مجروحان اعتراضات اسلام‌آباد غرب جانباخت",
+    "testimonials": [],
+    "media": {
+      "photo": "https://pbs.twimg.com/card_img/2011819138394521601/EFcL2CJR?format=png&name=small",
+      "xPost": "https://x.com/i/status/2011819147802390904"
+    },
+    "source_links": [
+      {
+        "url": "https://x.com/i/status/2011819147802390904",
+        "label": "Hengaw Organization for Human Rights"
+      }
+    ],
+    "verified": true,
+    "submitted_by": null
+  },
+  {
+    "id": "danial-moranki",
+    "created_at": "2026-01-15T18:39:58.282953+00:00",
+    "name": "Danial Moranki",
+    "name_fa": "دانیال مرانکی",
+    "city": "Tehran",
+    "city_fa": "تهران",
+    "location": "Narmak, Tehran",
+    "location_fa": "نارمک تهران",
+    "date": "2026-01-07",
+    "coords": {
+      "lat": 35.735,
+      "lon": 51.415
+    },
+    "bio": "Danial Moranki was a victim of the Tehran protests killed on January 7, 2026 in Narmak district.",
+    "bio_fa": "دانیال مرانکی از قربانیان اعتراضات تهران بود که در ۱۸ دی ماه ۱۴۰۴ در منطقه نارمک کشته شد.",
+    "testimonials": [],
+    "media": {
+      "photo": "https://pbs.twimg.com/media/G-t3KVJXQAAsege?format=jpg&name=900x900",
+      "xPost": "https://x.com/i/status/2011832703143035047"
+    },
+    "source_links": [
+      {
+        "url": "https://x.com/i/status/2011832703143035047",
+        "label": "Hengaw Organization for Human Rights"
+      }
+    ],
+    "verified": true,
+    "submitted_by": null
+  },
+  {
+    "id": "syed-jafar-rahim-parvar",
+    "created_at": "2026-01-15T18:38:28.635639+00:00",
+    "name": "Syed Jafar Rahim Parvar",
+    "name_fa": "سید جعفر رحیم پرور",
+    "city": "Rasht",
+    "city_fa": "رشت",
+    "location": "Yakh-sazi neighborhood",
+    "location_fa": "محله یخ‌سازی",
+    "date": "2026-01-15",
+    "coords": {
+      "lat": 37.2605,
+      "lon": 49.5942
+    },
+    "bio": "Victim from Rasht during Iran protests",
+    "bio_fa": "فرزند ایران، سید جعفر رحیم پرور، نام پدر حسن از محله یخ‌سازی، رشت",
+    "testimonials": [],
+    "media": {
+      "xPost": "https://x.com/i/status/2011827593448693993"
+    },
+    "source_links": [
+      {
+        "url": "https://x.com/i/status/2011827593448693993",
+        "label": "X"
+      }
+    ],
+    "verified": true,
+    "submitted_by": null
+  },
+  {
+    "id": "farzam-ghasemi",
+    "created_at": "2026-01-15T18:44:20.763315+00:00",
+    "name": "Farzam Ghasemi",
+    "name_fa": "فرزام قاسمی",
+    "city": "Tehran",
+    "city_fa": "تهران",
+    "location": "Saadeghiyeh",
+    "location_fa": "صادقیه",
+    "date": "2026-01-08",
+    "coords": {
+      "lat": 35.735,
+      "lon": 51.415
+    },
+    "bio": "Young protester who joined street demonstrations. Injured by pellet gun around 11:30 PM.",
+    "bio_fa": "جوان معترض که به تظاهرات خیابانی پیوست. حوالی ۱۱:۳۰ شب با تیر ساچمه‌ای مجروح شد.",
+    "testimonials": [],
+    "media": {
+      "photo": "https://pbs.twimg.com/media/G-uOM2ZbsAAcmC5?format=jpg&name=900x900",
+      "xPost": "https://x.com/i/status/2011858021329121655"
+    },
+    "source_links": [
+      {
+        "url": "https://x.com/i/status/2011858021329121655",
+        "label": "Iran Wire"
+      }
+    ],
+    "verified": true,
+    "submitted_by": null
+  },
+  {
+    "id": "hossein-moradi",
+    "created_at": "2026-01-15T18:46:53.69187+00:00",
+    "name": "Hossein Moradi",
+    "name_fa": "حسین مرادی",
+    "city": "Lumar",
+    "city_fa": "لومار",
+    "location": "Lumar",
+    "location_fa": "لومار",
+    "date": "2026-01-13",
+    "coords": {
+      "lat": 35.6892,
+      "lon": 51.389
+    },
+    "bio": "Kurdish citizen from Lumar, arrested by government forces on January 13, 2026. Fate unknown.",
+    "bio_fa": "شهروند کرد اهل لومار که توسط نیروهای حکومتی بازداشت شد. سرنوشت وی نامعلوم است.",
+    "testimonials": [],
+    "media": {
+      "photo": "https://pbs.twimg.com/media/G-t67eLXYAAjMqO?format=jpg&name=900x900",
+      "xPost": "https://x.com/i/status/2011836838479351865"
+    },
+    "source_links": [
+      {
+        "url": "https://x.com/i/status/2011836838479351865",
+        "label": "Hengaw Organization for Human Rights (X)"
+      }
+    ],
+    "verified": true,
+    "submitted_by": null
+  },
+  {
+    "id": "babak-matin-azad",
+    "created_at": "2026-01-15T19:11:27.053376+00:00",
+    "name": "Babak Matin Azad",
+    "name_fa": "بابک متین ازاد",
+    "city": "Unknown",
+    "city_fa": null,
+    "location": "",
+    "location_fa": null,
+    "date": "2026-01-15",
+    "coords": {
+      "lat": 35.6892,
+      "lon": 51.389
+    },
+    "bio": "",
+    "bio_fa": null,
+    "testimonials": [],
+    "media": {
+      "photo": "https://pbs.twimg.com/media/G-uHVboagAAyzZC?format=jpg&name=900x900",
+      "xPost": "https://x.com/i/status/2011850465412108777"
+    },
+    "source_links": [
+      {
+        "url": "https://x.com/i/status/2011850465412108777",
+        "label": "X"
+      }
+    ],
+    "verified": true,
+    "submitted_by": null
+  },
+  {
+    "id": "nasim-pouraghaei",
+    "created_at": "2026-01-15T19:33:48.989746+00:00",
+    "name": "Nasim Pouraghaei",
+    "name_fa": "نسیم پورآقایی",
+    "city": "Tehran",
+    "city_fa": "تهران",
+    "location": "Sadeghiyeh neighborhood",
+    "location_fa": "منطقه صادقیه تهران",
+    "date": "2026-01-08",
+    "coords": {
+      "lat": 35.715,
+      "lon": 51.39
+    },
+    "bio": "Nesim Pouraghaei, mother of two children, lost her life on Dey 18 (January 8) in the Sadeghieh area of Tehran after being struck by a military bullet to the head. She was directly targeted and killed by the suppressive forces of the Islamic Republic during the popular protests.",
+    "bio_fa": "نسیم پورآقایی، مادر دو فرزند، روز ۱۸ دی‌ماه در منطقه صادقیه تهران بر اثر اصابت گلوله جنگی به ناحیه سر جان خود را از دست داد. او در جریان اعتراضات مردمی هدف شلیک مستقیم نیروهای سرکوبگر جمهوری اسلامی قرار گرفت و کشته شد.",
+    "testimonials": [],
+    "media": {
+      "photo": "https://pbs.twimg.com/media/G-uREsPbgAApOZL?format=jpg&name=small",
+      "xPost": "https://x.com/Tavaana/status/2011821741849645397?s=20"
+    },
+    "source_links": [
+      {
+        "url": "https://x.com/Tavaana/status/2011821741849645397?s=20",
+        "label": "Tavaana"
+      }
+    ],
+    "verified": true,
+    "submitted_by": null
+  },
+  {
+    "id": "armin-motamedi-amini",
+    "created_at": "2026-01-15T19:38:15.440117+00:00",
+    "name": "Armin Motamedi Amini",
+    "name_fa": "آرمین معتمد‌امینی",
+    "city": "Tehran",
+    "city_fa": "تهران",
+    "location": "Andarzgu Boulevard",
+    "location_fa": "بلوار اندرزگو",
+    "date": "2026-01-09",
+    "coords": {
+      "lat": 35.7482,
+      "lon": 51.4157
+    },
+    "bio": "Armin Motamedi Amini was killed by direct shooting to the heart on Andarzgu Boulevard, Tehran.",
+    "bio_fa": "آرمین معتمد‌امینی با شلیک مستقیم به قلبش در بلوار اندرزگو کشته شد.",
+    "testimonials": [],
+    "media": {
+      "photo": "https://pbs.twimg.com/media/G-uChbmWMAARxdb?format=jpg&name=240x240",
+      "xPost": "https://x.com/OmidShokoohi/status/2011845172997267548?s=20"
+    },
+    "source_links": [
+      {
+        "url": "https://x.com/OmidShokoohi/status/2011845172997267548?s=20",
+        "label": "X Post"
+      }
+    ],
+    "verified": true,
+    "submitted_by": null
+  },
+  {
+    "id": "omid-azimi",
+    "created_at": "2026-01-15T19:41:10.479624+00:00",
+    "name": "Omid Azimi",
+    "name_fa": "امید عظیمی",
+    "city": "Tehran",
+    "city_fa": "تهران",
+    "location": "Tehran",
+    "location_fa": "تهران",
+    "date": "2026-01-10",
+    "coords": {
+      "lat": 35.6892,
+      "lon": 51.389
+    },
+    "bio": "Omid Azimi, a 26-year-old athlete, was killed by direct gunfire from government agents during the protests on January 10th, 2026.",
+    "bio_fa": "امید عظیمی، ۲۶ ساله، ورزشکار، در جریان اعتراضات ۲۰ دی ۱۴۰۴ در تهران با شلیک مستقیم ماموران حکومت کشته شد.",
+    "testimonials": [],
+    "media": {
+      "photo": "https://pbs.twimg.com/media/G-toumVbQAIx5cp?format=jpg&name=900x900",
+      "xPost": "https://x.com/ManotoNews/status/2011822431699157380?s=20"
+    },
+    "source_links": [
+      {
+        "url": "https://x.com/ManotoNews/status/2011822431699157380?s=20",
+        "label": "ManotoNews on X"
+      }
+    ],
+    "verified": true,
+    "submitted_by": null
+  },
+  {
+    "id": "farzin-poust-ashkan-dorki",
+    "created_at": "2026-01-15T19:46:08.169599+00:00",
+    "name": "Farzin Poust Ashkan Dorki",
+    "name_fa": "فرزین پوست آشکن دورکی",
+    "city": "Isfahan",
+    "city_fa": "اصفهان",
+    "location": "Isfahan",
+    "location_fa": "اصفهان",
+    "date": "2026-01-09",
+    "coords": {
+      "lat": 32.6525,
+      "lon": 51.6772
+    },
+    "bio": "Farzin Poust Ashkan Dorki, 25, from Chaharmahal and Bakhtiari, living in Isfahan, was killed by direct government forces shooting during protests on January 9, 2026.",
+    "bio_fa": "فرزین پوست آشکن دورکی، ۲۵ ساله، اهل چهارمحال و بختیاری، ساکن اصفهان، در اعتراضات ۹ دی ۱۴۰۴ با شلیک مستقیم نیروهای حکومت به شهادت رسید.",
+    "testimonials": [],
+    "media": {
+      "photo": "https://pbs.twimg.com/media/G-tss3iXEAIPsnD?format=jpg&name=900x900",
+      "xPost": "https://x.com/i/status/2011876041782964248"
+    },
+    "source_links": [
+      {
+        "url": "https://x.com/i/status/2011876041782964248",
+        "label": "Manoto News"
+      }
+    ],
+    "verified": true,
+    "submitted_by": null
+  },
+  {
+    "id": "saeed-golsorkhi",
+    "created_at": "2026-01-15T19:46:15.345028+00:00",
+    "name": "Saeed Golsorkhi",
+    "name_fa": "سعید گلسرخی",
+    "city": "Shahroud",
+    "city_fa": "شاهرود",
+    "location": "Shahroud",
+    "location_fa": "شاهرود",
+    "date": "2026-01-12",
+    "coords": {
+      "lat": 36.4167,
+      "lon": 54.9667
+    },
+    "bio": "Saeed Golsorkhi, a 31-year-old powerlifting champion, was shot in the head with a military bullet by regime forces on Monday, January 12, 2026, during the national uprising of the people of Shahroud in Semnan Province. Saeed had one daughter.",
+    "bio_fa": "سعید گلسرخی، ۳۱ ساله و قهرمان پاورلیفتینگ در روز دوشنبه ۲۲ دی‌ماه در جریان خیزش ملی مردم شاهرود در استان سمنان، هدف گلوله جنگی ماموران به سرش قرار گرفت و جان باخت. سعید یک فرزند دختر داشت.",
+    "testimonials": [],
+    "media": {
+      "photo": "https://pbs.twimg.com/media/G-thVCvbQAE54tF?format=jpg&name=360x360",
+      "xPost": "https://x.com/AmirMiresmaeili/status/2011808677204742364?s=20"
+    },
+    "source_links": [
+      {
+        "url": "https://x.com/AmirMiresmaeili/status/2011808677204742364?s=20",
+        "label": "X"
+      }
+    ],
+    "verified": true,
+    "submitted_by": null
+  },
+  {
+    "id": "hadis-najafi",
+    "created_at": "2026-01-15T19:49:24.826015+00:00",
+    "name": "Hadis Najafi",
+    "name_fa": "هدیس نجفی",
+    "city": "Unknown",
+    "city_fa": null,
+    "location": "",
+    "location_fa": null,
+    "date": "2026-01-15",
+    "coords": {
+      "lat": 35.6892,
+      "lon": 51.389
+    },
+    "bio": "She was murdered in 2022 by Islamic regime of Iran for protesting for women's rights!",
+    "bio_fa": "در سال 2022 توسط رژیم اسلامی ایران به خاطر تظاهرات برای حقوق زنان به قتل رسید!",
+    "testimonials": [],
+    "media": {
+      "photo": "https://pbs.twimg.com/ext_tw_video_thumb/1837814905883230208/pu/img/LYd-kyFQUfLNHs1h.jpg",
+      "xPost": "https://x.com/i/status/2011525854787223833"
+    },
+    "source_links": [
+      {
+        "url": "https://x.com/i/status/2011525854787223833",
+        "label": "X Post"
+      }
+    ],
+    "verified": true,
+    "submitted_by": null
+  },
+  {
+    "id": "samaneh-mirzaei",
+    "created_at": "2026-01-15T19:52:28.417329+00:00",
+    "name": "Samaneh Mirzaei",
+    "name_fa": "سمانه میرزایی",
+    "city": "Tehran",
+    "city_fa": "تهران",
+    "location": "Navab Street, Tehran",
+    "location_fa": "خیابان نواب",
+    "date": "2024-01-09",
+    "coords": {
+      "lat": 35.6892,
+      "lon": 51.389
+    },
+    "bio": "Killed by the Islamic regime during protests on January 9 in Tehran.",
+    "bio_fa": "در روز 19 دی‌ماه درخیابان نواب تهران تهران توسط رژیم اسلامی کشته شد.",
+    "testimonials": [],
+    "media": {
+      "photo": "https://pbs.twimg.com/media/G-uR22-a0AAN9Mv?format=jpg&name=900x900",
+      "xPost": "https://x.com/Hoorieh81/status/2011862035189920020?s=20"
+    },
+    "source_links": [
+      {
+        "url": "https://x.com/Hoorieh81/status/2011862035189920020?s=20",
+        "label": "X"
+      }
+    ],
+    "verified": true,
+    "submitted_by": null
+  },
+  {
+    "id": "pouria-gholamali",
+    "created_at": "2026-01-15T19:55:43.54511+00:00",
+    "name": "Pouria Gholamali",
+    "name_fa": "پوریا غلامعلی",
+    "city": "Tehran",
+    "city_fa": "تهران",
+    "location": "Haft Howz Neighborhood",
+    "location_fa": "منطقه هفت حوض",
+    "date": "2026-01-08",
+    "coords": {
+      "lat": 35.785,
+      "lon": 51.432
+    },
+    "bio": "Pouya Gholamali, 32 years old, was killed on January 8, 2026, in the Haft Howz neighborhood, Tehran, during the protests.",
+    "bio_fa": "پوریا غلامعلی، ۳۲ ساله، روز ۱۸ دی در اعتراضات مردمی تهران منطقه هفت حوض کشته شد.",
+    "testimonials": [],
+    "media": {
+      "photo": "https://pbs.twimg.com/media/G-tnxw7bQAAfJVo?format=jpg&name=900x900",
+      "xPost": "https://x.com/ManotoNews/status/2011830738174271901?s=20"
+    },
+    "source_links": [
+      {
+        "url": "https://x.com/ManotoNews/status/2011830738174271901?s=20",
+        "label": "Manoto News"
+      }
+    ],
+    "verified": true,
+    "submitted_by": null
+  },
+  {
+    "id": "sohab-rastian",
+    "created_at": "2026-01-15T20:02:52.195088+00:00",
+    "name": "Sohab Rastian",
+    "name_fa": "صهبا رشتیان",
+    "city": "Isfahan",
+    "city_fa": "اصفهان",
+    "location": "",
+    "location_fa": null,
+    "date": "2026-01-15",
+    "coords": {
+      "lat": 32.6525,
+      "lon": 51.6772
+    },
+    "bio": "Sohab was full of hopes",
+    "bio_fa": "صهبا پر از آرزو بود",
+    "testimonials": [],
+    "media": {
+      "photo": "https://pbs.twimg.com/media/G-ucVkubQAI6Dn1?format=jpg&name=small",
+      "xPost": "https://x.com/i/status/2011873775923708271"
+    },
+    "source_links": [
+      {
+        "url": "https://x.com/i/status/2011873775923708271",
+        "label": "X"
+      }
+    ],
+    "verified": true,
+    "submitted_by": null
+  },
+  {
+    "id": "meysam-yaqubi",
+    "created_at": "2026-01-15T20:03:45.170539+00:00",
+    "name": "Meysam Yaqubi",
+    "name_fa": "میثم یعقوبی",
+    "city": "Lahijan",
+    "city_fa": "لاهیجان",
+    "location": "Lahijan",
+    "location_fa": "لاهیجان",
+    "date": "2026-01-10",
+    "coords": {
+      "lat": 37.2383,
+      "lon": 50.6109
+    },
+    "bio": "Meysam Yaqubi, 42 years old, was targeted by gunfire from the forces of the Islamic Republic of Iran government and lost his life due to a bullet hitting the heart area, on January 10, 2026, during the protests in Lahijan.",
+    "bio_fa": "میثم یعقوبی، ۴۲ ساله، شهروند اهل لاهیجان در تاریخ ۲۰ دی‌ماه ۱۴۰۴ هدف شلیک نیروهای حکومت جمهوری اسلامی ایران قرار گرفت و بر اثر اصابت گلوله به ناحیه قلب جان خود را از دست داد.او در زمان وقوع حادثه در حال کمک‌رسانی به دیگر شهروندان بوده است.",
+    "testimonials": [],
+    "media": {
+      "photo": "https://pbs.twimg.com/media/G-tKgNJWUAAjPWC?format=jpg&name=medium",
+      "xPost": "https://x.com/HyrcaniHRM/status/2011783582935622044?s=20"
+    },
+    "source_links": [
+      {
+        "url": "https://x.com/HyrcaniHRM/status/2011783582935622044?s=20",
+        "label": "Hyrcani Human Rights Media"
+      }
+    ],
+    "verified": true,
+    "submitted_by": null
+  },
+  {
+    "id": "mehdi-bastani",
+    "created_at": "2026-01-15T20:07:34.401434+00:00",
+    "name": "Mehdi Bastani",
+    "name_fa": "مهدی باستانی",
+    "city": "Tehran",
+    "city_fa": "تهران",
+    "location": "Pirouzi Street",
+    "location_fa": "خیابان پیروزی",
+    "date": "2026-01-10",
+    "coords": {
+      "lat": 35.715,
+      "lon": 51.42
+    },
+    "bio": "29-year-old protester who was shot by security forces during protests in Tehran.",
+    "bio_fa": "جوان ۲۹ ساله که در اعتراضات تهران توسط نیروهای امنیتی هدف گلوله قرار گرفت.",
+    "testimonials": [],
+    "media": {
+      "photo": "https://pbs.twimg.com/media/G-toG6AWQAEQz9v?format=jpg&name=900x900",
+      "xPost": "https://x.com/Tavaana/status/2011816129510121912?s=20"
+    },
+    "source_links": [
+      {
+        "url": "https://x.com/Tavaana/status/2011816129510121912?s=20",
+        "label": "Tavaana (X Post)"
+      }
+    ],
+    "verified": true,
+    "submitted_by": null
+  },
+  {
+    "id": "saman-afsari",
+    "created_at": "2026-01-15T20:08:07.598614+00:00",
+    "name": "Saman Afsari",
+    "name_fa": "سامان افسری",
+    "city": "Shiraz",
+    "city_fa": "شیراز",
+    "location": "Modares Boulevard",
+    "location_fa": "بلوار مدرس",
+    "date": "2025-12-29",
+    "coords": {
+      "lat": 29.5937,
+      "lon": 52.5832
+    },
+    "bio": "39-year-old man from Shiraz killed by direct fire of military bullets by government agents",
+    "bio_fa": "۳۹ ساله اهل شیراز بر اثر شلیک مستقیم گلوله جنگی ماموران حکومتی کشته شد",
+    "testimonials": [],
+    "media": {
+      "photo": "https://pbs.twimg.com/media/G-toXwBXsAAnW71?format=jpg&name=900x900",
+      "xPost": "https://x.com/i/status/2011845837303742637"
+    },
+    "source_links": [
+      {
+        "url": "https://x.com/i/status/2011845837303742637",
+        "label": "Manoto News Room"
+      }
+    ],
+    "verified": true,
+    "submitted_by": null
+  },
+  {
+    "id": "mabina-beheshti",
+    "created_at": "2026-01-15T20:13:08.584297+00:00",
+    "name": "Mabina Beheshti",
+    "name_fa": "مابینا بهشتی",
+    "city": "Gorgan",
+    "city_fa": "گرگان",
+    "location": "",
+    "location_fa": null,
+    "date": "2026-01-08",
+    "coords": {
+      "lat": 36.8519,
+      "lon": 54.4397
+    },
+    "bio": "21-year-old shot dead by regime security forces during protests",
+    "bio_fa": "21 ساله توسط نیروهای امنیتی رژیم در تظاهرات به ضرب گلوله کشته شد",
+    "testimonials": [],
+    "media": {
+      "photo": "https://pbs.twimg.com/media/G-utoIEWEAA_d8I?format=jpg&name=small",
+      "xPost": "https://x.com/i/status/2011892568846713256"
+    },
+    "source_links": [
+      {
+        "url": "https://x.com/i/status/2011892568846713256",
+        "label": "X Post"
+      }
+    ],
+    "verified": true,
+    "submitted_by": null
+  },
+  {
+    "id": "mohammadreza-gholmakani",
+    "created_at": "2026-01-15T20:15:29.655489+00:00",
+    "name": "Mohammadreza Gholmakani",
+    "name_fa": "محمدرضا گلمکانی",
+    "city": "Mashhad",
+    "city_fa": "مشهد",
+    "location": "Mashhad, Khorasan - e - Razavi",
+    "location_fa": "مشهد، خراسان رضوی",
+    "date": "2026-01-10",
+    "coords": {
+      "lat": 36.2605,
+      "lon": 59.6168
+    },
+    "bio": "Born in 1990, a bodybuilder and sports coach from Mashhad had several sports medals, and was killed by direct shooting.",
+    "bio_fa": "بدنساز و مربی ورزشی اهل مشهد، در جریان اعتراضات دی‌ماه با شلیک مستقیم جان باخت. او متولد ۱۳۶۹ بود، سابقه چندین مدال ورزشی داشت و در میان ورزشکاران چهره‌ای شناخته‌شده بود.",
+    "testimonials": [],
+    "media": {
+      "photo": "https://pbs.twimg.com/media/G-t1kHSbQAUiGm2?format=jpg&name=900x900",
+      "xPost": "https://x.com/KhoshroF/status/2011830927689703887?s=20"
+    },
+    "source_links": [
+      {
+        "url": "https://x.com/KhoshroF/status/2011830927689703887?s=20",
+        "label": "X Post"
+      }
+    ],
+    "verified": true,
+    "submitted_by": null
+  },
+  {
+    "id": "jalil-doostiar-barahui",
+    "created_at": "2026-01-15T20:15:42.770735+00:00",
+    "name": "Jalil Doostiar Barahui",
+    "name_fa": "جلیل دوستیار براهویی",
+    "city": "Maybod",
+    "city_fa": "مبید",
+    "location": "Maybod city, Yazd province",
+    "location_fa": "شهر مبید استان یزد",
+    "date": "2026-01-09",
+    "coords": {
+      "lat": 31.8,
+      "lon": 54.3
+    },
+    "bio": "22-year-old Baloch man from Zahedan, killed during peaceful protests in Maybod, Yazd by gunshot to chest from security forces.",
+    "bio_fa": "شهروند ۲۲ ساله بلوچ اهل زاهدان که در اعتراضات مسالمت‌آمیز مبید یزد با گلوله به سینه کشته شد.",
+    "testimonials": [],
+    "media": {
+      "photo": "https://pbs.twimg.com/media/G-s_fC1a0AAQYBm?format=jpg&name=small",
+      "xPost": "https://x.com/i/status/2011771470062727631"
+    },
+    "source_links": [
+      {
+        "url": "https://x.com/i/status/2011771470062727631",
+        "label": "haalvsh"
+      }
+    ],
+    "verified": true,
+    "submitted_by": null
+  },
+  {
+    "id": "mobina-beheshti",
+    "created_at": "2026-01-15T20:18:26.306614+00:00",
+    "name": "Mobina Beheshti",
+    "name_fa": "مبینا بهشتی",
+    "city": "Gorgan",
+    "city_fa": "گرگان",
+    "location": "",
+    "location_fa": null,
+    "date": "2026-01-10",
+    "coords": {
+      "lat": 36.8519,
+      "lon": 54.4378
+    },
+    "bio": "A 21-year-old citizen of Gorgan was killed by direct shooting by Islamic Republic forces.",
+    "bio_fa": "شهروند ۲۱ ساله گرگانی، با شلیک مستقیم نیروهای جمهوری اسلامی کشته شد.",
+    "testimonials": [],
+    "media": {
+      "photo": "https://pbs.twimg.com/media/G-uiWHvWUAAwwTh?format=jpg&name=900x900",
+      "xPost": "https://x.com/isamanyasin/status/2011880166830850557?s=20"
+    },
+    "source_links": [
+      {
+        "url": "https://x.com/isamanyasin/status/2011880166830850557?s=20",
+        "label": "X"
+      }
+    ],
+    "verified": true,
+    "submitted_by": null
+  },
+  {
+    "id": "milad-gholamzadeh-noushri",
+    "created_at": "2026-01-15T20:32:50.573045+00:00",
+    "name": "Milad Gholamzadeh Noushri",
+    "name_fa": "میلاد غلام‌زاده نوشری",
+    "city": "Rasht",
+    "city_fa": "رشت",
+    "location": "Noushar village, Khoshk Bijar district",
+    "location_fa": "روستای نوشر از توابع بخش خشکبیجار",
+    "date": "2026-01-07",
+    "coords": {
+      "lat": 37.2605,
+      "lon": 49.5868
+    },
+    "bio": "A 31-year-old man was killed during a protest by gunshot.",
+    "bio_fa": "جوان ۳۱ ساله که در تجمع اعتراضی با شلیک اسلحه جنگی ماموران بسیج کشته شد.",
+    "testimonials": [],
+    "media": {
+      "photo": "https://pbs.twimg.com/media/G-F8e2xXAAE3tRB?format=jpg&name=small",
+      "xPost": "https://x.com/AmirMiresmaeili/status/2009023782145675572?s=20"
+    },
+    "source_links": [
+      {
+        "url": "https://x.com/AmirMiresmaeili/status/2009023782145675572?s=20",
+        "label": "X Post"
+      }
+    ],
+    "verified": true,
+    "submitted_by": null
+  },
+  {
+    "id": "mahmoud-mousavi",
+    "created_at": "2026-01-15T20:37:32.474265+00:00",
+    "name": "Mahmoud Mousavi",
+    "name_fa": "محمود موسوی",
+    "city": "Qeshm",
+    "city_fa": "قشم",
+    "location": "Qeshm, Hormozgan Province",
+    "location_fa": "قشم، استان هرمزگان",
+    "date": "2026-01-10",
+    "coords": {
+      "lat": 26.9,
+      "lon": 55.8
+    },
+    "bio": "29-year-old killed on January 10, 2026.",
+    "bio_fa": "۲۹ ساله که در تاریخ 20 دی 1404 کشته شد.",
+    "testimonials": [],
+    "media": {
+      "photo": "https://pbs.twimg.com/media/G-aJLbwX0AAoW_L?format=jpg&name=small",
+      "xPost": "https://x.com/LoabatK/status/2010445116234944673?s=20"
+    },
+    "source_links": [
+      {
+        "url": "https://x.com/LoabatK/status/2010445116234944673?s=20",
+        "label": "X Post"
+      }
+    ],
+    "verified": true,
+    "submitted_by": null
+  },
+  {
+    "id": "mohsen-rashidi",
+    "created_at": "2026-01-15T20:40:11.748569+00:00",
+    "name": "Mohsen Rashidi",
+    "name_fa": "محسن رشیدی",
+    "city": "Isfahan",
+    "city_fa": "اصفهان",
+    "location": "Isfahan",
+    "location_fa": "اصفهان",
+    "date": "2026-01-15",
+    "coords": {
+      "lat": 32.6525,
+      "lon": 51.6772
+    },
+    "bio": "Young Iranian man killed by Islamic Republic in Isfahan after 18 years.",
+    "bio_fa": "جوان ایرانی که پس از ۱۸ سال توسط جمهوری اسلامی در اصفهان کشته شد.",
+    "testimonials": [],
+    "media": {
+      "photo": "https://pbs.twimg.com/media/G-ovK1MboAApPOr?format=jpg&name=small",
+      "xPost": "https://x.com/i/status/2011472053296042331"
+    },
+    "source_links": [
+      {
+        "url": "https://x.com/i/status/2011472053296042331",
+        "label": "X Post"
+      }
+    ],
+    "verified": true,
+    "submitted_by": null
+  },
+  {
+    "id": "hassan-shakhshi",
+    "created_at": "2026-01-16T04:17:33.413306+00:00",
+    "name": "Hassan Shakhshi",
+    "name_fa": null,
+    "city": "Tehran",
+    "city_fa": null,
+    "location": "Tehranpars",
+    "location_fa": null,
+    "date": "2026-01-16",
+    "coords": {
+      "lat": 35.6892,
+      "lon": 51.389
+    },
+    "bio": "Protester killed during demonstrations in Tehran",
+    "bio_fa": null,
+    "testimonials": [],
+    "media": {
+      "photo": "https://pbs.twimg.com/media/G-vbgr9XIAAQIwh?format=jpg&name=small",
+      "xPost": "https://x.com/i/status/2011943015204479442"
+    },
+    "source_links": [
+      {
+        "url": "https://x.com/i/status/2011943015204479442",
+        "label": "X Post"
+      }
+    ],
+    "verified": true,
+    "submitted_by": null
+  },
+  {
+    "id": "shayan-azadi",
+    "created_at": "2026-01-16T04:09:16.678689+00:00",
+    "name": "Shayan Azadi",
+    "name_fa": null,
+    "city": "Karaj",
+    "city_fa": null,
+    "location": "Gohardasht",
+    "location_fa": null,
+    "date": "2026-01-15",
+    "coords": {
+      "lat": 35.6892,
+      "lon": 51.389
+    },
+    "bio": "Shayan Azadi, 25 years old, was killed by a gunshot from behind at the door in Gohardasht",
+    "bio_fa": null,
+    "testimonials": [],
+    "media": {
+      "photo": "https://pbs.twimg.com/media/G-vIQv8a8AAI66M?format=jpg&name=900x900",
+      "xPost": "https://x.com/i/status/2011921854852661459"
+    },
+    "source_links": [
+      {
+        "url": "https://x.com/i/status/2011921854852661459",
+        "label": "AVATODAY آواتودی فارسی on X"
+      }
+    ],
+    "verified": true,
+    "submitted_by": null
+  },
+  {
+    "id": "thamin-rostami",
+    "created_at": "2026-01-16T04:05:29.870244+00:00",
+    "name": "Thamin Rostami",
+    "name_fa": null,
+    "city": "Karaj",
+    "city_fa": null,
+    "location": "Mahrooyeh neighborhood",
+    "location_fa": null,
+    "date": "2026-01-15",
+    "coords": {
+      "lat": 35.6892,
+      "lon": 51.389
+    },
+    "bio": "Nurse at Aram Hospital in Karaj. Killed by Islamic Republic criminals while trying to help a girl being beaten. Shot in the spleen from behind.",
+    "bio_fa": null,
+    "testimonials": [],
+    "media": {
+      "photo": "https://pbs.twimg.com/media/G-uum-tbQAMHnM7?format=jpg&name=900x900",
+      "xPost": "https://x.com/i/status/2011893650750374083"
+    },
+    "source_links": [
+      {
+        "url": "https://x.com/i/status/2011893650750374083",
+        "label": "X"
+      }
+    ],
+    "verified": true,
+    "submitted_by": null
+  },
+  {
+    "id": "mehdi-delkosh",
+    "created_at": "2026-01-16T04:32:18.558838+00:00",
+    "name": "Mehdi Delkosh",
+    "name_fa": null,
+    "city": "Rasht",
+    "city_fa": null,
+    "location": "",
+    "location_fa": null,
+    "date": "2026-01-15",
+    "coords": {
+      "lat": 35.6892,
+      "lon": 51.389
+    },
+    "bio": "23-year-old Gilak young man killed by gunshot",
+    "bio_fa": null,
+    "testimonials": [],
+    "media": {
+      "photo": "https://pbs.twimg.com/media/G-tdah_bQAcRyAT?format=jpg&name=small",
+      "xPost": "https://x.com/avatoday_news/status/2011804373878239486?s=20"
+    },
+    "source_links": [
+      {
+        "url": "https://x.com/avatoday_news/status/2011804373878239486?s=20",
+        "label": "AVATODAY آواتودی فارسی on X"
+      }
+    ],
+    "verified": true,
+    "submitted_by": null
+  },
+  {
+    "id": "hossein-shirkol",
+    "created_at": "2026-01-16T05:21:44.645969+00:00",
+    "name": "Hossein Shirkol",
+    "name_fa": null,
+    "city": "Isfahan",
+    "city_fa": null,
+    "location": "",
+    "location_fa": null,
+    "date": "2026-01-08",
+    "coords": {
+      "lat": 35.6892,
+      "lon": 51.389
+    },
+    "bio": "Martyr of the path to freedom during the 1404 protests in Isfahan.",
+    "bio_fa": null,
+    "testimonials": [],
+    "media": {
+      "photo": "https://pbs.twimg.com/media/G-t75rnWkAUfSOM?format=jpg&name=small",
+      "xPost": "https://x.com/iranhrs99/status/2011838049890504863?s=20"
+    },
+    "source_links": [
+      {
+        "url": "https://x.com/iranhrs99/status/2011838049890504863?s=20",
+        "label": "X Post"
+      }
+    ],
+    "verified": true,
+    "submitted_by": null
+  }
+]
