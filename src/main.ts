@@ -530,10 +530,21 @@ function initContributionForm() {
       const url = aiUrl.value.trim()
       if (!url) return
 
+      // Create and show loading overlay for the form
+      const formContainer = form.parentElement!
+      const overlay = document.createElement('div')
+      overlay.className = 'form-overlay-loading'
+      overlay.innerHTML = `
+        <div class="spinner" style="width: 40px; height: 40px; border-width: 4px;"></div>
+        <span>${t('ai.processing')}...</span>
+      `
+      formContainer.style.position = 'relative'
+      formContainer.appendChild(overlay)
+
       aiBtn.disabled = true
       aiBtn.innerHTML = `⏳ ${t('ai.processing')}`
-      aiStatus.textContent = t('ai.fetching')
-      aiStatus.className = 'ai-status'
+      aiStatus.innerHTML = `<div class="spinner"></div> <span>${t('ai.fetching')}</span>`
+      aiStatus.className = 'ai-status loading'
       aiStatus.classList.remove('hidden')
 
       try {
@@ -565,6 +576,7 @@ function initContributionForm() {
         aiStatus.textContent = errorMessage
         aiStatus.className = 'ai-status error'
       } finally {
+        overlay.remove()
         aiBtn.disabled = false
         aiBtn.innerHTML = `✨ ${t('ai.button')}`
       }
@@ -600,12 +612,14 @@ function initContributionForm() {
         body!.innerHTML = `
           <div class="submission-result">
             <h3>${t('contribute.successTitle')}</h3>
-            <p>${t('contribute.successDesc')}</p>
-            <div class="success-icon">✅</div>
+            <div class="success-icon" style="font-size: 3rem; margin: 1.5rem 0;">✅</div>
             <p>Your contribution has been submitted for review. It will appear on the map once verified.</p>
-            <button id="close-modal-success" class="nav-button">${t('details.close')}</button>
+            <div class="actions" style="margin-top: 1.5rem;">
+              <button id="close-modal-success" class="nav-button primary">${t('details.close')}</button>
+            </div>
           </div>
         `
+
         document.getElementById('close-modal-success')?.addEventListener('click', () => {
           overlay?.classList.add('hidden')
         })
