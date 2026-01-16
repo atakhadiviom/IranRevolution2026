@@ -436,6 +436,54 @@ main {
 }
 
 /* Modal */
+/* Floating Action Button */
+.fab-button {
+  position: fixed;
+  bottom: 5rem;
+  right: 2rem;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: var(--accent);
+  color: white;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+  cursor: pointer;
+  box-shadow: 0 4px 15px rgba(255, 59, 48, 0.4);
+  z-index: 1500;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.fab-button:hover {
+  transform: translateY(-4px) scale(1.05);
+  box-shadow: 0 6px 20px rgba(255, 59, 48, 0.5);
+}
+
+.fab-button span {
+  transition: transform 0.3s ease;
+}
+
+.fab-button:active {
+  transform: translateY(0) scale(0.95);
+}
+
+/* Hide FAB when modal or list is open on mobile to avoid clutter */
+body.modal-open .fab-button {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .fab-button {
+    bottom: 4rem;
+    right: 1.5rem;
+    width: 50px;
+    height: 50px;
+  }
+}
+
 .modal-overlay {
   position: fixed;
   top: 0;

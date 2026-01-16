@@ -394,6 +394,7 @@ function clearDetails(memorials: MemorialEntry[]) {
 
 function initContributionForm() {
   const btn = document.getElementById('contribute-btn')
+  const fab = document.getElementById('fab-contribute')
   const overlay = document.getElementById('modal-overlay')
   const close = document.getElementById('close-modal')
   const body = document.getElementById('modal-body')
@@ -401,16 +402,21 @@ function initContributionForm() {
 
   if (!btn || !overlay || !close || !body || !modalContent) return
 
-  btn.addEventListener('click', () => {
+  const openModal = () => {
     overlay.classList.remove('hidden')
     document.body.style.overflow = 'hidden'
+    document.body.classList.add('modal-open')
     renderForm()
-  })
+  }
+
+  btn.addEventListener('click', openModal)
+  fab?.addEventListener('click', openModal)
 
   close.addEventListener('click', () => {
     overlay.classList.add('hidden')
     modalContent.classList.remove('large')
     document.body.style.overflow = ''
+    document.body.classList.remove('modal-open')
   })
 
   overlay.addEventListener('click', (e) => {
@@ -418,6 +424,7 @@ function initContributionForm() {
       overlay.classList.add('hidden')
       modalContent.classList.remove('large')
       document.body.style.overflow = ''
+      document.body.classList.remove('modal-open')
     }
   })
 
@@ -623,6 +630,7 @@ function initContributionForm() {
         document.getElementById('close-modal-success')?.addEventListener('click', () => {
           overlay?.classList.add('hidden')
           document.body.style.overflow = ''
+          document.body.classList.remove('modal-open')
         })
       } else {
         let errorHint = ''
@@ -659,6 +667,7 @@ function initContributionForm() {
         document.getElementById('close-modal-error')?.addEventListener('click', () => {
           overlay?.classList.add('hidden')
           document.body.style.overflow = ''
+          document.body.classList.remove('modal-open')
         })
         
         const copyBtn = document.getElementById('copy-json-btn')
