@@ -45,6 +45,7 @@
   "ai.error": "خطا در استخراج اطلاعات. لطفاً دستی وارد کنید.",
   "contribute.duplicateWarning": "هشدار: شخصی با این نام قبلاً در لیست یادبود ثبت شده است.",
   "contribute.duplicateAction": "مشاهده پروفایل موجود",
+  "contribute.mergeNote": "در صورت ارسال، لینک شما به عنوان یک منبع جدید به پروفایل موجود اضافه خواهد شد.",
   "contribute.copy": "کپی JSON",
   "list.viewAll": "مشاهده همه",
   "list.title": "لیست یادبود",

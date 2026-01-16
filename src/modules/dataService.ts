@@ -4,9 +4,59 @@ import { translateMemorialData, geocodeLocation, reverseGeocode } from './ai'
 import type { MemorialEntry } from './types'
 import type { Database } from './database.types'
 
-type MemorialUpdate = Database['public']['Tables']['memorials']['Update']
-
 type MemorialRow = Database['public']['Tables']['memorials']['Row']
+
+export async function mergeMemorials(sourceId: string, targetId: string): Promise<{ success: boolean; error?: string }> {
+  if (!supabase) return { success: false, error: 'Supabase not configured' }
+  try {
+    /* eslint-disable @typescript-eslint/no-explicit-any */
+    // 1. Get both entries
+    const { data: source, error: sourceError } = await (supabase as any)
+      .from('memorials')
+      .select('*')
+      .eq('id', sourceId)
+      .single()
+    
+    const { data: target, error: targetError } = await (supabase as any)
+      .from('memorials')
+      .select('*')
+      .eq('id', targetId)
+      .single()
+
+    if (sourceError || targetError || !source || !target) {
+      return { success: false, error: 'Could not find source or target entry.' }
+    }
+
+    // 2. Combine references
+    const sourceRefs = (source.source_links as any[]) || []
+    const targetRefs = (target.source_links as any[]) || []
+    
+    const refsToAdd = sourceRefs.filter(newR => !targetRefs.some(currR => currR.url === newR.url))
+    
+    if (refsToAdd.length > 0) {
+      const updatedRefs = [...targetRefs, ...refsToAdd]
+      const { error: updateError } = await (supabase as any)
+        .from('memorials')
+        .update({ source_links: updatedRefs })
+        .eq('id', targetId)
+      
+      if (updateError) return { success: false, error: updateError.message }
+    }
+
+    // 3. Delete the source entry
+    const { error: deleteError } = await (supabase as any)
+      .from('memorials')
+      .delete()
+      .eq('id', sourceId)
+
+    if (deleteError) return { success: false, error: deleteError.message }
+    
+    return { success: true }
+    /* eslint-enable @typescript-eslint/no-explicit-any */
+  } catch (e) {
+    return { success: false, error: e instanceof Error ? e.message : 'Unknown error' }
+  }
+}
 
 export async function fetchMemorials(includeUnverified = false): Promise<MemorialEntry[]> {
   if (!supabase) return fetchStaticMemorials()
@@ -36,17 +86,66 @@ export async function fetchMemorials(includeUnverified = false): Promise<Memoria
   }
 }
 
-export async function verifyMemorial(id: string): Promise<{ success: boolean; error?: string }> {
+export async function verifyMemorial(id: string): Promise<{ success: boolean; merged?: boolean; error?: string }> {
   if (!supabase) return { success: false, error: 'Supabase not configured' }
   try {
-    const { error } = await supabase
-      .schema('public')
+    /* eslint-disable @typescript-eslint/no-explicit-any */
+    // 1. Get the current entry
+    const { data: current, error: fetchError } = await (supabase as any)
       .from('memorials')
-      .update({ verified: true } as MemorialUpdate)
+      .select('*')
+      .eq('id', id)
+      .single()
+
+    if (fetchError || !current) {
+      return { success: false, error: fetchError?.message || 'Entry not found' }
+    }
+
+    // 2. Check if another entry with the same name is ALREADY VERIFIED
+    const { data: existing, error: checkError } = await (supabase as any)
+      .from('memorials')
+      .select('*')
+      .eq('name', current.name)
+      .eq('verified', true)
+      .neq('id', id)
+      .maybeSingle()
+
+    if (checkError) {
+      console.error('Duplicate check error during verification:', checkError)
+    }
+
+    if (existing) {
+      // 3. MERGE: Add references from current to existing
+      const currentRefs = (current.source_links as any[]) || []
+      const existingRefs = (existing.source_links as any[]) || []
+      
+      const refsToAdd = currentRefs.filter(newR => !existingRefs.some(currR => currR.url === newR.url))
+      
+      if (refsToAdd.length > 0) {
+        const updatedRefs = [...existingRefs, ...refsToAdd]
+        const { error: updateError } = await (supabase as any)
+          .from('memorials')
+          .update({ source_links: updatedRefs })
+          .eq('id', existing.id)
+        
+        if (updateError) return { success: false, error: updateError.message }
+      }
+
+      // 4. Delete the duplicate pending entry
+      await (supabase as any).from('memorials').delete().eq('id', id)
+      
+      return { success: true, merged: true }
+    }
+
+    // 5. Standard verification if no duplicate found
+    const { error } = await (supabase as any)
+      .from('memorials')
+      .update({ verified: true })
       .eq('id', id)
 
     if (error) return { success: false, error: error.message }
     return { success: true }
+    /* eslint-enable @typescript-eslint/no-explicit-any */
   } catch (e) {
     return { success: false, error: e instanceof Error ? e.message : 'Unknown error' }
   }
@@ -68,7 +167,7 @@ export async function deleteMemorial(id: string): Promise<{ success: boolean; er
   }
 }
 
-export async function submitMemorial(entry: Partial<MemorialEntry>): Promise<{ success: boolean; error?: string }> {
+export async function submitMemorial(entry: Partial<MemorialEntry>): Promise<{ success: boolean; merged?: boolean; error?: string }> {
   if (!supabase) {
     return { success: false, error: 'Database connection not available.' }
   }
@@ -86,22 +185,41 @@ export async function submitMemorial(entry: Partial<MemorialEntry>): Promise<{ s
     
     // Check for duplicates if this is a new entry
     if (!isEditing) {
-      const orConditions = [];
-      if (entry.name) orConditions.push(`name.eq."${entry.name}"`);
-      if (entry.media?.xPost) orConditions.push(`media->>xPost.eq."${entry.media.xPost}"`);
+      /* eslint-disable @typescript-eslint/no-explicit-any */
+      const { data: existing, error: checkError } = await (supabase as any)
+        .from('memorials')
+        .select('id, name, source_links, verified')
+        .eq('name', entry.name)
+        .maybeSingle()
 
-      if (orConditions.length > 0) {
-        const { data: existing, error: checkError } = await supabase
-          .from('memorials')
-          .select('id, name')
-          .or(orConditions.join(','))
-
-        if (checkError) {
-          console.error('Duplicate check error:', checkError);
-        } else if (existing && existing.length > 0) {
-          return { success: false, error: `A memorial with this name or URL already exists.` }
+      if (checkError) {
+        console.error('Duplicate check error:', checkError);
+      } else if (existing) {
+        // MERGE LOGIC: If person exists, add the new references to their record
+        const newRefs = entry.references || []
+        if (newRefs.length > 0) {
+          const currentRefs = ((existing as any).source_links as any[]) || []
+          
+          // Filter out references that already exist (by URL)
+          const refsToAdd = newRefs.filter(newR => !currentRefs.some(currR => currR.url === newR.url))
+          
+          if (refsToAdd.length > 0) {
+            const updatedRefs = [...currentRefs, ...refsToAdd]
+            const { error: updateError } = await (supabase as any)
+              .from('memorials')
+              .update({ 
+                source_links: updatedRefs,
+              })
+              .eq('id', (existing as any).id)
+            
+            if (updateError) return { success: false, error: updateError.message }
+            return { success: true, merged: true } // Successfully merged
+          } else {
+            return { success: false, error: 'These references already exist for this person.' }
+          }
         }
       }
+      /* eslint-enable @typescript-eslint/no-explicit-any */
     }
 
     const id = entry.id || entry.name?.toLowerCase().trim().replace(/\s+/g, '-') || `submission-${Date.now()}`
@@ -119,7 +237,8 @@ export async function submitMemorial(entry: Partial<MemorialEntry>): Promise<{ s
       }
     }
 
-    const dataToSave = {
+    /* eslint-disable @typescript-eslint/no-explicit-any */
+    const dataToSave: any = {
       id,
       name: entry.name || 'Unknown',
       name_fa: entry.name_fa || null,
@@ -130,19 +249,19 @@ export async function submitMemorial(entry: Partial<MemorialEntry>): Promise<{ s
       date: entry.date || new Date().toISOString().split('T')[0],
       bio: entry.bio || '',
       bio_fa: entry.bio_fa || null,
-      coords: (entry.coords || { lat: 35.6892, lon: 51.3890 }) as Database['public']['Tables']['memorials']['Insert']['coords'],
-      media: (entry.media || {}) as Database['public']['Tables']['memorials']['Insert']['media'],
-      source_links: (entry.references || []) as Database['public']['Tables']['memorials']['Insert']['source_links'],
-      testimonials: (entry.testimonials || []) as Database['public']['Tables']['memorials']['Insert']['testimonials'],
-      // If editing, preserve verified status if not explicitly provided. 
-      // NEW: For public submissions, it will be false by default.
+      coords: (entry.coords || { lat: 35.6892, lon: 51.3890 }),
+      media: (entry.media || {}),
+      source_links: (entry.references || []),
+      testimonials: (entry.testimonials || []),
       verified: entry.verified ?? false
     }
 
-    /* eslint-disable @typescript-eslint/no-explicit-any */
-    const { error } = await supabase
+    // If editing, we might want to be careful about what we overwrite if fields are missing.
+    // But for now, the admin panel sends the full state.
+
+    const { error } = await (supabase as any)
       .from('memorials')
-      .upsert(dataToSave as any)
+      .upsert(dataToSave)
     /* eslint-enable @typescript-eslint/no-explicit-any */
 
     if (error) {

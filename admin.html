@@ -227,6 +227,9 @@
               <div class="form-group">
                 <label for="name">Name (English) *</label>
                 <input id="name" placeholder="John Doe" required />
+                <div id="duplicate-warning" class="hidden" style="margin-top: 0.5rem; padding: 0.75rem; background: rgba(255, 193, 7, 0.1); border: 1px solid #ffc107; border-radius: 4px; color: #ffc107; font-size: 0.85rem;">
+                  <!-- Duplicate info here -->
+                </div>
               </div>
               <div class="form-group">
                 <label for="name_fa">Name (Persian)</label>
@@ -316,5 +319,29 @@
       </main>
     </div>
     <script type="module" src="./src/admin.ts"></script>
+
+    <!-- Merge Modal -->
+    <div id="merge-modal" class="hidden" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.85); z-index: 2000; display: flex; align-items: center; justify-content: center; backdrop-filter: blur(5px);">
+      <div class="card" style="width: 90%; max-width: 500px; padding: 2rem; border: 1px solid var(--border);">
+        <header style="margin-bottom: 1.5rem;">
+          <h2 id="merge-modal-title">Merge Entry</h2>
+        </header>
+        <p style="margin-bottom: 1.5rem; color: var(--muted);">Select the target person to merge these references into. This will append all unique references to the target and <strong>delete</strong> the current entry.</p>
+        
+        <div class="form-group">
+          <label for="merge-target-search">Search Target Person</label>
+          <input id="merge-target-search" placeholder="Type name..." style="width: 100%;" />
+        </div>
+
+        <div id="merge-target-results" style="max-height: 200px; overflow-y: auto; margin-top: 1rem; border: 1px solid var(--border); border-radius: 4px; background: rgba(0,0,0,0.2);">
+          <!-- Search results will be injected here -->
+        </div>
+
+        <div style="display: flex; gap: 1rem; margin-top: 2rem;">
+          <button id="cancel-merge" class="btn btn-secondary" style="flex: 1;">Cancel</button>
+          <button id="confirm-merge" class="btn btn-primary" style="flex: 1;" disabled>Confirm Merge</button>
+        </div>
+      </div>
+    </div>
   </body>
 </html>

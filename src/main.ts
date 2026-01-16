@@ -513,9 +513,14 @@ function initContributionForm() {
       if (match) {
         duplicateWarning.innerHTML = `
           <p>⚠️ ${t('contribute.duplicateWarning')}</p>
-          <button type="button" class="view-duplicate-btn" data-id="${match.id}">
-            ${t('contribute.duplicateAction')}: <strong>${match.name}</strong>
-          </button>
+          <div class="duplicate-actions">
+            <button type="button" class="view-duplicate-btn" data-id="${match.id}">
+              ${t('details.view')} <strong>${match.name}</strong>
+            </button>
+            <p style="font-size: 0.85rem; margin-top: 0.5rem; color: var(--muted);">
+              ${t('contribute.mergeNote') || 'If you submit, your link will be added as a new reference to this person.'}
+            </p>
+          </div>
         `
         duplicateWarning.classList.remove('hidden')
         

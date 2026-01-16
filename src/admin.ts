@@ -4,6 +4,7 @@ import {
   verifyMemorial, 
   deleteMemorial, 
   submitMemorial, 
+  mergeMemorials,
   batchUpdateImages, 
   batchTranslateMemorials, 
   batchSyncLocationCoords 
@@ -55,6 +56,18 @@ const editIdInput = document.getElementById('edit-id') as HTMLInputElement
 const clearBtn = document.getElementById('clear-btn') as HTMLButtonElement
 const output = document.getElementById('output') as HTMLPreElement
 const editorTitle = document.getElementById('editor-title') as HTMLHeadingElement
+const duplicateWarning = document.getElementById('duplicate-warning') as HTMLDivElement
+
+// Merge Modal Elements
+const mergeModal = document.getElementById('merge-modal') as HTMLDivElement
+const mergeModalTitle = document.getElementById('merge-modal-title') as HTMLHeadingElement
+const mergeTargetSearch = document.getElementById('merge-target-search') as HTMLInputElement
+const mergeTargetResults = document.getElementById('merge-target-results') as HTMLDivElement
+const cancelMergeBtn = document.getElementById('cancel-merge') as HTMLButtonElement
+const confirmMergeBtn = document.getElementById('confirm-merge') as HTMLButtonElement
+
+let currentSourceId: string | null = null
+let currentTargetId: string | null = null
 
 // DOM Elements - Quick Import
 const aiUrlInput = document.getElementById('ai-url') as HTMLInputElement
@@ -248,6 +261,7 @@ function renderTable(memorials: MemorialEntry[], container: HTMLTableSectionElem
         <div style="display: flex; gap: 0.5rem;">
           <button class="btn btn-secondary btn-sm edit-btn" data-id="${m.id}">Edit</button>
           ${!m.verified ? `<button class="btn btn-primary btn-sm verify-btn" data-id="${m.id}">Verify</button>` : ''}
+          <button class="btn btn-secondary btn-sm merge-btn" data-id="${m.id}" title="Merge references into another entry">Merge</button>
           <button class="btn btn-danger btn-sm delete-btn" data-id="${m.id}">Delete</button>
         </div>
       </td>
@@ -261,10 +275,104 @@ function renderTable(memorials: MemorialEntry[], container: HTMLTableSectionElem
   container.querySelectorAll('.verify-btn').forEach(btn => {
     btn.addEventListener('click', () => handleVerify((btn as HTMLButtonElement).dataset.id!))
   })
+  container.querySelectorAll('.merge-btn').forEach(btn => {
+    btn.addEventListener('click', () => openMergeModal((btn as HTMLButtonElement).dataset.id!))
+  })
   container.querySelectorAll('.delete-btn').forEach(btn => {
     btn.addEventListener('click', () => handleDelete((btn as HTMLButtonElement).dataset.id!))
   })
 }
+
+function openMergeModal(id: string) {
+  const source = allMemorials.find(m => m.id === id)
+  if (!source) return
+
+  currentSourceId = id
+  currentTargetId = null
+  mergeModalTitle.textContent = `Merge: ${source.name}`
+  mergeTargetSearch.value = source.name // Pre-fill with name to find duplicates
+  mergeModal.classList.remove('hidden')
+  confirmMergeBtn.disabled = true
+  updateMergeResults()
+}
+
+function updateMergeResults() {
+  const query = mergeTargetSearch.value.toLowerCase().trim()
+  const results = allMemorials
+    .filter(m => m.id !== currentSourceId)
+    .filter(m => 
+      m.name.toLowerCase().includes(query) || 
+      (m.name_fa && m.name_fa.includes(query)) ||
+      m.city.toLowerCase().includes(query)
+    )
+    .slice(0, 10)
+
+  if (results.length === 0) {
+    mergeTargetResults.innerHTML = '<div style="padding: 1rem; text-align: center; color: var(--muted);">No matching people found.</div>'
+    return
+  }
+
+  mergeTargetResults.innerHTML = results.map(m => `
+    <div class="merge-result-item ${m.id === currentTargetId ? 'selected' : ''}" 
+         data-id="${m.id}" 
+         style="padding: 0.75rem; border-bottom: 1px solid var(--border); cursor: pointer; transition: background 0.2s;">
+      <div style="font-weight: 600;">${m.name} ${m.verified ? '✅' : '⏳'}</div>
+      <div style="font-size: 0.8rem; color: var(--muted);">${m.city} | ${m.date}</div>
+    </div>
+  `).join('')
+
+  // Add styles for selection
+  const style = document.createElement('style')
+  style.textContent = `
+    .merge-result-item:hover { background: rgba(255,255,255,0.05); }
+    .merge-result-item.selected { background: var(--accent) !important; color: white !important; }
+    .merge-result-item.selected .muted { color: rgba(255,255,255,0.8); }
+  `
+  document.head.appendChild(style)
+
+  mergeTargetResults.querySelectorAll('.merge-result-item').forEach(item => {
+    item.addEventListener('click', () => {
+      currentTargetId = (item as HTMLDivElement).dataset.id!
+      confirmMergeBtn.disabled = false
+      updateMergeResults()
+    })
+  })
+}
+
+mergeTargetSearch.addEventListener('input', updateMergeResults)
+
+cancelMergeBtn.addEventListener('click', () => {
+  mergeModal.classList.add('hidden')
+  currentSourceId = null
+  currentTargetId = null
+})
+
+confirmMergeBtn.addEventListener('click', async () => {
+  if (!currentSourceId || !currentTargetId) return
+  
+  const source = allMemorials.find(m => m.id === currentSourceId)
+  const target = allMemorials.find(m => m.id === currentTargetId)
+  
+  if (!confirm(`Merge references from "${source?.name}" into "${target?.name}"?\n\nThis will delete the entry for "${source?.name}".`)) {
+    return
+  }
+
+  confirmMergeBtn.disabled = true
+  confirmMergeBtn.textContent = 'Merging...'
+  
+  const { success, error } = await mergeMemorials(currentSourceId, currentTargetId)
+  
+  if (success) {
+    alert('Merged successfully!')
+    mergeModal.classList.add('hidden')
+    loadData()
+  } else {
+    alert(`Error: ${error}`)
+  }
+  
+  confirmMergeBtn.disabled = false
+  confirmMergeBtn.textContent = 'Confirm Merge'
+})
 
 function editEntry(id: string) {
   const entry = allMemorials.find(m => m.id === id)
@@ -293,8 +401,50 @@ function editEntry(id: string) {
   
   output.textContent = JSON.stringify(entry, null, 2)
   showSection('editor')
+  checkDuplicate(entry.name)
   window.scrollTo({ top: 0, behavior: 'smooth' })
 }
+
+function checkDuplicate(name: string) {
+  if (!name || name.length < 3) {
+    duplicateWarning.classList.add('hidden')
+    return
+  }
+
+  const normalizedSearch = name.toLowerCase().trim()
+  
+  const match = allMemorials.find(m => 
+    (m.id !== editIdInput.value) && (
+      m.name.toLowerCase().trim() === normalizedSearch ||
+      m.name.toLowerCase().trim().includes(normalizedSearch)
+    )
+  )
+
+  if (match) {
+    duplicateWarning.innerHTML = `
+      <div style="display: flex; flex-direction: column; gap: 0.5rem;">
+        <div>⚠️ <strong>Duplicate Found:</strong> ${match.name} (${match.city})</div>
+        <div style="font-size: 0.8rem; opacity: 0.9;">
+          If you save, this new entry will be <strong>merged</strong> into the existing one as a new reference.
+        </div>
+        <button type="button" class="btn btn-secondary btn-sm edit-match-btn" style="align-self: flex-start;">
+          Edit Existing Instead
+        </button>
+      </div>
+    `
+    duplicateWarning.classList.remove('hidden')
+    
+    duplicateWarning.querySelector('.edit-match-btn')?.addEventListener('click', () => {
+      editEntry(match.id!)
+    })
+  } else {
+    duplicateWarning.classList.add('hidden')
+  }
+}
+
+document.getElementById('name')?.addEventListener('input', (e) => {
+  checkDuplicate((e.target as HTMLInputElement).value)
+})
 
 searchSubmissions.addEventListener('input', renderSubmissions)
 searchMemorials.addEventListener('input', renderVerified)
@@ -458,10 +608,10 @@ jsonImportBtn.addEventListener('click', async () => {
     }
     data.verified = true
     jsonImportBtn.disabled = true
-    const { success, error } = await submitMemorial(data)
+    const { success, merged, error } = await submitMemorial(data)
     if (success) {
       jsonImportArea.value = ''
-      alert('Memorial saved successfully!')
+      alert(merged ? 'Merged into existing entry successfully!' : 'Memorial saved successfully!')
       loadData()
     } else alert(`Error: ${error}`)
   } catch (e) { alert('Invalid JSON format.') } finally { jsonImportBtn.disabled = false }
@@ -500,9 +650,9 @@ function populateForm(data: Partial<MemorialEntry> & { referenceLabel?: string; 
 
 async function handleVerify(id: string) {
   if (!confirm('Verify this entry?')) return
-  const { success, error } = await verifyMemorial(id)
+  const { success, merged, error } = await verifyMemorial(id)
   if (success) {
-    alert('Verified!')
+    alert(merged ? 'Merged into existing verified entry!' : 'Verified!')
     loadData()
   } else alert(`Error: ${error}`)
 }
@@ -558,9 +708,9 @@ entryForm.addEventListener('submit', async (e) => {
   }
 
   output.textContent = JSON.stringify(entry, null, 2)
-  const { success, error } = await submitMemorial(entry)
+  const { success, merged, error } = await submitMemorial(entry)
   if (success) {
-    alert('Saved successfully!')
+    alert(merged ? 'Merged into existing entry successfully!' : 'Saved successfully!')
     clearForm()
     loadData()
     showSection('overview')
@@ -572,6 +722,7 @@ function clearForm() {
   editIdInput.value = ''
   editorTitle.textContent = 'Add Memorial Entry'
   output.textContent = ''
+  duplicateWarning.classList.add('hidden')
   ;(document.getElementById('lat') as HTMLInputElement).value = '35.6892'
   ;(document.getElementById('lon') as HTMLInputElement).value = '51.3890'
 }
