@@ -6,6 +6,10 @@ import 'leaflet.markercluster/dist/MarkerCluster.Default.css'
 import type { MemorialEntry } from './types'
 import { currentLanguage } from './i18n'
 
+interface MemorialMarker extends L.Marker {
+  entry: MemorialEntry
+}
+
 let map: L.Map
 let markersLayer: L.MarkerClusterGroup
 let selectedCb: (entry: MemorialEntry) => void = () => {}
@@ -34,10 +38,10 @@ export function initMap() {
   markersLayer = L.markerClusterGroup({
     showCoverageOnHover: false,
     maxClusterRadius: 50,
-    spiderfyOnMaxZoom: true,
-    zoomToBoundsOnClick: true,
+    spiderfyOnMaxZoom: false, // Changed to false to handle via list view
+    zoomToBoundsOnClick: false, // Handle manually to check if we should zoom or show list
     spiderfyDistanceMultiplier: 2,
-    disableClusteringAtZoom: 16,
+    disableClusteringAtZoom: 18, // High enough to allow spiderfy/list at most levels
     iconCreateFunction: (cluster: L.MarkerCluster) => {
       const count = cluster.getChildCount();
       return L.divIcon({
@@ -47,6 +51,26 @@ export function initMap() {
       });
     }
   }).addTo(map)
+
+  // Handle cluster click to show list pop-up
+  markersLayer.on('clusterclick', (a) => {
+    const cluster = a.layer as L.MarkerCluster
+    const markers = cluster.getAllChildMarkers() as MemorialMarker[]
+    const entries = markers.map(m => m.entry).filter(Boolean) as MemorialEntry[]
+    
+    // Always show the list view pop-up when a cluster is clicked
+    showListView(entries)
+  })
+}
+
+let listViewCb: (entries: MemorialEntry[]) => void = () => {}
+
+export function onShowListView(cb: (entries: MemorialEntry[]) => void) {
+  listViewCb = cb
+}
+
+function showListView(entries: MemorialEntry[]) {
+  listViewCb(entries)
 }
 
 export function plotMarkers(entries: MemorialEntry[]) {
@@ -87,7 +111,8 @@ export function plotMarkers(entries: MemorialEntry[]) {
       iconAnchor: [8, 8]
     })
 
-    const marker = L.marker([finalLat, finalLon], { icon })
+    const marker = L.marker([finalLat, finalLon], { icon }) as MemorialMarker
+    marker.entry = entry
 
     // Use bilingual fields for tooltip
     const isFa = currentLanguage() === 'fa'
@@ -113,6 +138,16 @@ export function onMarkerSelected(cb: (entry: MemorialEntry) => void) {
 
 export function focusOnMarker(entry: MemorialEntry) {
   if (map && entry.coords) {
-    map.setView([entry.coords.lat, entry.coords.lon], 8)
+    map.setView([entry.coords.lat, entry.coords.lon], 15)
+    
+    // Find the marker and open its tooltip to "show the dot" clearly
+     markersLayer.eachLayer((layer: L.Layer) => {
+       const marker = layer as MemorialMarker
+       if (marker.entry && marker.entry.id === entry.id) {
+         if (marker.openTooltip) {
+           marker.openTooltip()
+         }
+       }
+     })
   }
 }

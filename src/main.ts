@@ -1,6 +1,6 @@
 import './style.css'
 import { loadTranslations, t, setLanguage, currentLanguage } from './modules/i18n'
-import { initMap, plotMarkers, onMarkerSelected } from './modules/map'
+import { initMap, plotMarkers, onMarkerSelected, onShowListView, focusOnMarker } from './modules/map'
 import type { MemorialEntry } from './modules/types'
 import { setupSearch } from './modules/search'
 import { extractMemorialData } from './modules/ai'
@@ -22,6 +22,7 @@ async function boot() {
   updateTotalCounter(memorials.length)
   initLanguageSwitcher()
   initMap()
+  initListView()
   plotMarkers(memorials)
   initContributionForm()
   initMobileMenu()
@@ -100,17 +101,118 @@ function initMobileMenu() {
   })
 }
 
+function initListView() {
+  const listViewBtn = document.getElementById('list-view-btn')
+  const modalOverlay = document.getElementById('modal-overlay')!
+  const modalBody = document.getElementById('modal-body')!
+  const modalContent = modalOverlay.querySelector('.modal-content')!
+
+  listViewBtn?.addEventListener('click', () => {
+    document.body.style.overflow = 'hidden'
+    renderListView(currentMemorials)
+  })
+
+  onShowListView((entries) => {
+    document.body.style.overflow = 'hidden'
+    renderListView(entries)
+  })
+
+  function renderListView(entries: MemorialEntry[]) {
+    const isFa = currentLanguage() === 'fa'
+    modalContent.classList.add('large')
+    modalOverlay.classList.remove('hidden')
+    
+    const renderItems = (items: MemorialEntry[]) => {
+      if (items.length === 0) {
+        return `<div class="list-empty-state">${t('list.noResults')}</div>`
+      }
+      return items.map(entry => {
+        const displayName = (isFa && entry.name_fa) ? entry.name_fa : entry.name
+        const displayCity = (isFa && entry.city_fa) ? entry.city_fa : entry.city
+        const photo = entry.media?.photo || 'https://via.placeholder.com/300?text=No+Photo'
+        
+        return `
+          <div class="list-item-card" data-id="${entry.id}">
+            <img src="${photo}" alt="${displayName}" class="list-item-photo" loading="lazy">
+            <div class="list-item-info">
+              <div class="list-item-name">${displayName}</div>
+              <div class="list-item-meta">${displayCity}</div>
+            </div>
+          </div>
+        `
+      }).join('')
+    }
+
+    modalBody.innerHTML = `
+      <div class="list-view-container">
+        <div class="list-view-header">
+          <h2>${t('list.title')} (${entries.length} ${t('list.people')})</h2>
+        </div>
+        <div class="list-view-controls">
+          <input type="search" id="list-search" class="list-view-search" placeholder="${t('list.search')}" autofocus>
+        </div>
+        <div id="list-grid" class="list-view-grid">
+          ${renderItems(entries)}
+        </div>
+      </div>
+    `
+
+    const searchInput = document.getElementById('list-search') as HTMLInputElement
+    const grid = document.getElementById('list-grid')!
+
+    searchInput.addEventListener('input', () => {
+      const query = searchInput.value.toLowerCase().trim()
+      const filtered = entries.filter(e => {
+        const name = (e.name || '').toLowerCase()
+        const nameFa = (e.name_fa || '').toLowerCase()
+        const city = (e.city || '').toLowerCase()
+        const cityFa = (e.city_fa || '').toLowerCase()
+        return name.includes(query) || nameFa.includes(query) || city.includes(query) || cityFa.includes(query)
+      })
+      grid.innerHTML = renderItems(filtered)
+    })
+
+    grid.addEventListener('click', (e) => {
+      const card = (e.target as HTMLElement).closest('.list-item-card') as HTMLElement
+      if (card) {
+        const id = card.dataset.id
+        const entry = entries.find(item => item.id === id)
+        if (entry) {
+          modalOverlay.classList.add('hidden')
+          modalContent.classList.remove('large')
+          document.body.style.overflow = ''
+          focusOnMarker(entry)
+          renderDetails(entry)
+        }
+      }
+    })
+  }
+
+  // Handle modal close to remove 'large' class
+  document.getElementById('close-modal')?.addEventListener('click', () => {
+    modalContent.classList.remove('large')
+  })
+  
+  modalOverlay.addEventListener('click', (e) => {
+    if (e.target === modalOverlay) {
+      modalContent.classList.remove('large')
+    }
+  })
+}
+
 function initUiText() {
   const title = document.getElementById('site-title')
   const searchInput = document.getElementById('search-input') as HTMLInputElement
   const footerNote = document.getElementById('footer-note')
   const privacyLink = document.getElementById('privacy-link') as HTMLAnchorElement
   const badge = document.getElementById('total-count-badge')
+  const listViewBtn = document.getElementById('list-view-btn')
 
   if (title) title.textContent = t('site.title')
   if (searchInput) searchInput.placeholder = t('search.placeholder')
   if (footerNote) footerNote.textContent = t('site.footerNote')
   if (privacyLink) privacyLink.textContent = t('site.privacy')
+  if (listViewBtn) listViewBtn.textContent = t('list.viewAll')
   if (badge) {
     badge.title = t('stats.livesHonored')
     badge.setAttribute('aria-label', `${t('stats.livesHonored')}: ${badge.textContent}`)
@@ -295,20 +397,28 @@ function initContributionForm() {
   const overlay = document.getElementById('modal-overlay')
   const close = document.getElementById('close-modal')
   const body = document.getElementById('modal-body')
+  const modalContent = overlay?.querySelector('.modal-content')
 
-  if (!btn || !overlay || !close || !body) return
+  if (!btn || !overlay || !close || !body || !modalContent) return
 
   btn.addEventListener('click', () => {
     overlay.classList.remove('hidden')
+    document.body.style.overflow = 'hidden'
     renderForm()
   })
 
   close.addEventListener('click', () => {
     overlay.classList.add('hidden')
+    modalContent.classList.remove('large')
+    document.body.style.overflow = ''
   })
 
   overlay.addEventListener('click', (e) => {
-    if (e.target === overlay) overlay.classList.add('hidden')
+    if (e.target === overlay) {
+      overlay.classList.add('hidden')
+      modalContent.classList.remove('large')
+      document.body.style.overflow = ''
+    }
   })
 
   function renderForm() {

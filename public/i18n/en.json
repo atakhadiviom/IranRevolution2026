@@ -43,5 +43,11 @@
   "ai.error": "Failed to extract data. Please fill manually.",
   "contribute.duplicateWarning": "Warning: A person with this name already exists in the memorial.",
   "contribute.duplicateAction": "View existing profile",
-  "contribute.copy": "Copy JSON"
+  "contribute.copy": "Copy JSON",
+  "list.viewAll": "View All",
+  "list.title": "Memorial List",
+  "list.close": "Close List",
+  "list.search": "Search in list...",
+  "list.noResults": "No results found.",
+  "list.people": "People"
 }

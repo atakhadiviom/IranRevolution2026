@@ -43,5 +43,11 @@
   "ai.error": "خطا در استخراج اطلاعات. لطفاً دستی وارد کنید.",
   "contribute.duplicateWarning": "هشدار: شخصی با این نام قبلاً در لیست یادبود ثبت شده است.",
   "contribute.duplicateAction": "مشاهده پروفایل موجود",
-  "contribute.copy": "کپی JSON"
+  "contribute.copy": "کپی JSON",
+  "list.viewAll": "مشاهده همه",
+  "list.title": "لیست یادبود",
+  "list.close": "بستن لیست",
+  "list.search": "جستجو در لیست...",
+  "list.noResults": "نتیجه‌ای یافت نشد.",
+  "list.people": "نفر"
 }
