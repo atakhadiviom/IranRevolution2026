@@ -507,32 +507,27 @@ function initContributionForm() {
       const normalizedName = name.toLowerCase().trim()
       const currentCity = city?.toLowerCase().trim() || (form.querySelector('[name="city"]') as HTMLInputElement)?.value.toLowerCase().trim()
       
-      const nameParts = normalizedName.split(/\s+/).filter(p => p.length > 1)
-      const firstName = nameParts[0]
-      const lastName = nameParts[nameParts.length - 1]
+      const nameParts = normalizedName.split(/\s+/).filter(p => p.length > 2)
+      const commonPrefixes = ['syed', 'seyyed', 'sayyid', 'mir', 'haji', 'haj', 'mullah', 'sheikh']
+      const filteredParts = nameParts.filter(p => !commonPrefixes.includes(p))
 
       const match = currentMemorials.find(m => {
         const mName = m.name.toLowerCase().trim()
         const mCity = m.city.toLowerCase().trim()
         const mLocation = (m.location || '').toLowerCase().trim()
 
-        // 1. Exact or include match
-        if (mName === normalizedName || mName.includes(normalizedName) || normalizedName.includes(mName)) return true
+        // 1. Exact match (High Confidence)
+        if (mName === normalizedName) return true
 
-        // 2. First + Last name (if both exist and are distinct)
-        if (nameParts.length >= 2 && firstName !== lastName) {
-          if (mName.includes(firstName) && mName.includes(lastName)) return true
+        // 2. Significant Name Parts + Location (Medium Confidence)
+        if (filteredParts.length >= 2 && currentCity) {
+          const nameMatch = filteredParts.every(part => mName.includes(part))
+          const cityMatch = mCity.includes(currentCity) || currentCity.includes(mCity) || mLocation.includes(currentCity)
+          if (nameMatch && cityMatch) return true
         }
 
-        // 3. First name + Location
-        if (currentCity && firstName && mName.includes(firstName)) {
-          if (mCity.includes(currentCity) || mLocation.includes(currentCity) || currentCity.includes(mCity)) return true
-        }
-
-        // 4. Last name + Location
-        if (currentCity && lastName && mName.includes(lastName)) {
-          if (mCity.includes(currentCity) || mLocation.includes(currentCity) || currentCity.includes(mCity)) return true
-        }
+        // 3. Full include match (Medium Confidence)
+        if (normalizedName.length > 10 && mName.includes(normalizedName)) return true
 
         return false
       })
