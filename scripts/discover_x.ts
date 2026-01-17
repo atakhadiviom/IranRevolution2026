@@ -35,6 +35,8 @@ function saveHistory(history: Set<string>) {
 }
 
 const TARGETS = [
+  'https://x.com/IranIntl_En',
+  'https://x.com/HyrcaniHRM',
   'https://x.com/allahbakhshii',
   'https://x.com/Tavaana',
   'https://x.com/HoHossein',
