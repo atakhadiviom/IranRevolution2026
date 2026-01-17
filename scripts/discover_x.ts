@@ -4,13 +4,39 @@ import { extractMemorialData } from '../src/modules/ai';
 import { submitMemorial, fetchMemorials } from '../src/modules/dataService';
 import { extractXPostImage } from '../src/modules/imageExtractor';
 import type { MemorialEntry } from '../src/modules/types';
+import * as fs from 'fs';
+import * as path from 'path';
 
 /**
  * Script to automatically discover potential memorial posts on X (Twitter)
  * and add them to the Supabase database for review.
  */
 
+const HISTORY_FILE = path.join(process.cwd(), 'scripts', 'discovery_history.json');
+
+function loadHistory(): Set<string> {
+  try {
+    if (fs.existsSync(HISTORY_FILE)) {
+      const data = fs.readFileSync(HISTORY_FILE, 'utf8');
+      return new Set(JSON.parse(data));
+    }
+  } catch (error) {
+    console.error('Error loading history:', error);
+  }
+  return new Set();
+}
+
+function saveHistory(history: Set<string>) {
+  try {
+    fs.writeFileSync(HISTORY_FILE, JSON.stringify([...history], null, 2));
+  } catch (error) {
+    console.error('Error saving history:', error);
+  }
+}
+
 const TARGETS = [
+  'https://x.com/allahbakhshii',
+  'https://x.com/Tavaana',
   'https://x.com/HoHossein',
   'https://x.com/LoabatK',
   'https://x.com/isamanyasin',
@@ -20,8 +46,8 @@ const TARGETS = [
   'https://x.com/1500tasvir',
   'https://x.com/AmnestyIran',
   'https://x.com/ICHRI',
-  'https://x.com/search?q=%D8%B4%D9%87%DB%8C%D8%AF%20%D8%A7%DB%8C%D8%B1%D8%A7%D9%86&f=live', // "شهید ایران" (Martyr Iran)
   'https://x.com/search?q=%D8%AC%D8%A7%D9%86%D8%A8%D8%A7%D8%AE%D8%AA%D9%87%20%D8%A7%DB%8C%D8%B1%D8%A7%D9%86&f=live', // "جانباخته ایران" (Died Iran)
+  'https://x.com/search?q=%DA%A9%D8%B4%D8%AA%D9%87%20%D8%B4%D8%AF&f=live', // "کشته شد" (Was killed)
 ];
 
 async function getXStatusUrls(targetUrl: string): Promise<string[]> {
@@ -53,7 +79,11 @@ async function getXStatusUrls(targetUrl: string): Promise<string[]> {
 async function runDiscovery() {
   console.log('--- Starting X Discovery Process ---');
   
-  // 1. Get already existing memorials to avoid duplicates
+  // 1. Load history of processed URLs
+  const history = loadHistory();
+  console.log(`Loaded ${history.size} previously processed URLs.`);
+
+  // 2. Get already existing memorials to avoid duplicates
   const existingMemorials = await fetchMemorials(true);
   const existingUrls = new Set(
     existingMemorials.flatMap(m => [
@@ -64,12 +94,12 @@ async function runDiscovery() {
 
   console.log(`Found ${existingMemorials.length} existing entries in database.`);
 
-  // 2. Collect status URLs from all targets
+  // 3. Collect status URLs from all targets
   const allUrls = new Set<string>();
   for (const target of TARGETS) {
     const urls = await getXStatusUrls(target);
     urls.forEach(url => {
-      if (!existingUrls.has(url)) {
+      if (!existingUrls.has(url) && !history.has(url)) {
         allUrls.add(url);
       }
     });
@@ -77,11 +107,14 @@ async function runDiscovery() {
 
   console.log(`Found ${allUrls.size} new potential status URLs.`);
 
-  // 3. Process each new URL
+  // 4. Process each new URL
   let successCount = 0;
   let skipCount = 0;
 
   for (const url of allUrls) {
+    // Mark as processed in history
+    history.add(url);
+
     try {
       console.log(`Processing: ${url}`);
       
@@ -129,6 +162,9 @@ async function runDiscovery() {
     // Add a small delay to avoid rate limits
     await new Promise(resolve => setTimeout(resolve, 2000));
   }
+
+  // Save history for next run
+  saveHistory(history);
 
   console.log('--- Discovery Finished ---');
   console.log(`Added/Merged: ${successCount}`);
