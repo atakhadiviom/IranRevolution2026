@@ -2,7 +2,7 @@ name: Auto-Discover Memorials
 
 on:
   schedule:
-    - cron: '0 0 * * *' # Run daily at midnight
+    - cron: '0 */2 * * *' # Run every 2 hours
   workflow_dispatch: # Allow manual trigger
 
 jobs:
