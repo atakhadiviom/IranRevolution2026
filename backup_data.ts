@@ -38,9 +38,11 @@ async function backup() {
     console.log('📁 Created backups directory')
   }
 
-  // Create filename with current date
-  const date = new Date().toISOString().split('T')[0]
-  const filename = `memorials_backup_${date}.json`
+  // Create filename with current date and time
+  const now = new Date();
+  const date = now.toISOString().split('T')[0];
+  const time = now.toTimeString().split(' ')[0].replace(/:/g, '-');
+  const filename = `memorials_backup_${date}_${time}.json`
   const filepath = path.join(backupDir, filename)
 
   // Save data to JSON file
