@@ -52,7 +52,13 @@ export async function extractMemorialData(url: string): Promise<ExtractedMemoria
             Extract information about ALL victims of the Iranian revolution mentioned in the provided text.
             If multiple people are mentioned as killed or arrested, extract each one as a separate object in an array.
             
-            IMPORTANT BILINGUAL RULES:
+            ETHICAL DATA HANDLING RULES (See CARE_PROTOCOL.md):
+            1. DO NOT invent or infer missing names, dates, or causes of death.
+            2. If information is uncertain, leave it empty or mark it as uncertain.
+            3. Prioritize safety and redaction: avoid extracting home addresses or identifiable info about living relatives.
+            4. Treat social media sources as potentially unverified.
+
+            BILINGUAL RULES:
             1. The "name", "city", "location", and "bio" fields MUST be in English. If the source text is in Persian, translate these to English.
             2. The "name_fa", "city_fa", "location_fa", and "bio_fa" fields MUST be in Persian (Farsi). If the source text is in English, translate these to Persian.
             3. Ensure names are spelled correctly in both languages.
