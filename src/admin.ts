@@ -509,54 +509,71 @@ confirmMergeBtn.addEventListener('click', async () => {
   confirmMergeBtn.textContent = 'Confirm Merge'
 })
 
-function editEntry(id: string) {
-  const entry = allMemorials.find(m => m.id === id)
-  if (!entry) return
+navLinks.editor.addEventListener('click', () => {
+  clearForm()
+  editEntry('')
+  showSection('editor')
+})
 
-  editIdInput.value = entry.id || ''
-  editorTitle.textContent = `Edit: ${entry.name}`
-  
-  ;(document.getElementById('name') as HTMLInputElement).value = entry.name
-  ;(document.getElementById('name_fa') as HTMLInputElement).value = entry.name_fa || ''
-  ;(document.getElementById('city') as HTMLInputElement).value = entry.city
-  ;(document.getElementById('city_fa') as HTMLInputElement).value = entry.city_fa || ''
-  ;(document.getElementById('location') as HTMLInputElement).value = entry.location || ''
-  ;(document.getElementById('location_fa') as HTMLInputElement).value = entry.location_fa || ''
-  ;(document.getElementById('date') as HTMLInputElement).value = entry.date
-  ;(document.getElementById('lat') as HTMLInputElement).value = (entry.coords?.lat || 35.6892).toString()
-  ;(document.getElementById('lon') as HTMLInputElement).value = (entry.coords?.lon || 51.3890).toString()
-  ;(document.getElementById('bio') as HTMLTextAreaElement).value = entry.bio || ''
-  ;(document.getElementById('bio_fa') as HTMLTextAreaElement).value = entry.bio_fa || ''
-  ;(document.getElementById('testimonials') as HTMLTextAreaElement).value = entry.testimonials?.join('\n') || ''
-  ;(document.getElementById('photo') as HTMLInputElement).value = entry.media?.photo || ''
-  ;(document.getElementById('xPost') as HTMLInputElement).value = entry.media?.xPost || ''
-  ;(document.getElementById('references') as HTMLTextAreaElement).value = 
-    entry.references?.map(r => `${r.label} | ${r.url}`).join('\n') || ''
-  ;(document.getElementById('verified') as HTMLInputElement).checked = entry.verified || false
-  
-  output.textContent = JSON.stringify(entry, null, 2)
-  checkDuplicate(entry.name, entry.city)
-  editorStatus.classList.add('hidden')
-  
-  // Show delete, merge and translate buttons when editing
-  deleteEntryBtn.classList.remove('hidden')
-  mergeEntryBtn.classList.remove('hidden')
+function editEntry(id: string) {
+  // Show translate button always (for new entries and editing)
   translateEntryBtn.classList.remove('hidden')
   
+  if (id) {
+    // Show delete and merge buttons only when editing existing entry
+    deleteEntryBtn.classList.remove('hidden')
+    mergeEntryBtn.classList.remove('hidden')
+    
+    const entry = allMemorials.find(m => m.id === id)
+    if (!entry) return
+
+    editIdInput.value = entry.id || ''
+    editorTitle.textContent = `Edit: ${entry.name}`
+    
+    ;(document.getElementById('name') as HTMLInputElement).value = entry.name
+    ;(document.getElementById('name_fa') as HTMLInputElement).value = entry.name_fa || ''
+    ;(document.getElementById('city') as HTMLInputElement).value = entry.city
+    ;(document.getElementById('city_fa') as HTMLInputElement).value = entry.city_fa || ''
+    ;(document.getElementById('location') as HTMLInputElement).value = entry.location || ''
+    ;(document.getElementById('location_fa') as HTMLInputElement).value = entry.location_fa || ''
+    ;(document.getElementById('date') as HTMLInputElement).value = entry.date
+    ;(document.getElementById('lat') as HTMLInputElement).value = (entry.coords?.lat || 35.6892).toString()
+    ;(document.getElementById('lon') as HTMLInputElement).value = (entry.coords?.lon || 51.3890).toString()
+    ;(document.getElementById('bio') as HTMLTextAreaElement).value = entry.bio || ''
+    ;(document.getElementById('bio_fa') as HTMLTextAreaElement).value = entry.bio_fa || ''
+    ;(document.getElementById('testimonials') as HTMLTextAreaElement).value = entry.testimonials?.join('\n') || ''
+    ;(document.getElementById('photo') as HTMLInputElement).value = entry.media?.photo || ''
+    ;(document.getElementById('xPost') as HTMLInputElement).value = entry.media?.xPost || ''
+    ;(document.getElementById('references') as HTMLTextAreaElement).value = 
+      entry.references?.map(r => `${r.label} | ${r.url}`).join('\n') || ''
+    ;(document.getElementById('verified') as HTMLInputElement).checked = entry.verified || false
+    
+    output.textContent = JSON.stringify(entry, null, 2)
+    checkDuplicate(entry.name, entry.city)
+  } else {
+    // Adding new entry
+    editorTitle.textContent = 'Add Memorial Entry'
+    deleteEntryBtn.classList.add('hidden')
+    mergeEntryBtn.classList.add('hidden')
+  }
+  
+  editorStatus.classList.add('hidden')
   showSection('editor')
   window.scrollTo({ top: 0, behavior: 'smooth' })
 }
 
-function checkDuplicate(name: string, city?: string) {
-  if (!name || name.length < 3) {
+function checkDuplicate(name: string, city?: string, name_fa?: string) {
+  const normalizedName = name?.toLowerCase().trim() || ''
+  const currentNameFa = name_fa?.trim() || (document.getElementById('name_fa') as HTMLInputElement)?.value.trim()
+  const currentCity = city?.toLowerCase().trim() || (document.getElementById('city') as HTMLInputElement)?.value.toLowerCase().trim()
+
+  if (normalizedName.length < 3 && currentNameFa.length < 3) {
     duplicateWarning.classList.add('hidden')
     return
   }
-
-  const normalizedName = name.toLowerCase().trim()
-  const currentCity = city?.toLowerCase().trim() || (document.getElementById('city') as HTMLInputElement)?.value.toLowerCase().trim()
   
-  const nameParts = normalizedName.split(/\s+/).filter(p => p.length > 2) // Ignore very short parts like "Syed" or "Jafar" if they are only 2 chars, but here let's be more specific
+  const nameParts = normalizedName.split(/\s+/).filter(p => p.length > 2)
+  const nameFaParts = currentNameFa.split(/\s+/).filter(p => p.length > 1)
   
   // Common prefixes to ignore in partial matches
   const commonPrefixes = ['syed', 'seyyed', 'sayyid', 'mir', 'haji', 'haj', 'mullah', 'sheikh']
@@ -566,23 +583,31 @@ function checkDuplicate(name: string, city?: string) {
     if (m.id === editIdInput.value) return false
     
     const mName = m.name.toLowerCase().trim()
+    const mNameFa = (m.name_fa || '').trim()
     const mCity = m.city.toLowerCase().trim()
     const mLocation = (m.location || '').toLowerCase().trim()
 
-    // 1. Exact match (High Confidence)
-    if (mName === normalizedName) return true
+    // 1. Exact match (High Confidence) - English or Persian
+    if (normalizedName && mName === normalizedName) return true
+    if (currentNameFa && mNameFa === currentNameFa) return true
 
-    // 2. Significant Name Parts + Location (Medium Confidence)
-    // If we have at least 2 significant name parts and they both match, AND the city matches
+    // 2. Persian Partial Match (High Confidence)
+    // Persian spellings are more consistent than English transliterations
+    if (nameFaParts.length >= 2) {
+      const faMatch = nameFaParts.every(part => mNameFa.includes(part))
+      if (faMatch) return true
+    }
+
+    // 3. Significant English Name Parts + Location (Medium Confidence)
     if (filteredParts.length >= 2 && currentCity) {
       const nameMatch = filteredParts.every(part => mName.includes(part))
       const cityMatch = mCity.includes(currentCity) || currentCity.includes(mCity) || mLocation.includes(currentCity)
       if (nameMatch && cityMatch) return true
     }
 
-    // 3. Full include match (Medium Confidence)
-    // Only if the name is long enough to be unique
+    // 4. Full include match (Medium Confidence)
     if (normalizedName.length > 10 && mName.includes(normalizedName)) return true
+    if (currentNameFa.length > 5 && mNameFa.includes(currentNameFa)) return true
 
     return false
   })
@@ -613,9 +638,15 @@ document.getElementById('name')?.addEventListener('input', (e) => {
   checkDuplicate((e.target as HTMLInputElement).value)
 })
 
+document.getElementById('name_fa')?.addEventListener('input', (e) => {
+  const name = (document.getElementById('name') as HTMLInputElement).value
+  checkDuplicate(name, undefined, (e.target as HTMLInputElement).value)
+})
+
 document.getElementById('city')?.addEventListener('input', (e) => {
   const name = (document.getElementById('name') as HTMLInputElement).value
-  checkDuplicate(name, (e.target as HTMLInputElement).value)
+  const name_fa = (document.getElementById('name_fa') as HTMLInputElement).value
+  checkDuplicate(name, (e.target as HTMLInputElement).value, name_fa)
 })
 
 searchSubmissions.addEventListener('input', renderSubmissions)
@@ -849,8 +880,8 @@ function populateForm(data: Partial<MemorialEntry> & { referenceLabel?: string; 
       data.references.map((r) => `${r.label} | ${r.url}`).join('\n')
   }
 
-  if (data.name) {
-    checkDuplicate(data.name, data.city)
+  if (data.name || data.name_fa) {
+    checkDuplicate(data.name || '', data.city, data.name_fa || undefined)
   }
 }
 

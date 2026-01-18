@@ -562,24 +562,29 @@ function initContributionForm() {
           <div class="form-row">
             <div class="form-group">
               <label>${t('contribute.name')}</label>
-              <input type="text" name="name" required placeholder="Full Name">
+              <input type="text" name="name" required placeholder="Full Name (English)">
               <div id="duplicate-warning" class="duplicate-warning hidden"></div>
             </div>
             <div class="form-group">
-              <label>${t('contribute.city')}</label>
-              <input type="text" name="city" placeholder="City">
+              <label>${t('contribute.name')} (Persian)</label>
+              <input type="text" name="name_fa" placeholder="نام کامل (فارسی)">
             </div>
           </div>
 
           <div class="form-row">
             <div class="form-group">
+              <label>${t('contribute.city')}</label>
+              <input type="text" name="city" placeholder="City">
+            </div>
+            <div class="form-group">
               <label>${t('contribute.date')}</label>
               <input type="date" name="date">
             </div>
-            <div class="form-group">
-              <label>${t('contribute.location')}</label>
-              <input type="text" name="location" placeholder="Specific location (optional)">
-            </div>
+          </div>
+
+          <div class="form-group">
+            <label>${t('contribute.location')}</label>
+            <input type="text" name="location" placeholder="Specific location (optional)">
           </div>
 
           <div class="form-group">
@@ -606,36 +611,47 @@ function initContributionForm() {
     const nameInput = form.querySelector('[name="name"]') as HTMLInputElement
     const duplicateWarning = document.getElementById('duplicate-warning') as HTMLDivElement
 
-    const checkDuplicate = (name: string, city?: string) => {
-      if (!name || name.length < 3) {
+    const checkDuplicate = (name: string, city?: string, name_fa?: string) => {
+      const normalizedName = name?.toLowerCase().trim() || ''
+      const currentNameFa = name_fa?.trim() || (form.querySelector('[name="name_fa"]') as HTMLInputElement)?.value.trim() || ''
+      const currentCity = city?.toLowerCase().trim() || (form.querySelector('[name="city"]') as HTMLInputElement)?.value.toLowerCase().trim()
+
+      if (normalizedName.length < 3 && currentNameFa.length < 3) {
         duplicateWarning.classList.add('hidden')
         return
       }
 
-      const normalizedName = name.toLowerCase().trim()
-      const currentCity = city?.toLowerCase().trim() || (form.querySelector('[name="city"]') as HTMLInputElement)?.value.toLowerCase().trim()
-      
       const nameParts = normalizedName.split(/\s+/).filter(p => p.length > 2)
+      const nameFaParts = currentNameFa.split(/\s+/).filter(p => p.length > 1)
       const commonPrefixes = ['syed', 'seyyed', 'sayyid', 'mir', 'haji', 'haj', 'mullah', 'sheikh']
       const filteredParts = nameParts.filter(p => !commonPrefixes.includes(p))
 
       const match = currentMemorials.find(m => {
         const mName = m.name.toLowerCase().trim()
+        const mNameFa = (m.name_fa || '').trim()
         const mCity = m.city.toLowerCase().trim()
         const mLocation = (m.location || '').toLowerCase().trim()
 
-        // 1. Exact match (High Confidence)
-        if (mName === normalizedName) return true
+        // 1. Exact match (High Confidence) - English or Persian
+        if (normalizedName && mName === normalizedName) return true
+        if (currentNameFa && mNameFa === currentNameFa) return true
 
-        // 2. Significant Name Parts + Location (Medium Confidence)
+        // 2. Persian Partial Match (High Confidence)
+        if (nameFaParts.length >= 2) {
+          const faMatch = nameFaParts.every(part => mNameFa.includes(part))
+          if (faMatch) return true
+        }
+
+        // 3. Significant Name Parts + Location (Medium Confidence)
         if (filteredParts.length >= 2 && currentCity) {
           const nameMatch = filteredParts.every(part => mName.includes(part))
           const cityMatch = mCity.includes(currentCity) || currentCity.includes(mCity) || mLocation.includes(currentCity)
           if (nameMatch && cityMatch) return true
         }
 
-        // 3. Full include match (Medium Confidence)
+        // 4. Full include match (Medium Confidence)
         if (normalizedName.length > 10 && mName.includes(normalizedName)) return true
+        if (currentNameFa.length > 5 && mNameFa.includes(currentNameFa)) return true
 
         return false
       })
@@ -668,9 +684,15 @@ function initContributionForm() {
       checkDuplicate((e.target as HTMLInputElement).value)
     })
 
+    form.querySelector('[name="name_fa"]')?.addEventListener('input', (e) => {
+      const name = (form.querySelector('[name="name"]') as HTMLInputElement).value
+      checkDuplicate(name, undefined, (e.target as HTMLInputElement).value)
+    })
+
     form.querySelector('[name="city"]')?.addEventListener('input', (e) => {
       const name = (form.querySelector('[name="name"]') as HTMLInputElement).value
-      checkDuplicate(name, (e.target as HTMLInputElement).value)
+      const name_fa = (form.querySelector('[name="name_fa"]') as HTMLInputElement).value
+      checkDuplicate(name, (e.target as HTMLInputElement).value, name_fa)
     })
 
     aiBtn?.addEventListener('click', async () => {
@@ -705,6 +727,7 @@ function initContributionForm() {
         
         // Fill form fields
         const nameInput = form.querySelector('[name="name"]') as HTMLInputElement
+        const nameFaInput = form.querySelector('[name="name_fa"]') as HTMLInputElement
         const cityInput = form.querySelector('[name="city"]') as HTMLInputElement
         const dateInput = form.querySelector('[name="date"]') as HTMLInputElement
         const locationInput = form.querySelector('[name="location"]') as HTMLInputElement
@@ -713,6 +736,7 @@ function initContributionForm() {
         const refLabelInput = form.querySelector('[name="refLabel"]') as HTMLInputElement
 
         if (data.name) nameInput.value = data.name
+        if (data.name_fa) nameFaInput.value = data.name_fa
         if (data.city) cityInput.value = data.city
         if (data.date) dateInput.value = data.date
         if (data.location) locationInput.value = data.location
@@ -726,7 +750,9 @@ function initContributionForm() {
           refLabelInput.value = isXUrl ? 'X Post' : 'Source'
         }
 
-        if (data.name) checkDuplicate(data.name)
+        if (data.name || data.name_fa) {
+          checkDuplicate(data.name || '', data.city, data.name_fa || undefined)
+        }
 
         aiStatus.textContent = t('ai.success')
         aiStatus.className = 'ai-status success'
@@ -746,6 +772,7 @@ function initContributionForm() {
       const fd = new FormData(form)
       const data: Partial<MemorialEntry> = {
         name: fd.get('name') as string,
+        name_fa: fd.get('name_fa') as string || undefined,
         city: fd.get('city') as string,
         date: fd.get('date') as string,
         location: fd.get('location') as string,
