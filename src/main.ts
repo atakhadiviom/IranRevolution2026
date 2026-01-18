@@ -32,9 +32,28 @@ async function boot() {
     aside.classList.remove('active')
     clearDetails(filtered)
   })
-  onMarkerSelected((entry) => renderDetails(entry))
+  onMarkerSelected((entry) => {
+    renderDetails(entry)
+    // Update URL when a memorial is selected
+    const url = new URL(window.location.href)
+    url.searchParams.set('id', entry.id || '')
+    window.history.pushState({}, '', url.toString())
+  })
 
   setupRealtime()
+
+  // Handle initial URL parameter
+  const urlParams = new URLSearchParams(window.location.search)
+  const memorialId = urlParams.get('id')
+  if (memorialId) {
+    const entry = memorials.find(m => m.id === memorialId)
+    if (entry) {
+      setTimeout(() => {
+        focusOnMarker(entry)
+        renderDetails(entry)
+      }, 500) // Small delay to ensure map is ready
+    }
+  }
 }
 
 function setupRealtime() {
@@ -257,7 +276,10 @@ function renderDetails(entry: MemorialEntry) {
   const displayTestimonials = (isFa && entry.testimonials_fa) ? entry.testimonials_fa : entry.testimonials
   
   panel.innerHTML = `
-    <button id="close-details" class="close-button" aria-label="${t('details.close')}">&times;</button>
+    <div class="panel-header-actions">
+      <button id="back-to-map" class="back-button mobile-only" aria-label="${t('details.backToMap')}">← ${t('details.backToMap')}</button>
+      <button id="close-details" class="close-button" aria-label="${t('details.close')}">&times;</button>
+    </div>
     <article class="memorial-profile">
       <header class="profile-header">
         <h2>${displayName}</h2>
@@ -279,9 +301,16 @@ function renderDetails(entry: MemorialEntry) {
         ${displayBio ? `<p>${displayBio}</p>` : ''}
       </div>
 
-      <div class="candle-section">
-        <button id="light-candle" class="candle-button">🕯️ ${t('details.lightCandle')}</button>
-        <span id="candle-count" class="candle-count">0 ${t('details.candlesLit')}</span>
+      <div class="action-section">
+        <div class="candle-section">
+          <button id="light-candle" class="candle-button">🕯️ ${t('details.lightCandle')}</button>
+          <span id="candle-count" class="candle-count">0 ${t('details.candlesLit')}</span>
+        </div>
+        <div class="share-section">
+          <button id="share-btn" class="share-button">
+            📤 ${t('details.share')}
+          </button>
+        </div>
       </div>
 
       <div class="report-section">
@@ -332,12 +361,18 @@ function renderDetails(entry: MemorialEntry) {
 
   // Trigger Twitter widget rendering if present
   if (entry.media?.xPost) {
+    /* eslint-disable no-console */
+    console.log('X post URL detected:', entry.media.xPost);
     const twttr = window.twttr
     if (twttr && twttr.ready) {
+      console.log('Twitter widgets library ready, loading widget...');
       twttr.ready((t) => {
         t.widgets.load(panel)
       })
+    } else {
+      console.warn('Twitter widgets library NOT ready or not found');
     }
+    /* eslint-enable no-console */
   }
 
   const openReportBtn = document.getElementById('open-report-btn')
@@ -346,9 +381,43 @@ function renderDetails(entry: MemorialEntry) {
   }
 
   const closeBtn = document.getElementById('close-details')!
-  closeBtn.addEventListener('click', () => {
+  const backBtn = document.getElementById('back-to-map')
+  const handleClose = () => {
     aside.classList.remove('active')
     clearDetails(currentMemorials)
+    // Clear URL parameter when closing
+    const url = new URL(window.location.href)
+    url.searchParams.delete('id')
+    window.history.replaceState({}, '', url.toString())
+  }
+  closeBtn.addEventListener('click', handleClose)
+  backBtn?.addEventListener('click', handleClose)
+
+  const shareBtn = document.getElementById('share-btn')
+  shareBtn?.addEventListener('click', async () => {
+    const shareUrl = new URL(window.location.href)
+    shareUrl.searchParams.set('id', entry.id || '')
+    
+    const shareData = {
+      title: t('details.shareText', { name: displayName }),
+      text: t('details.shareText', { name: displayName }),
+      url: shareUrl.toString()
+    }
+
+    try {
+      if (navigator.share) {
+        await navigator.share(shareData)
+      } else {
+        await navigator.clipboard.writeText(shareUrl.toString())
+        const originalText = shareBtn.innerHTML
+        shareBtn.innerHTML = `✅ ${t('details.copied')}`
+        setTimeout(() => {
+          shareBtn.innerHTML = originalText
+        }, 2000)
+      }
+    } catch (err) {
+      console.error('Error sharing:', err)
+    }
   })
   
   const candleBtn = document.getElementById('light-candle')
