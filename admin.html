@@ -61,6 +61,11 @@
               <span>✏️ Editor</span>
             </div>
           </li>
+          <li class="nav-item">
+            <div id="nav-reports" class="nav-link">
+              <span>🚩 Reports</span>
+            </div>
+          </li>
         </nav>
 
         <div class="sidebar-footer">
@@ -96,6 +101,10 @@
             <div class="stat-card">
               <div class="stat-label">Pending Review</div>
               <div id="stat-pending" class="stat-value" style="color: var(--warning);">0</div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-label">Active Reports</div>
+              <div id="stat-reports" class="stat-value" style="color: var(--danger);">0</div>
             </div>
           </div>
 
@@ -162,6 +171,13 @@
           <div class="card">
             <div class="search-container">
               <input type="text" id="search-submissions" class="search-input" placeholder="Search submissions by name or city..." />
+              <select id="sort-submissions" class="sort-select">
+                <option value="date-desc">Newest First</option>
+                <option value="date-asc">Oldest First</option>
+                <option value="name-asc">Name (A-Z)</option>
+                <option value="name-desc">Name (Z-A)</option>
+                <option value="city-asc">City (A-Z)</option>
+              </select>
             </div>
             <div style="overflow-x: auto;">
               <table class="data-table">
@@ -191,6 +207,13 @@
           <div class="card">
             <div class="search-container">
               <input type="text" id="search-memorials" class="search-input" placeholder="Search memorials..." />
+              <select id="sort-memorials" class="sort-select">
+                <option value="date-desc">Newest First</option>
+                <option value="date-asc">Oldest First</option>
+                <option value="name-asc">Name (A-Z)</option>
+                <option value="name-desc">Name (Z-A)</option>
+                <option value="city-asc">City (A-Z)</option>
+              </select>
             </div>
             <div style="overflow-x: auto;">
               <table class="data-table">
@@ -215,10 +238,15 @@
         <section id="section-editor" class="hidden">
           <header>
             <h1 id="editor-title">Add Memorial Entry</h1>
-            <div class="actions">
+            <div class="actions" style="display: flex; gap: 0.5rem;">
+              <button id="translate-entry-btn" class="btn btn-secondary btn-sm hidden">🌍 Translate</button>
+              <button id="merge-entry-btn" class="btn btn-secondary btn-sm hidden">🔗 Merge</button>
+              <button id="delete-entry-btn" class="btn btn-danger btn-sm hidden">🗑️ Delete</button>
               <button id="clear-btn" class="btn btn-secondary btn-sm">Clear Form</button>
             </div>
           </header>
+
+          <div id="editor-status" class="hidden" style="margin-bottom: 1rem; padding: 0.75rem; border-radius: 4px; font-size: 0.9rem;"></div>
 
           <div class="card">
             <form id="entry-form" class="form-grid">
@@ -314,6 +342,35 @@
               <h3>JSON Output</h3>
             </div>
             <pre id="output" style="background: #000; padding: 1rem; border-radius: 8px; overflow: auto; max-height: 300px; font-size: 0.8rem; border: 1px solid var(--border); color: #0f0;"></pre>
+          </div>
+        </section>
+        <!-- Reports Section -->
+        <section id="section-reports" class="hidden">
+          <header>
+            <h1>User Reports</h1>
+            <div class="actions">
+              <button id="refresh-reports-btn" class="btn btn-secondary btn-sm">Refresh Reports</button>
+            </div>
+          </header>
+          
+          <div class="card">
+            <div style="overflow-x: auto;">
+              <table class="data-table">
+                <thead>
+                  <tr>
+                    <th>Date</th>
+                    <th>Memorial</th>
+                    <th>Reason</th>
+                    <th>Details</th>
+                    <th>Status</th>
+                    <th>Actions</th>
+                  </tr>
+                </thead>
+                <tbody id="reports-list">
+                  <!-- Reports will be injected here -->
+                </tbody>
+              </table>
+            </div>
           </div>
         </section>
       </main>

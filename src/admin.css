@@ -301,6 +301,11 @@ input:focus, textarea:focus {
   color: var(--success);
 }
 
+.badge-muted {
+  background: rgba(255, 255, 255, 0.05);
+  color: var(--muted);
+}
+
 /* Login */
 .login-wrapper {
   display: flex;
@@ -340,6 +345,22 @@ input:focus, textarea:focus {
 
 .search-input {
   flex: 1;
+}
+
+.sort-select {
+  padding: 0.6rem 1rem;
+  background: var(--input);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  color: var(--text);
+  font-size: 0.9rem;
+  cursor: pointer;
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+.sort-select:focus {
+  border-color: var(--accent);
 }
 
 /* AI Status */

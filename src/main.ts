@@ -4,7 +4,7 @@ import { initMap, plotMarkers, onMarkerSelected, onShowListView, focusOnMarker }
 import type { MemorialEntry } from './modules/types'
 import { setupSearch } from './modules/search'
 import { extractMemorialData } from './modules/ai'
-import { fetchMemorials, submitMemorial } from './modules/dataService'
+import { fetchMemorials, submitMemorial, submitReport } from './modules/dataService'
 import { initTwitter } from './modules/twitter'
 import { supabase } from './modules/supabase'
 
@@ -285,10 +285,9 @@ function renderDetails(entry: MemorialEntry) {
       </div>
 
       <div class="report-section">
-        <a href="https://github.com/atakhadiviom/IranRevolution2026/issues/new?title=Report+Issue:+${encodeURIComponent(entry.name)}&body=${encodeURIComponent(`I am reporting an issue with the entry for ${entry.name}${entry.id ? ` (ID: ${entry.id})` : ''}.\n\nReason:\n[Please describe the problem here, e.g., wrongly added, incorrect date, etc.]`)}" 
-           target="_blank" class="report-link">
+        <button id="open-report-btn" class="report-link-btn">
            🚩 ${t('details.reportIssue')}
-        </a>
+        </button>
       </div>
 
       ${entry.media?.video ? `
@@ -341,7 +340,13 @@ function renderDetails(entry: MemorialEntry) {
     }
   }
 
-  document.getElementById('close-details')?.addEventListener('click', () => {
+  const openReportBtn = document.getElementById('open-report-btn')
+  if (openReportBtn) {
+    openReportBtn.addEventListener('click', () => initReportModal(entry))
+  }
+
+  const closeBtn = document.getElementById('close-details')!
+  closeBtn.addEventListener('click', () => {
     aside.classList.remove('active')
     clearDetails(currentMemorials)
   })
@@ -390,6 +395,109 @@ function clearDetails(memorials: MemorialEntry[]) {
       </div>
     </div>
   `
+}
+
+function initReportModal(entry: MemorialEntry) {
+  const overlay = document.getElementById('report-modal')
+  const close = document.getElementById('close-report-modal')
+  const body = document.getElementById('report-modal-body')
+
+  if (!overlay || !close || !body) return
+
+  const closeModal = () => {
+    overlay.classList.add('hidden')
+    document.body.style.overflow = ''
+    document.body.classList.remove('modal-open')
+  }
+
+  overlay.classList.remove('hidden')
+  document.body.style.overflow = 'hidden'
+  document.body.classList.add('modal-open')
+
+  close.onclick = closeModal
+  overlay.onclick = (e) => {
+    if (e.target === overlay) closeModal()
+  }
+
+  body.innerHTML = `
+    <div class="report-form-container">
+      <h2>${t('report.title')}</h2>
+      <p class="report-desc">${t('report.desc')}</p>
+      <form id="report-form">
+        <div class="form-group">
+          <label>${t('report.reasonLabel')}</label>
+          <select name="reason" required>
+            <option value="wrong-person">${t('report.reasonWrongPerson')}</option>
+            <option value="incorrect-data">${t('report.reasonIncorrectData')}</option>
+            <option value="duplicate">${t('report.reasonDuplicate')}</option>
+            <option value="other">${t('report.reasonOther')}</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>${t('report.detailsLabel')}</label>
+          <textarea name="details" placeholder="${t('report.detailsPlaceholder')}"></textarea>
+        </div>
+        <div id="report-status" class="report-status hidden"></div>
+        <button type="submit" class="submit-button">${t('report.submit')}</button>
+      </form>
+    </div>
+  `
+
+  const form = document.getElementById('report-form') as HTMLFormElement
+  const statusDiv = document.getElementById('report-status')!
+
+  form.onsubmit = async (e) => {
+    e.preventDefault()
+    const submitBtn = form.querySelector('button[type="submit"]') as HTMLButtonElement
+    submitBtn.disabled = true
+    submitBtn.textContent = '...'
+
+    const formData = new FormData(form)
+    const report = {
+      memorial_id: entry.id!,
+      memorial_name: entry.name,
+      reason: formData.get('reason') as string,
+      details: formData.get('details') as string
+    }
+
+    const { success, error } = await submitReport(report)
+
+    if (success) {
+      statusDiv.textContent = t('report.success')
+      statusDiv.className = 'report-status success'
+      statusDiv.classList.remove('hidden')
+      setTimeout(closeModal, 2000)
+    } else {
+      submitBtn.disabled = false
+      submitBtn.textContent = t('report.submit')
+      
+      let errorMessage = error || t('report.error')
+      if (error?.includes('42P01') || error?.includes('not found')) {
+        errorMessage = `⚠️ Database Error: 'reports' table is missing. Please notify the administrator to create the table.`
+      } else if (error?.includes('42501') || error?.includes('Permission denied')) {
+        errorMessage = `⚠️ Permission Error: The 'reports' table exists but public access is restricted. Please notify the administrator to enable Row-Level Security (RLS) for public inserts.`
+      }
+      
+      statusDiv.textContent = errorMessage
+      statusDiv.className = 'report-status error'
+      statusDiv.classList.remove('hidden')
+      
+      // Add a fallback link for manual reporting if database fails
+      const fallbackLink = document.createElement('a')
+      fallbackLink.href = `https://github.com/atakhadiviom/IranRevolution2026/issues/new?title=Report+Issue:+${encodeURIComponent(entry.name)}&body=${encodeURIComponent(`I am reporting an issue with the entry for ${entry.name}${entry.id ? ` (ID: ${entry.id})` : ''}.\n\nReason: ${report.reason}\n\nDetails: ${report.details}`)}`
+      fallbackLink.target = '_blank'
+      fallbackLink.className = 'report-link-fallback'
+      fallbackLink.style.display = 'block'
+      fallbackLink.style.marginTop = '1rem'
+      fallbackLink.style.fontSize = '0.8rem'
+      fallbackLink.style.color = 'var(--muted)'
+      fallbackLink.innerHTML = 'Alternative: Click here to report via GitHub'
+      
+      if (!statusDiv.querySelector('.report-link-fallback')) {
+        statusDiv.appendChild(fallbackLink)
+      }
+    }
+  }
 }
 
 function initContributionForm() {

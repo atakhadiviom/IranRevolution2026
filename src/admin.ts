@@ -7,7 +7,9 @@ import {
   mergeMemorials,
   batchUpdateImages, 
   batchTranslateMemorials, 
-  batchSyncLocationCoords 
+  batchSyncLocationCoords,
+  fetchReports,
+  updateReportStatus
 } from './modules/dataService'
 import { extractMemorialData, geocodeLocation } from './modules/ai'
 import { extractXPostImage } from './modules/imageExtractor'
@@ -20,7 +22,8 @@ const sections = {
   overview: document.getElementById('section-overview') as HTMLElement,
   submissions: document.getElementById('section-submissions') as HTMLElement,
   memorials: document.getElementById('section-memorials') as HTMLElement,
-  editor: document.getElementById('section-editor') as HTMLElement
+  editor: document.getElementById('section-editor') as HTMLElement,
+  reports: document.getElementById('section-reports') as HTMLElement
 }
 
 // DOM Elements - Nav
@@ -28,13 +31,15 @@ const navLinks = {
   overview: document.getElementById('nav-overview') as HTMLDivElement,
   submissions: document.getElementById('nav-submissions') as HTMLDivElement,
   memorials: document.getElementById('nav-memorials') as HTMLDivElement,
-  editor: document.getElementById('nav-editor') as HTMLDivElement
+  editor: document.getElementById('nav-editor') as HTMLDivElement,
+  reports: document.getElementById('nav-reports') as HTMLDivElement
 }
 
 // DOM Elements - Stats
 const statTotal = document.getElementById('stat-total') as HTMLDivElement
 const statVerified = document.getElementById('stat-verified') as HTMLDivElement
 const statPending = document.getElementById('stat-pending') as HTMLDivElement
+const statReports = document.getElementById('stat-reports') as HTMLDivElement
 const refreshStatsBtn = document.getElementById('refresh-stats-btn') as HTMLButtonElement
 
 // DOM Elements - Lists
@@ -43,6 +48,12 @@ const verifiedList = document.getElementById('verified-list') as HTMLTableSectio
 const recentList = document.getElementById('recent-list') as HTMLTableSectionElement
 const searchSubmissions = document.getElementById('search-submissions') as HTMLInputElement
 const searchMemorials = document.getElementById('search-memorials') as HTMLInputElement
+const sortSubmissions = document.getElementById('sort-submissions') as HTMLSelectElement
+const sortMemorials = document.getElementById('sort-memorials') as HTMLSelectElement
+
+// DOM Elements - Reports
+const reportsList = document.getElementById('reports-list') as HTMLTableSectionElement
+const refreshReportsBtn = document.getElementById('refresh-reports-btn') as HTMLButtonElement
 
 // DOM Elements - Auth
 const loginForm = document.getElementById('login-form') as HTMLFormElement
@@ -57,6 +68,10 @@ const clearBtn = document.getElementById('clear-btn') as HTMLButtonElement
 const output = document.getElementById('output') as HTMLPreElement
 const editorTitle = document.getElementById('editor-title') as HTMLHeadingElement
 const duplicateWarning = document.getElementById('duplicate-warning') as HTMLDivElement
+const editorStatus = document.getElementById('editor-status') as HTMLDivElement
+const deleteEntryBtn = document.getElementById('delete-entry-btn') as HTMLButtonElement
+const mergeEntryBtn = document.getElementById('merge-entry-btn') as HTMLButtonElement
+const translateEntryBtn = document.getElementById('translate-entry-btn') as HTMLButtonElement
 
 // Merge Modal Elements
 const mergeModal = document.getElementById('merge-modal') as HTMLDivElement
@@ -162,6 +177,8 @@ Object.entries(navLinks).forEach(([name, link]) => {
 
 // --- Dashboard Logic ---
 
+refreshReportsBtn.addEventListener('click', handleRefreshReports)
+
 async function loadData() {
   const loadingHtml = '<tr><td colspan="5" style="text-align: center; color: var(--muted); padding: 2rem;">Loading data...</td></tr>'
   submissionsList.innerHTML = loadingHtml
@@ -169,43 +186,161 @@ async function loadData() {
   recentList.innerHTML = loadingHtml
   
   allMemorials = await fetchMemorials(true)
-  updateStats()
+  await updateStats()
   renderSubmissions()
   renderVerified()
   renderRecent()
+  renderReports()
 }
 
-function updateStats() {
+async function handleRefreshReports() {
+  refreshReportsBtn.disabled = true
+  refreshReportsBtn.textContent = 'Loading...'
+  await renderReports()
+  await updateStats()
+  refreshReportsBtn.disabled = false
+  refreshReportsBtn.textContent = 'Refresh Reports'
+}
+
+async function renderReports() {
+  const { data: reports, error } = await fetchReports()
+  
+  if (error) {
+    reportsList.innerHTML = `<tr><td colspan="6" style="text-align: center; color: var(--danger); padding: 2rem;">Error loading reports: ${error}</td></tr>`
+    return
+  }
+  
+  if (reports.length === 0) {
+    reportsList.innerHTML = '<tr><td colspan="6" style="text-align: center; color: var(--muted); padding: 2rem;">No reports found.</td></tr>'
+    return
+  }
+
+  reportsList.innerHTML = reports.map(r => `
+    <tr class="data-row">
+      <td style="font-size: 0.85rem; color: var(--muted);">${new Date(r.created_at).toLocaleDateString()}</td>
+      <td>
+        <div style="font-weight: 600;">${r.memorial_name}</div>
+        <div style="font-size: 0.75rem; color: var(--muted);">ID: ${r.memorial_id}</div>
+      </td>
+      <td><span class="badge badge-pending">${r.reason}</span></td>
+      <td style="max-width: 300px; font-size: 0.9rem;">${r.details || '<span style="color:var(--muted)">No details</span>'}</td>
+      <td>
+        <span class="badge ${r.status === 'resolved' ? 'badge-verified' : r.status === 'dismissed' ? 'badge-muted' : 'badge-pending'}">
+          ${r.status || 'pending'}
+        </span>
+      </td>
+      <td>
+        <div style="display: flex; gap: 0.5rem;">
+          <button class="btn btn-primary btn-sm view-memorial-btn" data-id="${r.memorial_id}">View</button>
+          ${r.status !== 'resolved' ? `<button class="btn btn-secondary btn-sm resolve-report-btn" data-id="${r.id}">Resolve</button>` : ''}
+          <button class="btn btn-danger btn-sm delete-report-btn" data-id="${r.id}">Dismiss</button>
+        </div>
+      </td>
+    </tr>
+  `).join('')
+
+  reportsList.querySelectorAll('.view-memorial-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const id = (btn as HTMLButtonElement).dataset.id!
+      editEntry(id)
+      showSection('editor')
+    })
+  })
+
+  reportsList.querySelectorAll('.resolve-report-btn').forEach(btn => {
+    btn.addEventListener('click', async () => {
+      const id = (btn as HTMLButtonElement).dataset.id!
+      const originalText = btn.textContent
+      btn.textContent = '...'
+      const { success, error } = await updateReportStatus(id, 'resolved')
+      if (success) {
+        await renderReports()
+        await updateStats()
+      } else {
+        alert('Error updating report status: ' + error)
+        btn.textContent = originalText
+      }
+    })
+  })
+
+  reportsList.querySelectorAll('.delete-report-btn').forEach(btn => {
+    btn.addEventListener('click', async () => {
+      const id = (btn as HTMLButtonElement).dataset.id!
+      if (confirm('Are you sure you want to dismiss this report?')) {
+        const originalText = btn.textContent
+        btn.textContent = '...'
+        const { success, error } = await updateReportStatus(id, 'dismissed')
+        if (success) {
+          await renderReports()
+          await updateStats()
+        } else {
+          alert('Error updating report status: ' + error)
+          btn.textContent = originalText
+        }
+      }
+    })
+  })
+}
+
+async function updateStats() {
   const verified = allMemorials.filter(m => m.verified)
   const pending = allMemorials.filter(m => !m.verified)
+  const { data: allReports } = await fetchReports()
+  const activeReports = allReports.filter(r => r.status === 'pending' || !r.status)
   
   statTotal.textContent = allMemorials.length.toString()
   statVerified.textContent = verified.length.toString()
   statPending.textContent = pending.length.toString()
+  statReports.textContent = activeReports.length.toString()
+}
+
+function sortMemorialsList(memorials: MemorialEntry[], sortBy: string) {
+  return [...memorials].sort((a, b) => {
+    switch (sortBy) {
+      case 'date-desc':
+        return new Date(b.date).getTime() - new Date(a.date).getTime()
+      case 'date-asc':
+        return new Date(a.date).getTime() - new Date(b.date).getTime()
+      case 'name-asc':
+        return a.name.localeCompare(b.name)
+      case 'name-desc':
+        return b.name.localeCompare(a.name)
+      case 'city-asc':
+        return a.city.localeCompare(b.city)
+      default:
+        return 0
+    }
+  })
 }
 
 function renderSubmissions() {
   const query = searchSubmissions.value.toLowerCase()
-  const filtered = allMemorials
+  const sortBy = sortSubmissions.value
+  let filtered = allMemorials
     .filter(m => !m.verified)
     .filter(m => 
       m.name.toLowerCase().includes(query) || 
       (m.name_fa && m.name_fa.includes(query)) ||
       m.city.toLowerCase().includes(query)
     )
+  
+  filtered = sortMemorialsList(filtered, sortBy)
     
   renderTable(filtered, submissionsList)
 }
 
 function renderVerified() {
   const query = searchMemorials.value.toLowerCase()
-  const filtered = allMemorials
+  const sortBy = sortMemorials.value
+  let filtered = allMemorials
     .filter(m => m.verified)
     .filter(m => 
       m.name.toLowerCase().includes(query) || 
       (m.name_fa && m.name_fa.includes(query)) ||
       m.city.toLowerCase().includes(query)
     )
+  
+  filtered = sortMemorialsList(filtered, sortBy)
     
   renderTable(filtered, verifiedList)
 }
@@ -401,6 +536,13 @@ function editEntry(id: string) {
   
   output.textContent = JSON.stringify(entry, null, 2)
   checkDuplicate(entry.name, entry.city)
+  editorStatus.classList.add('hidden')
+  
+  // Show delete, merge and translate buttons when editing
+  deleteEntryBtn.classList.remove('hidden')
+  mergeEntryBtn.classList.remove('hidden')
+  translateEntryBtn.classList.remove('hidden')
+  
   showSection('editor')
   window.scrollTo({ top: 0, behavior: 'smooth' })
 }
@@ -478,6 +620,8 @@ document.getElementById('city')?.addEventListener('input', (e) => {
 
 searchSubmissions.addEventListener('input', renderSubmissions)
 searchMemorials.addEventListener('input', renderVerified)
+sortSubmissions.addEventListener('change', renderSubmissions)
+sortMemorials.addEventListener('change', renderVerified)
 refreshStatsBtn.addEventListener('click', loadData)
 
 // --- Quick Import Logic ---
@@ -556,6 +700,7 @@ extractImgBtn.addEventListener('click', async () => {
   }
 
   extractImgBtn.disabled = true
+  const originalText = extractImgBtn.textContent
   extractImgBtn.textContent = '...'
   
   try {
@@ -570,70 +715,88 @@ extractImgBtn.addEventListener('click', async () => {
     alert('Failed to extract image.')
   } finally {
     extractImgBtn.disabled = false
-    extractImgBtn.textContent = 'Extract Img'
+    extractImgBtn.textContent = originalText
   }
 })
 
 syncCoordsBtn.addEventListener('click', async () => {
   const city = (document.getElementById('city') as HTMLInputElement).value.trim()
   const location = (document.getElementById('location') as HTMLInputElement).value.trim()
-  
   if (!city) {
-    alert('Please enter a city first.')
+    alert('City is required to sync coordinates.')
     return
   }
 
   syncCoordsBtn.disabled = true
-  
+  const originalText = syncCoordsBtn.textContent
+  syncCoordsBtn.textContent = '...'
+
   try {
     const coords = await geocodeLocation(city, location)
     if (coords) {
-      (document.getElementById('lat') as HTMLInputElement).value = coords.lat.toString();
-      (document.getElementById('lon') as HTMLInputElement).value = coords.lon.toString();
+      (document.getElementById('lat') as HTMLInputElement).value = `${coords.lat}`;
+      (document.getElementById('lon') as HTMLInputElement).value = `${coords.lon}`;
+      alert('Coordinates synced!');
     } else {
       alert('Could not find coordinates for this location.')
     }
-  } catch (error) {
-    alert('Geocoding failed.')
+  } catch (e) {
+    alert('Failed to sync coordinates.')
   } finally {
     syncCoordsBtn.disabled = false
+    syncCoordsBtn.textContent = originalText
   }
 })
 
 batchImgBtn.addEventListener('click', async () => {
   if (!confirm('Sync images for all memorials? This might take a while.')) return
   batchImgBtn.disabled = true
+  const originalText = batchImgBtn.textContent
+  batchImgBtn.textContent = '⌛ Processing...'
   try {
     const { success, count, error } = await batchUpdateImages()
     if (success) {
       alert(`Successfully updated ${count} memorials!`)
       loadData()
     } else alert(`Failed: ${error}`)
-  } catch (e) { alert('Failed.') } finally { batchImgBtn.disabled = false }
+  } catch (e) { alert('Failed.') } finally { 
+    batchImgBtn.disabled = false 
+    batchImgBtn.textContent = originalText
+  }
 })
 
 batchTranslateBtn.addEventListener('click', async () => {
   if (!confirm('Use AI to fix missing translations?')) return
   batchTranslateBtn.disabled = true
+  const originalText = batchTranslateBtn.textContent
+  batchTranslateBtn.textContent = '⌛ Processing...'
   try {
     const { success, count, error } = await batchTranslateMemorials()
     if (success) {
       alert(`Successfully translated ${count} memorials!`)
       loadData()
     } else alert(`Failed: ${error}`)
-  } catch (e) { alert('Failed.') } finally { batchTranslateBtn.disabled = false }
+  } catch (e) { alert('Failed.') } finally { 
+    batchTranslateBtn.disabled = false 
+    batchTranslateBtn.textContent = originalText
+  }
 })
 
 batchCoordsBtn.addEventListener('click', async () => {
   if (!confirm('Use AI to sync all coordinates?')) return
   batchCoordsBtn.disabled = true
+  const originalText = batchCoordsBtn.textContent
+  batchCoordsBtn.textContent = '⌛ Processing...'
   try {
     const { success, count, error } = await batchSyncLocationCoords()
     if (success) {
       alert(`Successfully synced ${count} memorials!`)
       loadData()
     } else alert(`Failed: ${error}`)
-  } catch (e) { alert('Failed.') } finally { batchCoordsBtn.disabled = false }
+  } catch (e) { alert('Failed.') } finally { 
+    batchCoordsBtn.disabled = false 
+    batchCoordsBtn.textContent = originalText
+  }
 })
 
 jsonImportBtn.addEventListener('click', async () => {
@@ -766,9 +929,72 @@ function clearForm() {
   editorTitle.textContent = 'Add Memorial Entry'
   output.textContent = ''
   duplicateWarning.classList.add('hidden')
+  editorStatus.classList.add('hidden')
+  deleteEntryBtn.classList.add('hidden')
+  mergeEntryBtn.classList.add('hidden')
+  translateEntryBtn.classList.add('hidden')
   ;(document.getElementById('lat') as HTMLInputElement).value = '35.6892'
   ;(document.getElementById('lon') as HTMLInputElement).value = '51.3890'
 }
+
+deleteEntryBtn.addEventListener('click', () => {
+  if (editIdInput.value) {
+    handleDelete(editIdInput.value)
+    clearForm()
+    showSection('overview')
+  }
+})
+
+mergeEntryBtn.addEventListener('click', () => {
+  if (editIdInput.value) {
+    openMergeModal(editIdInput.value)
+  }
+})
+
+translateEntryBtn.addEventListener('click', async () => {
+  const name = (document.getElementById('name') as HTMLInputElement).value
+  const city = (document.getElementById('city') as HTMLInputElement).value
+  const location = (document.getElementById('location') as HTMLInputElement).value
+  const bio = (document.getElementById('bio') as HTMLTextAreaElement).value
+
+  if (!name && !city && !location && !bio) {
+    alert('Please fill some fields to translate.')
+    return
+  }
+
+  translateEntryBtn.disabled = true
+  const originalText = translateEntryBtn.textContent
+  translateEntryBtn.textContent = '...'
+  
+  editorStatus.textContent = '🌍 Translating with AI...'
+  editorStatus.className = 'loading'
+  editorStatus.classList.remove('hidden')
+
+  try {
+    const { translateMemorialData } = await import('./modules/ai')
+    const result = await translateMemorialData({ name, city, location, bio })
+
+    if (result) {
+      const t = result
+      if (t.name_fa) (document.getElementById('name_fa') as HTMLInputElement).value = t.name_fa
+      if (t.city_fa) (document.getElementById('city_fa') as HTMLInputElement).value = t.city_fa
+      if (t.location_fa) (document.getElementById('location_fa') as HTMLInputElement).value = t.location_fa
+      if (t.bio_fa) (document.getElementById('bio_fa') as HTMLTextAreaElement).value = t.bio_fa
+      
+      editorStatus.textContent = '✅ Translation complete!'
+      editorStatus.className = 'success'
+      setTimeout(() => editorStatus.classList.add('hidden'), 3000)
+    } else {
+      throw new Error('AI returned an empty response.')
+    }
+  } catch (e) {
+    editorStatus.textContent = '❌ Translation failed: ' + (e instanceof Error ? e.message : 'Unknown error')
+    editorStatus.className = 'error'
+  } finally {
+    translateEntryBtn.disabled = false
+    translateEntryBtn.textContent = originalText
+  }
+})
 
 clearBtn.addEventListener('click', clearForm)
 

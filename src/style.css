@@ -302,6 +302,55 @@ main {
   text-decoration: underline;
 }
 
+.report-link-btn {
+  background: none;
+  border: none;
+  color: #f87171;
+  font-size: 0.85rem;
+  padding: 0;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  opacity: 0.8;
+  transition: opacity 0.2s;
+  font-family: inherit;
+}
+
+.report-link-btn:hover {
+  opacity: 1;
+  text-decoration: underline;
+}
+
+.report-modal {
+  max-width: 450px;
+}
+
+.report-desc {
+  font-size: 0.95rem;
+  color: var(--muted);
+  margin-bottom: 1.5rem;
+}
+
+.report-status {
+  padding: 0.75rem;
+  border-radius: 8px;
+  margin-bottom: 1rem;
+  font-size: 0.9rem;
+}
+
+.report-status.success {
+  background: rgba(52, 211, 153, 0.1);
+  color: #34d399;
+  border: 1px solid rgba(52, 211, 153, 0.2);
+}
+
+.report-status.error {
+  background: rgba(248, 113, 113, 0.1);
+  color: #f87171;
+  border: 1px solid rgba(248, 113, 113, 0.2);
+}
+
 .profile-video video {
   width: 100%;
   border-radius: 12px;

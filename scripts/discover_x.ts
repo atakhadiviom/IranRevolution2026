@@ -36,6 +36,7 @@ function saveHistory(history: Set<string>) {
 
 const TARGETS = [
   'https://hengaw.net/fa/news/2026/01/article-138-1',
+  'https://x.com/IranRights_org',
   'https://x.com/indypersian',
   'https://x.com/IranIntl_En',
   'https://x.com/HyrcaniHRM',
