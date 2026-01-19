@@ -52,6 +52,11 @@ const TARGETS = [
   'https://x.com/1500tasvir',
   'https://x.com/AmnestyIran',
   'https://x.com/ICHRI',
+  'https://x.com/FSeifikaran',
+  'https://x.com/dadban4',
+  'https://x.com/allahbakhshii',
+  'https://x.com/Daikatuo',
+  'https://x.com/pouriazeraati',
   'https://x.com/search?q=%D8%AC%D8%A7%D9%86%D8%A8%D8%A7%D8%AE%D8%AA%D9%87%20%D8%A7%DB%8C%D8%B1%D8%A7%D9%86&f=live', // "جانباخته ایران" (Died Iran)
   'https://x.com/search?q=%DA%A9%D8%B4%D8%AA%D9%87%20%D8%B4%D8%AF&f=live', // "کشته شد" (Was killed)
 ];
