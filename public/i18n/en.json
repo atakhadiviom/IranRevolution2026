@@ -22,6 +22,7 @@
   "report.reasonWrongPerson": "Wrong person / Not a victim",
   "report.reasonIncorrectData": "Incorrect details (name, date, city)",
   "report.reasonDuplicate": "Duplicate entry",
+  "report.reasonSensitive": "Sensitive content (requires blur/warning)",
   "report.reasonOther": "Other issue",
   "report.detailsLabel": "Details (Optional)",
   "report.detailsPlaceholder": "Provide more information here...",

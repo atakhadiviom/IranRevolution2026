@@ -9,7 +9,8 @@ import {
   batchTranslateMemorials, 
   batchSyncLocationCoords,
   fetchReports,
-  updateReportStatus
+  updateReportStatus,
+  deleteReport
 } from './modules/dataService'
 import { extractMemorialData, geocodeLocation } from './modules/ai'
 import { extractXPostImage } from './modules/imageExtractor'
@@ -286,12 +287,12 @@ async function renderReports() {
       if (confirm('Are you sure you want to dismiss this report?')) {
         const originalText = btn.textContent
         btn.textContent = '...'
-        const { success, error } = await updateReportStatus(id, 'dismissed')
+        const { success, error } = await deleteReport(id)
         if (success) {
           await renderReports()
           await updateStats()
         } else {
-          alert('Error updating report status: ' + error)
+          alert('Error dismissing report: ' + error)
           btn.textContent = originalText
         }
       }

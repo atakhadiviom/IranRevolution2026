@@ -547,6 +547,7 @@ function initReportModal(entry: MemorialEntry) {
             <option value="wrong-person">${t('report.reasonWrongPerson')}</option>
             <option value="incorrect-data">${t('report.reasonIncorrectData')}</option>
             <option value="duplicate">${t('report.reasonDuplicate')}</option>
+            <option value="sensitive">${t('report.reasonSensitive')}</option>
             <option value="other">${t('report.reasonOther')}</option>
           </select>
         </div>

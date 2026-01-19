@@ -22,6 +22,7 @@
   "report.reasonWrongPerson": "فرد اشتباه / جان‌باخته نیست",
   "report.reasonIncorrectData": "اطلاعات نادرست (نام، تاریخ، شهر)",
   "report.reasonDuplicate": "مورد تکراری",
+  "report.reasonSensitive": "محتوای حساس (نیاز به مات کردن/هشدار)",
   "report.reasonOther": "موارد دیگر",
   "report.detailsLabel": "جزئیات (اختیاری)",
   "report.detailsPlaceholder": "اطلاعات بیشتر را اینجا بنویسید...",
