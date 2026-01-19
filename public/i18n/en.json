@@ -70,5 +70,12 @@
   "list.close": "Close List",
   "list.search": "Search in list...",
   "list.noResults": "No results found.",
-  "list.people": "People"
+  "list.people": "People",
+  "urlQueue.title": "Add X URL to Discovery Queue",
+  "urlQueue.desc": "Add an X (Twitter) URL to be checked for memorial content. The URL will be processed by the discovery script.",
+  "urlQueue.urlLabel": "X URL",
+  "urlQueue.urlPlaceholder": "https://x.com/username/status/123456",
+  "urlQueue.add": "Add to Queue",
+  "urlQueue.success": "URL added to queue successfully!",
+  "urlQueue.error": "Failed to add URL to queue."
 }

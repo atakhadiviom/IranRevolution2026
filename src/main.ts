@@ -4,7 +4,7 @@ import { initMap, plotMarkers, onMarkerSelected, onShowListView, focusOnMarker }
 import type { MemorialEntry } from './modules/types'
 import { setupSearch } from './modules/search'
 import { extractMemorialData } from './modules/ai'
-import { fetchMemorials, submitMemorial, submitReport } from './modules/dataService'
+import { fetchMemorials, submitMemorial, submitReport, addUrlToQueue } from './modules/dataService'
 import { initTwitter } from './modules/twitter'
 import { supabase } from './modules/supabase'
 
@@ -25,6 +25,7 @@ async function boot() {
   initListView()
   plotMarkers(memorials)
   initContributionForm()
+  initUrlQueueForm()
   initMobileMenu()
   setupSearch(memorials, (filtered) => {
     plotMarkers(filtered)
@@ -566,6 +567,138 @@ function initReportModal(entry: MemorialEntry) {
         statusDiv.appendChild(fallbackLink)
       }
     }
+  }
+}
+
+function initUrlQueueForm() {
+  const btn = document.getElementById('add-url-btn')
+  const overlay = document.getElementById('url-queue-modal')
+  const close = document.getElementById('close-url-modal')
+  const body = document.getElementById('url-queue-modal-body')
+
+  if (!btn || !overlay || !close || !body) return
+
+  const openModal = () => {
+    overlay.classList.remove('hidden')
+    document.body.style.overflow = 'hidden'
+    document.body.classList.add('modal-open')
+    renderForm()
+  }
+
+  btn.addEventListener('click', openModal)
+
+  close.addEventListener('click', () => {
+    overlay.classList.add('hidden')
+    document.body.style.overflow = ''
+    document.body.classList.remove('modal-open')
+  })
+
+  overlay.addEventListener('click', (e) => {
+    if (e.target === overlay) {
+      overlay.classList.add('hidden')
+      document.body.style.overflow = ''
+      document.body.classList.remove('modal-open')
+    }
+  })
+
+  async function renderForm() {
+    if (!body) return
+    
+    // Check current queue status
+    const { getQueuedUrls } = await import('./modules/dataService')
+    const currentUrls = await getQueuedUrls()
+    const queueCount = currentUrls.length
+    
+    body.innerHTML = `
+      <div class="contribution-form">
+        <h2>${t('urlQueue.title')}</h2>
+        <p>${t('urlQueue.desc')}</p>
+        ${queueCount > 0 ? `
+          <div style="background: var(--card-bg); padding: 0.75rem; border-radius: 6px; margin-bottom: 1rem; border: 1px solid var(--border);">
+            <strong>Current Queue:</strong> ${queueCount} URL(s) waiting to be processed
+            <button type="button" id="view-queue-btn" style="margin-left: 0.5rem; padding: 0.25rem 0.5rem; font-size: 0.85rem; background: var(--accent); color: white; border: none; border-radius: 4px; cursor: pointer;">View</button>
+          </div>
+        ` : ''}
+        <form id="url-queue-form">
+          <div class="form-group">
+            <label>${t('urlQueue.urlLabel')}</label>
+            <input type="url" id="queue-url-input" name="url" required placeholder="${t('urlQueue.urlPlaceholder')}" autofocus>
+          </div>
+          <div id="url-queue-status" class="ai-status hidden"></div>
+          <button type="submit" class="submit-button">${t('urlQueue.add')}</button>
+        </form>
+      </div>
+    `
+    
+    // Add view queue button handler
+    const viewQueueBtn = document.getElementById('view-queue-btn')
+    if (viewQueueBtn && currentUrls.length > 0) {
+      viewQueueBtn.addEventListener('click', () => {
+        const urlsList = currentUrls.map((url, i) => `${i + 1}. ${url}`).join('\n')
+        alert(`URLs in Queue (${currentUrls.length}):\n\n${urlsList}`)
+      })
+    }
+
+    const form = document.getElementById('url-queue-form') as HTMLFormElement
+    const urlInput = document.getElementById('queue-url-input') as HTMLInputElement
+    const statusDiv = document.getElementById('url-queue-status')!
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault()
+      const url = urlInput.value.trim()
+      
+      if (!url) return
+
+      const submitBtn = form.querySelector('button[type="submit"]') as HTMLButtonElement
+      submitBtn.disabled = true
+      submitBtn.textContent = '...'
+
+      statusDiv.classList.remove('hidden')
+      statusDiv.className = 'ai-status loading'
+      statusDiv.textContent = t('ai.processing')
+
+      const result = await addUrlToQueue(url)
+
+      if (result.success) {
+        const storageInfo = result.storedIn || 'unknown'
+        const storageKey = 'url_queue'
+        const stored = localStorage.getItem(storageKey)
+        const localStorageUrls = stored ? JSON.parse(stored) : []
+        
+        if (storageInfo === 'localStorage') {
+          statusDiv.innerHTML = `
+            ${t('urlQueue.success')}<br>
+            <small style="color: var(--muted); margin-top: 0.5rem; display: block;">
+              <strong>Note:</strong> URL stored in browser localStorage (${localStorageUrls.length} total).<br>
+              To process these URLs, run: <code style="background: var(--card-bg); padding: 0.2rem 0.4rem; border-radius: 3px;">npm run sync-queue</code><br>
+              Or manually copy from localStorage to <code>public/data/url_queue.json</code>
+            </small>
+          `
+        } else if (storageInfo === 'supabase') {
+          statusDiv.textContent = `${t('urlQueue.success')} (stored in Supabase)`
+        } else {
+          statusDiv.textContent = t('urlQueue.success')
+        }
+        statusDiv.className = 'ai-status success'
+        urlInput.value = ''
+        
+        setTimeout(() => {
+          if (overlay) {
+            overlay.classList.add('hidden')
+            document.body.style.overflow = ''
+            document.body.classList.remove('modal-open')
+          }
+          statusDiv.classList.add('hidden')
+          submitBtn.disabled = false
+          submitBtn.textContent = t('urlQueue.add')
+        }, storageInfo === 'localStorage' ? 4000 : 1500)
+      } else {
+        statusDiv.textContent = `${t('urlQueue.error')} ${result.error || ''}`
+        statusDiv.className = 'ai-status error'
+        submitBtn.disabled = false
+        submitBtn.textContent = t('urlQueue.add')
+      }
+    })
   }
 }
 

@@ -575,3 +575,235 @@ export function mapRowToEntry(row: MemorialRow): MemorialEntry {
     verified: row.verified
   }
 }
+
+export async function addUrlToQueue(url: string): Promise<{ success: boolean; error?: string; storedIn?: 'supabase' | 'localStorage' | 'file' }> {
+  const isNode = typeof process !== 'undefined' && process.versions && process.versions.node
+  const isBrowser = typeof window !== 'undefined' && typeof localStorage !== 'undefined'
+  
+  // Priority 1: Try Supabase (works in both browser and Node.js)
+  if (supabase) {
+    try {
+      /* eslint-disable-next-line @typescript-eslint/no-explicit-any */
+      const { error } = await (supabase as any)
+        .from('url_queue')
+        .insert([{ url, created_at: new Date().toISOString() }])
+      
+      if (!error) {
+        return { success: true, storedIn: 'supabase' }
+      }
+      
+      // If table doesn't exist, fall through to file/localStorage
+      if (error.code !== '42P01') {
+        return { success: false, error: `Database error: ${error.message}` }
+      }
+    } catch (e) {
+      // Fall through to file/localStorage
+    }
+  }
+  
+  // Priority 2: Write to file (Node.js only - for discovery script or server-side)
+  if (isNode) {
+    try {
+      const fs = await import('fs/promises')
+      const path = await import('path')
+      const queueFile = path.join(process.cwd(), 'public', 'data', 'url_queue.json')
+      
+      let urls: string[] = []
+      try {
+        const content = await fs.readFile(queueFile, 'utf-8')
+        urls = JSON.parse(content)
+      } catch {
+        // File doesn't exist, start with empty array
+      }
+      
+      if (!urls.includes(url)) {
+        urls.push(url)
+        await fs.writeFile(queueFile, JSON.stringify(urls, null, 2))
+      }
+      
+      return { success: true, storedIn: 'file' }
+    } catch (e) {
+      return { success: false, error: e instanceof Error ? e.message : 'Failed to add URL to file' }
+    }
+  }
+  
+  // Priority 3: Browser fallback - store in localStorage
+  // Note: These will need to be manually synced to the file for the discovery script
+  if (isBrowser) {
+    try {
+      const storageKey = 'url_queue'
+      const stored = localStorage.getItem(storageKey)
+      let urls: string[] = stored ? JSON.parse(stored) : []
+      
+      if (!urls.includes(url)) {
+        urls.push(url)
+        localStorage.setItem(storageKey, JSON.stringify(urls))
+      }
+      
+      return { success: true, storedIn: 'localStorage' }
+    } catch (e) {
+      return { success: false, error: e instanceof Error ? e.message : 'Failed to add URL to localStorage' }
+    }
+  }
+  
+  return { success: false, error: 'Unable to store URL. Please configure Supabase or run in a supported environment.' }
+}
+
+export async function getQueuedUrls(): Promise<string[]> {
+  const isNode = typeof process !== 'undefined' && process.versions && process.versions.node
+  
+  // Priority 1: Read from file (this is what the discovery script uses)
+  // This is the source of truth for the discovery script
+  if (isNode) {
+    try {
+      const fs = await import('fs/promises')
+      const path = await import('path')
+      const queueFile = path.join(process.cwd(), 'public', 'data', 'url_queue.json')
+      
+      try {
+        const content = await fs.readFile(queueFile, 'utf-8')
+        return JSON.parse(content)
+      } catch {
+        return []
+      }
+    } catch {
+      return []
+    }
+  }
+  
+  // Priority 2: Try Supabase (for browser UI to show queue status)
+  if (supabase) {
+    try {
+      /* eslint-disable-next-line @typescript-eslint/no-explicit-any */
+      const { data, error } = await (supabase as any)
+        .from('url_queue')
+        .select('url')
+        .order('created_at', { ascending: true })
+      
+      if (!error && data) {
+        return (data || []).map((row: { url: string }) => row.url)
+      }
+    } catch {
+      // Fall through to localStorage
+    }
+  }
+  
+  // Priority 3: Browser fallback - read from localStorage
+  if (typeof window !== 'undefined' && typeof localStorage !== 'undefined') {
+    try {
+      const storageKey = 'url_queue'
+      const stored = localStorage.getItem(storageKey)
+      return stored ? JSON.parse(stored) : []
+    } catch {
+      return []
+    }
+  }
+  
+  return []
+}
+
+export async function removeUrlsFromQueue(urls: string[]): Promise<{ success: boolean; error?: string }> {
+  const isNode = typeof process !== 'undefined' && process.versions && process.versions.node
+  const isBrowser = typeof window !== 'undefined' && typeof localStorage !== 'undefined'
+  
+  if (!supabase) {
+    // Fallback: try to use file system if in Node.js environment
+    if (isNode) {
+      try {
+        const fs = await import('fs/promises')
+        const path = await import('path')
+        const queueFile = path.join(process.cwd(), 'public', 'data', 'url_queue.json')
+        
+        let currentUrls: string[] = []
+        try {
+          const content = await fs.readFile(queueFile, 'utf-8')
+          currentUrls = JSON.parse(content)
+        } catch {
+          return { success: true } // File doesn't exist, nothing to remove
+        }
+        
+        const remainingUrls = currentUrls.filter((url: string) => !urls.includes(url))
+        await fs.writeFile(queueFile, JSON.stringify(remainingUrls, null, 2))
+        
+        return { success: true }
+      } catch (e) {
+        return { success: false, error: e instanceof Error ? e.message : 'Failed to remove URLs' }
+      }
+    }
+    
+    // In browser without Supabase, use localStorage
+    if (isBrowser) {
+      try {
+        const storageKey = 'url_queue'
+        const stored = localStorage.getItem(storageKey)
+        let currentUrls: string[] = stored ? JSON.parse(stored) : []
+        
+        const remainingUrls = currentUrls.filter((url: string) => !urls.includes(url))
+        localStorage.setItem(storageKey, JSON.stringify(remainingUrls))
+        
+        return { success: true }
+      } catch (e) {
+        return { success: false, error: e instanceof Error ? e.message : 'Failed to remove URLs from localStorage' }
+      }
+    }
+    
+    return { success: false, error: 'Supabase not configured and not in a supported environment' }
+  }
+  
+  try {
+    // Try to use Supabase table 'url_queue' if it exists
+    /* eslint-disable-next-line @typescript-eslint/no-explicit-any */
+    const { error } = await (supabase as any)
+      .from('url_queue')
+      .delete()
+      .in('url', urls)
+    
+    if (error) {
+      // If table doesn't exist, fall back to file system (if in Node.js) or localStorage (if in browser)
+      if (error.code === '42P01') {
+        if (isNode) {
+          try {
+            const fs = await import('fs/promises')
+            const path = await import('path')
+            const queueFile = path.join(process.cwd(), 'public', 'data', 'url_queue.json')
+            
+            let currentUrls: string[] = []
+            try {
+              const content = await fs.readFile(queueFile, 'utf-8')
+              currentUrls = JSON.parse(content)
+            } catch {
+              return { success: true } // File doesn't exist, nothing to remove
+            }
+            
+            const remainingUrls = currentUrls.filter((url: string) => !urls.includes(url))
+            await fs.writeFile(queueFile, JSON.stringify(remainingUrls, null, 2))
+            
+            return { success: true }
+          } catch (e) {
+            return { success: false, error: e instanceof Error ? e.message : 'Failed to remove URLs' }
+          }
+        } else if (isBrowser) {
+          // Fallback to localStorage in browser
+          try {
+            const storageKey = 'url_queue'
+            const stored = localStorage.getItem(storageKey)
+            let currentUrls: string[] = stored ? JSON.parse(stored) : []
+            
+            const remainingUrls = currentUrls.filter((url: string) => !urls.includes(url))
+            localStorage.setItem(storageKey, JSON.stringify(remainingUrls))
+            
+            return { success: true }
+          } catch (e) {
+            return { success: false, error: e instanceof Error ? e.message : 'Failed to remove URLs from localStorage' }
+          }
+        }
+      }
+      return { success: false, error: error.message }
+    }
+    
+    return { success: true }
+  } catch (e) {
+    return { success: false, error: e instanceof Error ? e.message : 'Unknown error' }
+  }
+}
+

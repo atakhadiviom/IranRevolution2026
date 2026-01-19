@@ -68,5 +68,12 @@
   "list.close": "بستن لیست",
   "list.search": "جستجو در لیست...",
   "list.noResults": "نتیجه‌ای یافت نشد.",
-  "list.people": "نفر"
+  "list.people": "نفر",
+  "urlQueue.title": "افزودن لینک X به صف بررسی",
+  "urlQueue.desc": "لینک X (توییتر) را برای بررسی محتوای یادبود اضافه کنید. این لینک توسط اسکریپت کشف پردازش خواهد شد.",
+  "urlQueue.urlLabel": "لینک X",
+  "urlQueue.urlPlaceholder": "https://x.com/username/status/123456",
+  "urlQueue.add": "افزودن به صف",
+  "urlQueue.success": "لینک با موفقیت به صف اضافه شد!",
+  "urlQueue.error": "خطا در افزودن لینک به صف."
 }

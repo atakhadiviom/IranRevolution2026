@@ -100,8 +100,69 @@ async function runDiscovery() {
 
   console.log(`Found ${existingMemorials.length} existing entries in database.`);
 
-  // 3. Collect status URLs from all targets
+  // 3. Get URLs from the queue
+  // Priority: Supabase (if configured) > File (public/data/url_queue.json)
+  const queueFile = path.join(process.cwd(), 'public', 'data', 'url_queue.json');
+  let queuedUrls: string[] = [];
+  const processedQueueUrls: string[] = [];
+  
+  // Try to read from Supabase first (production - URLs added via browser)
+  const { supabase } = await import('../src/modules/supabase');
+  if (supabase) {
+    try {
+      /* eslint-disable-next-line @typescript-eslint/no-explicit-any */
+      const { data, error } = await (supabase as any)
+        .from('url_queue')
+        .select('url')
+        .order('created_at', { ascending: true });
+      
+      if (!error && data) {
+        queuedUrls = (data || []).map((row: { url: string }) => row.url);
+        console.log(`Found ${queuedUrls.length} URLs in Supabase queue.`);
+      } else if (error && error.code !== '42P01') {
+        console.warn('Error reading from Supabase queue:', error.message);
+      }
+    } catch (error) {
+      console.warn('Could not read from Supabase queue:', error);
+    }
+  }
+  
+  // Fallback/merge: Also read from file (for manual additions or when Supabase not available)
+  try {
+    if (fs.existsSync(queueFile)) {
+      const fileContent = fs.readFileSync(queueFile, 'utf-8');
+      const fileUrls = JSON.parse(fileContent);
+      
+      // Merge file URLs with Supabase URLs (avoid duplicates)
+      for (const url of fileUrls) {
+        if (!queuedUrls.includes(url)) {
+          queuedUrls.push(url);
+        }
+      }
+      
+      if (fileUrls.length > 0) {
+        console.log(`Merged ${fileUrls.length} URL(s) from queue file. Total: ${queuedUrls.length}`);
+      }
+    }
+  } catch (error) {
+    console.warn('Could not read url_queue.json file:', error);
+  }
+  
+  if (queuedUrls.length === 0) {
+    console.log('No URLs found in queue (checked Supabase and file).');
+  }
+
+  // 4. Collect status URLs from all targets
   const allUrls = new Set<string>();
+  
+  // Add queued URLs first
+  for (const url of queuedUrls) {
+    if (!existingUrls.has(url) && !history.has(url)) {
+      allUrls.add(url);
+      processedQueueUrls.push(url);
+    }
+  }
+  
   for (const target of TARGETS) {
     // Check if the target ITSELF is a direct article link (not a search/profile page)
     if (target.includes('/status/') || target.includes('/news/') || target.includes('/article/')) {
@@ -121,7 +182,7 @@ async function runDiscovery() {
 
   console.log(`Found ${allUrls.size} new potential status URLs.`);
 
-  // 4. Process each new URL
+  // 5. Process each new URL
   let successCount = 0;
   let skipCount = 0;
 
@@ -187,6 +248,50 @@ async function runDiscovery() {
 
   // Save history for next run
   saveHistory(history);
+
+  // Remove processed URLs from queue (Supabase and/or file)
+  if (processedQueueUrls.length > 0) {
+    console.log(`Removing ${processedQueueUrls.length} processed URLs from queue...`);
+    
+    // Remove from Supabase if available
+    if (supabase) {
+      try {
+        /* eslint-disable-next-line @typescript-eslint/no-explicit-any */
+        const { error } = await (supabase as any)
+          .from('url_queue')
+          .delete()
+          .in('url', processedQueueUrls);
+        
+        if (!error) {
+          console.log(`✅ Removed ${processedQueueUrls.length} URL(s) from Supabase queue.`);
+        } else if (error.code !== '42P01') {
+          console.warn('Warning: Could not remove URLs from Supabase:', error.message);
+        }
+      } catch (error) {
+        console.warn('Warning: Could not remove URLs from Supabase:', error);
+      }
+    }
+    
+    // Also remove from file (for manual additions)
+    try {
+      let remainingUrls: string[] = [];
+      if (fs.existsSync(queueFile)) {
+        const content = fs.readFileSync(queueFile, 'utf-8');
+        remainingUrls = JSON.parse(content);
+      }
+      
+      const beforeCount = remainingUrls.length;
+      remainingUrls = remainingUrls.filter((url: string) => !processedQueueUrls.includes(url));
+      const removedCount = beforeCount - remainingUrls.length;
+      
+      if (removedCount > 0) {
+        fs.writeFileSync(queueFile, JSON.stringify(remainingUrls, null, 2));
+        console.log(`✅ Removed ${removedCount} URL(s) from queue file. ${remainingUrls.length} URL(s) remaining in file.`);
+      }
+    } catch (error) {
+      console.warn('Warning: Could not update queue file:', error);
+    }
+  }
 
   console.log('--- Discovery Finished ---');
   console.log(`Added/Merged: ${successCount}`);
