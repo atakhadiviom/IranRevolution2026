@@ -564,6 +564,8 @@ function editEntry(id: string) {
     ;(document.getElementById('references') as HTMLTextAreaElement).value = 
       entry.references?.map(r => `${r.label} | ${r.url}`).join('\n') || ''
     ;(document.getElementById('verified') as HTMLInputElement).checked = entry.verified || false
+    ;(document.getElementById('sensitive') as HTMLInputElement).checked = entry.sensitive || false
+    ;(document.getElementById('sensitive-media') as HTMLInputElement).checked = entry.sensitiveMedia || false
     
     output.textContent = JSON.stringify(entry, null, 2)
     checkDuplicate(entry.name, entry.city)
@@ -958,7 +960,9 @@ entryForm.addEventListener('submit', async (e) => {
       xPost: xPost || undefined
     },
     references: references.length > 0 ? references : undefined,
-    verified: (document.getElementById('verified') as HTMLInputElement).checked
+    verified: (document.getElementById('verified') as HTMLInputElement).checked,
+    sensitive: (document.getElementById('sensitive') as HTMLInputElement).checked,
+    sensitiveMedia: (document.getElementById('sensitive-media') as HTMLInputElement).checked
   }
 
   output.textContent = JSON.stringify(entry, null, 2)
@@ -983,6 +987,8 @@ function clearForm() {
   translateEntryBtn.classList.add('hidden')
   ;(document.getElementById('lat') as HTMLInputElement).value = '35.6892'
   ;(document.getElementById('lon') as HTMLInputElement).value = '51.3890'
+  ;(document.getElementById('sensitive') as HTMLInputElement).checked = false
+  ;(document.getElementById('sensitive-media') as HTMLInputElement).checked = false
 }
 
 deleteEntryBtn.addEventListener('click', () => {

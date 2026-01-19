@@ -22,6 +22,8 @@ export type MemorialEntry = {
     url: string
   }[]
   verified?: boolean
+  sensitive?: boolean
+  sensitiveMedia?: boolean
   created_at?: string
 }
 

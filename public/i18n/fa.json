@@ -68,5 +68,9 @@
   "list.close": "بستن لیست",
   "list.search": "جستجو در لیست...",
   "list.noResults": "نتیجه‌ای یافت نشد.",
-  "list.people": "نفر"
+  "list.people": "نفر",
+  "sensitivity.warning": "این محتوا ممکن است برای برخی از بینندگان حساس یا ناراحت‌کننده باشد.",
+  "sensitivity.show": "نمایش محتوا",
+  "sensitivity.hide": "پنهان کردن محتوا",
+  "sensitivity.mediaWarning": "این رسانه ممکن است حاوی محتوای حساس یا شناسایی‌کننده باشد."
 }

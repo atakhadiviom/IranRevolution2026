@@ -149,10 +149,14 @@ function initListView() {
         const displayName = (isFa && entry.name_fa) ? entry.name_fa : entry.name
         const displayCity = (isFa && entry.city_fa) ? entry.city_fa : entry.city
         const photo = entry.media?.photo || 'https://via.placeholder.com/300?text=No+Photo'
+        const isSensitive = !!entry.sensitiveMedia;
         
         return `
-          <div class="list-item-card" data-id="${entry.id}">
-            <img src="${photo}" alt="${displayName}" class="list-item-photo" loading="lazy">
+          <div class="list-item-card ${isSensitive ? 'list-item-sensitive' : ''}" data-id="${entry.id}">
+            <div class="list-item-photo-wrapper">
+              <img src="${photo}" alt="${displayName}" class="list-item-photo ${isSensitive ? 'gated-media' : ''}" loading="lazy">
+              ${isSensitive ? `<div class="sensitive-mini-overlay"><span>⚠️</span></div>` : ''}
+            </div>
             <div class="list-item-info">
               <div class="list-item-name">${displayName}</div>
               <div class="list-item-meta">${displayCity}</div>
@@ -274,6 +278,21 @@ function renderDetails(entry: MemorialEntry) {
   const displayLocation = (isFa && entry.location_fa) ? entry.location_fa : entry.location
   const displayBio = (isFa && entry.bio_fa) ? entry.bio_fa : entry.bio
   const displayTestimonials = (isFa && entry.testimonials_fa) ? entry.testimonials_fa : entry.testimonials
+
+  const wrapSensitive = (content: string, isSensitive: boolean, warningKey: string) => {
+    if (!isSensitive) return content;
+    return `
+      <div class="sensitive-content">
+        <div class="sensitive-overlay">
+          <p class="sensitive-warning">${t(warningKey)}</p>
+          <button class="reveal-btn">${t('sensitivity.show')}</button>
+        </div>
+        <div class="gated-media">
+          ${content}
+        </div>
+      </div>
+    `;
+  }
   
   panel.innerHTML = `
     <div class="panel-header-actions">
@@ -290,15 +309,24 @@ function renderDetails(entry: MemorialEntry) {
         </p>
       </header>
 
-      ${entry.media?.photo ? `
+      ${entry.media?.photo ? wrapSensitive(`
         <figure class="profile-photo">
           <img src="${entry.media.photo}" alt="${t('details.photoAlt', { name: displayName })}" loading="lazy" />
           <figcaption class="photo-attribution">${t('details.photoAttribution')}</figcaption>
         </figure>
-      ` : ''}
+      `, !!entry.sensitiveMedia, 'sensitivity.mediaWarning') : ''}
 
       <div class="profile-bio">
-        ${displayBio ? `<p>${displayBio}</p>` : ''}
+        ${displayBio ? (entry.sensitive ? `
+          <div class="sensitive-text-gated">
+            <div class="sensitive-text-overlay">
+              <button class="reveal-btn">${t('sensitivity.show')}</button>
+            </div>
+            <div class="sensitive-text-content">
+              <p>${displayBio}</p>
+            </div>
+          </div>
+        ` : `<p>${displayBio}</p>`) : ''}
       </div>
 
       <div class="action-section">
@@ -319,21 +347,21 @@ function renderDetails(entry: MemorialEntry) {
         </button>
       </div>
 
-      ${entry.media?.video ? `
+      ${entry.media?.video ? wrapSensitive(`
         <div class="profile-video">
           <h3>${t('details.video')}</h3>
           <video controls src="${entry.media.video}" aria-label="${t('details.videoAlt', { name: entry.name })}"></video>
         </div>
-      ` : ''}
+      `, !!entry.sensitiveMedia, 'sensitivity.mediaWarning') : ''}
 
-      ${entry.media?.xPost ? `
+      ${entry.media?.xPost ? wrapSensitive(`
         <div class="profile-x-post">
           <h3>${t('details.xPost')}</h3>
           <blockquote class="twitter-tweet" data-theme="dark" data-dnt="true">
             <a href="${entry.media.xPost}"></a>
           </blockquote>
         </div>
-      ` : ''}
+      `, !!entry.sensitiveMedia, 'sensitivity.mediaWarning') : ''}
 
       ${entry.references?.length ? `
         <section class="profile-references">
@@ -349,11 +377,31 @@ function renderDetails(entry: MemorialEntry) {
       ${displayTestimonials?.length ? `
         <section class="profile-testimonials">
           <h3>${t('details.testimonials')}</h3>
-          ${displayTestimonials.map((s) => `<blockquote>${s}</blockquote>`).join('')}
+          ${entry.sensitive ? `
+            <div class="sensitive-text-gated">
+              <div class="sensitive-text-overlay">
+                <button class="reveal-btn">${t('sensitivity.show')}</button>
+              </div>
+              <div class="sensitive-text-content">
+                ${displayTestimonials.map((s) => `<blockquote>${s}</blockquote>`).join('')}
+              </div>
+            </div>
+          ` : displayTestimonials.map((s) => `<blockquote>${s}</blockquote>`).join('')}
         </section>
       ` : ''}
     </article>
   `
+  
+  // Setup reveal listeners
+  panel.querySelectorAll('.reveal-btn').forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      const target = e.currentTarget as HTMLElement;
+      const container = target.closest('.sensitive-content, .sensitive-text-gated');
+      if (container) {
+        container.classList.add('revealed');
+      }
+    });
+  });
   
   const aside = document.getElementById('details-panel') as HTMLElement
   aside.classList.add('active')

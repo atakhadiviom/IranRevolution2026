@@ -70,5 +70,9 @@
   "list.close": "Close List",
   "list.search": "Search in list...",
   "list.noResults": "No results found.",
-  "list.people": "People"
+  "list.people": "People",
+  "sensitivity.warning": "This content may be sensitive or distressing for some viewers.",
+  "sensitivity.show": "Show Content",
+  "sensitivity.hide": "Hide Content",
+  "sensitivity.mediaWarning": "This media may contain sensitive or identifying content."
 }
