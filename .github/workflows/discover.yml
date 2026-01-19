@@ -31,5 +31,5 @@ jobs:
         run: |
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
-          git add scripts/discovery_history.json
-          git diff --quiet && git diff --staged --quiet || (git commit -m "chore: update discovery history [skip ci]" && git push)
+          git add scripts/discovery_history.json public/data/url_queue.json
+          git diff --quiet && git diff --staged --quiet || (git commit -m "chore: update discovery history and queue [skip ci]" && git push)

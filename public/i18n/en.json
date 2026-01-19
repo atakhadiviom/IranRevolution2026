@@ -39,6 +39,7 @@
   "details.photoAttribution": "Source: Community Contribution",
   "stats.livesHonored": "Lives Honored",
   "stats.cities": "Cities",
+  "stats.totalMemorials": "Total Memorials",
   "contribute.title": "Contribute to the Memorial",
   "contribute.desc": "Help us honor those who lost their lives. Please provide verifiable information. Your submission will be reviewed by the community.",
   "contribute.name": "Full Name",
@@ -63,8 +64,6 @@
   "ai.fetching": "Fetching source content...",
   "ai.success": "Data extracted successfully!",
   "ai.error": "Failed to extract data. Please fill manually.",
-  "contribute.duplicateWarning": "Warning: A person with this name already exists in the memorial.",
-  "contribute.duplicateAction": "View existing profile",
   "contribute.copy": "Copy JSON",
   "list.viewAll": "View All",
   "list.title": "Memorial List",
@@ -75,5 +74,12 @@
   "sensitivity.warning": "This content may be sensitive or distressing for some viewers.",
   "sensitivity.show": "Show Content",
   "sensitivity.hide": "Hide Content",
-  "sensitivity.mediaWarning": "This media may contain sensitive or identifying content."
+  "sensitivity.mediaWarning": "This media may contain sensitive or identifying content.",
+  "urlQueue.title": "Add X URL to Discovery Queue",
+  "urlQueue.desc": "Add an X (Twitter) URL to be checked for memorial content. The URL will be processed by the discovery script.",
+  "urlQueue.urlLabel": "X URL",
+  "urlQueue.urlPlaceholder": "https://x.com/username/status/123456",
+  "urlQueue.add": "Add to Queue",
+  "urlQueue.success": "URL added to queue successfully!",
+  "urlQueue.error": "Failed to add URL to queue."
 }

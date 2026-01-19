@@ -11,7 +11,8 @@
     "lint": "eslint . --ext .ts,.tsx --max-warnings=0",
     "typecheck": "tsc -p tsconfig.json --noEmit",
     "backup": "npx tsx --env-file=.env backup_data.ts",
-    "discover": "npx tsx --env-file=.env scripts/discover_x.ts"
+    "discover": "npx tsx --env-file=.env scripts/discover_x.ts",
+    "sync-queue": "npx tsx scripts/sync_queue.ts"
   },
   "devDependencies": {
     "@types/leaflet": "^1.9.21",
