@@ -166,14 +166,6 @@ nav {
   border-radius: 8px;
 }
 
-.list-item-photo-wrapper {
-  position: relative;
-  width: 60px;
-  height: 60px;
-  flex-shrink: 0;
-  overflow: hidden;
-  border-radius: 4px;
-}
 
 .sensitive-mini-overlay {
   position: absolute;
@@ -828,7 +820,7 @@ body.modal-open .fab-button {
 
 .list-item-photo-wrapper {
   width: 100%;
-  aspect-ratio: 4/5;
+  aspect-ratio: 1/1;
   border-radius: 8px;
   overflow: hidden;
   background: #222;
@@ -839,7 +831,7 @@ body.modal-open .fab-button {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: top center;
+  object-position: center;
   transition: filter 0.3s ease;
 }
 

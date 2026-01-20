@@ -75,5 +75,13 @@
   "sensitivity.warning": "This content may be sensitive or distressing for some viewers.",
   "sensitivity.show": "Show Content",
   "sensitivity.hide": "Hide Content",
-  "sensitivity.mediaWarning": "This media may contain sensitive or identifying content."
+  "sensitivity.mediaWarning": "This media may contain sensitive or identifying content.",
+  "languages.fa": "Persian",
+  "contribute.namePlaceholder": "Full Name (English)",
+  "contribute.nameFaPlaceholder": "Full Name (Persian)",
+  "contribute.cityPlaceholder": "City",
+  "contribute.locationPlaceholder": "Specific location (optional)",
+  "contribute.bioPlaceholder": "Brief biography or story...",
+  "contribute.refUrlPlaceholder": "Link to X, news, or report for confirmation",
+  "contribute.refLabelPlaceholder": "Reference Label (e.g. X Thread, BBC News)"
 }

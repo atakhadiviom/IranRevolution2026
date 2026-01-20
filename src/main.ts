@@ -155,7 +155,12 @@ function initListView() {
           <div class="list-item-card ${isSensitive ? 'list-item-sensitive' : ''}" data-id="${entry.id}">
             <div class="list-item-photo-wrapper">
               <img src="${photo}" alt="${displayName}" class="list-item-photo ${isSensitive ? 'gated-media' : ''}" loading="lazy">
-              ${isSensitive ? `<div class="sensitive-mini-overlay"><span>⚠️</span></div>` : ''}
+              ${isSensitive ? `
+                <div class="sensitive-mini-overlay">
+                  <span>⚠️</span>
+                  <button class="reveal-btn-mini" title="${t('sensitivity.show')}">${t('sensitivity.show')}</button>
+                </div>
+              ` : ''}
             </div>
             <div class="list-item-info">
               <div class="list-item-name">${displayName}</div>
@@ -196,7 +201,21 @@ function initListView() {
     })
 
     grid.addEventListener('click', (e) => {
-      const card = (e.target as HTMLElement).closest('.list-item-card') as HTMLElement
+      const target = e.target as HTMLElement
+      const revealBtn = target.closest('.reveal-btn-mini')
+      
+      if (revealBtn) {
+        e.stopPropagation()
+        const card = revealBtn.closest('.list-item-card')
+        if (card) {
+          card.classList.add('revealed')
+          card.querySelector('.list-item-photo')?.classList.remove('gated-media')
+          revealBtn.closest('.sensitive-mini-overlay')?.remove()
+        }
+        return
+      }
+
+      const card = target.closest('.list-item-card') as HTMLElement
       if (card) {
         const id = card.dataset.id
         const entry = entries.find(item => item.id === id)
@@ -230,12 +249,14 @@ function initUiText() {
   const privacyLink = document.getElementById('privacy-link') as HTMLAnchorElement
   const badge = document.getElementById('total-count-badge')
   const listViewBtn = document.getElementById('list-view-btn')
+  const contributeBtn = document.getElementById('contribute-btn')
 
   if (title) title.textContent = t('site.title')
   if (searchInput) searchInput.placeholder = t('search.placeholder')
   if (footerNote) footerNote.textContent = t('site.footerNote')
   if (privacyLink) privacyLink.textContent = t('site.privacy')
   if (listViewBtn) listViewBtn.textContent = t('list.viewAll')
+  if (contributeBtn) contributeBtn.textContent = t('contribute.submit')
   if (badge) {
     badge.title = t('stats.livesHonored')
     badge.setAttribute('aria-label', `${t('stats.livesHonored')}: ${badge.textContent}`)
@@ -680,19 +701,19 @@ function initContributionForm() {
           <div class="form-row">
             <div class="form-group">
               <label>${t('contribute.name')}</label>
-              <input type="text" name="name" required placeholder="Full Name (English)">
+              <input type="text" name="name" required placeholder="${t('contribute.namePlaceholder') || 'Full Name (English)'}">
               <div id="duplicate-warning" class="duplicate-warning hidden"></div>
             </div>
             <div class="form-group">
-              <label>${t('contribute.name')} (Persian)</label>
-              <input type="text" name="name_fa" placeholder="نام کامل (فارسی)">
+              <label>${t('contribute.name')} (${t('languages.fa') || 'Persian'})</label>
+              <input type="text" name="name_fa" placeholder="${t('contribute.nameFaPlaceholder') || 'نام کامل (فارسی)'}">
             </div>
           </div>
 
           <div class="form-row">
             <div class="form-group">
               <label>${t('contribute.city')}</label>
-              <input type="text" name="city" placeholder="City">
+              <input type="text" name="city" placeholder="${t('contribute.cityPlaceholder') || 'City'}">
             </div>
             <div class="form-group">
               <label>${t('contribute.date')}</label>
@@ -702,18 +723,18 @@ function initContributionForm() {
 
           <div class="form-group">
             <label>${t('contribute.location')}</label>
-            <input type="text" name="location" placeholder="Specific location (optional)">
+            <input type="text" name="location" placeholder="${t('contribute.locationPlaceholder') || 'Specific location (optional)'}">
           </div>
 
           <div class="form-group">
             <label>${t('contribute.bio')}</label>
-            <textarea name="bio" placeholder="Brief biography or story..."></textarea>
+            <textarea name="bio" placeholder="${t('contribute.bioPlaceholder') || 'Brief biography or story...'}"></textarea>
           </div>
 
           <div class="form-group">
             <label>${t('contribute.reference')}</label>
-            <input type="url" name="refUrl" required placeholder="Link to X, news, or report for confirmation">
-            <input type="text" name="refLabel" placeholder="Reference Label (e.g. X Thread, BBC News)">
+            <input type="url" name="refUrl" required placeholder="${t('contribute.refUrlPlaceholder') || 'Link to X, news, or report for confirmation'}">
+            <input type="text" name="refLabel" placeholder="${t('contribute.refLabelPlaceholder') || 'Reference Label (e.g. X Thread, BBC News)'}">
           </div>
 
           <button type="submit" class="submit-button">${t('contribute.submit')}</button>

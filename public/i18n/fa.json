@@ -73,5 +73,13 @@
   "sensitivity.warning": "این محتوا ممکن است برای برخی از بینندگان حساس یا ناراحت‌کننده باشد.",
   "sensitivity.show": "نمایش محتوا",
   "sensitivity.hide": "پنهان کردن محتوا",
-  "sensitivity.mediaWarning": "این رسانه ممکن است حاوی محتوای حساس یا شناسایی‌کننده باشد."
+  "sensitivity.mediaWarning": "این رسانه ممکن است حاوی محتوای حساس یا شناسایی‌کننده باشد.",
+  "languages.fa": "فارسی",
+  "contribute.namePlaceholder": "نام کامل (انگلیسی)",
+  "contribute.nameFaPlaceholder": "نام کامل (فارسی)",
+  "contribute.cityPlaceholder": "شهر",
+  "contribute.locationPlaceholder": "محل دقیق (اختیاری)",
+  "contribute.bioPlaceholder": "شرح کوتاه یا داستان...",
+  "contribute.refUrlPlaceholder": "لینک به X، اخبار یا گزارش برای تایید",
+  "contribute.refLabelPlaceholder": "عنوان مرجع (مثلاً رشته‌توییت X، اخبار بی‌بی‌سی)"
 }
