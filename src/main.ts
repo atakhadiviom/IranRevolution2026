@@ -655,6 +655,7 @@ function initFiguresPopup() {
 
   const openModal = () => {
     overlay.classList.remove('hidden')
+    overlay.querySelector('.modal-content')?.classList.add('figures-modal')
     document.body.style.overflow = 'hidden'
     document.body.classList.add('modal-open')
     renderTable()
@@ -662,6 +663,7 @@ function initFiguresPopup() {
 
   const closeModal = () => {
     overlay.classList.add('hidden')
+    overlay.querySelector('.modal-content')?.classList.remove('figures-modal')
     document.body.style.overflow = ''
     document.body.classList.remove('modal-open')
   }
