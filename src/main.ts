@@ -676,13 +676,13 @@ function initFiguresPopup() {
 
   function renderTable() {
     const data = [
-      { source: 'CBS News', figure: '20,000 people', link: 'https://www.iranintl.com/en/202301138241', label: 'Report via Iran International' },
-      { source: 'The Sunday Times', figure: '16,500 to 18,000 people', link: 'https://www.iranintl.com/en/202301157147', label: 'Sunday Times Investigation' },
-      { source: 'HRANA', figure: '13,078 people (4,029 confirmed)', link: 'https://www.hra-news.org/', label: 'HRANA News Agency' },
-      { source: 'Iran International', figure: 'At least 12,000 people', link: 'https://www.iranintl.com/', label: 'Iran International Coverage' },
-      { source: 'Iran Human Rights (IHR)', figure: 'At least 3,428 people', link: 'https://iranhr.net/', label: 'IHR Official Website' },
-      { source: 'Ali Khamenei', figure: '"Several thousand" people', link: 'https://www.bbc.com/persian/articles/c1e1n1n1n1no', label: 'BBC Persian Report' },
-      { source: 'Mohammad Bagher Ghalibaf', figure: '"Thousands" of people', link: 'https://persianepochtimes.com/', label: 'Persian Epoch Times' }
+      { source: t('stats.data.cbs.source'), figure: t('stats.data.cbs.figure'), link: 'https://www.cbsnews.com/news/iran-protest-death-toll-over-12000-feared-higher-video-bodies-at-morgue/', label: t('stats.data.cbs.label') },
+      { source: t('stats.data.sundayTimes.source'), figure: t('stats.data.sundayTimes.figure'), link: 'https://www.iranintl.com/en/202601186040', label: t('stats.data.sundayTimes.label') },
+      { source: t('stats.data.hrana.source'), figure: t('stats.data.hrana.figure'), link: 'https://www.aa.com.tr/en/middle-east/death-toll-in-iran-protests-at-2-677-human-rights-group/3801006', label: t('stats.data.hrana.label') },
+      { source: t('stats.data.iranintl.source'), figure: t('stats.data.iranintl.figure'), link: 'https://www.iranintl.com/en/202601138196', label: t('stats.data.iranintl.label') },
+      { source: t('stats.data.ihr.source'), figure: t('stats.data.ihr.figure'), link: 'https://iranhr.net/en/articles/8529/', label: t('stats.data.ihr.label') },
+      { source: t('stats.data.khamenei.source'), figure: t('stats.data.khamenei.figure'), link: 'https://www.bbc.com/persian/articles/c1evdd93x6lo', label: t('stats.data.khamenei.label') },
+      { source: t('stats.data.ghalibaf.source'), figure: t('stats.data.ghalibaf.figure'), link: 'https://persianepochtimes.com/ghalibaf-says-the-killing-of-thousands-during-irans-national-uprising/', label: t('stats.data.ghalibaf.label') }
     ]
 
     body!.innerHTML = `
