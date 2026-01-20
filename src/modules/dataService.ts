@@ -167,6 +167,92 @@ export async function deleteMemorial(id: string): Promise<{ success: boolean; er
   }
 }
 
+export async function submitReport(report: { memorial_id: string; memorial_name: string; reason: string; details: string }): Promise<{ success: boolean; error?: string }> {
+  if (!supabase) return { success: false, error: 'Supabase not configured' }
+  try {
+    // If table doesn't exist or is not configured for public insert, this will fail
+    /* eslint-disable-next-line @typescript-eslint/no-explicit-any */
+    const { error } = await (supabase as any)
+      .from('reports')
+      .insert([report])
+    
+    if (error) {
+      console.error('Report submission error:', error)
+      // Check for common error types
+      if (error.code === '42P01') return { success: false, error: 'Database error: reports table not found. Please contact admin.' }
+      if (error.code === '42501') return { success: false, error: 'Permission denied: Public submissions for reports are not allowed yet.' }
+      return { success: false, error: error.message }
+    }
+    return { success: true }
+  } catch (e) {
+    console.error('Report submission exception:', e)
+    return { success: false, error: e instanceof Error ? e.message : 'Unknown error' }
+  }
+}
+
+/* eslint-disable-next-line @typescript-eslint/no-explicit-any */
+export async function fetchReports(): Promise<{ data: any[]; error?: string }> {
+  if (!supabase) return { data: [], error: 'Supabase not configured' }
+  try {
+    /* eslint-disable-next-line @typescript-eslint/no-explicit-any */
+    const { data, error } = await (supabase as any)
+      .from('reports')
+      .select('*')
+      .order('created_at', { ascending: false })
+
+    if (error) {
+      console.error('Error fetching reports:', error)
+      return { data: [], error: error.message }
+    }
+
+    return { data: data || [] }
+  } catch (e) {
+    console.error('Exception fetching reports:', e)
+    return { data: [], error: e instanceof Error ? e.message : 'Unknown error' }
+  }
+}
+
+export async function deleteReport(id: string): Promise<{ success: boolean; error?: string }> {
+  if (!supabase) return { success: false, error: 'Supabase not configured' }
+  try {
+    const { error } = await supabase
+      .from('reports')
+      .delete()
+      .eq('id', id)
+
+    if (error) return { success: false, error: error.message }
+    return { success: true }
+  } catch (e) {
+    return { success: false, error: e instanceof Error ? e.message : 'Unknown error' }
+  }
+}
+
+export async function updateReportStatus(id: string, status: 'pending' | 'resolved' | 'dismissed'): Promise<{ success: boolean; error?: string }> {
+  if (!supabase) return { success: false, error: 'Supabase not configured' }
+  try {
+    /* eslint-disable-next-line @typescript-eslint/no-explicit-any */
+    const { data, error } = await (supabase as any)
+      .from('reports')
+      .update({ status })
+      .eq('id', id)
+      .select()
+
+    if (error) {
+      console.error('Update error:', error)
+      return { success: false, error: error.message }
+    }
+    
+    if (!data || data.length === 0) {
+      return { success: false, error: 'No report found or permission denied.' }
+    }
+    
+    return { success: true }
+  } catch (e) {
+    console.error('Update exception:', e)
+    return { success: false, error: e instanceof Error ? e.message : 'Unknown error' }
+  }
+}
+
 export async function submitMemorial(entry: Partial<MemorialEntry>): Promise<{ success: boolean; merged?: boolean; error?: string }> {
   if (!supabase) {
     return { success: false, error: 'Database connection not available.' }

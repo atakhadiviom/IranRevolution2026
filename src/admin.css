@@ -301,6 +301,11 @@ input:focus, textarea:focus {
   color: var(--success);
 }
 
+.badge-muted {
+  background: rgba(255, 255, 255, 0.05);
+  color: var(--muted);
+}
+
 /* Login */
 .login-wrapper {
   display: flex;
@@ -342,6 +347,22 @@ input:focus, textarea:focus {
   flex: 1;
 }
 
+.sort-select {
+  padding: 0.6rem 1rem;
+  background: var(--input);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  color: var(--text);
+  font-size: 0.9rem;
+  cursor: pointer;
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+.sort-select:focus {
+  border-color: var(--accent);
+}
+
 /* AI Status */
 #ai-status {
   padding: 0.75rem;
@@ -363,6 +384,18 @@ input:focus, textarea:focus {
 }
 
 /* Responsive */
+.mobile-header {
+  display: none;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 1.5rem;
+  background: var(--panel);
+  border-bottom: 1px solid var(--border);
+  position: sticky;
+  top: 0;
+  z-index: 200;
+}
+
 @media (max-width: 1024px) {
   .sidebar {
     width: 80px;
@@ -373,6 +406,7 @@ input:focus, textarea:focus {
   }
   .main-content {
     margin-left: 80px;
+    padding: 2rem;
   }
   .form-grid {
     grid-template-columns: 1fr;
@@ -380,11 +414,131 @@ input:focus, textarea:focus {
 }
 
 @media (max-width: 768px) {
-  .sidebar {
-    display: none;
+  .container {
+    flex-direction: column;
   }
+  
+  .mobile-header {
+    display: flex;
+  }
+
+  .sidebar {
+    position: fixed;
+    left: -100%;
+    top: 0;
+    width: 280px;
+    height: 100vh;
+    transition: left 0.3s ease;
+    box-shadow: 20px 0 50px rgba(0,0,0,0.5);
+  }
+
+  .sidebar.active {
+    left: 0;
+  }
+
+  .sidebar-logo span, .nav-link span, .user-info, .sidebar-footer .btn span {
+    display: inline;
+  }
+
   .main-content {
     margin-left: 0;
-    padding: 1.5rem;
+    padding: 1.25rem;
+  }
+
+  header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+  }
+
+  header .actions {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.5rem;
+  }
+
+  header .actions .btn {
+    width: 100%;
+  }
+
+  .stats-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .stat-card {
+    padding: 1.25rem;
+  }
+
+  .stat-value {
+    font-size: 1.5rem;
+  }
+
+  .card {
+    padding: 1.25rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .search-container {
+    flex-direction: column;
+  }
+
+  /* Table responsiveness on very small screens */
+  .data-table thead {
+    display: none;
+  }
+
+  .data-table, .data-table tbody, .data-table tr, .data-table td {
+    display: block;
+    width: 100%;
+  }
+
+  .data-table tr {
+    margin-bottom: 1rem;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    background: rgba(255,255,255,0.02);
+  }
+
+  .data-table td {
+    text-align: right;
+    padding: 0.75rem 1rem;
+    position: relative;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .data-table td:last-child {
+    border-bottom: none;
+    display: flex;
+    justify-content: flex-end;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+
+  .data-table td::before {
+    content: attr(data-label);
+    position: absolute;
+    left: 1rem;
+    font-weight: 600;
+    color: var(--muted);
+    font-size: 0.8rem;
+  }
+
+  /* Override specific tables that should remain as tables or have better card layouts */
+  #reports-list tr, #submissions-list tr, #verified-list tr {
+    padding: 0.5rem 0;
+  }
+}
+
+@media (max-width: 480px) {
+  .stats-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  header .actions {
+    grid-template-columns: 1fr;
   }
 }

@@ -35,7 +35,9 @@ function saveHistory(history: Set<string>) {
 }
 
 const TARGETS = [
+  'https://x.com/maroofian_n',
   'https://hengaw.net/fa/news/2026/01/article-138-1',
+  'https://x.com/IranRights_org',
   'https://x.com/indypersian',
   'https://x.com/IranIntl_En',
   'https://x.com/HyrcaniHRM',
@@ -50,9 +52,37 @@ const TARGETS = [
   'https://x.com/1500tasvir',
   'https://x.com/AmnestyIran',
   'https://x.com/ICHRI',
+  'https://x.com/FSeifikaran',
+  'https://x.com/dadban4',
+  'https://x.com/Daikatuo',
+  'https://x.com/pouriazeraati',
   'https://x.com/search?q=%D8%AC%D8%A7%D9%86%D8%A8%D8%A7%D8%AE%D8%AA%D9%87%20%D8%A7%DB%8C%D8%B1%D8%A7%D9%86&f=live', // "جانباخته ایران" (Died Iran)
   'https://x.com/search?q=%DA%A9%D8%B4%D8%AA%D9%87%20%D8%B4%D8%AF&f=live', // "کشته شد" (Was killed)
 ];
+
+/**
+ * Keywords that must be present in the content for it to be considered relevant.
+ * This helps filter out sidebar content or unrelated news from search results.
+ */
+const RELEVANCE_KEYWORDS = [
+  'کشته شد', 'جانباخته', 'اعدام', 'بازداشت', 'زندانی', 'اعتراضات', 
+  'شهید', 'مجروح', 'تیراندازی', 'شکنجه', 'حقوق بشر', 'ایران',
+  'killed', 'arrested', 'executed', 'prison', 'protest', 'torture', 'human rights', 'iran'
+];
+
+async function getUrlContent(url: string): Promise<string> {
+  try {
+    const readerUrl = `https://r.jina.ai/${url}`;
+    const response = await fetch(readerUrl, {
+      headers: { 'X-No-Cache': 'true' }
+    });
+
+    if (!response.ok) return '';
+    return await response.text();
+  } catch (error) {
+    return '';
+  }
+}
 
 async function getXStatusUrls(targetUrl: string): Promise<string[]> {
   try {
@@ -130,8 +160,26 @@ async function runDiscovery() {
     try {
       console.log(`Processing: ${url}`);
       
+      // Fetch content first to check for relevance
+      const content = await getUrlContent(url);
+      
+      if (!content) {
+        console.log(`Skipping (could not fetch content): ${url}`);
+        skipCount++;
+        continue;
+      }
+
+      // Check for relevance keywords
+      const hasKeyword = RELEVANCE_KEYWORDS.some(keyword => content.toLowerCase().includes(keyword.toLowerCase()));
+      
+      if (!hasKeyword) {
+        console.log(`Skipping (no relevant keywords found): ${url}`);
+        skipCount++;
+        continue;
+      }
+
       // Extract data using AI (now returns an array of victims)
-      const victims = await extractMemorialData(url);
+      const victims = await extractMemorialData(url, content);
       
       if (!victims || victims.length === 0) {
         console.log(`Skipping (no victims found): ${url}`);

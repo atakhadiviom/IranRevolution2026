@@ -68,6 +68,35 @@ export interface Database {
           submitted_by?: string | null
         }
       }
+      reports: {
+        Row: {
+          id: string
+          created_at: string
+          memorial_id: string
+          memorial_name: string
+          reason: string
+          details: string | null
+          status: string
+        }
+        Insert: {
+          id?: string
+          created_at?: string
+          memorial_id: string
+          memorial_name: string
+          reason: string
+          details?: string | null
+          status?: string
+        }
+        Update: {
+          id?: string
+          created_at?: string
+          memorial_id?: string
+          memorial_name?: string
+          reason?: string
+          details?: string | null
+          status?: string
+        }
+      }
     }
     Views: {
       [_: string]: never

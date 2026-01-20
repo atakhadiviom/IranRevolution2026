@@ -4,7 +4,7 @@ import { initMap, plotMarkers, onMarkerSelected, onShowListView, focusOnMarker }
 import type { MemorialEntry } from './modules/types'
 import { setupSearch } from './modules/search'
 import { extractMemorialData } from './modules/ai'
-import { fetchMemorials, submitMemorial } from './modules/dataService'
+import { fetchMemorials, submitMemorial, submitReport } from './modules/dataService'
 import { initTwitter } from './modules/twitter'
 import { supabase } from './modules/supabase'
 
@@ -25,6 +25,7 @@ async function boot() {
   initListView()
   plotMarkers(memorials)
   initContributionForm()
+  initFiguresPopup()
   initMobileMenu()
   setupSearch(memorials, (filtered) => {
     plotMarkers(filtered)
@@ -32,9 +33,28 @@ async function boot() {
     aside.classList.remove('active')
     clearDetails(filtered)
   })
-  onMarkerSelected((entry) => renderDetails(entry))
+  onMarkerSelected((entry) => {
+    renderDetails(entry)
+    // Update URL when a memorial is selected
+    const url = new URL(window.location.href)
+    url.searchParams.set('id', entry.id || '')
+    window.history.pushState({}, '', url.toString())
+  })
 
   setupRealtime()
+
+  // Handle initial URL parameter
+  const urlParams = new URLSearchParams(window.location.search)
+  const memorialId = urlParams.get('id')
+  if (memorialId) {
+    const entry = memorials.find(m => m.id === memorialId)
+    if (entry) {
+      setTimeout(() => {
+        focusOnMarker(entry)
+        renderDetails(entry)
+      }, 500) // Small delay to ensure map is ready
+    }
+  }
 }
 
 function setupRealtime() {
@@ -130,10 +150,19 @@ function initListView() {
         const displayName = (isFa && entry.name_fa) ? entry.name_fa : entry.name
         const displayCity = (isFa && entry.city_fa) ? entry.city_fa : entry.city
         const photo = entry.media?.photo || 'https://via.placeholder.com/300?text=No+Photo'
+        const isSensitive = !!entry.sensitiveMedia;
         
         return `
-          <div class="list-item-card" data-id="${entry.id}">
-            <img src="${photo}" alt="${displayName}" class="list-item-photo" loading="lazy">
+          <div class="list-item-card ${isSensitive ? 'list-item-sensitive' : ''}" data-id="${entry.id}">
+            <div class="list-item-photo-wrapper">
+              <img src="${photo}" alt="${displayName}" class="list-item-photo ${isSensitive ? 'gated-media' : ''}" loading="lazy">
+              ${isSensitive ? `
+                <div class="sensitive-mini-overlay">
+                  <span>⚠️</span>
+                  <button class="reveal-btn-mini" title="${t('sensitivity.show')}">${t('sensitivity.show')}</button>
+                </div>
+              ` : ''}
+            </div>
             <div class="list-item-info">
               <div class="list-item-name">${displayName}</div>
               <div class="list-item-meta">${displayCity}</div>
@@ -173,7 +202,21 @@ function initListView() {
     })
 
     grid.addEventListener('click', (e) => {
-      const card = (e.target as HTMLElement).closest('.list-item-card') as HTMLElement
+      const target = e.target as HTMLElement
+      const revealBtn = target.closest('.reveal-btn-mini')
+      
+      if (revealBtn) {
+        e.stopPropagation()
+        const card = revealBtn.closest('.list-item-card')
+        if (card) {
+          card.classList.add('revealed')
+          card.querySelector('.list-item-photo')?.classList.remove('gated-media')
+          revealBtn.closest('.sensitive-mini-overlay')?.remove()
+        }
+        return
+      }
+
+      const card = target.closest('.list-item-card') as HTMLElement
       if (card) {
         const id = card.dataset.id
         const entry = entries.find(item => item.id === id)
@@ -206,16 +249,23 @@ function initUiText() {
   const footerNote = document.getElementById('footer-note')
   const privacyLink = document.getElementById('privacy-link') as HTMLAnchorElement
   const badge = document.getElementById('total-count-badge')
+  const infoTrigger = document.getElementById('info-trigger')
   const listViewBtn = document.getElementById('list-view-btn')
+  const contributeBtn = document.getElementById('contribute-btn')
 
   if (title) title.textContent = t('site.title')
   if (searchInput) searchInput.placeholder = t('search.placeholder')
   if (footerNote) footerNote.textContent = t('site.footerNote')
   if (privacyLink) privacyLink.textContent = t('site.privacy')
   if (listViewBtn) listViewBtn.textContent = t('list.viewAll')
+  if (contributeBtn) contributeBtn.textContent = t('contribute.submit')
   if (badge) {
     badge.title = t('stats.livesHonored')
     badge.setAttribute('aria-label', `${t('stats.livesHonored')}: ${badge.textContent}`)
+  }
+  if (infoTrigger) {
+    infoTrigger.title = t('stats.reportedFigures')
+    infoTrigger.setAttribute('aria-label', t('stats.reportedFigures'))
   }
 }
 
@@ -243,6 +293,10 @@ function initLanguageSwitcher() {
 function renderDetails(entry: MemorialEntry) {
   const panel = document.getElementById('details-content')!
   const isFa = currentLanguage() === 'fa'
+  const displayName = (isFa && entry.name_fa) ? entry.name_fa : entry.name
+  
+  // Update document title for SEO and UX
+  document.title = `${displayName} | ${t('site.title')}`
   
   const date = new Date(entry.date).toLocaleDateString(isFa ? 'fa-IR' : 'en-US', { 
     year: 'numeric', 
@@ -250,14 +304,31 @@ function renderDetails(entry: MemorialEntry) {
     day: 'numeric' 
   })
 
-  const displayName = (isFa && entry.name_fa) ? entry.name_fa : entry.name
   const displayCity = (isFa && entry.city_fa) ? entry.city_fa : entry.city
   const displayLocation = (isFa && entry.location_fa) ? entry.location_fa : entry.location
   const displayBio = (isFa && entry.bio_fa) ? entry.bio_fa : entry.bio
   const displayTestimonials = (isFa && entry.testimonials_fa) ? entry.testimonials_fa : entry.testimonials
+
+  const wrapSensitive = (content: string, isSensitive: boolean, warningKey: string) => {
+    if (!isSensitive) return content;
+    return `
+      <div class="sensitive-content">
+        <div class="sensitive-overlay">
+          <p class="sensitive-warning">${t(warningKey)}</p>
+          <button class="reveal-btn">${t('sensitivity.show')}</button>
+        </div>
+        <div class="gated-media">
+          ${content}
+        </div>
+      </div>
+    `;
+  }
   
   panel.innerHTML = `
-    <button id="close-details" class="close-button" aria-label="${t('details.close')}">&times;</button>
+    <div class="panel-header-actions">
+      <button id="back-to-map" class="back-button mobile-only" aria-label="${t('details.backToMap')}">← ${t('details.backToMap')}</button>
+      <button id="close-details" class="close-button" aria-label="${t('details.close')}">&times;</button>
+    </div>
     <article class="memorial-profile">
       <header class="profile-header">
         <h2>${displayName}</h2>
@@ -268,44 +339,59 @@ function renderDetails(entry: MemorialEntry) {
         </p>
       </header>
 
-      ${entry.media?.photo ? `
+      ${entry.media?.photo ? wrapSensitive(`
         <figure class="profile-photo">
           <img src="${entry.media.photo}" alt="${t('details.photoAlt', { name: displayName })}" loading="lazy" />
           <figcaption class="photo-attribution">${t('details.photoAttribution')}</figcaption>
         </figure>
-      ` : ''}
+      `, !!entry.sensitiveMedia, 'sensitivity.mediaWarning') : ''}
 
       <div class="profile-bio">
-        ${displayBio ? `<p>${displayBio}</p>` : ''}
+        ${displayBio ? (entry.sensitive ? `
+          <div class="sensitive-text-gated">
+            <div class="sensitive-text-overlay">
+              <button class="reveal-btn">${t('sensitivity.show')}</button>
+            </div>
+            <div class="sensitive-text-content">
+              <p>${displayBio}</p>
+            </div>
+          </div>
+        ` : `<p>${displayBio}</p>`) : ''}
       </div>
 
-      <div class="candle-section">
-        <button id="light-candle" class="candle-button">🕯️ ${t('details.lightCandle')}</button>
-        <span id="candle-count" class="candle-count">0 ${t('details.candlesLit')}</span>
+      <div class="action-section">
+        <div class="candle-section">
+          <button id="light-candle" class="candle-button">🕯️ ${t('details.lightCandle')}</button>
+          <span id="candle-count" class="candle-count">0 ${t('details.candlesLit')}</span>
+        </div>
+        <div class="share-section">
+          <button id="share-btn" class="share-button">
+            📤 ${t('details.share')}
+          </button>
+        </div>
       </div>
 
       <div class="report-section">
-        <a href="https://github.com/atakhadiviom/IranRevolution2026/issues/new?title=Report+Issue:+${encodeURIComponent(entry.name)}&body=${encodeURIComponent(`I am reporting an issue with the entry for ${entry.name}${entry.id ? ` (ID: ${entry.id})` : ''}.\n\nReason:\n[Please describe the problem here, e.g., wrongly added, incorrect date, etc.]`)}" 
-           target="_blank" class="report-link">
+        <button id="open-report-btn" class="report-link-btn">
            🚩 ${t('details.reportIssue')}
-        </a>
+        </button>
       </div>
 
-      ${entry.media?.video ? `
+      ${entry.media?.video ? wrapSensitive(`
         <div class="profile-video">
           <h3>${t('details.video')}</h3>
           <video controls src="${entry.media.video}" aria-label="${t('details.videoAlt', { name: entry.name })}"></video>
         </div>
-      ` : ''}
+      `, !!entry.sensitiveMedia, 'sensitivity.mediaWarning') : ''}
 
-      ${entry.media?.xPost ? `
+      ${entry.media?.xPost ? wrapSensitive(`
         <div class="profile-x-post">
           <h3>${t('details.xPost')}</h3>
           <blockquote class="twitter-tweet" data-theme="dark" data-dnt="true">
             <a href="${entry.media.xPost}"></a>
           </blockquote>
         </div>
-      ` : ''}
+      `, !!entry.sensitiveMedia, 'sensitivity.mediaWarning') : ''}
 
       ${entry.references?.length ? `
         <section class="profile-references">
@@ -321,11 +407,31 @@ function renderDetails(entry: MemorialEntry) {
       ${displayTestimonials?.length ? `
         <section class="profile-testimonials">
           <h3>${t('details.testimonials')}</h3>
-          ${displayTestimonials.map((s) => `<blockquote>${s}</blockquote>`).join('')}
+          ${entry.sensitive ? `
+            <div class="sensitive-text-gated">
+              <div class="sensitive-text-overlay">
+                <button class="reveal-btn">${t('sensitivity.show')}</button>
+              </div>
+              <div class="sensitive-text-content">
+                ${displayTestimonials.map((s) => `<blockquote>${s}</blockquote>`).join('')}
+              </div>
+            </div>
+          ` : displayTestimonials.map((s) => `<blockquote>${s}</blockquote>`).join('')}
         </section>
       ` : ''}
     </article>
   `
+  
+  // Setup reveal listeners
+  panel.querySelectorAll('.reveal-btn').forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      const target = e.currentTarget as HTMLElement;
+      const container = target.closest('.sensitive-content, .sensitive-text-gated');
+      if (container) {
+        container.classList.add('revealed');
+      }
+    });
+  });
   
   const aside = document.getElementById('details-panel') as HTMLElement
   aside.classList.add('active')
@@ -333,17 +439,63 @@ function renderDetails(entry: MemorialEntry) {
 
   // Trigger Twitter widget rendering if present
   if (entry.media?.xPost) {
+    /* eslint-disable no-console */
+    console.log('X post URL detected:', entry.media.xPost);
     const twttr = window.twttr
     if (twttr && twttr.ready) {
+      console.log('Twitter widgets library ready, loading widget...');
       twttr.ready((t) => {
         t.widgets.load(panel)
       })
+    } else {
+      console.warn('Twitter widgets library NOT ready or not found');
     }
+    /* eslint-enable no-console */
   }
 
-  document.getElementById('close-details')?.addEventListener('click', () => {
+  const openReportBtn = document.getElementById('open-report-btn')
+  if (openReportBtn) {
+    openReportBtn.addEventListener('click', () => initReportModal(entry))
+  }
+
+  const closeBtn = document.getElementById('close-details')!
+  const backBtn = document.getElementById('back-to-map')
+  const handleClose = () => {
     aside.classList.remove('active')
     clearDetails(currentMemorials)
+    // Clear URL parameter when closing
+    const url = new URL(window.location.href)
+    url.searchParams.delete('id')
+    window.history.replaceState({}, '', url.toString())
+  }
+  closeBtn.addEventListener('click', handleClose)
+  backBtn?.addEventListener('click', handleClose)
+
+  const shareBtn = document.getElementById('share-btn')
+  shareBtn?.addEventListener('click', async () => {
+    const shareUrl = new URL(window.location.href)
+    shareUrl.searchParams.set('id', entry.id || '')
+    
+    const shareData = {
+      title: t('details.shareText', { name: displayName }),
+      text: t('details.shareText', { name: displayName }),
+      url: shareUrl.toString()
+    }
+
+    try {
+      if (navigator.share) {
+        await navigator.share(shareData)
+      } else {
+        await navigator.clipboard.writeText(shareUrl.toString())
+        const originalText = shareBtn.innerHTML
+        shareBtn.innerHTML = `✅ ${t('details.copied')}`
+        setTimeout(() => {
+          shareBtn.innerHTML = originalText
+        }, 2000)
+      }
+    } catch (err) {
+      console.error('Error sharing:', err)
+    }
   })
   
   const candleBtn = document.getElementById('light-candle')
@@ -390,6 +542,179 @@ function clearDetails(memorials: MemorialEntry[]) {
       </div>
     </div>
   `
+}
+
+function initReportModal(entry: MemorialEntry) {
+  const overlay = document.getElementById('report-modal')
+  const close = document.getElementById('close-report-modal')
+  const body = document.getElementById('report-modal-body')
+
+  if (!overlay || !close || !body) return
+
+  const closeModal = () => {
+    overlay.classList.add('hidden')
+    document.body.style.overflow = ''
+    document.body.classList.remove('modal-open')
+  }
+
+  overlay.classList.remove('hidden')
+  document.body.style.overflow = 'hidden'
+  document.body.classList.add('modal-open')
+
+  close.onclick = closeModal
+  overlay.onclick = (e) => {
+    if (e.target === overlay) closeModal()
+  }
+
+  body.innerHTML = `
+    <div class="report-form-container">
+      <h2>${t('report.title')}</h2>
+      <p class="report-desc">${t('report.desc')}</p>
+      <form id="report-form">
+        <div class="form-group">
+          <label>${t('report.reasonLabel')}</label>
+          <select name="reason" required>
+            <option value="wrong-person">${t('report.reasonWrongPerson')}</option>
+            <option value="incorrect-data">${t('report.reasonIncorrectData')}</option>
+            <option value="duplicate">${t('report.reasonDuplicate')}</option>
+            <option value="sensitive">${t('report.reasonSensitive')}</option>
+            <option value="other">${t('report.reasonOther')}</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>${t('report.detailsLabel')}</label>
+          <textarea name="details" placeholder="${t('report.detailsPlaceholder')}"></textarea>
+        </div>
+        <div id="report-status" class="report-status hidden"></div>
+        <button type="submit" class="submit-button">${t('report.submit')}</button>
+      </form>
+    </div>
+  `
+
+  const form = document.getElementById('report-form') as HTMLFormElement
+  const statusDiv = document.getElementById('report-status')!
+
+  form.onsubmit = async (e) => {
+    e.preventDefault()
+    const submitBtn = form.querySelector('button[type="submit"]') as HTMLButtonElement
+    submitBtn.disabled = true
+    submitBtn.textContent = '...'
+
+    const formData = new FormData(form)
+    const report = {
+      memorial_id: entry.id!,
+      memorial_name: entry.name,
+      reason: formData.get('reason') as string,
+      details: formData.get('details') as string
+    }
+
+    const { success, error } = await submitReport(report)
+
+    if (success) {
+      statusDiv.textContent = t('report.success')
+      statusDiv.className = 'report-status success'
+      statusDiv.classList.remove('hidden')
+      setTimeout(closeModal, 2000)
+    } else {
+      submitBtn.disabled = false
+      submitBtn.textContent = t('report.submit')
+      
+      let errorMessage = error || t('report.error')
+      if (error?.includes('42P01') || error?.includes('not found')) {
+        errorMessage = `⚠️ Database Error: 'reports' table is missing. Please notify the administrator to create the table.`
+      } else if (error?.includes('42501') || error?.includes('Permission denied')) {
+        errorMessage = `⚠️ Permission Error: The 'reports' table exists but public access is restricted. Please notify the administrator to enable Row-Level Security (RLS) for public inserts.`
+      }
+      
+      statusDiv.textContent = errorMessage
+      statusDiv.className = 'report-status error'
+      statusDiv.classList.remove('hidden')
+      
+      // Add a fallback link for manual reporting if database fails
+      const fallbackLink = document.createElement('a')
+      fallbackLink.href = `https://github.com/atakhadiviom/IranRevolution2026/issues/new?title=Report+Issue:+${encodeURIComponent(entry.name)}&body=${encodeURIComponent(`I am reporting an issue with the entry for ${entry.name}${entry.id ? ` (ID: ${entry.id})` : ''}.\n\nReason: ${report.reason}\n\nDetails: ${report.details}`)}`
+      fallbackLink.target = '_blank'
+      fallbackLink.className = 'report-link-fallback'
+      fallbackLink.style.display = 'block'
+      fallbackLink.style.marginTop = '1rem'
+      fallbackLink.style.fontSize = '0.8rem'
+      fallbackLink.style.color = 'var(--muted)'
+      fallbackLink.innerHTML = 'Alternative: Click here to report via GitHub'
+      
+      if (!statusDiv.querySelector('.report-link-fallback')) {
+        statusDiv.appendChild(fallbackLink)
+      }
+    }
+  }
+}
+
+function initFiguresPopup() {
+  const trigger = document.getElementById('info-trigger')
+  const overlay = document.getElementById('report-modal')
+  const close = document.getElementById('close-report-modal')
+  const body = document.getElementById('report-modal-body')
+
+  if (!trigger || !overlay || !close || !body) return
+
+  const openModal = () => {
+    overlay.classList.remove('hidden')
+    overlay.querySelector('.modal-content')?.classList.add('figures-modal')
+    document.body.style.overflow = 'hidden'
+    document.body.classList.add('modal-open')
+    renderTable()
+  }
+
+  const closeModal = () => {
+    overlay.classList.add('hidden')
+    overlay.querySelector('.modal-content')?.classList.remove('figures-modal')
+    document.body.style.overflow = ''
+    document.body.classList.remove('modal-open')
+  }
+
+  trigger.onclick = openModal
+  close.onclick = closeModal
+  overlay.onclick = (e) => {
+    if (e.target === overlay) closeModal()
+  }
+
+  function renderTable() {
+    const data = [
+      { source: t('stats.data.cbs.source'), figure: t('stats.data.cbs.figure'), link: 'https://www.cbsnews.com/news/iran-protest-death-toll-over-12000-feared-higher-video-bodies-at-morgue/', label: t('stats.data.cbs.label') },
+      { source: t('stats.data.sundayTimes.source'), figure: t('stats.data.sundayTimes.figure'), link: 'https://www.iranintl.com/en/202601186040', label: t('stats.data.sundayTimes.label') },
+      { source: t('stats.data.hrana.source'), figure: t('stats.data.hrana.figure'), link: 'https://www.aa.com.tr/en/middle-east/death-toll-in-iran-protests-at-2-677-human-rights-group/3801006', label: t('stats.data.hrana.label') },
+      { source: t('stats.data.iranintl.source'), figure: t('stats.data.iranintl.figure'), link: 'https://www.iranintl.com/en/202601138196', label: t('stats.data.iranintl.label') },
+      { source: t('stats.data.ihr.source'), figure: t('stats.data.ihr.figure'), link: 'https://iranhr.net/en/articles/8529/', label: t('stats.data.ihr.label') },
+      { source: t('stats.data.khamenei.source'), figure: t('stats.data.khamenei.figure'), link: 'https://www.bbc.com/persian/articles/c1evdd93x6lo', label: t('stats.data.khamenei.label') },
+      { source: t('stats.data.ghalibaf.source'), figure: t('stats.data.ghalibaf.figure'), link: 'https://persianepochtimes.com/ghalibaf-says-the-killing-of-thousands-during-irans-national-uprising/', label: t('stats.data.ghalibaf.label') }
+    ]
+
+    body!.innerHTML = `
+      <div class="reported-figures-container">
+        <h2>${t('stats.reportedFigures')}</h2>
+        <div class="table-responsive">
+          <table class="reported-figures-table">
+            <thead>
+              <tr>
+                <th>${t('stats.source')}</th>
+                <th>${t('stats.figure')}</th>
+                <th>${t('stats.reference')}</th>
+              </tr>
+            </thead>
+            <tbody>
+              ${data.map(row => `
+                <tr>
+                  <td>${row.source}</td>
+                  <td>${row.figure}</td>
+                  <td><a href="${row.link}" target="_blank" rel="noopener noreferrer">${row.label}</a></td>
+                </tr>
+              `).join('')}
+            </tbody>
+          </table>
+        </div>
+        <p class="stats-disclaimer">${t('stats.disclaimer')}</p>
+      </div>
+    `
+  }
 }
 
 function initContributionForm() {
@@ -454,35 +779,40 @@ function initContributionForm() {
           <div class="form-row">
             <div class="form-group">
               <label>${t('contribute.name')}</label>
-              <input type="text" name="name" required placeholder="Full Name">
+              <input type="text" name="name" required placeholder="${t('contribute.namePlaceholder') || 'Full Name (English)'}">
               <div id="duplicate-warning" class="duplicate-warning hidden"></div>
             </div>
             <div class="form-group">
-              <label>${t('contribute.city')}</label>
-              <input type="text" name="city" placeholder="City">
+              <label>${t('contribute.name')} (${t('languages.fa') || 'Persian'})</label>
+              <input type="text" name="name_fa" placeholder="${t('contribute.nameFaPlaceholder') || 'نام کامل (فارسی)'}">
             </div>
           </div>
 
           <div class="form-row">
             <div class="form-group">
+              <label>${t('contribute.city')}</label>
+              <input type="text" name="city" placeholder="${t('contribute.cityPlaceholder') || 'City'}">
+            </div>
+            <div class="form-group">
               <label>${t('contribute.date')}</label>
               <input type="date" name="date">
             </div>
-            <div class="form-group">
-              <label>${t('contribute.location')}</label>
-              <input type="text" name="location" placeholder="Specific location (optional)">
-            </div>
+          </div>
+
+          <div class="form-group">
+            <label>${t('contribute.location')}</label>
+            <input type="text" name="location" placeholder="${t('contribute.locationPlaceholder') || 'Specific location (optional)'}">
           </div>
 
           <div class="form-group">
             <label>${t('contribute.bio')}</label>
-            <textarea name="bio" placeholder="Brief biography or story..."></textarea>
+            <textarea name="bio" placeholder="${t('contribute.bioPlaceholder') || 'Brief biography or story...'}"></textarea>
           </div>
 
           <div class="form-group">
             <label>${t('contribute.reference')}</label>
-            <input type="url" name="refUrl" required placeholder="Link to X, news, or report for confirmation">
-            <input type="text" name="refLabel" placeholder="Reference Label (e.g. X Thread, BBC News)">
+            <input type="url" name="refUrl" required placeholder="${t('contribute.refUrlPlaceholder') || 'Link to X, news, or report for confirmation'}">
+            <input type="text" name="refLabel" placeholder="${t('contribute.refLabelPlaceholder') || 'Reference Label (e.g. X Thread, BBC News)'}">
           </div>
 
           <button type="submit" class="submit-button">${t('contribute.submit')}</button>
@@ -498,36 +828,47 @@ function initContributionForm() {
     const nameInput = form.querySelector('[name="name"]') as HTMLInputElement
     const duplicateWarning = document.getElementById('duplicate-warning') as HTMLDivElement
 
-    const checkDuplicate = (name: string, city?: string) => {
-      if (!name || name.length < 3) {
+    const checkDuplicate = (name: string, city?: string, name_fa?: string) => {
+      const normalizedName = name?.toLowerCase().trim() || ''
+      const currentNameFa = name_fa?.trim() || (form.querySelector('[name="name_fa"]') as HTMLInputElement)?.value.trim() || ''
+      const currentCity = city?.toLowerCase().trim() || (form.querySelector('[name="city"]') as HTMLInputElement)?.value.toLowerCase().trim()
+
+      if (normalizedName.length < 3 && currentNameFa.length < 3) {
         duplicateWarning.classList.add('hidden')
         return
       }
 
-      const normalizedName = name.toLowerCase().trim()
-      const currentCity = city?.toLowerCase().trim() || (form.querySelector('[name="city"]') as HTMLInputElement)?.value.toLowerCase().trim()
-      
       const nameParts = normalizedName.split(/\s+/).filter(p => p.length > 2)
+      const nameFaParts = currentNameFa.split(/\s+/).filter(p => p.length > 1)
       const commonPrefixes = ['syed', 'seyyed', 'sayyid', 'mir', 'haji', 'haj', 'mullah', 'sheikh']
       const filteredParts = nameParts.filter(p => !commonPrefixes.includes(p))
 
       const match = currentMemorials.find(m => {
         const mName = m.name.toLowerCase().trim()
+        const mNameFa = (m.name_fa || '').trim()
         const mCity = m.city.toLowerCase().trim()
         const mLocation = (m.location || '').toLowerCase().trim()
 
-        // 1. Exact match (High Confidence)
-        if (mName === normalizedName) return true
+        // 1. Exact match (High Confidence) - English or Persian
+        if (normalizedName && mName === normalizedName) return true
+        if (currentNameFa && mNameFa === currentNameFa) return true
 
-        // 2. Significant Name Parts + Location (Medium Confidence)
+        // 2. Persian Partial Match (High Confidence)
+        if (nameFaParts.length >= 2) {
+          const faMatch = nameFaParts.every(part => mNameFa.includes(part))
+          if (faMatch) return true
+        }
+
+        // 3. Significant Name Parts + Location (Medium Confidence)
         if (filteredParts.length >= 2 && currentCity) {
           const nameMatch = filteredParts.every(part => mName.includes(part))
           const cityMatch = mCity.includes(currentCity) || currentCity.includes(mCity) || mLocation.includes(currentCity)
           if (nameMatch && cityMatch) return true
         }
 
-        // 3. Full include match (Medium Confidence)
+        // 4. Full include match (Medium Confidence)
         if (normalizedName.length > 10 && mName.includes(normalizedName)) return true
+        if (currentNameFa.length > 5 && mNameFa.includes(currentNameFa)) return true
 
         return false
       })
@@ -560,9 +901,15 @@ function initContributionForm() {
       checkDuplicate((e.target as HTMLInputElement).value)
     })
 
+    form.querySelector('[name="name_fa"]')?.addEventListener('input', (e) => {
+      const name = (form.querySelector('[name="name"]') as HTMLInputElement).value
+      checkDuplicate(name, undefined, (e.target as HTMLInputElement).value)
+    })
+
     form.querySelector('[name="city"]')?.addEventListener('input', (e) => {
       const name = (form.querySelector('[name="name"]') as HTMLInputElement).value
-      checkDuplicate(name, (e.target as HTMLInputElement).value)
+      const name_fa = (form.querySelector('[name="name_fa"]') as HTMLInputElement).value
+      checkDuplicate(name, (e.target as HTMLInputElement).value, name_fa)
     })
 
     aiBtn?.addEventListener('click', async () => {
@@ -597,6 +944,7 @@ function initContributionForm() {
         
         // Fill form fields
         const nameInput = form.querySelector('[name="name"]') as HTMLInputElement
+        const nameFaInput = form.querySelector('[name="name_fa"]') as HTMLInputElement
         const cityInput = form.querySelector('[name="city"]') as HTMLInputElement
         const dateInput = form.querySelector('[name="date"]') as HTMLInputElement
         const locationInput = form.querySelector('[name="location"]') as HTMLInputElement
@@ -605,6 +953,7 @@ function initContributionForm() {
         const refLabelInput = form.querySelector('[name="refLabel"]') as HTMLInputElement
 
         if (data.name) nameInput.value = data.name
+        if (data.name_fa) nameFaInput.value = data.name_fa
         if (data.city) cityInput.value = data.city
         if (data.date) dateInput.value = data.date
         if (data.location) locationInput.value = data.location
@@ -618,7 +967,9 @@ function initContributionForm() {
           refLabelInput.value = isXUrl ? 'X Post' : 'Source'
         }
 
-        if (data.name) checkDuplicate(data.name)
+        if (data.name || data.name_fa) {
+          checkDuplicate(data.name || '', data.city, data.name_fa || undefined)
+        }
 
         aiStatus.textContent = t('ai.success')
         aiStatus.className = 'ai-status success'
@@ -638,6 +989,7 @@ function initContributionForm() {
       const fd = new FormData(form)
       const data: Partial<MemorialEntry> = {
         name: fd.get('name') as string,
+        name_fa: fd.get('name_fa') as string || undefined,
         city: fd.get('city') as string,
         date: fd.get('date') as string,
         location: fd.get('location') as string,

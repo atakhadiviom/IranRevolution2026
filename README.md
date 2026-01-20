@@ -66,10 +66,10 @@ Memorial entries follow this shape:
 - Semantic landmarks (header, main, aside, footer) and ARIA labels
 
 ## Privacy
-See `public/privacy.html`. No trackers or cookies. Content is community-moderated; open an issue for corrections or removals.
+See `public/privacy.html`. No trackers or cookies. Content is community-moderated according to our [Care, Visibility & Data Protocol](CARE_PROTOCOL.md); open an issue for corrections or removals.
 
 ## Contributing
-See [CONTRIBUTING.md](CONTRIBUTING.md) for guidelines. Issues and PRs welcome.
+See [CONTRIBUTING.md](CONTRIBUTING.md) and our [Care Protocol](CARE_PROTOCOL.md) for guidelines. Issues and PRs welcome.
 
 ## CI/CD
 Pushes to `main` trigger build and deployment to GitHub Pages via Actions (`.github/workflows/deploy.yml`).

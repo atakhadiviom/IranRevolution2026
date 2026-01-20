@@ -2,6 +2,9 @@
 
 Thank you for your interest in contributing to the Iran Memorial project.
 
+## Ethical Guidelines
+All contributors are expected to follow the [Care, Visibility & Data Protocol](CARE_PROTOCOL.md). This project prioritizes the dignity of those remembered and the safety of their families and contributors.
+
 ## Ways to Help
 - Add or update memorial entries (via `/admin.html` form and JSON PRs)
 - Improve accessibility and localization
@@ -16,6 +19,7 @@ Thank you for your interest in contributing to the Iran Memorial project.
 5. Open a Pull Request describing your changes and rationale.
 
 ## Memorial Submissions
+- **Read the [Care Protocol](CARE_PROTOCOL.md) first.**
 - Prefer verifiable sources and consent where available.
 - Avoid sensitive personal information beyond respectful memorial context.
 - Include coordinates (lat/lon) to place the marker accurately.

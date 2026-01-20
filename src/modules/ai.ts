@@ -8,26 +8,30 @@ export interface ExtractedMemorialData extends Partial<MemorialEntry> {
   photo?: string; // Sometimes returned as photo directly
 }
 
-export async function extractMemorialData(url: string): Promise<ExtractedMemorialData[]> {
+export async function extractMemorialData(url: string, providedContent?: string): Promise<ExtractedMemorialData[]> {
   try {
     if (!OPENROUTER_API_KEY || OPENROUTER_API_KEY === 'sk-or-v1-...') {
       throw new Error('Invalid OpenRouter API Key. Please update your .env file with a real key from openrouter.ai.');
     }
 
-    // Step 1: Fetch URL content as Markdown using Jina Reader API
-    const readerUrl = `https://r.jina.ai/${url}`;
+    let content = providedContent;
     
-    const response = await fetch(readerUrl, {
-      headers: {
-        'X-No-Cache': 'true'
+    if (!content) {
+      // Step 1: Fetch URL content as Markdown using Jina Reader API
+      const readerUrl = `https://r.jina.ai/${url}`;
+      
+      const response = await fetch(readerUrl, {
+        headers: {
+          'X-No-Cache': 'true'
+        }
+      });
+      
+      if (!response.ok) {
+        throw new Error(`Failed to read the source URL. Jina said: ${response.statusText}`);
       }
-    });
-    
-    if (!response.ok) {
-      throw new Error(`Failed to read the source URL. Jina said: ${response.statusText}`);
+      
+      content = await response.text();
     }
-    
-    let content = await response.text();
 
     // Truncate content to avoid token limits
     if (content.length > 8000) {
@@ -48,11 +52,22 @@ export async function extractMemorialData(url: string): Promise<ExtractedMemoria
         messages: [
           {
             role: 'system',
-            content: `You are an expert data extractor for a human rights memorial website. 
-            Extract information about ALL victims of the Iranian revolution mentioned in the provided text.
-            If multiple people are mentioned as killed or arrested, extract each one as a separate object in an array.
+            content: `You are an expert data extractor for a human rights memorial website dedicated to the Iranian revolution. 
+            Extract information about ALL victims (those killed, arrested, or executed) specifically of the Iranian revolution/protests mentioned in the provided text.
             
-            IMPORTANT BILINGUAL RULES:
+            CRITICAL RELEVANCY RULES:
+            1. ONLY extract victims of the Iranian protests or human rights violations by the Islamic Republic of Iran.
+            2. DO NOT extract political leaders, international figures, or people from other conflicts (e.g., Saudi Arabia, Syria, Lebanon) unless they are directly mentioned as victims of the Iranian revolution.
+            3. If the text is a news report about general Middle East politics and doesn't mention specific Iranian victims, return an empty array [].
+            4. If no clear victims are found, return [].
+            
+            ETHICAL DATA HANDLING RULES (See CARE_PROTOCOL.md):
+            1. DO NOT invent or infer missing names, dates, or causes of death.
+            2. If information is uncertain, leave it empty or mark it as uncertain.
+            3. Prioritize safety and redaction: avoid extracting home addresses or identifiable info about living relatives.
+            4. Treat social media sources as potentially unverified.
+
+            BILINGUAL RULES:
             1. The "name", "city", "location", and "bio" fields MUST be in English. If the source text is in Persian, translate these to English.
             2. The "name_fa", "city_fa", "location_fa", and "bio_fa" fields MUST be in Persian (Farsi). If the source text is in English, translate these to Persian.
             3. Ensure names are spelled correctly in both languages.
