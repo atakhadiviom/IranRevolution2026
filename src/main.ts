@@ -25,6 +25,7 @@ async function boot() {
   initListView()
   plotMarkers(memorials)
   initContributionForm()
+  initFiguresPopup()
   initMobileMenu()
   setupSearch(memorials, (filtered) => {
     plotMarkers(filtered)
@@ -248,6 +249,7 @@ function initUiText() {
   const footerNote = document.getElementById('footer-note')
   const privacyLink = document.getElementById('privacy-link') as HTMLAnchorElement
   const badge = document.getElementById('total-count-badge')
+  const infoTrigger = document.getElementById('info-trigger')
   const listViewBtn = document.getElementById('list-view-btn')
   const contributeBtn = document.getElementById('contribute-btn')
 
@@ -260,6 +262,10 @@ function initUiText() {
   if (badge) {
     badge.title = t('stats.livesHonored')
     badge.setAttribute('aria-label', `${t('stats.livesHonored')}: ${badge.textContent}`)
+  }
+  if (infoTrigger) {
+    infoTrigger.title = t('stats.reportedFigures')
+    infoTrigger.setAttribute('aria-label', t('stats.reportedFigures'))
   }
 }
 
@@ -636,6 +642,73 @@ function initReportModal(entry: MemorialEntry) {
         statusDiv.appendChild(fallbackLink)
       }
     }
+  }
+}
+
+function initFiguresPopup() {
+  const trigger = document.getElementById('info-trigger')
+  const overlay = document.getElementById('report-modal')
+  const close = document.getElementById('close-report-modal')
+  const body = document.getElementById('report-modal-body')
+
+  if (!trigger || !overlay || !close || !body) return
+
+  const openModal = () => {
+    overlay.classList.remove('hidden')
+    document.body.style.overflow = 'hidden'
+    document.body.classList.add('modal-open')
+    renderTable()
+  }
+
+  const closeModal = () => {
+    overlay.classList.add('hidden')
+    document.body.style.overflow = ''
+    document.body.classList.remove('modal-open')
+  }
+
+  trigger.onclick = openModal
+  close.onclick = closeModal
+  overlay.onclick = (e) => {
+    if (e.target === overlay) closeModal()
+  }
+
+  function renderTable() {
+    const data = [
+      { source: 'CBS News', figure: '20,000 people', link: 'https://www.iranintl.com/en/202301138241', label: 'Report via Iran International' },
+      { source: 'The Sunday Times', figure: '16,500 to 18,000 people', link: 'https://www.iranintl.com/en/202301157147', label: 'Sunday Times Investigation' },
+      { source: 'HRANA', figure: '13,078 people (4,029 confirmed)', link: 'https://www.hra-news.org/', label: 'HRANA News Agency' },
+      { source: 'Iran International', figure: 'At least 12,000 people', link: 'https://www.iranintl.com/', label: 'Iran International Coverage' },
+      { source: 'Iran Human Rights (IHR)', figure: 'At least 3,428 people', link: 'https://iranhr.net/', label: 'IHR Official Website' },
+      { source: 'Ali Khamenei', figure: '"Several thousand" people', link: 'https://www.bbc.com/persian/articles/c1e1n1n1n1no', label: 'BBC Persian Report' },
+      { source: 'Mohammad Bagher Ghalibaf', figure: '"Thousands" of people', link: 'https://persianepochtimes.com/', label: 'Persian Epoch Times' }
+    ]
+
+    body!.innerHTML = `
+      <div class="reported-figures-container">
+        <h2>${t('stats.reportedFigures')}</h2>
+        <div class="table-responsive">
+          <table class="reported-figures-table">
+            <thead>
+              <tr>
+                <th>${t('stats.source')}</th>
+                <th>${t('stats.figure')}</th>
+                <th>${t('stats.reference')}</th>
+              </tr>
+            </thead>
+            <tbody>
+              ${data.map(row => `
+                <tr>
+                  <td>${row.source}</td>
+                  <td>${row.figure}</td>
+                  <td><a href="${row.link}" target="_blank" rel="noopener noreferrer">${row.label}</a></td>
+                </tr>
+              `).join('')}
+            </tbody>
+          </table>
+        </div>
+        <p class="stats-disclaimer">${t('stats.disclaimer')}</p>
+      </div>
+    `
   }
 }
 
