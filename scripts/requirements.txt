@@ -1,0 +1,6 @@
+arabic-reshaper==3.0.0
+fpdf2==2.8.5
+pillow==10.4.0
+python-bidi==0.6.7
+qrcode==8.2
+requests==2.32.3
