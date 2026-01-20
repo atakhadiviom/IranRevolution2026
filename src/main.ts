@@ -293,6 +293,10 @@ function initLanguageSwitcher() {
 function renderDetails(entry: MemorialEntry) {
   const panel = document.getElementById('details-content')!
   const isFa = currentLanguage() === 'fa'
+  const displayName = (isFa && entry.name_fa) ? entry.name_fa : entry.name
+  
+  // Update document title for SEO and UX
+  document.title = `${displayName} | ${t('site.title')}`
   
   const date = new Date(entry.date).toLocaleDateString(isFa ? 'fa-IR' : 'en-US', { 
     year: 'numeric', 
@@ -300,7 +304,6 @@ function renderDetails(entry: MemorialEntry) {
     day: 'numeric' 
   })
 
-  const displayName = (isFa && entry.name_fa) ? entry.name_fa : entry.name
   const displayCity = (isFa && entry.city_fa) ? entry.city_fa : entry.city
   const displayLocation = (isFa && entry.location_fa) ? entry.location_fa : entry.location
   const displayBio = (isFa && entry.bio_fa) ? entry.bio_fa : entry.bio
