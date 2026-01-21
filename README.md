@@ -74,5 +74,8 @@ See [CONTRIBUTING.md](CONTRIBUTING.md) and our [Care Protocol](CARE_PROTOCOL.md)
 ## CI/CD
 Pushes to `main` trigger build and deployment to GitHub Pages via Actions (`.github/workflows/deploy.yml`).
 
+## Contributors
+- [Sadegh Rizi](https://github.com/sadegh-rizi) - PDF Poster Concept & Original Idea
+
 ## License
 MIT. See [LICENSE](LICENSE).
