@@ -405,6 +405,11 @@ main {
   border-color: var(--muted);
 }
 
+.share-button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
 @media (max-width: 480px) {
   .candle-section {
     flex: 1 1 100%;

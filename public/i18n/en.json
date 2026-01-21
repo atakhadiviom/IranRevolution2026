@@ -32,6 +32,7 @@
   "details.close": "Close profile",
   "details.backToMap": "Back to Map",
   "details.share": "Share",
+  "details.downloadPdf": "Download PDF",
   "details.shareText": "Check out this memorial for {name}",
   "details.copied": "Link copied to clipboard!",
   "details.video": "Memorial Video",

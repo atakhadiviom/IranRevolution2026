@@ -7,6 +7,7 @@ import { extractMemorialData } from './modules/ai'
 import { fetchMemorials, submitMemorial, submitReport } from './modules/dataService'
 import { initTwitter } from './modules/twitter'
 import { supabase } from './modules/supabase'
+import { downloadMemorialPdf } from './modules/pdf'
 
 let currentMemorials: MemorialEntry[] = []
 
@@ -364,9 +365,12 @@ function renderDetails(entry: MemorialEntry) {
           <button id="light-candle" class="candle-button">🕯️ ${t('details.lightCandle')}</button>
           <span id="candle-count" class="candle-count">0 ${t('details.candlesLit')}</span>
         </div>
-        <div class="share-section">
+        <div class="share-section" style="gap: 8px;">
           <button id="share-btn" class="share-button">
             📤 ${t('details.share')}
+          </button>
+          <button id="download-pdf-btn" class="share-button">
+            📄 ${t('details.downloadPdf')}
           </button>
         </div>
       </div>
@@ -495,6 +499,19 @@ function renderDetails(entry: MemorialEntry) {
       }
     } catch (err) {
       console.error('Error sharing:', err)
+    }
+  })
+
+  const downloadPdfBtn = document.getElementById('download-pdf-btn')
+  downloadPdfBtn?.addEventListener('click', async () => {
+    const originalText = downloadPdfBtn.innerHTML
+    downloadPdfBtn.innerHTML = `⏳ ${t('ai.processing')}`
+    downloadPdfBtn.setAttribute('disabled', 'true')
+    try {
+      await downloadMemorialPdf(entry)
+    } finally {
+      downloadPdfBtn.innerHTML = originalText
+      downloadPdfBtn.removeAttribute('disabled')
     }
   })
   
