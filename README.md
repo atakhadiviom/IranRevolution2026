@@ -75,6 +75,8 @@ See [CONTRIBUTING.md](CONTRIBUTING.md) and our [Care Protocol](CARE_PROTOCOL.md)
 Pushes to `main` trigger build and deployment to GitHub Pages via Actions (`.github/workflows/deploy.yml`).
 
 ## Contributors
+- [atakhadiviom](https://github.com/atakhadiviom) - Lead Developer & Maintainer
+- [Davoud Ramezani Kermani](https://github.com/Davoudr) - Full-stack Developer & Core Contributor
 - [Sadegh Rizi](https://github.com/sadegh-rizi) - PDF Poster Concept & Original Idea
 
 ## License
