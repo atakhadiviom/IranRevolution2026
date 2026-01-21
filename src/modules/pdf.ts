@@ -1,5 +1,4 @@
 import QRCode from 'qrcode';
-// @ts-expect-error - html2pdf.js doesn't have official types
 import html2pdf from 'html2pdf.js';
 import type { MemorialEntry } from './types';
 import { t, currentLanguage } from './i18n';
