@@ -29,14 +29,16 @@ export async function downloadMemorialPdf(entry: MemorialEntry) {
   // Create a temporary container for the PDF content
   const element = document.createElement('div');
   element.style.width = '8.27in'; // A4 width
-  element.style.height = '11.69in'; // A4 height
+  element.style.height = '11.68in'; // Slightly less than A4 height to prevent extra page
   element.style.display = 'flex';
   element.style.flexDirection = 'column';
   element.style.margin = '0';
   element.style.padding = '0';
+  element.style.boxSizing = 'border-box';
   element.style.fontFamily = 'system-ui, -apple-system, sans-serif';
   element.style.backgroundColor = 'white';
   element.style.overflow = 'hidden';
+  element.style.position = 'relative';
 
   element.innerHTML = `
     <!-- Top Green Band (Header) -->
@@ -88,11 +90,12 @@ export async function downloadMemorialPdf(entry: MemorialEntry) {
       useCORS: true, 
       logging: false,
       letterRendering: true,
-      windowWidth: 800,
-      windowHeight: 1131
+      windowWidth: 794,
+      windowHeight: 1122,
+      height: 1122
     },
     jsPDF: { unit: 'in' as const, format: 'a4' as const, orientation: 'portrait' as const },
-    pagebreak: { mode: 'avoid-all' }
+    pagebreak: { mode: ['avoid-all', 'css', 'legacy'] }
   };
 
   // Generate and download the PDF
