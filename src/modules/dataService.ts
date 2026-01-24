@@ -378,7 +378,7 @@ export async function batchUpdateImages(): Promise<{ success: boolean; count: nu
     const rows = (memorials || []) as MemorialRow[]
     const targets = rows.filter(m => {
       const media = m.media as Record<string, unknown>
-      const refs = m.source_links as any[]
+      const refs = m.source_links as MemorialEntry['references']
       const hasInsta = refs && refs.some(r => r.url && r.url.includes('instagram.com'))
       return (media?.xPost || hasInsta) && !media?.photo
     })
@@ -388,7 +388,7 @@ export async function batchUpdateImages(): Promise<{ success: boolean; count: nu
     let updatedCount = 0
     for (const m of targets) {
       const media = m.media as Record<string, string>
-      const refs = m.source_links as any[]
+      const refs = m.source_links as MemorialEntry['references']
       const xPost = media?.xPost
       const instaUrl = refs?.find(r => r.url && r.url.includes('instagram.com'))?.url
       
