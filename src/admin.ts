@@ -13,7 +13,7 @@ import {
   deleteReport
 } from './modules/dataService'
 import { extractMemorialData, geocodeLocation } from './modules/ai'
-import { extractXPostImage } from './modules/imageExtractor'
+import { extractSocialImage } from './modules/imageExtractor'
 import type { MemorialEntry } from './modules/types'
 
 // DOM Elements - Sections
@@ -704,10 +704,12 @@ aiExtractBtn.addEventListener('click', async () => {
     const refsArea = document.getElementById('references') as HTMLTextAreaElement
     const existingRefs = refsArea.value.trim()
     const isXUrl = url.includes('x.com') || url.includes('twitter.com')
-    const newRef = `${data.referenceLabel || (isXUrl ? 'X Post' : 'Source')} | ${url}`
+    const isInstaUrl = url.includes('instagram.com')
+    const sourceLabel = data.referenceLabel || (isXUrl ? 'X Post' : (isInstaUrl ? 'Instagram' : 'Source'))
+    const newRef = `${sourceLabel} | ${url}`
     refsArea.value = existingRefs ? `${existingRefs}\n${newRef}` : newRef
     
-    if (isXUrl) {
+    if (isXUrl || isInstaUrl) {
       (document.getElementById('xPost') as HTMLInputElement).value = url
     } else {
       (document.getElementById('xPost') as HTMLInputElement).value = ''
@@ -738,7 +740,11 @@ aiExtractBtn.addEventListener('click', async () => {
     }, 1500)
 
   } catch (error) {
-    aiStatus.textContent = '❌ Extraction failed: ' + (error instanceof Error ? error.message : 'Unknown error')
+    let msg = error instanceof Error ? error.message : 'Unknown error'
+    if (msg === 'ai.error.blocked') {
+      msg = 'Could not access the content of this URL. It might be private or protected.'
+    }
+    aiStatus.textContent = '❌ Extraction failed: ' + msg
     aiStatus.className = 'error'
   } finally {
     aiExtractBtn.disabled = false
@@ -749,7 +755,7 @@ aiExtractBtn.addEventListener('click', async () => {
 extractImgBtn.addEventListener('click', async () => {
   const url = (document.getElementById('xPost') as HTMLInputElement).value.trim()
   if (!url) {
-    alert('Please enter an X Post URL first.')
+    alert('Please enter an X or Instagram URL first.')
     return
   }
 
@@ -758,15 +764,15 @@ extractImgBtn.addEventListener('click', async () => {
   extractImgBtn.textContent = '...'
   
   try {
-    const imageUrl = await extractXPostImage(url)
+    const imageUrl = await extractSocialImage(url)
     if (imageUrl) {
       (document.getElementById('photo') as HTMLInputElement).value = imageUrl
       alert('Image extracted successfully!')
     } else {
-      alert('Could not find an image in this post.')
+      alert('Could not find an image in this post. The URL might be private or protected.')
     }
   } catch (error) {
-    alert('Failed to extract image.')
+    alert('Failed to extract image. The URL might be private or protected.')
   } finally {
     extractImgBtn.disabled = false
     extractImgBtn.textContent = originalText

@@ -15,25 +15,28 @@ async function boot() {
   initTwitter()
   await loadTranslations(currentLanguage())
   
-  const memorials = await fetchMemorials()
-  
-  currentMemorials = memorials
-
+  // Initialize UI and Map earlier for better UX and troubleshooting
   initUiText()
-  updateTotalCounter(memorials.length)
   initLanguageSwitcher()
   initMap()
   initListView()
-  plotMarkers(memorials)
   initContributionForm()
   initFiguresPopup()
   initMobileMenu()
+
+  // Fetch memorials
+  const memorials = await fetchMemorials()
+  currentMemorials = memorials
+  updateTotalCounter(memorials.length)
+  plotMarkers(memorials)
+  
   setupSearch(memorials, (filtered) => {
     plotMarkers(filtered)
     const aside = document.getElementById('details-panel') as HTMLElement
     aside.classList.remove('active')
     clearDetails(filtered)
   })
+
   onMarkerSelected((entry) => {
     renderDetails(entry)
     // Update URL when a memorial is selected
@@ -780,7 +783,7 @@ function initContributionForm() {
           <div class="form-group">
             <label>${t('ai.extractLabel')}</label>
             <div class="ai-input-group">
-              <input type="url" id="ai-url" placeholder="Paste X/Twitter link or News URL">
+              <input type="url" id="ai-url" placeholder="${t('ai.urlPlaceholder')}">
               <button type="button" id="ai-extract-btn" class="ai-button">
                 ✨ ${t('ai.button')}
               </button>
@@ -933,6 +936,7 @@ function initContributionForm() {
 
     aiBtn?.addEventListener('click', async () => {
       const url = aiUrl.value.trim()
+      
       if (!url) return
 
       // Create and show loading overlay for the form
@@ -980,10 +984,11 @@ function initContributionForm() {
         refUrlInput.value = url
         
         const isXUrl = url.includes('x.com') || url.includes('twitter.com')
+        const isInstaUrl = url.includes('instagram.com')
         if (data.referenceLabel) {
           refLabelInput.value = data.referenceLabel
         } else {
-          refLabelInput.value = isXUrl ? 'X Post' : 'Source'
+          refLabelInput.value = isXUrl ? 'X Post' : (isInstaUrl ? 'Instagram' : 'Source')
         }
 
         if (data.name || data.name_fa) {
@@ -993,8 +998,8 @@ function initContributionForm() {
         aiStatus.textContent = t('ai.success')
         aiStatus.className = 'ai-status success'
       } catch (error) {
-        const errorMessage = error instanceof Error ? error.message : t('ai.error')
-        aiStatus.textContent = errorMessage
+        const errorMessage = error instanceof Error ? error.message : 'ai.error'
+        aiStatus.textContent = t(errorMessage)
         aiStatus.className = 'ai-status error'
       } finally {
         overlay.remove()

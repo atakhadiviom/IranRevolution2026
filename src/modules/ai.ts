@@ -18,11 +18,20 @@ export async function extractMemorialData(url: string, providedContent?: string)
     
     if (!content) {
       // Step 1: Fetch URL content as Markdown using Jina Reader API
-      const readerUrl = `https://r.jina.ai/${url}`;
+      // Optimization: Use /embed/captioned/ for Instagram to bypass login walls
+      let targetUrl = url;
+      if (url.includes('instagram.com')) {
+        const cleanUrl = url.split('?')[0].replace(/\/$/, '');
+        targetUrl = `${cleanUrl}/embed/captioned/`;
+      }
+
+      const readerUrl = `https://r.jina.ai/${targetUrl}`;
       
       const response = await fetch(readerUrl, {
         headers: {
-          'X-No-Cache': 'true'
+          'X-No-Cache': 'true',
+          'X-With-Images-Summary': 'true',
+          'Accept': 'text/plain'
         }
       });
       
@@ -31,6 +40,11 @@ export async function extractMemorialData(url: string, providedContent?: string)
       }
       
       content = await response.text();
+      
+      // Basic check for empty or blocked content
+      if (!content || content.length < 100 || content.includes('Login • Instagram')) {
+        throw new Error('ai.error.blocked');
+      }
     }
 
     // Truncate content to avoid token limits
@@ -60,6 +74,8 @@ export async function extractMemorialData(url: string, providedContent?: string)
             2. DO NOT extract political leaders, international figures, or people from other conflicts (e.g., Saudi Arabia, Syria, Lebanon) unless they are directly mentioned as victims of the Iranian revolution.
             3. If the text is a news report about general Middle East politics and doesn't mention specific Iranian victims, return an empty array [].
             4. If no clear victims are found, return [].
+            5. For Instagram/Social Media: The text might be in the caption, description, or even alt text of images. Look for names (usually starting with # or at the beginning of the caption), cities, and dates. 
+            6. If you see a name like "Shayan Shekari" and a city like "Rasht", even if the text is short, extract it.
             
             ETHICAL DATA HANDLING RULES (See CARE_PROTOCOL.md):
             1. DO NOT invent or infer missing names, dates, or causes of death.

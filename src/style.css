@@ -247,9 +247,18 @@ main {
   height: calc(100vh - 64px - 40px); /* Adjust based on header/footer */
 }
 
+#map-section {
+  width: 100%;
+  height: 100%;
+  background-color: #0a0a0a;
+  position: relative;
+  overflow: hidden;
+}
+
 #map-container {
   width: 100%;
   height: 100%;
+  z-index: 1;
 }
 
 .leaflet-container {
@@ -1046,6 +1055,92 @@ body.modal-open .fab-button {
 .view-duplicate-btn:hover {
   background: #fbbf24;
   color: #000;
+}
+
+.ai-assistant {
+  background: rgba(255, 255, 255, 0.03);
+  padding: 1rem;
+  border-radius: 12px;
+  border: 1px solid var(--border);
+  margin-bottom: 1rem;
+}
+
+.ai-input-group {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.ai-input-group input {
+  flex: 1;
+}
+
+.ai-button {
+  background: var(--accent);
+  color: #fff;
+  border: none;
+  padding: 0 1rem;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: all 0.2s;
+}
+
+.ai-button:hover {
+  background: var(--accent);
+  filter: brightness(1.1);
+  transform: translateY(-1px);
+}
+
+.ai-button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.ai-status {
+  margin-top: 0.75rem;
+  padding: 0.75rem;
+  border-radius: 8px;
+  font-size: 0.85rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.ai-status.loading {
+  background: rgba(99, 102, 241, 0.1);
+  color: #818cf8;
+}
+
+.ai-status.success {
+  background: rgba(52, 211, 153, 0.1);
+  color: #34d399;
+}
+
+.ai-status.error {
+  background: rgba(248, 113, 113, 0.1);
+  color: #f87171;
+}
+
+.ai-hint {
+  font-size: 0.75rem !important;
+  margin: 0.5rem 0 0 0 !important;
+  opacity: 0.6;
+}
+
+.spinner {
+  width: 16px;
+  height: 16px;
+  border: 2px solid currentColor;
+  border-right-color: transparent;
+  border-radius: 50%;
+  animation: spin 0.75s linear infinite;
+}
+
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
 }
 
 .form-divider {

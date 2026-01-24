@@ -2,6 +2,90 @@ const OPENROUTER_API_KEY = (typeof import.meta !== 'undefined' && import.meta.en
 const OPENROUTER_MODEL = (typeof import.meta !== 'undefined' && import.meta.env) ? (import.meta.env.VITE_OPENROUTER_MODEL || 'google/gemini-2.0-flash-exp:free') : (process.env.VITE_OPENROUTER_MODEL || 'google/gemini-2.0-flash-exp:free');
 
 /**
+ * Extracts the primary image URL from an Instagram post using Jina Reader and OpenRouter.
+ */
+export async function extractInstagramImage(url: string): Promise<string | null> {
+  if (!url || !url.includes('instagram.com')) {
+    return null;
+  }
+
+  try {
+    // Optimization: Use /embed/captioned/ for Instagram to bypass login walls
+    const cleanUrl = url.split('?')[0].replace(/\/$/, '');
+    const targetUrl = `${cleanUrl}/embed/captioned/`;
+    const readerUrl = `https://r.jina.ai/${targetUrl}`;
+    
+    const response = await fetch(readerUrl, {
+      headers: {
+        'X-No-Cache': 'true',
+        'X-With-Images-Summary': 'true',
+        'Accept': 'text/plain'
+      }
+    });
+
+    if (!response.ok) return null;
+    const content = await response.text();
+    
+    if (!content || content.length < 100 || content.includes('Login • Instagram')) {
+      return null;
+    }
+
+    if (!OPENROUTER_API_KEY || OPENROUTER_API_KEY === 'sk-or-v1-...') {
+      return null;
+    }
+
+    const aiResponse = await fetch('https://openrouter.ai/api/v1/chat/completions', {
+      method: 'POST',
+      headers: {
+        'Authorization': `Bearer ${OPENROUTER_API_KEY}`,
+        'Content-Type': 'application/json',
+        'HTTP-Referer': (typeof window !== 'undefined') ? window.location.origin : 'https://iranrevolution2026.github.io',
+        'X-Title': 'Iran Revolution Memorial'
+      },
+      body: JSON.stringify({
+        model: OPENROUTER_MODEL,
+        messages: [
+          {
+            role: 'system',
+            content: `You are an expert at identifying the main media content from an Instagram post.
+            Given the markdown content of an Instagram post, find the URL of the primary image or video thumbnail.
+            Ignore profile pictures, icons, or UI elements.
+            
+            Return ONLY the direct URL of the image. If no image is found, return "NONE".`
+          },
+          {
+            role: 'user',
+            content: `Find the main image URL in this content: ${content.substring(0, 5000)}`
+          }
+        ],
+        temperature: 0.1
+      })
+    });
+
+    if (!aiResponse.ok) return null;
+
+    const data = await aiResponse.json();
+    const result = data.choices[0].message.content.trim();
+
+    return (result === 'NONE' || !result.startsWith('http')) ? null : result;
+  } catch (error) {
+    return null;
+  }
+}
+
+/**
+ * Extracts the primary image URL from a social media post (X or Instagram).
+ */
+export async function extractSocialImage(url: string): Promise<string | null> {
+  if (url.includes('x.com') || url.includes('twitter.com')) {
+    return extractXPostImage(url);
+  } else if (url.includes('instagram.com')) {
+    return extractInstagramImage(url);
+  }
+  return null;
+}
+
+/**
  * Extracts the primary image URL from an X (Twitter) post using Jina Reader and OpenRouter.
  */
 export async function extractXPostImage(url: string): Promise<string | null> {
@@ -14,7 +98,9 @@ export async function extractXPostImage(url: string): Promise<string | null> {
     const readerUrl = `https://r.jina.ai/${url}`;
     const response = await fetch(readerUrl, {
       headers: {
-        'X-No-Cache': 'true'
+        'X-No-Cache': 'true',
+        'X-With-Images-Summary': 'true',
+        'Accept': 'text/plain'
       }
     });
 
@@ -23,6 +109,10 @@ export async function extractXPostImage(url: string): Promise<string | null> {
     }
 
     const content = await response.text();
+    
+    if (!content || content.length < 100) {
+      return null;
+    }
 
     // Step 2: Use OpenRouter to identify the main image of the post (not the profile picture)
     // We want the image that likely represents the person or the event.

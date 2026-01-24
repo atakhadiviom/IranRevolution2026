@@ -16,51 +16,69 @@ let selectedCb: (entry: MemorialEntry) => void = () => {}
 
 export function initMap() {
   const container = document.getElementById('map-container')
-  if (!container) return
+  if (!container) {
+    console.error('Map container element not found!')
+    return
+  }
 
-  // Initialize the map centered on Iran
-  map = L.map('map-container', {
-    center: [32.4279, 53.688], // Center of Iran
-    zoom: 5,
-    minZoom: 5,
-    maxZoom: 18,
-    zoomControl: true,
-    attributionControl: true
-  })
+  try {
+    // Initialize the map centered on Iran
+    map = L.map('map-container', {
+      center: [32.4279, 53.688], // Center of Iran
+      zoom: 5,
+      minZoom: 5,
+      maxZoom: 18,
+      zoomControl: true,
+      attributionControl: true
+    })
 
-  // Use a dark, minimalist tile layer (CartoDB Dark Matter)
-  L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}.png', {
-    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>',
-    subdomains: 'abcd',
-    maxZoom: 20
-  }).addTo(map)
-  
-  markersLayer = L.markerClusterGroup({
-    showCoverageOnHover: false,
-    maxClusterRadius: 50,
-    spiderfyOnMaxZoom: false, // Changed to false to handle via list view
-    zoomToBoundsOnClick: false, // Handle manually to check if we should zoom or show list
-    spiderfyDistanceMultiplier: 2,
-    disableClusteringAtZoom: 18, // High enough to allow spiderfy/list at most levels
-    iconCreateFunction: (cluster: L.MarkerCluster) => {
-      const count = cluster.getChildCount();
-      return L.divIcon({
-        html: `<div class="custom-cluster"><span>${count}</span></div>`,
-        className: 'marker-cluster-custom',
-        iconSize: L.point(40, 40)
-      });
-    }
-  }).addTo(map)
-
-  // Handle cluster click to show list pop-up
-  markersLayer.on('clusterclick', (a) => {
-    const cluster = a.layer as L.MarkerCluster
-    const markers = cluster.getAllChildMarkers() as MemorialMarker[]
-    const entries = markers.map(m => m.entry).filter(Boolean) as MemorialEntry[]
+    // Use a dark, minimalist tile layer (CartoDB Dark Matter)
+    const tileLayer = L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}.png', {
+      attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>',
+      subdomains: 'abcd',
+      maxZoom: 20
+    })
     
-    // Always show the list view pop-up when a cluster is clicked
-    showListView(entries)
-  })
+    tileLayer.on('tileerror', (e) => {
+      console.error('Map tile loading error:', e)
+    })
+    
+    tileLayer.addTo(map)
+    
+    markersLayer = L.markerClusterGroup({
+      showCoverageOnHover: false,
+      maxClusterRadius: 50,
+      spiderfyOnMaxZoom: false, 
+      zoomToBoundsOnClick: false, 
+      spiderfyDistanceMultiplier: 2,
+      disableClusteringAtZoom: 18, 
+      iconCreateFunction: (cluster: L.MarkerCluster) => {
+        const count = cluster.getChildCount();
+        return L.divIcon({
+          html: `<div class="custom-cluster"><span>${count}</span></div>`,
+          className: 'marker-cluster-custom',
+          iconSize: L.point(40, 40)
+        });
+      }
+    }).addTo(map)
+
+    // Handle cluster click to show list pop-up
+    markersLayer.on('clusterclick', (a) => {
+      const cluster = a.layer as L.MarkerCluster
+      const markers = cluster.getAllChildMarkers() as MemorialMarker[]
+      const entries = markers.map(m => m.entry).filter(Boolean) as MemorialEntry[]
+      
+      showListView(entries)
+    })
+
+    // Fix for map not appearing correctly until resized
+    setTimeout(() => {
+      map.invalidateSize()
+    }, 100)
+
+  } catch (err) {
+    console.error('Error initializing Leaflet map:', err)
+  }
 }
 
 let listViewCb: (entries: MemorialEntry[]) => void = () => {}
