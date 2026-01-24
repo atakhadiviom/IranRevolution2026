@@ -127,11 +127,22 @@ export async function extractMemorialData(url: string, providedContent?: string)
   }
 }
 
+export interface TranslatedMemorialData {
+  name: string;
+  name_fa: string;
+  city: string;
+  city_fa: string;
+  location: string;
+  location_fa: string;
+  bio: string;
+  bio_fa: string;
+}
+
 /**
  * Fixes translations for memorial data.
  * It ensures English fields are in English and Persian fields are in Persian.
  */
-export async function translateMemorialData(data: { name: string; city: string; location: string; bio: string; name_fa?: string; city_fa?: string; location_fa?: string; bio_fa?: string }) {
+export async function translateMemorialData(data: { name: string; city: string; location: string; bio: string; name_fa?: string; city_fa?: string; location_fa?: string; bio_fa?: string }): Promise<TranslatedMemorialData | null> {
   try {
     if (!OPENROUTER_API_KEY || OPENROUTER_API_KEY === 'sk-or-v1-...') {
       throw new Error('Invalid OpenRouter API Key.');
@@ -142,7 +153,7 @@ export async function translateMemorialData(data: { name: string; city: string; 
       headers: {
         'Authorization': `Bearer ${OPENROUTER_API_KEY}`,
         'Content-Type': 'application/json',
-        'HTTP-Referer': window.location.origin,
+        'HTTP-Referer': (typeof window !== 'undefined') ? window.location.origin : 'https://iranrevolution2026.github.io',
         'X-Title': 'Iran Revolution Memorial'
       },
       body: JSON.stringify({
@@ -197,7 +208,7 @@ export async function translateMemorialData(data: { name: string; city: string; 
  * Geocodes a location name using AI.
  * Returns { lat, lon } or null.
  */
-export async function geocodeLocation(city: string, location: string) {
+export async function geocodeLocation(city: string, location: string): Promise<{ lat: number; lon: number } | null> {
   try {
     if (!OPENROUTER_API_KEY || OPENROUTER_API_KEY === 'sk-or-v1-...') {
       throw new Error('Invalid OpenRouter API Key.');
@@ -208,7 +219,7 @@ export async function geocodeLocation(city: string, location: string) {
       headers: {
         'Authorization': `Bearer ${OPENROUTER_API_KEY}`,
         'Content-Type': 'application/json',
-        'HTTP-Referer': window.location.origin,
+        'HTTP-Referer': (typeof window !== 'undefined') ? window.location.origin : 'https://iranrevolution2026.github.io',
         'X-Title': 'Iran Revolution Memorial'
       },
       body: JSON.stringify({
@@ -253,7 +264,7 @@ export async function geocodeLocation(city: string, location: string) {
  * Reverse geocodes coordinates to a location name using AI.
  * Returns { location, city } or null.
  */
-export async function reverseGeocode(lat: number, lon: number) {
+export async function reverseGeocode(lat: number, lon: number): Promise<{ location: string; city: string } | null> {
   try {
     if (!OPENROUTER_API_KEY || OPENROUTER_API_KEY === 'sk-or-v1-...') {
       throw new Error('Invalid OpenRouter API Key.');
@@ -264,7 +275,7 @@ export async function reverseGeocode(lat: number, lon: number) {
       headers: {
         'Authorization': `Bearer ${OPENROUTER_API_KEY}`,
         'Content-Type': 'application/json',
-        'HTTP-Referer': window.location.origin,
+        'HTTP-Referer': (typeof window !== 'undefined') ? window.location.origin : 'https://iranrevolution2026.github.io',
         'X-Title': 'Iran Revolution Memorial'
       },
       body: JSON.stringify({

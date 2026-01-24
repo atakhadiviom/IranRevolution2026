@@ -101,11 +101,12 @@ export async function verifyMemorial(id: string): Promise<{ success: boolean; me
       return { success: false, error: fetchError?.message || 'Entry not found' }
     }
 
-    // 2. Check if another entry with the same name is ALREADY VERIFIED
+    // 2. Check if another entry with the same name and city is ALREADY VERIFIED
     const { data: existing, error: checkError } = await (supabase as any)
       .from('memorials')
       .select('*')
       .eq('name', current.name)
+      .eq('city', current.city)
       .eq('verified', true)
       .neq('id', id)
       .maybeSingle()
@@ -276,6 +277,7 @@ export async function submitMemorial(entry: Partial<MemorialEntry>): Promise<{ s
         .from('memorials')
         .select('id, name, source_links, verified')
         .eq('name', entry.name)
+        .eq('city', entry.city || 'Unknown')
         .maybeSingle()
 
       if (checkError) {

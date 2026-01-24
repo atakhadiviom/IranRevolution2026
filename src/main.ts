@@ -867,8 +867,10 @@ function initContributionForm() {
         const mLocation = (m.location || '').toLowerCase().trim()
 
         // 1. Exact match (High Confidence) - English or Persian
-        if (normalizedName && mName === normalizedName) return true
-        if (currentNameFa && mNameFa === currentNameFa) return true
+        // Only definitive duplicate if city also matches or is unknown
+        const namesMatch = (normalizedName && mName === normalizedName) || (currentNameFa && mNameFa === currentNameFa)
+        const citiesMatch = !currentCity || !mCity || mCity === currentCity
+        if (namesMatch && citiesMatch) return true
 
         // 2. Persian Partial Match (High Confidence)
         if (nameFaParts.length >= 2) {

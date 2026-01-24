@@ -95,6 +95,7 @@ const syncCoordsBtn = document.getElementById('sync-coords-btn') as HTMLButtonEl
 const batchImgBtn = document.getElementById('batch-img-btn') as HTMLButtonElement
 const batchTranslateBtn = document.getElementById('batch-translate-btn') as HTMLButtonElement
 const batchCoordsBtn = document.getElementById('batch-coords-btn') as HTMLButtonElement
+const findDuplicatesBtn = document.getElementById('find-duplicates-btn') as HTMLButtonElement
 const aiStatus = document.getElementById('ai-status') as HTMLDivElement
 const jsonImportArea = document.getElementById('json-import') as HTMLTextAreaElement
 const jsonImportBtn = document.getElementById('json-import-btn') as HTMLButtonElement
@@ -608,8 +609,10 @@ function checkDuplicate(name: string, city?: string, name_fa?: string) {
     const mLocation = (m.location || '').toLowerCase().trim()
 
     // 1. Exact match (High Confidence) - English or Persian
-    if (normalizedName && mName === normalizedName) return true
-    if (currentNameFa && mNameFa === currentNameFa) return true
+    // Only definitive duplicate if city also matches or is unknown
+    const namesMatch = (normalizedName && mName === normalizedName) || (currentNameFa && mNameFa === currentNameFa)
+    const citiesMatch = !currentCity || !mCity || mCity === currentCity
+    if (namesMatch && citiesMatch) return true
 
     // 2. Persian Partial Match (High Confidence)
     // Persian spellings are more consistent than English transliterations
@@ -848,6 +851,47 @@ batchCoordsBtn.addEventListener('click', async () => {
     batchCoordsBtn.disabled = false 
     batchCoordsBtn.textContent = originalText
   }
+})
+
+findDuplicatesBtn.addEventListener('click', () => {
+  const duplicates: Record<string, MemorialEntry[]> = {}
+  
+  allMemorials.forEach(m => {
+    if (!m.name_fa) return
+    const nameFa = m.name_fa.trim()
+    if (nameFa.length < 2) return
+    
+    if (!duplicates[nameFa]) {
+      duplicates[nameFa] = []
+    }
+    duplicates[nameFa].push(m)
+  })
+
+  const duplicateGroups = Object.entries(duplicates)
+    .filter(([_, group]) => group.length > 1)
+    .sort((a, b) => b[1].length - a[1].length)
+
+  if (duplicateGroups.length === 0) {
+    alert('No duplicates found based on Persian name.')
+    return
+  }
+
+  let report = `🔍 Found ${duplicateGroups.length} groups of potential duplicates by Persian name:\n\n`
+  duplicateGroups.forEach(([nameFa, group]) => {
+    report += `--- ${nameFa} (${group.length} entries) ---\n`
+    group.forEach(m => {
+      report += `${m.verified ? '✅' : '⏳'} ${m.name} | ${m.city} | ID: ${m.id}\n`
+    })
+    report += '\n'
+  })
+
+  output.textContent = report
+  showSection('editor')
+  
+  // Scroll to output
+  setTimeout(() => {
+    output.scrollIntoView({ behavior: 'smooth', block: 'center' })
+  }, 100)
 })
 
 jsonImportBtn.addEventListener('click', async () => {
