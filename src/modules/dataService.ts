@@ -1,5 +1,5 @@
 import { supabase } from './supabase'
-import { extractXPostImage } from './imageExtractor'
+import { extractXPostImage, extractInstagramImage } from './imageExtractor'
 import { translateMemorialData, geocodeLocation, reverseGeocode } from './ai'
 import type { MemorialEntry } from './types'
 import type { Database } from './database.types'
@@ -312,13 +312,16 @@ export async function submitMemorial(entry: Partial<MemorialEntry>): Promise<{ s
 
     const id = entry.id || entry.name?.toLowerCase().trim().replace(/\s+/g, '-') || `submission-${Date.now()}`
     
-    // Auto-extract image from X post if missing
-    if (entry.media?.xPost && !entry.media?.photo) {
+    // Auto-extract image from X or Instagram post if missing
+    if ((entry.media?.xPost || (entry.references && entry.references.some(r => r.url.includes('instagram.com')))) && !entry.media?.photo) {
       try {
-        const photo = await extractXPostImage(entry.media.xPost);
-        if (photo) {
-          if (!entry.media) entry.media = {};
-          entry.media.photo = photo;
+        const url = entry.media?.xPost || entry.references?.find(r => r.url.includes('instagram.com'))?.url;
+        if (url) {
+          const photo = await (url.includes('instagram.com') ? extractInstagramImage(url) : extractXPostImage(url));
+          if (photo) {
+            if (!entry.media) entry.media = {};
+            entry.media.photo = photo;
+          }
         }
       } catch (e) {
         // Silently fail auto-extraction
@@ -375,7 +378,9 @@ export async function batchUpdateImages(): Promise<{ success: boolean; count: nu
     const rows = (memorials || []) as MemorialRow[]
     const targets = rows.filter(m => {
       const media = m.media as Record<string, unknown>
-      return media?.xPost && !media?.photo
+      const refs = m.source_links as any[]
+      const hasInsta = refs && refs.some(r => r.url && r.url.includes('instagram.com'))
+      return (media?.xPost || hasInsta) && !media?.photo
     })
     
     if (targets.length === 0) return { success: true, count: 0 }
@@ -383,8 +388,11 @@ export async function batchUpdateImages(): Promise<{ success: boolean; count: nu
     let updatedCount = 0
     for (const m of targets) {
       const media = m.media as Record<string, string>
+      const refs = m.source_links as any[]
       const xPost = media?.xPost
-      const photo = await extractXPostImage(xPost)
+      const instaUrl = refs?.find(r => r.url && r.url.includes('instagram.com'))?.url
+      
+      const photo = await (instaUrl ? extractInstagramImage(instaUrl) : extractXPostImage(xPost))
       
       if (photo) {
         const updatedMedia = { ...media, photo }

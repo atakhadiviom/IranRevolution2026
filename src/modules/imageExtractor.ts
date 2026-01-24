@@ -27,6 +27,15 @@ export async function extractInstagramImage(url: string): Promise<string | null>
     const content = await response.text();
     
     if (!content || content.length < 100 || content.includes('Login • Instagram')) {
+      // Fallback: simple regex to find the first image that isn't a profile pic if possible
+      const imgRegex = /!\[.*?\]\((https:\/\/[^)]*?)\)/g;
+      const matches = [...content.matchAll(imgRegex)];
+      for (const match of matches) {
+        const imgUrl = match[1];
+        if (!imgUrl.includes('profile_pic') && !imgUrl.includes('icon') && !imgUrl.includes('logo')) {
+          return imgUrl;
+        }
+      }
       return null;
     }
 
