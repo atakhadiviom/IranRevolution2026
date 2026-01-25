@@ -1189,6 +1189,8 @@ body.modal-open .fab-button {
 .form-group textarea {
   min-height: 100px;
   resize: vertical;
+  white-space: pre-wrap;
+  word-wrap: break-word;
 }
 
 .form-row {

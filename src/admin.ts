@@ -412,7 +412,7 @@ function renderTable(memorials: MemorialEntry[], container: HTMLTableSectionElem
         </span>
       </td>
       <td data-label="Actions">
-        <div style="display: flex; gap: 0.5rem; justify-content: flex-end;">
+        <div style="display: flex; gap: 0.4rem; justify-content: flex-end; flex-wrap: nowrap;">
           <button class="btn btn-secondary btn-sm edit-btn" data-id="${m.id}">Edit</button>
           ${!m.verified ? `<button class="btn btn-primary btn-sm verify-btn" data-id="${m.id}">Verify</button>` : ''}
           <button class="btn btn-secondary btn-sm merge-btn" data-id="${m.id}" title="Merge references into another entry">Merge</button>
