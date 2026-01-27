@@ -456,21 +456,29 @@ export async function batchTranslateMemorials(): Promise<{ success: boolean; cou
             } 
           } 
         }
-        const { error: updateError } = await client
-          .from('memorials')
-          .update({
-            name: translation.name,
-            name_fa: translation.name_fa,
-            city: translation.city,
-            city_fa: translation.city_fa,
-            location: translation.location,
-            location_fa: translation.location_fa,
-            bio: translation.bio,
-            bio_fa: translation.bio_fa
-          })
-          .eq('id', m.id)
-          
-        if (!updateError) updatedCount++
+
+        const updateData: Record<string, string> = {}
+        // Only fill if target is empty AND translation exists
+        if (!m.name && translation.name && m.name_fa) updateData.name = translation.name
+        if (!m.name_fa && translation.name_fa && m.name) updateData.name_fa = translation.name_fa
+        
+        if (!m.city && translation.city && m.city_fa) updateData.city = translation.city
+        if (!m.city_fa && translation.city_fa && m.city) updateData.city_fa = translation.city_fa
+        
+        if (!m.location && translation.location && m.location_fa) updateData.location = translation.location
+        if (!m.location_fa && translation.location_fa && m.location) updateData.location_fa = translation.location_fa
+        
+        if (!m.bio && translation.bio && m.bio_fa) updateData.bio = translation.bio
+        if (!m.bio_fa && translation.bio_fa && m.bio) updateData.bio_fa = translation.bio_fa
+
+        if (Object.keys(updateData).length > 0) {
+          const { error: updateError } = await client
+            .from('memorials')
+            .update(updateData)
+            .eq('id', m.id)
+            
+          if (!updateError) updatedCount++
+        }
       }
       
       // Delay to avoid rate limits

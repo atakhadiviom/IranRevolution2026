@@ -981,7 +981,12 @@ entryForm.addEventListener('submit', async (e) => {
   
   const references = rawRefs.split('\n').map(line => {
     const [label, url] = line.split('|').map(s => s.trim())
-    return (label && url) ? { label, url } : null
+    if (label && url) {
+      // If reference is Instagram, keep URL empty
+      const isInstagram = url.toLowerCase().includes('instagram.com')
+      return { label, url: isInstagram ? '' : url }
+    }
+    return null
   }).filter(Boolean) as { label: string, url: string }[]
 
   if (!name || (!xPost && references.length === 0)) {
@@ -1057,12 +1062,25 @@ mergeEntryBtn.addEventListener('click', () => {
 })
 
 translateEntryBtn.addEventListener('click', async () => {
-  const name = (document.getElementById('name') as HTMLInputElement).value
-  const city = (document.getElementById('city') as HTMLInputElement).value
-  const location = (document.getElementById('location') as HTMLInputElement).value
-  const bio = (document.getElementById('bio') as HTMLTextAreaElement).value
+  const nameEl = document.getElementById('name') as HTMLInputElement
+  const nameFaEl = document.getElementById('name_fa') as HTMLInputElement
+  const cityEl = document.getElementById('city') as HTMLInputElement
+  const cityFaEl = document.getElementById('city_fa') as HTMLInputElement
+  const locationEl = document.getElementById('location') as HTMLInputElement
+  const locationFaEl = document.getElementById('location_fa') as HTMLInputElement
+  const bioEl = document.getElementById('bio') as HTMLTextAreaElement
+  const bioFaEl = document.getElementById('bio_fa') as HTMLTextAreaElement
 
-  if (!name && !city && !location && !bio) {
+  const name = nameEl.value.trim()
+  const name_fa = nameFaEl.value.trim()
+  const city = cityEl.value.trim()
+  const city_fa = cityFaEl.value.trim()
+  const location = locationEl.value.trim()
+  const location_fa = locationFaEl.value.trim()
+  const bio = bioEl.value.trim()
+  const bio_fa = bioFaEl.value.trim()
+
+  if (!name && !name_fa && !city && !city_fa && !location && !location_fa && !bio && !bio_fa) {
     alert('Please fill some fields to translate.')
     return
   }
@@ -1077,14 +1095,28 @@ translateEntryBtn.addEventListener('click', async () => {
 
   try {
     const { translateMemorialData } = await import('./modules/ai')
-    const result = await translateMemorialData({ name, city, location, bio })
+    const result = await translateMemorialData({ 
+      name: name || undefined,
+      name_fa: name_fa || undefined, 
+      city: city || undefined,
+      city_fa: city_fa || undefined, 
+      location: location || undefined,
+      location_fa: location_fa || undefined, 
+      bio: bio || undefined,
+      bio_fa: bio_fa || undefined 
+    })
 
     if (result) {
       const t = result
-      if (t.name_fa) (document.getElementById('name_fa') as HTMLInputElement).value = t.name_fa
-      if (t.city_fa) (document.getElementById('city_fa') as HTMLInputElement).value = t.city_fa
-      if (t.location_fa) (document.getElementById('location_fa') as HTMLInputElement).value = t.location_fa
-      if (t.bio_fa) (document.getElementById('bio_fa') as HTMLTextAreaElement).value = t.bio_fa
+      // Only fill empty fields
+      if (!name && t.name) nameEl.value = t.name
+      if (!name_fa && t.name_fa) nameFaEl.value = t.name_fa
+      if (!city && t.city) cityEl.value = t.city
+      if (!city_fa && t.city_fa) cityFaEl.value = t.city_fa
+      if (!location && t.location) locationEl.value = t.location
+      if (!location_fa && t.location_fa) locationFaEl.value = t.location_fa
+      if (!bio && t.bio) bioEl.value = t.bio
+      if (!bio_fa && t.bio_fa) bioFaEl.value = t.bio_fa
       
       editorStatus.textContent = '✅ Translation complete!'
       editorStatus.className = 'success'

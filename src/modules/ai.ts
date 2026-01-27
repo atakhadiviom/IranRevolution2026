@@ -158,7 +158,16 @@ export interface TranslatedMemorialData {
  * Fixes translations for memorial data.
  * It ensures English fields are in English and Persian fields are in Persian.
  */
-export async function translateMemorialData(data: { name: string; city: string; location: string; bio: string; name_fa?: string; city_fa?: string; location_fa?: string; bio_fa?: string }): Promise<TranslatedMemorialData | null> {
+export async function translateMemorialData(data: { 
+  name?: string; 
+  city?: string; 
+  location?: string; 
+  bio?: string; 
+  name_fa?: string; 
+  city_fa?: string; 
+  location_fa?: string; 
+  bio_fa?: string 
+}): Promise<TranslatedMemorialData | null> {
   try {
     if (!OPENROUTER_API_KEY || OPENROUTER_API_KEY === 'sk-or-v1-...') {
       throw new Error('Invalid OpenRouter API Key.');
@@ -185,7 +194,8 @@ export async function translateMemorialData(data: { name: string; city: string; 
             2. Fields NOT ending in "_fa" MUST be in English.
             3. If a field is provided in the wrong language, translate it to the correct one.
             4. If a field is missing, generate the translation from its counterpart (e.g., if name_fa is missing, translate name to Persian).
-            5. Maintain a respectful, memorial-appropriate tone.
+            5. If BOTH the English and Persian versions of a field are missing or empty, KEEP THEM EMPTY in the result. Do not invent information.
+            6. Maintain a respectful, memorial-appropriate tone.
             
             Return ONLY a valid JSON object with these fields:
             - name: English name
