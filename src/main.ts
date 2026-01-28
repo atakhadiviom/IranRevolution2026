@@ -400,6 +400,18 @@ function renderDetails(entry: MemorialEntry) {
         </div>
       `, !!entry.sensitiveMedia, 'sensitivity.mediaWarning') : ''}
 
+      ${entry.media?.telegramPost ? wrapSensitive(`
+        <div class="profile-telegram-post">
+          <h3>${t('details.telegramPost')}</h3>
+          <div class="telegram-embed-container">
+            <iframe src="${entry.media.telegramPost}${entry.media.telegramPost.includes('?') ? '&' : '?'}embed=1" 
+                    frameborder="0" 
+                    scrolling="no" 
+                    style="border:none; overflow:hidden; width:100%; height:450px;"></iframe>
+          </div>
+        </div>
+      `, !!entry.sensitiveMedia, 'sensitivity.mediaWarning') : ''}
+
       ${entry.references?.length ? `
         <section class="profile-references">
           <h3>${t('details.references')}</h3>

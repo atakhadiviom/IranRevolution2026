@@ -83,15 +83,63 @@ export async function extractInstagramImage(url: string): Promise<string | null>
 }
 
 /**
- * Extracts the primary image URL from a social media post (X or Instagram).
+ * Extracts the primary image URL from a social media post (X, Instagram, or Telegram).
  */
 export async function extractSocialImage(url: string): Promise<string | null> {
   if (url.includes('x.com') || url.includes('twitter.com')) {
     return extractXPostImage(url);
   } else if (url.includes('instagram.com')) {
     return extractInstagramImage(url);
+  } else if (url.includes('t.me/')) {
+    return extractTelegramImage(url);
   }
   return null;
+}
+
+/**
+ * Extracts the primary image URL from a Telegram post using Jina Reader.
+ */
+export async function extractTelegramImage(url: string): Promise<string | null> {
+  if (!url || !url.includes('t.me/')) {
+    return null;
+  }
+
+  try {
+    const readerUrl = `https://r.jina.ai/${url}`;
+    
+    const response = await fetch(readerUrl, {
+      headers: {
+        'X-No-Cache': 'true',
+        'X-With-Images-Summary': 'true',
+        'Accept': 'text/plain'
+      }
+    });
+
+    if (!response.ok) return null;
+    const content = await response.text();
+    
+    // Telegram images in Jina Reader usually appear in markdown as ![image](url)
+    // We want the first one that looks like a post image
+    const imgRegex = /!\[.*?\]\((https:\/\/cdn[0-9]\.cdn-telegram\.org\/[^)]*?)\)/g;
+    const matches = [...content.matchAll(imgRegex)];
+    if (matches.length > 0) {
+      return matches[0][1];
+    }
+
+    // Fallback: any image that isn't a UI element
+    const genericImgRegex = /!\[.*?\]\((https:\/\/[^)]*?)\)/g;
+    const genericMatches = [...content.matchAll(genericImgRegex)];
+    for (const match of genericMatches) {
+      const imgUrl = match[1];
+      if (!imgUrl.includes('logo') && !imgUrl.includes('icon') && !imgUrl.includes('avatar')) {
+        return imgUrl;
+      }
+    }
+    
+    return null;
+  } catch (error) {
+    return null;
+  }
 }
 
 /**

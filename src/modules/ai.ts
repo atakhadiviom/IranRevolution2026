@@ -23,6 +23,8 @@ export async function extractMemorialData(url: string, providedContent?: string)
       if (url.includes('instagram.com')) {
         const cleanUrl = url.split('?')[0].replace(/\/$/, '');
         targetUrl = `${cleanUrl}/embed/captioned/`;
+      } else if (url.includes('t.me/') && !url.includes('?embed=')) {
+        targetUrl = url.includes('?') ? `${url}&embed=1` : `${url}?embed=1`;
       }
 
       const readerUrl = `https://r.jina.ai/${targetUrl}`;
@@ -76,6 +78,7 @@ export async function extractMemorialData(url: string, providedContent?: string)
             4. If no clear victims are found, return [].
             5. For Instagram/Social Media: The text might be in the caption, description, or even alt text of images. Look for names (usually starting with # or at the beginning of the caption), cities, and dates. 
             6. If you see a name like "Shayan Shekari" and a city like "Rasht", even if the text is short, extract it.
+            7. For Telegram @RememberTheirNames channel: The format is usually a counter number, followed by the Name, then location and date. For example: "1481. Sajjad Hosseinpour \n 18 Jan 2026 Shahriar". Extract "Sajjad Hosseinpour" as the name, "Shahriar" as the city/location, and "2026-01-18" as the date.
             
             ETHICAL DATA HANDLING RULES (See CARE_PROTOCOL.md):
             1. DO NOT invent or infer missing names, dates, or causes of death.

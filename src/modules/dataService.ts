@@ -273,12 +273,18 @@ export async function submitMemorial(entry: Partial<MemorialEntry>): Promise<{ s
     // Check for duplicates if this is a new entry
     if (!isEditing) {
       /* eslint-disable @typescript-eslint/no-explicit-any */
-      const { data: existing, error: checkError } = await (supabase as any)
-        .from('memorials')
-        .select('id, name, source_links, verified')
-        .eq('name', entry.name)
-        .eq('city', entry.city || 'Unknown')
-        .maybeSingle()
+      // Improved search: check by name OR name_fa
+      let query = (supabase as any).from('memorials').select('id, name, name_fa, source_links, verified, media');
+      
+      if (entry.name && entry.name_fa) {
+        query = query.or(`name.eq."${entry.name}",name_fa.eq."${entry.name_fa}"`);
+      } else if (entry.name) {
+        query = query.eq('name', entry.name);
+      } else if (entry.name_fa) {
+        query = query.eq('name_fa', entry.name_fa);
+      }
+
+      const { data: existing, error: checkError } = await query.maybeSingle();
 
       if (checkError) {
         console.error('Duplicate check error:', checkError);
@@ -291,13 +297,18 @@ export async function submitMemorial(entry: Partial<MemorialEntry>): Promise<{ s
           // Filter out references that already exist (by URL)
           const refsToAdd = newRefs.filter(newR => !currentRefs.some(currR => currR.url === newR.url))
           
-          if (refsToAdd.length > 0) {
+          if (refsToAdd.length > 0 || (entry.media?.telegramPost && !(existing as any).media?.telegramPost)) {
             const updatedRefs = [...currentRefs, ...refsToAdd]
+            const updates: any = { source_links: updatedRefs }
+            
+            // If new entry has a telegramPost and existing doesn't, add it
+            if (entry.media?.telegramPost && !(existing as any).media?.telegramPost) {
+              updates.media = { ...((existing as any).media || {}), telegramPost: entry.media.telegramPost }
+            }
+
             const { error: updateError } = await (supabase as any)
               .from('memorials')
-              .update({ 
-                source_links: updatedRefs,
-              })
+              .update(updates)
               .eq('id', (existing as any).id)
             
             if (updateError) return { success: false, error: updateError.message }

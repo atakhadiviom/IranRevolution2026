@@ -2,7 +2,7 @@
 /* eslint-disable no-console */
 import { extractMemorialData } from '../src/modules/ai';
 import { submitMemorial, fetchMemorials } from '../src/modules/dataService';
-import { extractXPostImage } from '../src/modules/imageExtractor';
+import { extractSocialImage } from '../src/modules/imageExtractor';
 import type { MemorialEntry } from '../src/modules/types';
 import * as fs from 'fs';
 import * as path from 'path';
@@ -58,6 +58,7 @@ const TARGETS = [
   'https://x.com/pouriazeraati',
   'https://x.com/S_iran01',
   'https://x.com/MonfaredAshkan',
+  'https://t.me/s/RememberTheirNames',
   'https://x.com/search?q=%D8%AC%D8%A7%D9%86%D8%A8%D8%A7%D8%AE%D8%AA%D9%87%20%D8%A7%DB%8C%D8%B1%D8%A7%D9%86&f=live', // "جانباخته ایران" (Died Iran)
   'https://x.com/search?q=%DA%A9%D8%B4%D8%AA%D9%87%20%D8%B4%D8%AF&f=live', // "کشته شد" (Was killed)
 ];
@@ -101,11 +102,19 @@ async function getXStatusUrls(targetUrl: string): Promise<string[]> {
 
     const content = await response.text();
     // Regex for X/Twitter status URLs
-    const statusRegex = /https:\/\/(x|twitter)\.com\/[a-zA-Z0-9_]+\/status\/[0-9]+/g;
-    const matches = content.match(statusRegex) || [];
+    const xStatusRegex = /https:\/\/(x|twitter)\.com\/[a-zA-Z0-9_]+\/status\/[0-9]+/g;
+    const xMatches = content.match(xStatusRegex) || [];
     
-    // De-duplicate and normalize to x.com
-    return [...new Set(matches.map(url => url.replace('twitter.com', 'x.com')))];
+    // Regex for Telegram post URLs
+    const telegramRegex = /https:\/\/t\.me\/[a-zA-Z0-9_]+\/[0-9]+/g;
+    const telegramMatches = content.match(telegramRegex) || [];
+
+    const allMatches = [
+      ...xMatches.map(url => url.replace('twitter.com', 'x.com')),
+      ...telegramMatches
+    ];
+    
+    return [...new Set(allMatches)];
   } catch (error) {
     console.error(`Error searching ${targetUrl}:`, error);
     return [];
@@ -163,7 +172,9 @@ async function runDiscovery() {
       console.log(`Processing: ${url}`);
       
       // Fetch content first to check for relevance
-      const content = await getUrlContent(url);
+      // For Telegram, use embed mode to get better content
+      const fetchUrl = url.includes('t.me/') ? `${url}?embed=1` : url;
+      const content = await getUrlContent(fetchUrl);
       
       if (!content) {
         console.log(`Skipping (could not fetch content): ${url}`);
@@ -172,7 +183,9 @@ async function runDiscovery() {
       }
 
       // Check for relevance keywords
-      const hasKeyword = RELEVANCE_KEYWORDS.some(keyword => content.toLowerCase().includes(keyword.toLowerCase()));
+      // For known relevant channels like @RememberTheirNames, we can be more lenient
+      const isKnownRelevant = url.includes('RememberTheirNames');
+      const hasKeyword = isKnownRelevant || RELEVANCE_KEYWORDS.some(keyword => content.toLowerCase().includes(keyword.toLowerCase()));
       
       if (!hasKeyword) {
         console.log(`Skipping (no relevant keywords found): ${url}`);
@@ -197,11 +210,13 @@ async function runDiscovery() {
 
         // Ensure we have an image
         if (!data.photo) {
-          data.photo = await extractXPostImage(url) || '';
+          data.photo = await extractSocialImage(url) || '';
         }
 
         // Prepare memorial entry
         const isXUrl = url.includes('x.com') || url.includes('twitter.com');
+        const isTelegramUrl = url.includes('t.me/');
+        
         const entry: Partial<MemorialEntry> = {
           ...data,
           verified: false, // New entries from discovery are always unverified
@@ -210,7 +225,10 @@ async function runDiscovery() {
             photo: data.photo
           },
           references: [
-            { label: data.referenceLabel || (isXUrl ? 'X Post' : 'Reference'), url: url }
+            { 
+              label: data.referenceLabel || (isXUrl ? 'X Post' : (isTelegramUrl ? 'Telegram' : 'Reference')), 
+              url: url 
+            }
           ]
         };
 

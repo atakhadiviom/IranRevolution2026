@@ -16,6 +16,7 @@ export type MemorialEntry = {
     photo?: string
     video?: string
     xPost?: string
+    telegramPost?: string
   }
   references?: {
     label: string

@@ -1,0 +1,35 @@
+name: Auto-Scrape Telegram
+
+on:
+  schedule:
+    - cron: '0 */12 * * *' # Run every 12 hours
+  workflow_dispatch: # Allow manual trigger
+
+jobs:
+  scrape-telegram:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GH_PAT || github.token }}
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - name: Install deps
+        run: npm ci
+      - name: Run Telegram Scraper
+        # Scrape from 1 up to 5000
+        # The script now supports ascending order and stops after 50 consecutive empty posts.
+        # This efficiently finds new posts without scanning the entire empty range.
+        run: npx tsx scripts/scrape_telegram_range.ts RememberTheirNames 1 5000
+        env:
+          VITE_OPENROUTER_API_KEY: ${{ secrets.VITE_OPENROUTER_API_KEY }}
+          VITE_OPENROUTER_MODEL: ${{ secrets.VITE_OPENROUTER_MODEL }}
+          VITE_SUPABASE_URL: ${{ secrets.VITE_SUPABASE_URL }}
+          VITE_SUPABASE_ANON_KEY: ${{ secrets.VITE_SUPABASE_ANON_KEY }}
+          # Jina API key is used in imageExtractor if configured, ensuring it's available
+          VITE_JINA_API_KEY: ${{ secrets.VITE_JINA_API_KEY }} 
