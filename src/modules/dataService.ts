@@ -1,5 +1,5 @@
 import { supabase } from './supabase'
-import { extractXPostImage, extractInstagramImage } from './imageExtractor'
+import { extractSocialImage } from './imageExtractor'
 import { translateMemorialData, geocodeLocation, reverseGeocode } from './ai'
 import type { MemorialEntry } from './types'
 import type { Database } from './database.types'
@@ -61,7 +61,7 @@ export async function mergeMemorials(sourceId: string, targetId: string): Promis
 export async function fetchMemorials(includeUnverified = false): Promise<MemorialEntry[]> {
   if (!supabase) return fetchStaticMemorials()
   try {
-    let allData: any[] = []
+    let allData: MemorialRow[] = []
     let page = 0
     const pageSize = 1000
     let hasMore = true
@@ -340,12 +340,12 @@ export async function submitMemorial(entry: Partial<MemorialEntry>): Promise<{ s
 
     const id = entry.id || entry.name?.toLowerCase().trim().replace(/\s+/g, '-') || `submission-${Date.now()}`
     
-    // Auto-extract image from X or Instagram post if missing
-    if ((entry.media?.xPost || (entry.references && entry.references.some(r => r.url.includes('instagram.com')))) && !entry.media?.photo) {
+    // Auto-extract image from X, Telegram, or Instagram post if missing
+    if ((entry.media?.xPost || entry.media?.telegramPost || (entry.references && entry.references.some(r => r.url.includes('instagram.com')))) && !entry.media?.photo) {
       try {
-        const url = entry.media?.xPost || entry.references?.find(r => r.url.includes('instagram.com'))?.url;
+        const url = entry.media?.xPost || entry.media?.telegramPost || entry.references?.find(r => r.url.includes('instagram.com'))?.url;
         if (url) {
-          const photo = await (url.includes('instagram.com') ? extractInstagramImage(url) : extractXPostImage(url));
+          const photo = await extractSocialImage(url);
           if (photo) {
             if (!entry.media) entry.media = {};
             entry.media.photo = photo;
@@ -408,7 +408,7 @@ export async function batchUpdateImages(): Promise<{ success: boolean; count: nu
       const media = m.media as Record<string, unknown>
       const refs = m.source_links as MemorialEntry['references']
       const hasInsta = refs && refs.some(r => r.url && r.url.includes('instagram.com'))
-      return (media?.xPost || hasInsta) && !media?.photo
+      return (media?.xPost || media?.telegramPost || hasInsta) && !media?.photo
     })
     
     if (targets.length === 0) return { success: true, count: 0 }
@@ -418,9 +418,11 @@ export async function batchUpdateImages(): Promise<{ success: boolean; count: nu
       const media = m.media as Record<string, string>
       const refs = m.source_links as MemorialEntry['references']
       const xPost = media?.xPost
+      const telegramPost = media?.telegramPost
       const instaUrl = refs?.find(r => r.url && r.url.includes('instagram.com'))?.url
       
-      const photo = await (instaUrl ? extractInstagramImage(instaUrl) : extractXPostImage(xPost))
+      const url = instaUrl || telegramPost || xPost
+      const photo = await extractSocialImage(url)
       
       if (photo) {
         const updatedMedia = { ...media, photo }

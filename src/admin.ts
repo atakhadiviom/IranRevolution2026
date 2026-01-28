@@ -705,11 +705,12 @@ aiExtractBtn.addEventListener('click', async () => {
     const existingRefs = refsArea.value.trim()
     const isXUrl = url.includes('x.com') || url.includes('twitter.com')
     const isInstaUrl = url.includes('instagram.com')
-    const sourceLabel = data.referenceLabel || (isXUrl ? 'X Post' : (isInstaUrl ? 'Instagram' : 'Source'))
+    const isTelegramUrl = url.includes('t.me/')
+    const sourceLabel = data.referenceLabel || (isXUrl ? 'X Post' : (isInstaUrl ? 'Instagram' : (isTelegramUrl ? 'Telegram' : 'Source')))
     const newRef = `${sourceLabel} | ${url}`
     refsArea.value = existingRefs ? `${existingRefs}\n${newRef}` : newRef
     
-    if (isXUrl || isInstaUrl) {
+    if (isXUrl || isInstaUrl || isTelegramUrl) {
       (document.getElementById('xPost') as HTMLInputElement).value = url
     } else {
       (document.getElementById('xPost') as HTMLInputElement).value = ''
@@ -755,7 +756,7 @@ aiExtractBtn.addEventListener('click', async () => {
 extractImgBtn.addEventListener('click', async () => {
   const url = (document.getElementById('xPost') as HTMLInputElement).value.trim()
   if (!url) {
-    alert('Please enter an X or Instagram URL first.')
+    alert('Please enter an X, Instagram, or Telegram URL first.')
     return
   }
 
@@ -934,7 +935,7 @@ function populateForm(data: Partial<MemorialEntry> & { referenceLabel?: string; 
     bio: data.bio,
     bio_fa: data.bio_fa,
     photo: data.media?.photo || data.photo,
-    xPost: data.media?.xPost
+    xPost: data.media?.xPost || data.media?.telegramPost
   }
 
   Object.entries(fields).forEach(([id, val]) => {
@@ -976,7 +977,19 @@ async function handleDelete(id: string) {
 entryForm.addEventListener('submit', async (e) => {
   e.preventDefault()
   const name = (document.getElementById('name') as HTMLInputElement).value.trim()
-  const xPost = (document.getElementById('xPost') as HTMLInputElement).value.trim()
+  const xPostValue = (document.getElementById('xPost') as HTMLInputElement).value.trim()
+  
+  let xPost = ''
+  let telegramPost = ''
+
+  if (xPostValue) {
+    if (xPostValue.includes('t.me/')) {
+      telegramPost = xPostValue
+    } else {
+      xPost = xPostValue
+    }
+  }
+
   const rawRefs = (document.getElementById('references') as HTMLTextAreaElement).value.trim()
   
   const references = rawRefs.split('\n').map(line => {
@@ -989,7 +1002,7 @@ entryForm.addEventListener('submit', async (e) => {
     return null
   }).filter(Boolean) as { label: string, url: string }[]
 
-  if (!name || (!xPost && references.length === 0)) {
+  if (!name || (!xPostValue && references.length === 0)) {
     alert('Name and at least one link required.')
     return
   }
@@ -1013,7 +1026,8 @@ entryForm.addEventListener('submit', async (e) => {
       .split('\n').map(s => s.trim()).filter(Boolean),
     media: {
       photo: (document.getElementById('photo') as HTMLInputElement).value.trim() || undefined,
-      xPost: xPost || undefined
+      xPost: xPost || undefined,
+      telegramPost: telegramPost || undefined
     },
     references: references.length > 0 ? references : undefined,
     verified: (document.getElementById('verified') as HTMLInputElement).checked,

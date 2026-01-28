@@ -6,6 +6,7 @@ import { setupSearch } from './modules/search'
 import { extractMemorialData } from './modules/ai'
 import { fetchMemorials, submitMemorial, submitReport } from './modules/dataService'
 import { initTwitter } from './modules/twitter'
+import { initInstagram } from './modules/instagram'
 import { supabase } from './modules/supabase'
 import { downloadMemorialPdf } from './modules/pdf'
 
@@ -13,6 +14,7 @@ let currentMemorials: MemorialEntry[] = []
 
 async function boot() {
   initTwitter()
+  initInstagram()
   await loadTranslations(currentLanguage())
   
   // Initialize UI and Map earlier for better UX and troubleshooting
@@ -391,14 +393,29 @@ function renderDetails(entry: MemorialEntry) {
         </div>
       `, !!entry.sensitiveMedia, 'sensitivity.mediaWarning') : ''}
 
-      ${entry.media?.xPost ? wrapSensitive(`
-        <div class="profile-x-post">
-          <h3>${t('details.xPost')}</h3>
-          <blockquote class="twitter-tweet" data-theme="dark" data-dnt="true">
-            <a href="${entry.media.xPost}"></a>
-          </blockquote>
-        </div>
-      `, !!entry.sensitiveMedia, 'sensitivity.mediaWarning') : ''}
+      ${entry.media?.xPost ? (() => {
+        const url = entry.media.xPost;
+        const isInstagram = url.includes('instagram.com');
+        
+        if (isInstagram) {
+          return wrapSensitive(`
+            <div class="profile-instagram-post">
+              <h3>${t('details.xPost')}</h3>
+              <blockquote class="instagram-media" data-instgrm-permalink="${url}" data-instgrm-version="14" style="background:#FFF; border:0; border-radius:3px; box-shadow:0 0 1px 0 rgba(0,0,0,0.5),0 1px 10px 0 rgba(0,0,0,0.15); margin: 1px; max-width:540px; min-width:326px; padding:0; width:99.375%; width:-webkit-calc(100% - 2px); width:calc(100% - 2px);">
+              </blockquote>
+            </div>
+          `, !!entry.sensitiveMedia, 'sensitivity.mediaWarning');
+        } else {
+          return wrapSensitive(`
+            <div class="profile-x-post">
+              <h3>${t('details.xPost')}</h3>
+              <blockquote class="twitter-tweet" data-theme="dark" data-dnt="true">
+                <a href="${url}"></a>
+              </blockquote>
+            </div>
+          `, !!entry.sensitiveMedia, 'sensitivity.mediaWarning');
+        }
+      })() : ''}
 
       ${entry.media?.telegramPost ? wrapSensitive(`
         <div class="profile-telegram-post">
@@ -456,18 +473,29 @@ function renderDetails(entry: MemorialEntry) {
   aside.classList.add('active')
   aside.focus()
 
-  // Trigger Twitter widget rendering if present
+  // Trigger Social Media widget rendering if present
   if (entry.media?.xPost) {
     /* eslint-disable no-console */
-    console.log('X post URL detected:', entry.media.xPost);
-    const twttr = window.twttr
-    if (twttr && twttr.ready) {
-      console.log('Twitter widgets library ready, loading widget...');
-      twttr.ready((t) => {
-        t.widgets.load(panel)
-      })
+    console.log('Social post URL detected:', entry.media.xPost);
+    
+    if (entry.media.xPost.includes('instagram.com')) {
+       const instgrm = window.instgrm;
+       if (instgrm && instgrm.Embeds) {
+          console.log('Instagram widgets library ready, processing...');
+          instgrm.Embeds.process();
+       } else {
+          console.warn('Instagram widgets library NOT ready or not found');
+       }
     } else {
-      console.warn('Twitter widgets library NOT ready or not found');
+      const twttr = window.twttr
+      if (twttr && twttr.ready) {
+        console.log('Twitter widgets library ready, loading widget...');
+        twttr.ready((t) => {
+          t.widgets.load(panel)
+        })
+      } else {
+        console.warn('Twitter widgets library NOT ready or not found');
+      }
     }
     /* eslint-enable no-console */
   }

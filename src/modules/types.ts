@@ -38,9 +38,16 @@ export interface Twitter {
   _e?: unknown[];
 }
 
+export interface Instagram {
+  Embeds: {
+    process: () => void;
+  }
+}
+
 declare global {
   interface Window {
     twttr: Twitter;
+    instgrm?: Instagram;
   }
 }
 
