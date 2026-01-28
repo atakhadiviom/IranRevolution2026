@@ -61,27 +61,44 @@ export async function mergeMemorials(sourceId: string, targetId: string): Promis
 export async function fetchMemorials(includeUnverified = false): Promise<MemorialEntry[]> {
   if (!supabase) return fetchStaticMemorials()
   try {
-    let query = supabase
-      .from('memorials')
-      .select('*')
-      .order('date', { ascending: false })
+    let allData: any[] = []
+    let page = 0
+    const pageSize = 1000
+    let hasMore = true
 
-    if (!includeUnverified) {
-      query = query.eq('verified', true)
+    while (hasMore) {
+      let query = supabase
+        .from('memorials')
+        .select('*')
+        .range(page * pageSize, (page + 1) * pageSize - 1)
+        .order('date', { ascending: false })
+
+      if (!includeUnverified) {
+        query = query.eq('verified', true)
+      }
+
+      const { data, error } = await query
+
+      if (error) {
+        if (page === 0) return fetchStaticMemorials()
+        console.error('Error fetching page', page, error)
+        break
+      }
+
+      if (!data || data.length === 0) {
+        hasMore = false
+      } else {
+        allData = [...allData, ...data]
+        if (data.length < pageSize) {
+          hasMore = false
+        }
+        page++
+      }
     }
 
-    const { data, error } = await query
-
-    if (error) {
-      return fetchStaticMemorials()
-    }
-
-    if (data === null) {
-      return fetchStaticMemorials()
-    }
-
-    return data.map(mapRowToEntry)
+    return allData.map(mapRowToEntry)
   } catch (e) {
+    console.error('Exception in fetchMemorials:', e)
     return fetchStaticMemorials()
   }
 }
